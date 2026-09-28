@@ -1,0 +1,353 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   Tema
+   ========================================================================== */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+#tipo_de_publicacao {
+    border-left: 1px solid #ccc;
+    padding-left: 5px;
+}
+#eventDetailsPopup {
+    position: absolute;
+    max-width: calc(100vw - 20px); /* nunca ultrapassa a tela */
+    width: 260px;
+    box-sizing: border-box;
+    left: 0;
+}
+#eventDetailsPopup {
+    word-wrap: break-word;
+}
+.state-item {
+      position: relative;
+      display: inline-block;
+      width: 40px; /* Ajustado para um tamanho menor */
+      height: 28px; /* Ajustado para um tamanho menor */
+      text-align: center;
+    }
+    .state-abbr, .state-flag {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .state-flag {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .state-item:hover .state-abbr {
+      opacity: 0;
+    }
+    .state-item:hover .state-flag {
+      opacity: 1;
+    }
+     .has-event {
+        position: relative;
+        background-color: rgb(255, 244, 201);
+        color:#333!important;
+        
+    }
+    .has-event::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 5px;
+        height: 5px;
+        background-color: #155dfc; /* Vermelho para eventos */
+        border-radius: 50%;
+    }
+    .has-event.bg-blue-600::after {
+    background-color: #155dfc!important; /* Azul para eventos fiscais */
+    
+}
+.tabela-agenda td {
+  padding: .8em;
+  border:1px solid #ccc;
+  font-size: .9em;
+
+}
+.tabela-agenda tr:hover {
+background-color: #f7f7f7;
+
+}
+
+.tabela-agenda th {
+background-color: #EBEBEB;
+border:1px solid #ccc;
+  padding: .8em;
+  font-weight: 500!important;
+}
+.item-salvo {
+  border-bottom:#ccc 1px solid;
+  padding: .4em;
+}
+.tec-result__error {
+    color: #444;
+    background-color: rgba(210,0,0,.15);
+    border: 1px solid #c00;
+    text-align: center
+}
+
+.tec-result__info {
+    color: #444;
+    background-color: #f5f5dc;
+    border: 1px solid #daa520;
+    text-align: center
+}
+
+.tec-result-paginacao {
+    margin-top: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.tec-result__table {
+    margin: 2em 0;
+    font-size: .9em;
+    line-height: 1.5em;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tec-result__table thead th {
+    background-color: #3e648b;
+    color: #fff;
+    padding: .75em
+}
+
+.tec-result__table thead th:not(:last-child) {
+    border-right: 1px solid #fff
+}
+
+.tec-result__table tbody tr.odd {
+    background-color: rgba(62,100,139,.1)
+}
+
+.tec-result__table tr.informacoes-adicionais em {
+    background-color: transparent
+}
+
+.tec-result__table tr.informacoes-adicionais td {
+    border: 1px solid #c1d2e4;
+    padding: 1em;
+    box-shadow: #c1d2e4 4px 4px 12px;
+    margin: 1em
+}
+
+.tec-result__table tr.informacoes-adicionais td hr {
+    margin: 1em 0
+}
+
+.tec-result__table td {
+    padding: .75em .5em;
+    color: #444;
+    border: 1px solid #D0D8E1;
+}
+
+.tec-result__table em {
+    background-color: #ff0
+}
+
+.tec-result__table td.ncm {
+    width: 10%;
+    text-align: center
+}
+
+.tec-result__table td.conteudo {
+    width: 40%
+}
+
+.tec-result__table td.aliquota {
+    width: 8.3333%;
+    text-align: center
+}
+
+.tec-result__table td.aliquota.info {
+    color: #104070;
+    font-weight: bold;
+    cursor: pointer
+}
+
+.tec-result__table tbody tr.tec-exemplo-ou-destaque td {
+    color: #c00
+}
+
+.tec-result__table tbody tr.tec-nivel-simples td.conteudo {
+    color: #0a0fe0;
+    font-weight: bold
+}
+
+.tec-result__table tbody td .hifens-nivel {
+    font-weight: bold;
+    font-size: 1.5em;
+    letter-spacing: .025em;
+    color: #f90;
+    padding: 0 .25em 0 .1em
+}
+
+.tec-result-permission-item {
+    cursor: default;
+    color: #3e648b;
+    box-sizing: border-box;
+    vertical-align: middle;
+    font-family: monospace;
+    font-size: 16px;
+    border: 1px solid #9dbad4;
+    border-radius: 2px;
+    line-height: 16px;
+    width: 18px;
+    text-align: center;
+    display: inline-block;
+    user-select: none
+}
+
+
+/* ==========================================================================
+   Abas (estilo base — antes injetado via JavaScript em index.js)
+   Mantido igual ao anterior para não alterar as outras páginas.
+   ========================================================================== */
+@layer components {
+  .tab-button {
+    padding: 8px 16px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    font-weight: 600;
+    color: #4B5563;
+    transition: all 0.2s;
+  }
+  .tab-button:hover { color: #2563EB; }
+  .tab-button.active { color: #2563EB; border-bottom-color: #2563EB; }
+}
+
+/* ==========================================================================
+   Componentes da Home (prefixo cf- = Cenofisco)
+   ========================================================================== */
+@layer components {
+  /* Cards e cabeçalhos de seção */
+  .cf-card {
+    @apply rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)];
+  }
+  .cf-section-head {
+    @apply mb-5 flex items-center justify-between gap-4;
+  }
+  .cf-section-title {
+    @apply flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900;
+  }
+  .cf-icon {
+    @apply inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[0.95rem] text-blue-700;
+  }
+  .cf-link-more {
+    @apply inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-blue-700 transition-colors hover:text-blue-900;
+  }
+  .cf-link-more i { @apply text-xs transition-transform; }
+  .cf-link-more:hover i { @apply translate-x-0.5; }
+  .cf-eyebrow {
+    @apply text-[11px] font-semibold tracking-wider uppercase;
+  }
+
+  /* Linhas de listas (tabelas, indicadores, normas) */
+  .cf-row {
+    @apply flex items-center justify-between gap-3 border-b border-slate-100 py-2.5 text-sm text-slate-700 last:border-b-0;
+  }
+  .cf-row-link {
+    @apply shrink-0 text-xs font-semibold text-blue-700 hover:text-blue-900 hover:underline;
+  }
+
+  /* Formulários */
+  .cf-input {
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none;
+  }
+  .cf-label {
+    @apply mb-1 block text-xs font-medium text-slate-600;
+  }
+
+  /* Botões */
+  .cf-btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:outline-none;
+  }
+  .cf-btn-primary { @apply bg-blue-900 text-white hover:bg-blue-800; }
+  .cf-btn-secondary { @apply border border-slate-300 bg-white text-slate-700 hover:bg-slate-50; }
+  .cf-btn-soft { @apply bg-blue-50 text-blue-800 hover:bg-blue-100; }
+  .cf-btn-accent { @apply bg-amber-400 text-blue-950 hover:bg-amber-300; }
+
+  /* Opções (radio/checkbox estilizados) — o <span> vem logo após o <input class="peer"> */
+  .cf-choice {
+    @apply flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-center text-sm font-semibold text-slate-700 transition hover:border-slate-300 peer-checked:border-blue-900 peer-checked:bg-blue-900 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-blue-600 peer-focus-visible:ring-offset-2;
+  }
+  .cf-pill {
+    @apply flex items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-slate-300 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-600;
+  }
+
+  /* Abas da Home (sobrepõem o estilo base apenas dentro de .cf-tabs) */
+  .cf-tabs {
+    @apply -mb-px flex gap-6 overflow-x-auto;
+    scrollbar-width: none;
+  }
+  .cf-tabs::-webkit-scrollbar { display: none; }
+  .cf-tabs .tab-button {
+    @apply border-b-2 border-transparent px-0.5 pt-1 pb-3 text-sm font-semibold whitespace-nowrap text-slate-500 hover:text-slate-900 focus-visible:text-slate-900 focus-visible:outline-none;
+  }
+  .cf-tabs .tab-button.active {
+    @apply border-blue-700 text-blue-700;
+  }
+
+  /* Navegação principal */
+  .cf-nav-link {
+    @apply relative flex items-center gap-2 px-1 py-3 text-sm font-medium text-slate-600 transition-colors hover:text-blue-800;
+  }
+  .cf-nav-link[aria-current="page"] {
+    @apply font-semibold text-blue-900;
+  }
+  @media (min-width: 768px) {
+    .cf-nav-link[aria-current="page"]::after {
+      content: "";
+      @apply absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-blue-900;
+    }
+  }
+
+  /* Faixa de novidades (substitui o <marquee>, que é obsoleto) */
+  .cf-ticker-track {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: cf-ticker 38s linear infinite;
+  }
+  .cf-ticker:hover .cf-ticker-track,
+  .cf-ticker:focus-within .cf-ticker-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes cf-ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+/* Calendário da Home: ponto amarelo no dia atual com evento */
+.cf-mini-calendar .has-event.bg-blue-600::after {
+  background-color: #FCD34D !important;
+}
+
+/* Acessibilidade: respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  .cf-ticker-track {
+    animation: none;
+    padding-left: 0;
+    white-space: normal;
+  }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+  }
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 9rem; }

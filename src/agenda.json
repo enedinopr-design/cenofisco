@@ -1,0 +1,462 @@
+[
+  {
+    "date": "04/05/2026",
+    "title": "SCANC",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "04/05/2026",
+    "title": "SCANC",
+    "description": "Importador",
+    "type": "Federal"
+  },
+  {
+    "date": "05/05/2026",
+    "title": "SCANC",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "05/05/2026",
+    "title": "SCANC",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "06/05/2026",
+    "title": "IRRF e IOF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "06/05/2026",
+    "title": "SCANC",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "06/05/2026",
+    "title": "SCANC",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "07/05/2026",
+    "title": "Salários",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "08/05/2026",
+    "title": "IRRF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "08/05/2026",
+    "title": "Comprovante de Pagamento ou Crédito de Juros sobre o Capital Próprio",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "08/05/2026",
+    "title": "IPI",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "13/05/2026",
+    "title": "IRRF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "13/05/2026",
+    "title": "IOF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "13/05/2026",
+    "title": "SCANC",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "EFD - Contribuições (PIS/PASEP e COFINS)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "Retenção PIS/PASEP e COFINS Autopeças",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "CIDE Combustíveis (Mercado Interno)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "CIDE",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "EFD-Reinf",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "Demonstrativo do Crédito Presumido (DCP)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "eSocial",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "15/05/2026",
+    "title": "Previdência Social - Contribuintes Individuais/Facultativos",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "IRRF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "IRRF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "Retenção CSLL/COFINS/PIS/PASEP",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "COFINS",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "PIS/PASEP",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "IRRF e Contribuições Sociais Retidas",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "DIRBI",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "IRPJ/CSLL/PIS/PASEP e COFINS Regime Especial - Incorporação Imobiliária",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "SIMPLES Nacional (DAS)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "DAS-MEI",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "PGDAS-D",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "SIMPLES Doméstico",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "Previdência Social - Retenção 11%",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "Previdência Social Receita Bruta",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "Previdência Social - Segurado Especial",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "Previdência Social - Empresa e Produção Rural",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "FGTS",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "20/05/2026",
+    "title": "Previdência Social - MEI",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "23/05/2026",
+    "title": "SCANC",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "23/05/2026",
+    "title": "IRRF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "IRRF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "COFINS Cervejas",
+    "description": "",
+    "type": "Federal"
+  }
+  ,
+  {
+    "date": "25/05/2026",
+    "title": "COFINS Demais Bebidas",
+    "description": "",
+    "type": "Federal"
+  }
+  ,
+  {
+    "date": "25/05/2026",
+    "title": "COFINS Álcool",
+    "description": "",
+    "type": "Federal"
+  }
+  ,
+  {
+    "date": "25/05/2026",
+    "title": "COFINS Demais Empresas",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "PIS/PASEP Cervejas",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "PIS/PASEP Demais Bebidas",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "PIS/PASEP Álcool",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "PIS/PASEP Demais Empresas",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "PIS/PASEP Folha de Pagamento",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "IOF 11 a 20/Maio/2026",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "25/05/2026",
+    "title": "IPI",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "DCTFWeb",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "Módulo de Inclusão de Tributos (MIT)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "Retenção PIS/PASEP e COFINS Autopeças",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRPJ Trimestral",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "CSLL Trimestral",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRPJ Mensal",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "CSLL Mensal",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRPJ Renda Variável",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRRF",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRPJ/SIMPLES Nacional - Ganho de Capital",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRPF Mensal (Carnê-Leão)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRPF Renda Variável",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "IRPF Ganho de Capital",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "Declaração de Operações Imobiliárias (DOI)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "Declaração de Operações Liquidadas com Moeda em Espécie (DME)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "Declaração de Informações sobre Atividades Imobiliárias (DIMOB) Eventos Especiais",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "DIRPF/2026",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "1ª Quota do IRPF 2026",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "Declaração Anual do SIMPLES Nacional para o MEI (DASN-SIMEI)",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "Declaração de Serviços Médicos e de Saúde (DMED) Eventos Especiais",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "REFIS",
+    "description": "",
+    "type": "Federal"
+  },
+  {
+    "date": "29/05/2026",
+    "title": "PAES (REFIS II)",
+    "description": "",
+    "type": "Federal"
+  }
+ 
+]

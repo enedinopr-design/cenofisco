@@ -1,0 +1,426 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Resultados da Busca Fiscal - Portal Fiscal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" href="img/logo.jpg">
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-900 focus:shadow-lg">Pular para o conteúdo</a>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <div class="bg-blue-950 text-blue-100">
+    <div class="container mx-auto flex items-center justify-between gap-4 px-4 py-2 text-xs sm:text-sm">
+      <div class="hidden items-center gap-5 md:flex">
+        <a href="tel:08009403055" class="flex items-center gap-2 transition hover:text-white"><i class="fa-solid fa-phone text-[11px] text-amber-400" aria-hidden="true"></i>0800 940 3055</a>
+        <a href="mailto:contato@cenofisco.com.br" class="flex items-center gap-2 transition hover:text-white"><i class="fa-solid fa-envelope text-[11px] text-amber-400" aria-hidden="true"></i>contato@cenofisco.com.br</a>
+      </div>
+      <!-- Usuário logado (simulação) -->
+      <div class="ml-auto flex items-center gap-3 sm:gap-4">
+        <span class="hidden sm:inline">Olá, <strong class="font-semibold text-white">Enedino</strong></span>
+        <span class="hidden h-4 w-px bg-blue-800 sm:block" aria-hidden="true"></span>
+        <a href="meu-perfil.html" class="flex items-center gap-1.5 font-medium transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
+        <a href="meu-perfil.html#documentos" class="flex items-center gap-1.5 font-medium transition hover:text-white"><i class="fa-regular fa-folder-open" aria-hidden="true"></i>Meus Documentos</a>
+        <button type="button" class="cursor-pointer rounded-md bg-amber-400 px-3 py-1 text-xs font-bold text-blue-950 transition hover:bg-amber-300">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <div class="container mx-auto flex flex-wrap items-center gap-x-8 gap-y-3 px-4 py-3">
+      <a href="index.html" class="shrink-0" aria-label="Cenofisco — página inicial">
+        <img src="img/logo.jpg" alt="Cenofisco" width="200" height="62" class="h-10 w-auto sm:h-12">
+      </a>
+
+      <!-- Busca global -->
+    <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
+        <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
+        <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
+        <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-32 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
+        <button type="submit" class="absolute top-1/2 right-1.5 -translate-y-1/2 cursor-pointer rounded-full bg-blue-900 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800">Pesquisar</button>
+      </form>
+
+      <div class="ml-auto flex items-center gap-3">
+        <a href="index.html#consultoria-cenofisco" class="cf-btn cf-btn-primary hidden whitespace-nowrap sm:inline-flex"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+        <button id="menu-toggle" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-blue-900 md:hidden" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu de navegação -->
+    <div id="main-menu" class="hidden border-t border-slate-100 md:block">
+      <nav class="container mx-auto flex flex-col px-4 md:flex-row md:items-center md:gap-7" aria-label="Navegação principal">
+        <a href="index.html" class="cf-nav-link">Início</a>
+        <a href="noticias.html" class="cf-nav-link">Notícias</a>
+        <a href="legislacao.html" class="cf-nav-link">Legislação</a>
+        <a href="procedimentos.html" class="cf-nav-link">Procedimentos</a>
+        <a href="regulamentos.html" class="cf-nav-link">Regulamentos</a>
+        <a href="aplicativos.html" class="cf-nav-link" aria-current="page">Ferramentas</a>
+        <a href="agenda-obrigacoes.html" class="cf-nav-link">Agenda</a>
+        <a href="index.html#consultoria-cenofisco" class="cf-btn cf-btn-primary my-3 sm:hidden"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+      </nav>
+    </div>
+  </header>
+
+    <main id="conteudo" class="container mx-auto px-4 py-8">
+        <div class="mb-6">
+            <a href="index.html" class="text-blue-600 hover:underline">&larr; Voltar ao Início</a>
+        </div>
+
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-search text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Resultados da Busca
+                        Fiscal
+                    </h2>
+                </div>
+
+                <div><a href="#"
+                        class="border border-blue-500 text-blue-500 hover:bg-blue-500 font-semibold hover:text-white px-4 py-2 rounded-md transition">Refazer
+                        busca</a></div>
+            </div>
+            <div class="border-b border-gray-200 mb-6">
+                <nav class="-mb-px flex gap-6" aria-label="Tabs">
+                    <button class="tab-button active" onclick="openTab(event, 'ipi-tab')">IPI</button>
+                    <button class="tab-button" onclick="openTab(event, 'ii-tab')">II</button>
+                    <button class="tab-button" onclick="openTab(event, 'pis-cofins-tab')">PIS/COFINS</button>
+                    <button class="tab-button" onclick="openTab(event, 'pis-cofins-importacao-tab')">PIS/COFINS
+                        Importação</button>
+                    <button class="tab-button" onclick="openTab(event, 'icms-normal-tab')">ICMS Normal</button>
+                    <button class="tab-button" onclick="openTab(event, 'icms-st-tab')">ICMS/ST</button>
+                </nav>
+            </div>
+
+            <div id="ipi-tab" class="tab-content">
+                <h3 class="text-xl font-semibold mb-2">Resultados para <span class="text-blue-600">IPI</span></h3>
+                <p class="text-gray-600 mb-2">Alíquota do Imposto sobre Produtos Industrializados (IPI) de acordo com a
+                    Tabela de Incidência do IPI (aprovado pelo <a href="#">Decreto nº 11.158/2022</a>).</p>
+
+
+                <!-- Conteúdo detalhado para IPI -->
+                <div class="overflow-x-auto">
+                    <table class="tec-result__table">
+                        <thead style="">
+                            <tr>
+                                <th>Código</th>
+                                <th>Descrição</th>
+                                <th>IPI (%)</th>
+                            </tr>
+                        </thead>
+                        <thead style="position: fixed; top: 0px; left: 0px; display: none;">
+                            <tr>
+                                <th>Código</th>
+                                <th>Descrição</th>
+                                <th>IPI (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ncm">2202</td>
+                                <td class="conteudo">ÁGUAS, INCLUINDO AS ÁGUAS MINERAIS E AS ÁGUAS GASEIFICADAS,
+                                    ADICIONADAS DE AÇÚCAR OU DE OUTROS EDULCORANTES OU AROMATIZADAS E OUTRAS BEBIDAS NÃO
+                                    ALCOÓLICAS, EXCETO SUCOS (SUMOS) DE FRUTA OU DE PRODUTOS HORTÍCOLAS DA POSIÇÃO
+                                    20.09.</td>
+                                <td class="aliquota">-</td>
+                            </tr>
+                            <tr class="odd tec-nivel-simples">
+                                <td class="ncm">2202.9</td>
+                                <td class="conteudo"><span class="hifens-nivel">-</span> Outras:</td>
+                                <td class="aliquota">-</td>
+                            </tr>
+                            <tr>
+                                <td class="ncm">2202.91.00</td>
+                                <td class="conteudo"><span class="hifens-nivel">--</span> <em>Cerveja</em> sem álcool
+                                </td>
+                                <td class="aliquota">3,9</td>
+                            </tr>
+                            <tr class="odd">
+                                <td class="ncm">2203.00.00</td>
+                                <td class="conteudo"><em>CERVEJAS</em> DE MALTE.</td>
+                                <td class="aliquota">3,9</td>
+                            </tr>
+                            <tr>
+                                <td class="ncm">2303</td>
+                                <td class="conteudo">RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE
+                                    BETERRABA, BAGAÇOS DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR,
+                                    BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA <em>CERVEJA</em> E DAS DESTILARIAS, MESMO EM
+                                    PELLETS.</td>
+                                <td class="aliquota">-</td>
+                            </tr>
+                            <tr class="odd tec-nivel-simples">
+                                <td class="ncm">2303.30.00</td>
+                                <td class="conteudo"><span class="hifens-nivel">-</span> Borras e desperdícios da
+                                    indústria da <em>cerveja</em> e das destilarias</td>
+                                <td class="aliquota">NT</td>
+                            </tr>
+                            <tr>
+                                <td class="ncm">3807.00.00</td>
+                                <td class="conteudo">ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE
+                                    MADEIRA; METILENO; BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA
+                                    <em>CERVEJA</em> E PREPARAÇÕES SEMELHANTES À BASE DE COLOFÔNIAS, DE ÁCIDOS RESÍNICOS
+                                    OU DE BREU (PEZ) VEGETAL.</td>
+                                <td class="aliquota">0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+
+            <div id="ii-tab" class="tab-content hidden">
+                <h3 class="text-xl font-semibold mb-4">Resultados para <span class="text-blue-600">II</span></h3>
+                <p class="text-gray-600 mb-2">Alíquota do Imposto sobre a Importação (II) que compõe a Tarifa Externa Comum – TEC de acordo
+                    com <a href="/Documentos?guid=ef3b1c97cf844d4caa63029188913768" target="blank">Resolução GECEX/CAMEX nº
+                        272/2021</a>.</p>
+                <!-- Conteúdo detalhado para II -->
+                <div class="overflow-x-auto">
+                <table class="tec-result__table">
+                    <thead style="">
+                        <tr>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>II (%)</th>
+                            <th title="Sem Similar Nacional">SSN</th>
+                        </tr>
+                    </thead>
+                    <thead style="position: fixed; top: 0px; left: 312.094px; display: none;">
+                        <tr>
+                            <th>Código</th>
+                            <th>Descrição</th>
+                            <th>II (%)</th>
+                            <th title="Sem Similar Nacional">SSN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ncm"><em>2202</em></td>
+                            <td class="conteudo">ÁGUAS, INCLUINDO AS ÁGUAS MINERAIS E AS ÁGUAS GASEIFICADAS, ADICIONADAS DE AÇÚCAR OU DE
+                                OUTROS EDULCORANTES OU AROMATIZADAS E OUTRAS BEBIDAS NÃO ALCOÓLICAS, EXCETO SUCOS (SUMOS) DE FRUTA OU DE
+                                PRODUTOS HORTÍCOLAS DA POSIÇÃO 20.09.</td>
+                            <td class="aliquota">-</td>
+                            <td class="aliquota">-</td>
+                        </tr>
+                        <tr class="odd tec-nivel-simples">
+                            <td class="ncm"><em>2202.10.00</em></td>
+                            <td class="conteudo"><span class="hifens-nivel">-</span> Águas, incluindo as águas minerais e as águas
+                                gaseificadas, adicionadas de açúcar ou de outros edulcorantes ou aromatizadas</td>
+                            <td class="aliquota">18</td>
+                            <td class="aliquota">-</td>
+                        </tr>
+                        <tr class="tec-nivel-simples">
+                            <td class="ncm"><em>2202.9</em></td>
+                            <td class="conteudo"><span class="hifens-nivel">-</span> Outras:</td>
+                            <td class="aliquota">-</td>
+                            <td class="aliquota">-</td>
+                        </tr>
+                        <tr class="odd">
+                            <td class="ncm"><em>2202.91.00</em></td>
+                            <td class="conteudo"><span class="hifens-nivel">--</span> Cerveja sem álcool</td>
+                            <td class="aliquota">18</td>
+                            <td class="aliquota">-</td>
+                        </tr>
+                        <tr>
+                            <td class="ncm"><em>2202.99.00</em></td>
+                            <td class="conteudo"><span class="hifens-nivel">--</span> Outras</td>
+                            <td class="aliquota">18</td>
+                            <td class="aliquota">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+                </div>
+            </div>
+
+                   <div id="pis-cofins-tab" class="tab-content hidden">
+                    
+                    teste 1
+                
+                
+                </div>
+                   
+                   <div id="pis-cofins-importacao-tab" class="tab-content hidden">teste 2</div>
+
+            <div id="icms-normal-tab" class="tab-content hidden">
+                <h3 class="text-xl font-semibold mb-4">Resultados para <span class="text-blue-600">ICMS Normal</span></h3>
+                <p class="text-gray-600">Aqui serão exibidos os resultados da busca fiscal relacionados ao ICMS Normal.
+                </p>
+                <!-- Conteúdo detalhado para ICMS Normal -->
+
+                <table class="protoloco__titulo">
+                    <thead>
+                        <tr>
+                            <th>Ato Legal</th>
+                            <th>UF</th>
+                            <th>Início da Vigência</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="titulo_protocolo"><a
+                                    href="/Composicao/Regulamentos/Regulamento-de-ICMS/Centro-Oeste/Goias?guid=af54d1db6307a1f9796155c30bd0f59c">DECRETO
+                                    Nº 4.852, DE 29 DE DEZEMBRO DE 1997</a></td>
+                            <td class="uf_destinatario">GO</td>
+                            <td class="inicio_vigencia">29/12/1997</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="tec-result__table">
+                    <thead>
+                        <tr>
+                            <th>NCM</th>
+                            <th>Descrição da Mercadoria</th>
+                            <th>Alíquota de Destino (%)</th>
+                            <th>Alíquota FCP</th>
+                            <th>Alíquota Efetiva</th>
+                            <th>Alíq. Inter (%)</th>
+                            <th>Alíq. Inter MI (%)</th>
+                            <th title="Carga Tributária">Carga Trib.</th>
+                            <th title="Base Tributária">Base Trib.</th>
+                            <th title="Base de Cálculo Reduzida">% BC Red.</th>
+                            <th title="Crédito Presumido">% Créd. Pres.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ncm">2303</td>
+                            <td class="mercadoria">RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE BETERRABA, BAGAÇOS
+                                DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR, BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA
+                                <em>CERVEJA</em> E DAS DESTILARIAS, MESMO EM PELLETS.</td>
+                            <td class="aliquota">-</td>
+                            <td class="aliquota">-</td>
+                            <td class="aliquota">-</td>
+                            <td class="aliquota_ie">-</td>
+                            <td class="aliquota_ie_mi">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                        </tr>
+                        <tr width="100%">
+                            <td colspan="9" class="notas_td" style="display:none" id="r-1413325">
+                                <div align="center" bis_skin_checked="1">
+                                    <p style="font-weight:bold;color:#3E648B;">Autentique-se para visualizar o tratamento tributário.
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr onclick="abreResultadoICMS('23033000','undefined','r-1413328','ICMS');" style="cursor: pointer;"
+                            title="Para acessar tratamento tributário e aplicativo clique na mercadoria." ;="" class="linhaSTimpar">
+                            <td class="ncm">2303.30.00</td>
+                            <td class="mercadoria">Borras e desperdícios da indústria da <em>cerveja</em> e das destilarias</td>
+                            <td class="aliquota">19</td>
+                            <td class="aliquota">-</td>
+                            <td class="aliquota">19</td>
+                            <td class="aliquota_ie">-</td>
+                            <td class="aliquota_ie_mi">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                        </tr>
+                        <tr width="100%">
+                            <td colspan="9" class="notas_td" style="display:none" id="r-1413328">
+                                <div align="center" bis_skin_checked="1">
+                                    <p style="font-weight:bold;color:#3E648B;">Autentique-se para visualizar o tratamento tributário.
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr onclick="abreResultadoICMS('38070000','undefined','r-1417759','ICMS');" style="cursor: pointer;"
+                            title="Para acessar tratamento tributário e aplicativo clique na mercadoria." ;="" class="linhaST">
+                            <td class="ncm">3807.00.00</td>
+                            <td class="mercadoria">ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE MADEIRA; METILENO;
+                                BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA <em>CERVEJA</em> E PREPARAÇÕES SEMELHANTES À BASE DE
+                                COLOFÔNIAS, DE ÁCIDOS RESÍNICOS OU DE BREU (PEZ) VEGETAL.</td>
+                            <td class="aliquota">19</td>
+                            <td class="aliquota">-</td>
+                            <td class="aliquota">19</td>
+                            <td class="aliquota_ie">-</td>
+                            <td class="aliquota_ie_mi">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                            <td class="icms_geral">-</td>
+                        </tr>
+                        <tr width="100%">
+                            <td colspan="9" class="notas_td" style="display:none" id="r-1417759">
+                                <div align="center" bis_skin_checked="1">
+                                    <p style="font-weight:bold;color:#3E648B;">Autentique-se para visualizar o tratamento tributário.
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="icms-st-tab" class="tab-content hidden">
+                <h3 class="text-xl font-semibold mb-4">Resultados para ICMS/ST</h3>
+                <p class="text-gray-600">Aqui serão exibidos os resultados da busca fiscal relacionados ao ICMS/ST
+                    (Substituição Tributária).</p>
+                <!-- Conteúdo detalhado para ICMS/ST -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="img/logobranco-cenofisco.png">
+                </div>
+                <p class="text-sm">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária
+                    e ferramentas exclusivas.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legislação</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">Federal</a></li>
+                    <li><a href="#" class="hover:text-white">Estadual</a></li>
+                    <li><a href="#" class="hover:text-white">Municipal</a></li>
+                    <li><a href="#" class="hover:text-white">Trabalhista</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Ferramentas</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">CNAE</a></li>
+                    <li><a href="#" class="hover:text-white">Substituição Tributária</a></li>
+                    <li><a href="#" class="hover:text-white">Tabelas Práticas</a></li>
+                    <li><a href="#" class="hover:text-white">Agenda</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                <p class="text-xs mb-4">Receba as principais notícias fiscais no seu e-mail.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail"
+                        class="bg-white border-none rounded-l-lg px-3 py-2 text-sm w-full focus:ring-1 focus:ring-blue-500">
+                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-r-lg hover:bg-yello-500 transition"><i
+                            class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs">
+            © Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62
+        </div>
+    </footer>
+    <script src="./index.js"></script>
+</body>
+
+</html>

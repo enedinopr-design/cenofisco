@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Regulamentos - Cenofisco</title>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
+        <div class="flex-col sm:flex-row gap-2 sm:gap-4 text-center hidden md:flex">
+            <span><i class="fas fa-phone mr-2"></i>Telefone: 0800 940 3055</span>
+            <span><i class="fas fa-envelope mr-2"></i>contato@cenofisco.com.br</span>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+            <!-- Simulação de usuário logado -->
+            <div class="flex items-center gap-3">
+                <span class="text-sm">Olá, Enedino!</span>
+                <a href="meu-perfil.html" class="text-sm font-bold hover:text-blue-400 whitespace-nowrap"><i class="fa-regular fa-user"></i> Meu Perfil</a> | <a href="meu-perfil.html" class="text-sm font-bold hover:text-blue-400 whitespace-nowrap"><i class="fa-regular fa-folder-open"></i> Meus Documentos</a>
+                <button class="bg-yellow-400 hover:bg-yellow-500 text-blue-800 text-sm font-bold py-1 px-3 rounded cursor-pointer">Sair</button>
+            </div>
+        </div>
+    </div>
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center justify-between w-full md:w-auto">
+               <a href="index.html"><img src="img/logo.jpg" alt="Logo Cenofisco"></a>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative w-full md:w-auto md:flex-1 md:max-w-md order-3 md:order-2">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" id="globalSearch" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full pl-10 pr-28 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <button type="submit" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-blue-900 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700 transition-colors">Pesquisar</button>
+            </div>
+
+            <div id="main-menu" class="hidden md:flex md:items-center md:w-auto w-full order-2 md:order-3">
+                <nav class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 font-medium text-gray-600 w-full md:w-auto mt-4 md:mt-0">
+                    <a href="index.html" class="hover:text-blue-600 transition w-full">Início</a>
+                    <a href="procedimentos.html" class="hover:text-blue-600 transition w-full">Procedimentos</a>
+                    <a href="regulamentos.html" class="hover:text-blue-600 transition w-full text-blue-600">Regulamentos</a>
+                    <a href="aplicativos.html" class="hover:text-blue-600 transition w-full">Ferramentas</a>
+                    <a href="agenda-obrigacoes.html" class="hover:text-blue-600 transition w-full">Agenda</a>
+                    <a href="#" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition flex items-center justify-center w-full md:w-auto mt-2 md:mt-0 whitespace-nowrap"><i class="fa-solid fa-headphones me-3"></i> Consultoria</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar de Artigos -->
+            <aside class="lg:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100 sticky top-24 self-start">
+                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-book-open text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Regulamentos Salvos
+                </h3>
+                <ul id="articles-list" class="space-y-2 text-sm">
+                    <!-- Artigos serão carregados via JavaScript -->
+                </ul>
+            </aside>
+
+            <!-- Conteúdo Principal de Regulamentos -->
+            <div class="lg:col-span-3 space-y-6">
+                <div class="mb-6">
+                    <a href="index.html" class="text-blue-600 hover:underline">&larr; Voltar ao Início</a>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-gavel text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Regulamentos
+                    </h2>
+
+                    <div class="relative mb-8">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="regulation-search" placeholder="Buscar regulamento por título ou palavra-chave..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div id="regulations-list" class="space-y-6">
+                        <!-- Regulamentos serão carregados via JavaScript -->
+                    </div>
+
+                    <!-- Paginação -->
+                    <div id="pagination-container" class="flex justify-center items-center space-x-2 mt-8">
+                        <!-- Botões de paginação serão carregados via JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="img/logobranco-cenofisco.png" alt="Logo Cenofisco Branco">
+                </div>
+                <p class="text-sm">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legislação</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">Federal</a></li>
+                    <li><a href="#" class="hover:text-white">Estadual</a></li>
+                    <li><a href="#" class="hover:text-white">Municipal</a></li>
+                    <li><a href="#" class="hover:text-white">Trabalhista</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Ferramentas</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">CNAE</a></li>
+                    <li><a href="#" class="hover:text-white">Substituição Tributária</a></li>
+                    <li><a href="#" class="hover:text-white">Tabelas Práticas</a></li>
+                    <li><a href="#" class="hover:text-white">Agenda</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                <p class="text-xs mb-4">Receba as principais notícias fiscais no seu e-mail.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail" class="bg-white border-none rounded-l-lg px-3 py-2 text-sm w-full focus:ring-1 focus:ring-blue-500">
+                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-r-lg hover:bg-yello-500 transition"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs">
+            © Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62
+        </div>
+    </footer>
+    <script src="./regulamentos.js"></script>
+</body>
+</html>

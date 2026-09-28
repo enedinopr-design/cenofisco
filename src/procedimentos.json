@@ -1,0 +1,51 @@
+[
+    {
+        "area": "Contabilidade",
+        "title": "Índice de Preços ao Consumidor (IPC) (FIPE)",
+        "summary": "Abr. - Mensal = 0,40%",
+        "details": "Indicadores e Taxas | 07/05/2026",
+        "link": "#"
+    },
+    {
+        "area": "ICMS e Outros",
+        "title": "Cesta Básica (Alimentos e Construção Civil) - Tratamento Fiscal",
+        "summary": "Trabalho com esclarecimentos sobre o tratamento fiscal dispensados às operações com produtos da cesta básica de alimentos e da construção civil.",
+        "details": "Paraná | 05/05/2026 | Número: 19/2026",
+        "link": "#"
+    },
+    {
+        "area": "Prev/Trab",
+        "title": "Contribuição Adicional - SENAI",
+        "summary": "Procedimentos sobre a contribuição adicional para o Serviço Nacional de Aprendizagem Industrial (SENAI).",
+        "details": "Previdência Social | 05/05/2026 | Número: 19/2026",
+        "link": "#"
+    },
+    {
+        "area": "IR",
+        "title": "Declaração de Ajuste Anual do IRPF 2026",
+        "summary": "Procedimentos e prazos para a entrega da Declaração de Imposto de Renda Pessoa Física.",
+        "details": "Federal | 01/05/2026",
+        "link": "#"
+    },
+    {
+        "area": "Federal",
+        "title": "eSocial - Novos Eventos de SST",
+        "summary": "Orientações sobre o preenchimento e envio dos novos eventos de Saúde e Segurança do Trabalho no eSocial.",
+        "details": "Federal | 28/04/2026",
+        "link": "#"
+    },
+    {
+        "area": "ISS e Outros",
+        "title": "ISS - Retenção na Fonte para Serviços de TI",
+        "summary": "Análise sobre a obrigatoriedade de retenção do ISS para serviços de tecnologia da informação prestados por empresas de outros municípios.",
+        "details": "Municipal - São Paulo | 25/04/2026",
+        "link": "#"
+    },
+    {
+        "area": "Contabilidade",
+        "title": "Normas de Contabilidade para Criptoativos",
+        "summary": "Procedimentos contábeis para o registro e mensuração de criptoativos no balanço das empresas.",
+        "details": "Contabilidade | 22/04/2026",
+        "link": "#"
+    }
+]

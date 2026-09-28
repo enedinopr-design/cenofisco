@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exportar</title>
+    <!-- Adicionando Tailwind CSS e Font Awesome para manter o estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    <link href="https://tecwinweb.aduaneiras.com.br/App_Themes/Comum/cabecalho.css" rel="stylesheet" />
+    <link href="https://tecwinweb.aduaneiras.com.br/App_Themes/Comum/conteudo.css?8" rel="stylesheet" />
+    <link href="https://tecwinweb.aduaneiras.com.br/App_Themes/Comum/JanelaSalvar.css?1" rel="stylesheet" type="text/css" />
+    <link href="https://tecwinweb.aduaneiras.com.br/App_Themes/Js/JQuery/boxUsuario.css" rel="stylesheet" type="text/css" />
+    <link href=".https://tecwinweb.aduaneiras.com.br/App_Themes/Comum/jquery-ui-1.8.17.custom.css" rel="stylesheet" type="text/css" />
+
+<title>
+
+</title></head>
+<body>
+    <div class="p-8">
+        <div id="dialog_exportar" title="Selecione o tipo de dado que deseja exportar:" class="p-6 bg-gray-100 rounded-lg shadow-md">
+            <h3 class="text-lg font-bold mb-4">Exportar Dados</h3>
+            <select class="input__select_dark" id="select_exportar" name="select_exportar">
+                <option value="fabricante">Fabricantes</option>
+                <option value="produto">Produtos</option>
+                <option value="operador_estrangeiro">Operadores Estrangeiros</option>
+            </select>
+            <div id="status_exportar" class="space-y-2 hidden mt-4">
+                <span class="block text-sm font-semibold text-gray-700 mb-2">Status</span>
+                <div class="grid grid-cols-2 gap-2">
+                    <label class="cursor-pointer">
+                        <input type="checkbox" name="status_exportar_item" value="pendente" class="sr-only peer">
+                        <span class="flex items-center justify-center text-center text-sm font-medium px-3 py-1.5 rounded-lg bg-white border border-gray-300 text-gray-700 peer-checked:bg-blue-100 peer-checked:text-blue-800 peer-checked:border-blue-300 transition gap-1.5">Pendente<i class="fas fa-check opacity-0 peer-checked:opacity-100 transition-opacity"></i></span>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="checkbox" name="status_exportar_item" value="aprovado" class="sr-only peer">
+                        <span class="flex items-center justify-center text-center text-sm font-medium px-3 py-1.5 rounded-lg bg-white border border-gray-300 text-gray-700 peer-checked:bg-blue-100 peer-checked:text-blue-800 peer-checked:border-blue-300 transition gap-1.5">Aprovado<i class="fas fa-check opacity-0 peer-checked:opacity-100 transition-opacity"></i></span>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="checkbox" name="status_exportar_item" value="transmitido" class="sr-only peer">
+                        <span class="flex items-center justify-center text-center text-sm font-medium px-3 py-1.5 rounded-lg bg-white border border-gray-300 text-gray-700 peer-checked:bg-blue-100 peer-checked:text-blue-800 peer-checked:border-blue-300 transition gap-1.5">Transmitido<i class="fas fa-check opacity-0 peer-checked:opacity-100 transition-opacity"></i></span>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="checkbox" name="status_exportar_item" value="erro" class="sr-only peer">
+                        <span class="flex items-center justify-center text-center text-sm font-medium px-3 py-1.5 rounded-lg bg-white border border-gray-300 text-gray-700 peer-checked:bg-blue-100 peer-checked:text-blue-800 peer-checked:border-blue-300 transition gap-1.5">Erro<i class="fas fa-check opacity-0 peer-checked:opacity-100 transition-opacity"></i></span>
+                    </label>
+                    <label class="cursor-pointer">
+                        <input type="checkbox" name="status_exportar_item" value="em_processamento" class="sr-only peer">
+                        <span class="flex items-center justify-center text-center text-sm font-medium px-3 py-1.5 rounded-lg bg-white border border-gray-300 text-gray-700 peer-checked:bg-blue-100 peer-checked:text-blue-800 peer-checked:border-blue-300 transition gap-1.5">Em processamento<i class="fas fa-check opacity-0 peer-checked:opacity-100 transition-opacity"></i></span>
+                    </label>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-4">* O arquivo exportado possui o formato JSON no padrão do PUCOMEX.</p>
+            <button id="btn_exportar" class="mt-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Exportar</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectExportar = document.getElementById('select_exportar');
+            const statusExportarDiv = document.getElementById('status_exportar');
+    
+            if (selectExportar && statusExportarDiv) {
+                selectExportar.addEventListener('change', function() {
+                    if (this.value === 'produto') {
+                        statusExportarDiv.classList.remove('hidden');
+                    } else {
+                        statusExportarDiv.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Aplicativos - Portal Fiscal</title>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
+        <div class="flex-col sm:flex-row gap-2 sm:gap-4 text-center hidden md:flex">
+            <span><i class="fas fa-phone mr-2"></i>Telefone: 0800 940 3055</span>
+            <span><i class="fas fa-envelope mr-2"></i>contato@cenofisco.com.br</span>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+            <form class="flex flex-row sm:flex-row items-center gap-3">
+                <input type="text" placeholder="Usuário" class="bg-blue-800 text-white placeholder-gray-300 text-sm rounded py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-700">
+                <input type="password" placeholder="Senha" class="bg-blue-800 text-white placeholder-gray-300 text-sm rounded py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-700">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-1 px-3 rounded">Entrar</button>
+                <div class="hidden lg:flex items-center gap-3">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-xs whitespace-nowrap"><input type="checkbox" class="h-3 w-3 rounded border-blue-700 bg-blue-800 text-blue-600 focus:ring-blue-500">Lembrar senha</label>
+                    <a href="#" class="hover:text-blue-400 text-xs whitespace-nowrap">Esqueci a senha</a>
+                </div>
+            </form>
+            <a href="#" class="bg-amber-300 text-blue-900 px-4 py-1.5 rounded-md hidden md:flex hover:bg-amber-400 transition text-sm font-bold whitespace-nowrap">Assine Já</a>
+        </div>
+    </div>
+
+      <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center justify-between w-full md:w-auto">
+               
+               <a href="index.html"><img src="img/logo.jpg"></a>
+
+                <!-- Botão do Menu Hambúrguer (visível em mobile) -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative w-full md:w-auto md:flex-1 md:max-w-md order-3 md:order-2">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" id="globalSearch" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full pl-10 pr-28 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <button type="submit" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-blue-900 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700 transition-colors">Pesquisar</button>
+            </div>
+
+            <!-- Menu de Navegação -->
+            <div id="main-menu" class="hidden md:flex md:items-center md:w-auto w-full order-2 md:order-3">
+                <nav class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 font-medium text-gray-600 w-full md:w-auto mt-4 md:mt-0">
+                    <a href="index.html" class="hover:text-blue-600 transition w-full">Início</a>
+                    <a href="#" class="hover:text-blue-600 transition w-full">Procedimentos</a>
+                    <a href="#" class="hover:text-blue-600 transition w-full">Regulamentos</a>
+                    <a href="#" class="hover:text-blue-600 transition w-full">Ferramentas</a>
+                    <a href="#" class="hover:text-blue-600 transition w-full">Agenda</a>
+                    <a href="#" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition flex items-center justify-center w-full md:w-auto mt-2 md:mt-0 whitespace-nowrap"><i class="fa-solid fa-headphones me-3"></i> Consultoria</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+       
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+  <aside class="busca-sidebar sticky top-30 self-start hidden md:block">
+               
+
+                            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mt-4">
+
+ <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Cálculos salvos
+                    </h3>
+                <div id="saved-calculations-container">
+<ul id="recently-accessed-list" class="space-y-2 text-sm"><li class="border-b border-gray-100 last:border-b-0">
+                        <a href="calculo-ferias-resultados.html" class="block p-2 rounded-md hover:bg-blue-50 group">
+                            <p class="font-medium text-gray-700 group-hover:text-blue-700 truncate" title="LEI Nº 15.396, DE 28 DE ABRIL DE 2026">Cálculo de Férias</p>
+                            <span class="text-xs text-gray-400">29/04/2026</span>
+                        </a>
+                    </li><li class="border-b border-gray-100 last:border-b-0">
+                        <a href="#" class="block p-2 rounded-md hover:bg-blue-50 group">
+                            <p class="font-medium text-gray-700 group-hover:text-blue-700 truncate" title="RESOLUÇÃO CM/CMED Nº 6, DE 28 DE ABRIL DE 2026">Cálculo de Rescisão</p>
+                            <span class="text-xs text-gray-400">29/04/2026</span>
+                        </a>
+                    </li><li class="border-b border-gray-100 last:border-b-0">
+                        <a href="#" class="block p-2 rounded-md hover:bg-blue-50 group">
+                            <p class="font-medium text-gray-700 group-hover:text-blue-700 truncate" title="ATO COTEPE/ICMS Nº 57, DE 28 DE ABRIL DE 2026">Cálculo de Seguro-Desemprego</p>
+                            <span class="text-xs text-gray-400">29/04/2026</span>
+                        </a>
+                    </li><li class="border-b border-gray-100 last:border-b-0">
+                        <a href="#" class="block p-2 rounded-md hover:bg-blue-50 group">
+                            <p class="font-medium text-gray-700 group-hover:text-blue-700 truncate" title="LEI Nº 18.447, DE 28 DE ABRIL DE 2026">Cálculo do 13º Salário</p>
+                            <span class="text-xs text-gray-400">29/04/2026</span>
+                        </a>
+                    </li><li class="border-b border-gray-100 last:border-b-0">
+                        <a href="#" class="block p-2 rounded-md hover:bg-blue-50 group">
+                            <p class="font-medium text-gray-700 group-hover:text-blue-700 truncate" title="LEI Nº 11.234, DE 27 DE ABRIL DE 2026 - RJ">Custo Mensal - Empregado Doméstico</p>
+                            <span class="text-xs text-gray-400">20/04/2026</span>
+                        </a>
+                    </li></ul>
+
+
+                    <ul id="saved-calculations-list" class="space-y-2 text-sm">
+                        <!-- Saved calculations will be populated via JS -->
+                    </ul>
+                </div>
+               
+                            </div>
+                <!-- Adicione mais blocos de conteúdo para a sidebar aqui, se necessário -->
+            </aside>
+
+   <div class="md:col-span-3 space-y-6">
+     <div class="mb-6">
+            <a href="aplicativos.html" class="text-blue-600 hover:underline">&larr; Voltar</a>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <h2 class="text-2xl font-bold mb-2 flex items-center gap-2">
+                <i class="fa-regular fa-window-restore text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Cálculo de Férias
+            </h2>
+            <p class="text-gray-600 mb-6">Aplicativo que calcula o valor das férias de acordo com a CLT atualizado com a nova lei trabalhista.</p>
+
+         
+<div>
+    
+    <!-- Header -->
+   
+
+    <!-- Conteúdo -->
+    
+        <form id="calculo-ferias-form">
+
+            <!-- DESCRITIVO -->
+            <div>
+   
+
+                <div class="grid md:grid-cols-2 gap-4">
+
+                    <div>
+                        <label for="bruto" class="block text-sm text-gray-600 mb-1">Salário Bruto</label>
+                        <div class="relative flex items-center">
+                            <i class="fas fa-dollar-sign absolute left-3 text-gray-400"></i>
+                            <input type="text" id="bruto" name="bruto" class="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 focus:ring focus:ring-blue-200" placeholder="0,00" required>
+                        </div>
+                        <span id="bruto-error" class="text-red-500 text-xs mt-1 hidden"></span>
+                    </div>
+
+                    <div>
+                        <label for="extra" class="block text-sm text-gray-600 mb-1">Horas Extras</label>
+                        <div class="relative flex items-center">
+                            <i class="fas fa-dollar-sign absolute left-3 text-gray-400"></i>
+                            <input type="text" id="extra" name="extra"
+                                class="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 focus:ring focus:ring-blue-200"
+                                placeholder="0,00">
+                        </div>
+                        <span id="extra-error" class="text-red-500 text-xs mt-1 hidden"></span>
+                    </div>
+
+                    <div>
+                        <label for="dias" class="block text-sm text-gray-600 mb-1">Dias de Férias</label>
+                        <div class="relative">
+                            <i class="fas fa-calendar-alt absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="dias" name="dias" class="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 focus:ring focus:ring-blue-200" placeholder="Ex: 30" required>
+                        </div>
+                        <span id="dias-error" class="text-red-500 text-xs mt-1 hidden"></span>
+                    </div>
+
+                    <div>
+                        <label for="dependentes" class="block text-sm text-gray-600 mb-1">Dependentes</label>
+                        <div class="relative">
+                            <i class="fas fa-users absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                            <input type="text" id="dependentes" name="dependentes" class="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 focus:ring focus:ring-blue-200" placeholder="0">
+                        </div>
+                        <span id="dependentes-error" class="text-red-500 text-xs mt-1 hidden"></span>
+                    </div>
+
+                    <div>
+                        <label for="abono" class="block text-sm text-gray-600 mb-1">Abono</label>
+                        <select id="abono" name="abono" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-200 bg-white">
+                            <option>Sim</option>
+                            <option>Não</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="decimo" class="block text-sm text-gray-600 mb-1">13º Salário</label>
+                        <select id="decimo" name="decimo" class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:ring focus:ring-blue-200 bg-white">
+                            <option>Sim</option>
+                            <option>Não</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+<div class="hidden" id="resultados-geral">
+            <!-- RESULTADOS -->
+            <div id="calculos-ferias-resultados" class="border border-gray-300 rounded-lg p-4 mt-6 mb-6 bg-gray-50">
+                <h3 class="text-lg font-semibold mb-4">Demonstrativo</h3>
+
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>Remuneração de Férias</span><span id="remuneracaoferias">R$</span></div>
+                    <div class="flex justify-between"><span>Férias</span><span id="valorferias">R$</span></div>
+                    <div class="flex justify-between"><span>Abono Pecuniário</span><span id="abonopecuniario">R$</span></div>
+                    <div class="flex justify-between"><span>1/3 Férias</span><span id="tercoferias">R$</span></div>
+                    <div class="flex justify-between"><span>1/3 Abono</span><span id="tercoabono">R$</span></div>
+                    <div class="flex justify-between"><span>13ª Salário - Adiantamento</span><span id="salario13adiantamento">R$</span></div>
+
+                    <div class="flex justify-between font-semibold border-t pt-2">
+                        <span>Total Bruto</span>
+                        <span id="totalbruto">R$</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DESCONTOS INSS -->
+            <div id="calculos-ferias-descontos" class="border border-gray-300 rounded-lg p-4 mt-6 mb-6 bg-gray-50">
+                <h3 class="text-lg font-semibold mb-4">Descontos</h3>
+
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between">
+                        <span>Base de Cálculo da Contribuição Previdenciária</span>
+                        <span id="basecalculoinss">R$</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Valor do Desconto - INSS</span>
+                        <span id="valordescontoinss">R$</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IRRF - DEDUÇÕES LEGAIS -->
+            <div id="irrf-deducoes-legais" class="border border-gray-300 rounded-lg p-4 mt-6 mb-6 bg-gray-50">
+                <h3 class="text-lg font-semibold mb-4">IRRF - Deduções Legais</h3>
+
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>Remuneração - IRRF</span><span id="remuneracao-irrf-legal">R$</span></div>
+                    <div class="flex justify-between"><span>Deduções (-)</span><span id="deducoes-irrf-legal">R$</span></div>
+                    <div class="flex justify-between"><span>Dependentes (-)</span><span id="dependentes-irrf-legal">R$</span></div>
+                    <div class="flex justify-between font-bold"><span>Base de Cálculo</span><span id="base-calculo-irrf-legal">R$</span></div>
+                    <div class="flex justify-between"><span>Alíquota IRRF</span><span id="aliquota-irrf-legal">-</span></div>
+                    <div class="flex justify-between"><span>Valor</span><span id="valor-irrf-legal">R$</span></div>
+                    <div class="flex justify-between"><span>Parcela a Deduzir</span><span id="parcela-deduzir-irrf-legal">R$</span></div>
+                    <div class="flex justify-between font-semibold  border-t  pt-2"><span>Valor IRRF</span><span id="valor-final-irrf-legal">R$</span></div>
+                </div>
+            </div>
+
+            <!-- IRRF - DESCONTO SIMPLIFICADO -->
+            <div id="irrf-desconto-simplificado" class="border border-gray-300 rounded-lg p-4 mt-6 mb-6 bg-gray-50">
+                <h3 class="text-lg font-semibold mb-4">IRRF - Desconto Simplificado</h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>Remuneração - IRRF</span><span id="remuneracao-irrf-simplificado">R$</span></div>
+                    <div class="flex justify-between"><span>Desconto Simplificado (-)</span><span id="desconto-simplificado-irrf">R$</span></div>
+                    <div class="flex justify-between font-bold"><span>Base de Cálculo</span><span id="base-calculo-irrf-simplificado">R$</span></div>
+                    <div class="flex justify-between"><span>Alíquota IRRF</span><span id="aliquota-irrf-simplificado">-</span></div>
+                    <div class="flex justify-between"><span>Valor</span><span id="valor-irrf-simplificado">R$</span></div>
+                    <div class="flex justify-between"><span>Parcela a Deduzir</span><span id="parcela-deduzir-irrf-simplificado">R$</span></div>
+                    <div class="flex justify-between font-semibold  border-t  pt-2"><span>Valor IRRF</span><span id="valor-final-irrf-simplificado">R$</span></div>
+                </div>
+            </div>
+
+            <!-- RESUMO FINAL -->
+            <div id="resumo-final" class="border-2 border-blue-300 bg-blue-50 rounded-lg p-4 mt-6 mb-6">
+                <h3 class="text-lg font-bold text-blue-800 mb-4">Resumo do Cálculo</h3>
+                <div class="space-y-2 text-sm">
+                    <div class="flex justify-between"><span>Total Bruto</span><span id="resumo-total-bruto">R$</span></div>
+                    <div class="flex justify-between text-red-600"><span>(-) Desconto INSS</span><span id="resumo-inss">R$</span></div>
+                    <div class="flex justify-between text-red-600"><span>(-) Desconto IRRF (Mais vantajoso)</span><span id="resumo-irrf">R$</span></div>
+
+                    <div class="flex justify-between font-semibold border-t pt-2">
+                        <span>Total Líquido</span>
+                        <span id="resumo-total-liquido" class="text-lg text-blue-800">R$</span>
+                    </div>
+                </div>
+            </div>
+</div>
+            <!-- BOTÕES -->
+            <div class="flex flex-wrap gap-3 justify-end pt-4">
+                <button type="submit"
+                    id="calcular-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                    <i class="fa-solid fa-calculator"></i> Calcular
+                </button>
+
+                <button type="button"
+                    id="limpar-btn" class="bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400">
+                    <i class="fa-solid fa-eraser"></i> Limpar
+                </button>
+
+                <button type="button" id="salvar-calculo-btn" class="hidden bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                   <i class="fa-regular fa-floppy-disk"></i> Salvar Calculo
+                </button>
+
+                <button type="button"
+                    id="imprimir-btn" class="hidden bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                     <i class="fa-solid fa-print"></i> Imprimir
+                </button>
+
+                
+            </div>
+
+        </form>
+    
+</div>
+
+            
+
+            <div id="save-toast" class="fixed bottom-5 right-5 bg-green-600 text-white px-4 py-2 rounded-lg shadow-lg hidden transition-opacity duration-300">
+                Cálculo salvo com sucesso!
+            </div>
+
+
+            <p id="no-results" class="text-center text-gray-500 mt-8 hidden">Nenhum aplicativo encontrado.</p>
+        </div></div>
+        </div>
+    </main>
+
+  <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <img  src="img/logobranco-cenofisco.png">
+                </div>
+                <p class="text-sm">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legislação</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">Federal</a></li>
+                    <li><a href="#" class="hover:text-white">Estadual</a></li>
+                    <li><a href="#" class="hover:text-white">Municipal</a></li>
+                    <li><a href="#" class="hover:text-white">Trabalhista</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Ferramentas</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">CNAE</a></li>
+                    <li><a href="#" class="hover:text-white">Substituição Tributária</a></li>
+                    <li><a href="#" class="hover:text-white">Tabelas Práticas</a></li>
+                    <li><a href="#" class="hover:text-white">Agenda</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                <p class="text-xs mb-4">Receba as principais notícias fiscais no seu e-mail.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail" class="bg-white border-none rounded-l-lg px-3 py-2 text-sm w-full focus:ring-1 focus:ring-blue-500">
+                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-r-lg hover:bg-yello-500 transition"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs">
+            © Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62
+        </div>
+    </footer>
+    <script src="./calculo-ferias.js"></script>
+</body>
+</html>

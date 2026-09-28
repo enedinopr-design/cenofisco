@@ -1,0 +1,50 @@
+[
+    {
+        "area": "Tributário",
+        "date": "28/04/2026",
+        "title": "Agenda Tributária - Obrigações Principais e Acessórias - Maio de 2026",
+        "summary": "Alertamos para os prazos de pagamentos dos tributos e entregas das obrigações acessórias do mês de maio de 2026.",
+        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+        "link": "#"
+    },
+    {
+        "area": "Trabalhista",
+        "date": "28/04/2026",
+        "title": "Fique atento a nova redação da NR-1 - Gerenciamento de Riscos Ocupacionais (GRO)",
+        "summary": "A alteração da NR-1 que entrará em vigor a partir de 26/05/2026 traz uma exigência importante para as empresas no que diz respeito ao gerenciamento de riscos.",
+        "image": "https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?auto=format&fit=crop&w=800&q=80",
+        "link": "#"
+    },
+    {
+        "area": "Tributário",
+        "date": "27/04/2026",
+        "title": "Simples Nacional - Utilização da Nota Fiscal de Serviços eletrônica de padrão nacional",
+        "summary": "A Resolução CGSN nº 189/2026 estabelece novas regras para a utilização da NFS-e em padrão nacional para os optantes do Simples Nacional.",
+        "image": "https://images.unsplash.com/photo-1605905524455-3a8aa5527314?auto=format&fit=crop&w=800&q=80",
+        "link": "#"
+    },
+    {
+        "area": "Tributário",
+        "date": "26/04/2026",
+        "title": "Tributos Municipais/Cuiabá-MT - Mutirão Fiscal - Prorrogação",
+        "summary": "Prorrogado o prazo para a adesão ao Mutirão Fiscal, que oferece condições especiais para a regularização de débitos tributários com o município de Cuiabá.",
+        "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+        "link": "#"
+    },
+    {
+        "area": "Federal",
+        "date": "25/04/2026",
+        "title": "Receita Federal prorroga prazo para adesão ao PERT",
+        "summary": "Contribuintes ganham mais tempo para regularizar débitos com condições especiais do Programa Especial de Regularização Tributária.",
+        "image": "https://images.unsplash.com/photo-1560520653-9e0e4c89eb18?auto=format&fit=crop&w=800&q=80",
+        "link": "#"
+    },
+    {
+        "area": "Previdenciário",
+        "date": "24/04/2026",
+        "title": "INSS altera regras para comprovação de vida",
+        "summary": "Novos procedimentos visam facilitar a vida dos aposentados e pensionistas, utilizando cruzamento de dados para realizar a prova de vida.",
+        "image": "https://images.unsplash.com/photo-1611069215112-a8c53389d243?auto=format&fit=crop&w=800&q=80",
+        "link": "#"
+    }
+]

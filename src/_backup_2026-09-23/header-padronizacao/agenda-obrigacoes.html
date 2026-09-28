@@ -1,0 +1,2755 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    html { scroll-behavior: smooth; }
+  </style>
+  <title>Agenda de Obrigações - Portal Fiscal</title>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <div class="bg-blue-900 text-white py-2 px-4 text-sm flex flex-col md:flex-row justify-between items-center gap-2 md:gap-4">
+        <div class="flex-col sm:flex-row gap-2 sm:gap-4 text-center hidden md:flex">
+            <span><i class="fas fa-phone mr-2"></i>Telefone: 0800 940 3055</span>
+            <span><i class="fas fa-envelope mr-2"></i>contato@cenofisco.com.br</span>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center gap-3">
+            <form class="flex flex-row sm:flex-row items-center gap-3">
+                <input type="text" placeholder="Usuário" class="bg-blue-800 text-white placeholder-gray-300 text-sm rounded py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-700">
+                <input type="password" placeholder="Senha" class="bg-blue-800 text-white placeholder-gray-300 text-sm rounded py-1 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-blue-700">
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-1 px-3 rounded">Entrar</button>
+                <div class="hidden lg:flex items-center gap-3">
+                    <label class="flex items-center gap-1.5 cursor-pointer text-xs whitespace-nowrap"><input type="checkbox" class="h-3 w-3 rounded border-blue-700 bg-blue-800 text-blue-600 focus:ring-blue-500">Lembrar senha</label>
+                    <a href="#" class="hover:text-blue-400 text-xs whitespace-nowrap">Esqueci a senha</a>
+                </div>
+            </form>
+            <a href="#" class="bg-amber-300 text-blue-900 px-4 py-1.5 rounded-md hidden md:flex hover:bg-amber-400 transition text-sm font-bold whitespace-nowrap">Assine Já</a>
+        </div>
+    </div>
+
+      <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center justify-between w-full md:w-auto">
+               
+               <a href="index.html"><img src="img/logo.jpg"></a>
+
+                <!-- Botão do Menu Hambúrguer (visível em mobile) -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative w-full md:w-auto md:flex-1 md:max-w-md order-3 md:order-2">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                <input type="text" id="globalSearch" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full pl-10 pr-28 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <button type="submit" class="absolute right-1.5 top-1/2 -translate-y-1/2 bg-blue-900 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700 transition-colors">Pesquisar</button>
+            </div>
+
+            <!-- Menu de Navegação -->
+            <div id="main-menu" class="hidden md:flex md:items-center md:w-auto w-full order-2 md:order-3">
+                <nav class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 font-medium text-gray-600 w-full md:w-auto mt-4 md:mt-0">
+                    <a href="index.html" class="hover:text-blue-600 transition w-full">Início</a>
+                    <a href="procedimentos.html" class="hover:text-blue-600 transition w-full">Procedimentos</a>
+                    <a href="regulamentos.html" class="hover:text-blue-600 transition w-full">Regulamentos</a>
+                    <a href="aplicativos.html" class="hover:text-blue-600 transition w-full">Ferramentas</a>
+                    <a href="agenda-obrigacoes.html" class="hover:text-blue-600 transition w-full text-blue-600">Agenda</a>
+                    <a href="#" class="bg-blue-900 text-white px-4 py-2 rounded-md hover:bg-blue-800 transition flex items-center justify-center w-full md:w-auto mt-2 md:mt-0 whitespace-nowrap"><i class="fa-solid fa-headphones me-3"></i> Consultoria</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Left Sidebar -->
+            <aside class="busca-sidebar self-start relative">
+                <!-- Section for Saved Calculations (from other apps like Férias) -->
+                <div class="bg-white p-6 calendar-container relative rounded-xl shadow-sm border border-gray-100 mt-4">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Agenda do Mês
+                    </h3>
+                        <div class="flex justify-between items-center mb-4">
+                            <button id="prevMonth" class="px-3 py-1 bg-gray-100 rounded-md hover:bg-gray-200 transition text-gray-700 text-sm"><i class="fas fa-chevron-left"></i></button>
+                            <span id="currentMonthYear" class="font-semibold text-lg text-gray-800"></span>
+                            <button id="nextMonth" class="px-3 py-1 bg-gray-100 rounded-md hover:bg-gray-200 transition text-gray-700 text-sm"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="grid grid-cols-7 text-center text-xs font-medium text-gray-500 mb-2">
+                            <span>Dom</span>
+                            <span>Seg</span>
+                            <span>Ter</span>
+                            <span>Qua</span>
+                            <span>Qui</span>
+                            <span>Sex</span>
+                            <span>Sáb</span>
+                        </div>
+                        <div id="calendarDays" class="grid grid-cols-7 gap-1 text-sm">
+                            <!-- Os dias serão populados via JavaScript -->
+                        </div>
+                        
+                  
+                </div>
+                <div class="md:sticky md:top-30">
+                <!-- New section for Saved Agenda Days -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mt-4">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-bookmark text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Obrigações Salvas
+                    </h3>
+                    <ul id="saved-agenda-days-list" class="space-y-2 text-sm">
+                        <!-- Saved agenda days will be populated via JS -->
+                    </ul>
+                </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="md:col-span-3 space-y-6">
+                <div class="mb-6">
+                    <a href="index.html" class="text-blue-600 hover:underline">&larr; Voltar ao Início</a>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-calendar-alt text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Agenda de Obrigações
+                    </h2>
+
+                    
+                    <div class="relative mb-8">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="obligation-filter" placeholder="Filtrar obrigações por nome ou descrição..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <!-- Calendar Content -->
+                 
+                    <div class="bg-green-50 border border-green-100 rounded-sm p-3 text-sm space-y-3 text-green-950 mt-6">
+                        <p class="font-bold">Feriados Nacionais</p>
+                        <p>Feriado Nacional: Dia 01/05/2026 - Dia do Trabalho</p>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-100 rounded-sm p-3 text-sm space-y-3 text-blue-950 mt-6">
+                        <p class="font-bold">Notas Cenofisco</p>
+
+                        <p>Além das obrigações relacionadas neste Calendário, o assinante poderá, em razão de sua atividade 
+                            econômica, ficar sujeito a outras obrigações, específicas para sua atividade, que não
+                            estejam mencionadas no Calendário.</p>
+                        <p>É facultado ao contribuinte pessoa física que auferir, no ano-calendário, de mais de uma fonte
+                            pagadora (mais de uma pessoa jurídica ou uma pessoa jurídica e uma ou mais pessoas físicas),
+                            rendimentos tributáveis na Declaração de Ajuste Anual a complementação do imposto devido sobre
+                            os rendimentos recebidos (ex-mensalão). Esse imposto poderá ser recolhido em qualquer dia e
+                            mês do ano-calendário, tendo em vista tratar-se de uma antecipação do imposto que será devido
+                            na declaração de ajuste (art. 124 do Decreto nº 9.580/18).</p>
+                    </div>
+
+
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-04-05-2026">Calendário Federal - Data de vencimento: Dia 04/05/2026 - Segunda-feira</h1>  
+
+                  <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 04<br>
+                          Segunda-feira</p>
+                      </td>
+                      <td>
+                        <p>SCANC</p>
+                      </td>
+                      <td>
+                        <p><strong>Arquivo Magnético (SCANC) - Transportador Revendedor Retalhista (TRR)</strong> <br>
+                          Entrega das informações por transmissão eletrônica de dados (SCANC), relativas a operações interestaduais com
+                          combustíveis derivados de petróleo, em que o imposto tenha sido retido anteriormente, ou com álcool etílico
+                          anidro combustível ou Biodiesel B100 (<a name="r2"></a><a href="javascript:link('2')">Ato COTEPE/ICMS nº
+                            152/2025</a>, I, Convênios ICMS nºs 110/2007, 199/2022 e 15/2023).<br>
+                          <strong><em>Nota Cenofisco:</em></strong> <br>
+                          <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                            respectivo protocolo.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pela internet.</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="04/05/2026" data-title="SCANC" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 04<br>
+                          Segunda-feira</p>
+                      </td>
+                      <td>
+                        <p>SCANC</p>
+                      </td>
+                      <td>
+                        <p><strong>Arquivo Magnético (SCANC) - Importador</strong> <br>
+                          Entrega das informações por transmissão eletrônica de dados (SCANC), relativas a operações interestaduais com
+                          combustíveis derivados de petróleo, em que o imposto tenha sido retido anteriormente, ou com álcool etílico
+                          anidro combustível ou Biodiesel B100 (<a name="r3"></a><a href="javascript:link('3')">Ato COTEPE/ICMS nº
+                            152/2025</a>, IV, e Convênios ICMS nºs 110/07, 199/2022 e 15/2023).<br>
+                          <strong><em>Nota Cenofisco:</em></strong> <br>
+                          <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                            respectivo protocolo.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pela internet.</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="04/05/2026" data-title="SCANC" data-description="Importador" data-type="Federal">Salvar
+                          Obrigacão</button></td>
+                    </tr>
+                  </table>
+
+
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-05-05-2026">Calendário Federal - Data de vencimento: Dia 05/05/2026 - Terça-feira</h1>
+                  <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 05<br>
+                          Terça-feira</p>
+                      </td>
+                      <td>
+                        <p>SCANC</p>
+                      </td>
+                      <td>
+                        <p><strong>Arquivo Magnético (SCANC) - Importador</strong> <br>
+                          Entrega das informações por transmissão eletrônica de dados (SCANC), relativas a operações interestaduais com
+                          combustíveis derivados de petróleo, em que o imposto tenha sido retido anteriormente, ou com álcool etílico
+                          anidro combustível ou Biodiesel B100 (<a name="r4"></a><a href="javascript:link('4')">Ato COTEPE/ICMS nº
+                            152/2025</a>, IV, e Convênios ICMS nºs 110/07, 199/2022 e 15/2023).<br>
+                          <strong><em>Nota Cenofisco:</em></strong> <br>
+                          <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                            respectivo protocolo.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pela internet.</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="05/05/2026" data-title="SCANC" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 05<br>
+                          Terça-feira</p>
+                      </td>
+                      <td>
+                        <p>SCANC</p>
+                      </td>
+                      <td>
+                        <p><strong>Arquivo Magnético (SCANC) - Contribuinte que Tiver Recebido o Combustível de Outro Contribuinte
+                            Substituído, exceto TRR</strong> <br>
+                          Entrega das informações relativas a essas operações por transmissão eletrônica de dados (SCANC) (<a
+                            name="r5"></a><a href="javascript:link('5')">Ato COTEPE/ICMS nº 152/2025</a>, II, e Convênios ICMS nºs 110/07,
+                          199/2022 e 15/2023).<br>
+                          <strong><em>Nota Cenofisco:</em></strong> <br>
+                          <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                            respectivo protocolo.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pela internet.</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="05/05/2026" data-title="SCANC" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+
+                    </tr>
+                  </table>
+
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-06-05-2026">Calendário Federal - Data de vencimento: Dia 06/05/2026 - Quarta-feira</h1>
+                  <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 06<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IRRF</p>
+                      </td>
+                      <td>
+                        <p>IRRF com periodicidade decendial relativo a fatos geradores ocorridos de&nbsp;<strong>21 a 30/04/2026</strong>,
+                          incidentes sobre rendimentos provenientes de juros sobre o capital próprio e aplicações financeiras, inclusive
+                          os atribuídos a residentes ou domiciliados no exterior, e títulos de capitalização; prêmios, inclusive os
+                          distribuídos sob a forma de bens e serviços, obtidos em concursos e sorteios de qualquer espécie e lucros
+                          decorrentes desses prêmios; e multas ou qualquer vantagem (art. 70, inciso I, letra b da&nbsp;<a
+                            name="r6"></a><a href="javascript:link('6')">Lei nº 11.196/05</a>).</p>
+                      </td>
+                      <td>
+                        <p><a name="r84"></a><a href="javascript:link('84')">Veja tabela de códigos</a></p>
+                      </td>
+                      <td rowspan="2">
+                        <p>DARF<br>
+                          (<a name="r82"></a><a href="javascript:link('82')">Veja instruções para preenchimento</a>)</p>
+                      </td>
+                      <td rowspan="2"> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="06/05/2026" data-title="IRRF e IOF" data-description="" data-type="Federal">Salvar Obrigacão</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 06<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IOF<br>
+                          21 a 30/Abril/2026</p>
+                      </td>
+                      <td>
+                        <p>Operações de crédito - Pessoa jurídica<br>
+                          Operações de crédito - Pessoa física<br>
+                          Operações de câmbio - Entrada de moeda<br>
+                          Operações de câmbio - Saída de moeda<br>
+                          Aplicações financeiras<br>
+                          <em>Factoring</em>&nbsp;(<a name="r7"></a><a href="javascript:link('7')">art. 58 da Lei nº 9.532/97</a>)<br>
+                          Seguros<br>
+                          Ouro, ativo Financeiro
+                        </p>
+                      </td>
+                      <td>
+                        <p>1150<br>
+                          7893<br>
+                          4290<br>
+                          5220<br>
+                          6854<br>
+                          6895<br>
+                          3467<br>
+                          4028</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 06<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>SCANC</p>
+                      </td>
+                      <td>
+                        <p><strong>Arquivo Magnético (SCANC) - Contribuinte que Tiver Recebido o Combustível exclusivamente de
+                            Contribuinte Substituto</strong> <br>
+                          Entrega das informações por transmissão eletrônica de dados (SCANC), relativas a operações interestaduais com
+                          combustíveis derivados de petróleo, em que o imposto tenha sido retido anteriormente, ou com álcool etílico
+                          anidro combustível ou Biodiesel B100 (<a name="r8"></a><a href="javascript:link('8')">Ato COTEPE/ICMS nº
+                            152/2025</a>, III, e Convênios ICMS nºs 110/07, 199/2022 e 15/2023).<br>
+                          <strong><em>Nota Cenofisco:</em></strong> <br>
+                          <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                            respectivo protocolo.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pela internet.</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="06/05/2026" data-title="SCANC" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 06<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>SCANC</p>
+                      </td>
+                      <td>
+                        <p><strong>Arquivo Magnético (SCANC) - Importador</strong> <br>
+                          Entrega das informações por transmissão eletrônica de dados (SCANC), relativas a operações interestaduais com
+                          combustíveis derivados de petróleo, em que o imposto tenha sido retido anteriormente, ou com álcool etílico
+                          anidro combustível ou Biodiesel B100 (<a name="r9"></a><a href="javascript:link('9')">Ato COTEPE/ICMS nº
+                            152/2025</a>, IV, e Convênios ICMS nºs 110/07, 199/2022 e 15/2023).<br>
+                          <strong><em>Nota Cenofisco:</em></strong> <br>
+                          <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                            respectivo protocolo.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pela internet.</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="06/05/2026" data-title="SCANC" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                  </table>
+        
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-07-05-2026">Calendário Federal - Data de vencimento: Dia 07/05/2026 - Quinta-feira</h1>
+                  <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 07<br>
+                          Quinta-feira</p>
+                      </td>
+                      <td>
+                        <p>Salários</p>
+                      </td>
+                      <td>
+                        <p>Pagamento dos salários relativos ao mês de&nbsp;<strong>abril/2026&nbsp;</strong>(<a name="r102"></a><a
+                            href="javascript:link('102')">inciso I, art. 14 da Instrução Normativa GM/MTP nº 2/2021</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Recibo</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="07/05/2026" data-title="Salários" data-description="" data-type="Federal">Salvar Obrigacão</button>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-08-05-2026">Calendário Federal - Data de vencimento: Dia 08/05/2026 - Sexta-feira</h1>
+                  <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 08<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>IRRF<br>
+                          Juros e Comissões de Empréstimos Externos</p>
+                      </td>
+                      <td>
+                        <p>IRRF relativo aos fatos geradores ocorridos no mês de&nbsp;<strong>abril/2026,</strong>&nbsp;incidente sobre
+                          juros e comissões de empréstimos externos (<a name="r10"></a><a href="javascript:link('10')">art. 8º da Lei nº
+                            11.488/07</a>).</p>
+                      </td>
+                      <td>
+                        <p>5299</p>
+                      </td>
+                      <td>
+                        <p>DARF<br>
+                          (<a name="r85"></a><a href="javascript:link('85')">Veja instruções para preenchimento</a>)</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="08/05/2026" data-title="IRRF" data-description="Juros e Comissões de Empréstimos Externos"
+                          data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 08<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>Comprovante de Pagamento ou Crédito de Juros sobre o Capital Próprio</p>
+                      </td>
+                      <td>
+                        <p>Entrega à beneficiária pessoa jurídica do comprovante de pagamento ou crédito de juros sobre o capital próprio,
+                          referente ao mês de&nbsp;<strong>abril/2026</strong>&nbsp;(art. 2º, II, da Instrução Normativa SRF nº 41/98).
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Formulário anexo à Instrução Normativa SRF nº 41/98</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="08/05/2026" data-title="Comprovante de Pagamento ou Crédito de Juros sobre o Capital Próprio"
+                          data-description="Entrega à beneficiária pessoa jurídica do comprovante de pagamento ou crédito de juros sobre o capital próprio, referente ao mês de abril/2026"
+                          data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 08<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>IPI</p>
+                      </td>
+                      <td>
+                        <p>IPI apurado no mês de abril/2026<strong>,</strong>&nbsp;relativo às operações realizadas com os produtos
+                          classificados no código 2402.20.00 da TIPI.</p>
+                      </td>
+                      <td>
+                        <p>1020<br>
+                          (Cigarros)</p>
+                      </td>
+                      <td>
+                        <p>DARF<br>
+                          (<a name="r87"></a><a href="javascript:link('87')">Veja instruções para preenchimento</a>)</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="08/05/2026" data-title="IPI"
+                          data-description="IPI apurado no mês de abril/2026, relativo às operações realizadas com os produtos classificados no código 2402.20.00 da TIPI."
+                          data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                  </table>
+
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-13-05-2026">Calendário Federal - Data de vencimento: Dia 13/05/2026 - Quarta-feira</h1>
+                  <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 13<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IRRF</p>
+                      </td>
+                      <td>
+                        <p>IRRF com periodicidade decendial relativo a fatos geradores ocorridos de&nbsp;<strong>01 a 10/05/2026</strong>,
+                          incidentes sobre rendimentos provenientes de juros sobre o capital próprio e aplicações financeiras, inclusive
+                          os atribuídos a residentes ou domiciliados no exterior, e títulos de capitalização; prêmios, inclusive os
+                          distribuídos sob a forma de bens e serviços, obtidos em concursos e sorteios de qualquer espécie e lucros
+                          decorrentes desses prêmios; e multas ou qualquer vantagem (art. 70, inciso I, letra b da&nbsp;<a
+                            name="r11"></a><a href="javascript:link('11')">Lei nº 11.196/05</a>).</p>
+                      </td>
+                      <td>
+                        <p><a name="r89"></a><a href="javascript:link('89')">Veja tabela de códigos</a></p>
+                      </td>
+                      <td rowspan="2">
+                        <p>DARF<br>
+                          (<a name="r88"></a><a href="javascript:link('88')">Veja instruções para preenchimento</a>)</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="13/05/2026" data-title="IRRF" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 13<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IOF<br>
+                          01 a 10/Maio/2026</p>
+                      </td>
+                      <td>
+                        <p>Operações de crédito - Pessoa jurídica<br>
+                          Operações de crédito - Pessoa física<br>
+                          Operações de câmbio - Entrada de moeda<br>
+                          Operações de câmbio - Saída de moeda<br>
+                          Aplicações financeiras<br>
+                          <em>Factoring</em>&nbsp;(<a name="r12"></a><a href="javascript:link('12')">art. 58 da Lei nº 9.532/97</a>)<br>
+                          Seguros<br>
+                          Ouro, ativo Financeiro
+                        </p>
+                      </td>
+                      <td>
+                        <p>1150<br>
+                          7893<br>
+                          4290<br>
+                          5220<br>
+                          6854<br>
+                          6895<br>
+                          3467<br>
+                          4028</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="13/05/2026" data-title="IOF" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 13<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>SCANC</p>
+                      </td>
+                      <td>
+                        <p><strong>Arquivo Magnético (SCANC) - Refinaria de Petróleo e Suas Bases</strong> <br>
+                          Entrega das informações por transmissão eletrônica de dados (SCANC), relativas a operações interestaduais com
+                          combustíveis derivados de petróleo, em que o imposto tenha sido retido anteriormente, ou com álcool etílico
+                          anidro combustível ou Biodiesel B100 (<a name="r13"></a><a href="javascript:link('13')">Ato COTEPE/ICMS nº
+                            152/2025</a>, V, &quot;a&quot;, e Convênios ICMS nºs 110/07, 199/2022 e 15/2023).<br>
+                          <strong><em>Nota Cenofisco:</em></strong> <br>
+                          <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                            respectivo protocolo.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pela internet.</p>
+                      </td>
+                      <td> <button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="13/05/2026" data-title="SCANC" data-description="" data-type="Federal">Salvar Obrigacão</button></td>
+                    </tr>
+                  </table>
+
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-15-05-2026">Calendário Federal - Data de vencimento: Dia 15/05/2026 - Sexta-feira</h1>
+                  <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>EFD - Contribuições (PIS/PASEP e COFINS)</p>
+                      </td>
+                      <td>
+                        <p>EFD-Contribuições para o PIS/PASEP e COFINS relativa aos fatos geradores ocorridos no mês
+                          de&nbsp;<strong>março/2026</strong>&nbsp;pelas pessoas jurídicas tributadas pelo lucro real, lucro presumido e
+                          arbitrado inclusive para eventos especiais ocorridos no referido mês (art. 7º da Instrução Normativa RFB nº
+                          1.252/12).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>PVA disponível no site da RFB no endereço www.receita.gov.br</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="EFD" data-description="" data-type="Federal">Salvar
+                          Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>Retenção PIS/PASEP e COFINS Autopeças</p>
+                      </td>
+                      <td>
+                        <p>PIS/PASEP e COFINS incidentes no período de&nbsp;<strong>16 a 30/04/2026&nbsp;</strong>sobre os pagamentos
+                          referentes à aquisição de autopeças, exceto pneumáticos, quando efetuados por pessoa jurídica fabricante (<a
+                            name="r14"></a><a href="javascript:link('14')">art. 3º, § 5º, da Lei nº 10.485/02</a>, com redação dada
+                          pelo&nbsp;<a name="r15"></a><a href="javascript:link('15')">art. 42 da Lei nº 11.196/05</a>).</p>
+                      </td>
+                      <td>
+                        <p>COFINS<br>
+                          3746<br>
+                          PIS/PASEP<br>
+                          3770</p>
+                      </td>
+                      <td rowspan="3">
+                        <p>DARF<br>
+                          (<a name="r90"></a><a href="javascript:link('90')">Veja instruções para preenchimento</a>)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="Retenção PIS/PASEP e COFINS Autopeças" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>CIDE Combustíveis (Mercado Interno)</p>
+                      </td>
+                      <td>
+                        <p>Contribuição incidente na comercialização de petróleo e derivados, gás natural e derivados e álcool etílico
+                          combustível apurado no mês de&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r16"></a><a
+                            href="javascript:link('16')">art. 6º, parágrafo único, da Lei nº 10.336/01</a>).</p>
+                      </td>
+                      <td>
+                        <p>9331</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="CIDE Combustíveis (Mercado Interno)" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>CIDE<br>
+                          Remessas ao Exterior</p>
+                      </td>
+                      <td>
+                        <p>Contribuição incidente sobre valores pagos, creditados, entregues, empregados ou remetidos, no mês
+                          de&nbsp;<strong>abril/2026,</strong>&nbsp;a residente ou domiciliados no exterior, pelo pagamento de
+                          remunerações relativas aos contratos (<a name="r17"></a><a href="javascript:link('17')">art. 2º, parágrafo 5º da
+                            Lei nº 10.168/00</a>, alterada pelo&nbsp;<a name="r18"></a><a href="javascript:link('18')">art. 6º da Lei nº
+                            10.332/01</a>&nbsp;e pelo&nbsp;<a name="r19"></a><a href="javascript:link('19')">art. 2º da Lei nº
+                            12.402/11</a>).</p>
+                      </td>
+                      <td>
+                        <p>8741</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="CIDE Remessas ao Exterior" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>EFD-Reinf</p>
+                      </td>
+                      <td>
+                        <p>Transmissão de informações relativas aos fatos geradores ocorridos na
+                          competência&nbsp;<strong>abril/2026,</strong>&nbsp;(art. 6º da Instrução Normativa RFB nº 2.043/2021).<br>
+                          <strong><em>Notas Cenofisco:</em></strong> <br>
+                          <em>1ª) As entidades promotoras de espetáculos desportivos deverão transmitir EFD-Reinf com as informações
+                            relacionadas ao evento R 3010 - Receita de Espetáculos Desportivos no prazo de até dois dias úteis após a sua
+                            realização.</em> <br>
+                          <em>2ª) Devem ser informados os lucros distribuídos em Jan/Fev/Mar/2026, e opcionalmente poderá ser incluído o
+                            lucro distribuído em Abr/2026.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Atendimento Virtual (e-CAC) da Receita Federal do Brasil, disponível no endereço eletrônico
+                          idg.receita.fazenda.gov.br.</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="EFD-Reinf" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>Demonstrativo do Crédito Presumido (DCP)</p>
+                      </td>
+                      <td>
+                        <p>Apresentação pelas pessoas jurídicas produtora e exportadora de produtos industrializados nacionais, que
+                          apurarem crédito presumido, do DCP relativo ao 1º trimestre/2026 (Instruções Normativas RFB nºs 419 e 420/2004 e
+                          1.137/2011)</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Até o último dia útil da primeira quinzena do segundo mês subsequente ao trimestre de ocorrência dos fatos
+                          geradores</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="(DCP)" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>eSocial</p>
+                      </td>
+                      <td>
+                        <p>Transmissão dos eventos periódicos, relativo à folha de pagamento,
+                          competência&nbsp;<strong>abril/2026&nbsp;</strong>(MOS, versão 1.3)</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Atendimento Virtual (e-CAC) da Receita Federal do Brasil, disponível no endereço eletrônico
+                          idg.receita.fazenda.gov.br.</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="eSocial" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 15<br>
+                          Sexta-feira</p>
+                      </td>
+                      <td>
+                        <p>Previdência Social - Contribuintes Individuais/Facultativos</p>
+                      </td>
+                      <td>
+                        <p>Contribuições previdenciárias relativas à competência&nbsp;<strong>abril/2026,&nbsp;</strong>devidas pelos
+                          contribuintes individuais e facultativos (<a name="r103"></a><a href="javascript:link('103')">art. 55 da
+                            Instrução Normativa RFB nº 2.110/2022</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>GPS<br>
+                          (2 vias)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="15/05/2026" data-title="Previdência Social" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                  </table>
+
+                  <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-20-05-2026">Calendário Federal - Data de vencimento: Dia 20/05/2026 - Quarta-feira</h1>
+                <table class="tabela-agenda w-full">
+                    <tr>
+                      <th>
+                        <p><strong>Data de Vencimento</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Tributo/Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Descrição da Obrigação</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Código</strong></p>
+                      </th>
+                      <th>
+                        <p><strong>Formulário/Programa/Guia</strong></p>
+                      </th>
+                      <th>&nbsp;</th>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IRRF</p>
+                      </td>
+                      <td>
+                        <p>IRRF relativo aos fatos geradores ocorridos no mês de&nbsp;<strong>abril/2026,</strong>&nbsp;incidentes sobre
+                          rendimentos sujeitos à apuração mensal do imposto (<a name="r20"></a><a href="javascript:link('20')">art. 70, I,
+                            &quot;e&quot;, da Lei nº 11.196/05</a>, alterado pelo&nbsp;<a name="r21"></a><a
+                            href="javascript:link('21')">art. 38 da Lei Complementar nº 150/15</a>).</p>
+                      </td>
+                      <td>
+                        <p><a name="r92"></a><a href="javascript:link('92')">Veja tabela de códigos</a></p>
+                      </td>
+                      <td rowspan="6">
+                        <p>DARF<br>
+                          (<a name="r91"></a><a href="javascript:link('91')">Veja instruções para preenchimento</a>)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="IRRF" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IRRF</p>
+                      </td>
+                      <td>
+                        <p>IRRF relativo aos lucros e dividendos distribuídos a sócios pessoas físicas
+                          em&nbsp;<strong>abril/2026,</strong>&nbsp;em montante superior a R$50.000,00, conforme prevê a&nbsp;<a
+                            name="r104"></a><a href="javascript:link('104')">Lei nº 9.249/1995</a>, alterada pela&nbsp;<a
+                            name="r22"></a><a href="javascript:link('22')">Lei nº 15.270/2025</a></p>
+                      </td>
+                      <td>
+                        <p>1841</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="IRRF" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>Retenção CSLL/COFINS/PIS/ PASEP<br>
+                          Serviços</p>
+                      </td>
+                      <td>
+                        <p>Contribuições relativas aos fatos geradores ocorridos no mês
+                          de&nbsp;<strong>abril/2026,</strong>&nbsp;incidentes sobre serviços prestados às pessoas jurídicas por outras
+                          pessoas jurídicas (<a name="r23"></a><a href="javascript:link('23')">art. 35 da Lei nº 10.833/03</a>, com
+                          redação dada pelo&nbsp;<a name="r24"></a><a href="javascript:link('24')">art. 24 da Lei nº 13.137/15</a>).</p>
+                      </td>
+                      <td>
+                        <p>5952</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="Retenção CSLL/COFINS/PIS/ PASEP" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>COFINS<br>
+                          Entidades Financeiras e Equiparadas</p>
+                      </td>
+                      <td>
+                        <p>Contribuição relativa aos fatos geradores ocorridos no mês de&nbsp;<strong>abril/2026,</strong>&nbsp;devida
+                          pelas entidades financeiras (<a name="r25"></a><a href="javascript:link('25')">art. 18 da Medida Provisória nº
+                            2.158-35/01</a>, alterado pelo&nbsp;<a name="r26"></a><a href="javascript:link('26')">art. 1º da Lei nº
+                            11.933/09</a>).</p>
+                      </td>
+                      <td>
+                        <p>7987</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="COFINS" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>PIS/PASEP<br>
+                          Entidades Financeiras e Equiparadas</p>
+                      </td>
+                      <td>
+                        <p>Contribuição relativa aos fatos geradores ocorridos no mês de&nbsp;<strong>abril/2026,</strong>&nbsp;devida
+                          pelas entidades financeiras (<a name="r27"></a><a href="javascript:link('27')">art. 18 da Medida Provisória nº
+                            2.158-35/01</a>, alterado pelo&nbsp;<a name="r28"></a><a href="javascript:link('28')">art. 1º da Lei nº
+                            11.933/09</a>).</p>
+                      </td>
+                      <td>
+                        <p>4574</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="PIS/PASEP" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IRRF e Contribuições Sociais Retidas (Órgãos Públicos)</p>
+                      </td>
+                      <td>
+                        <p>IRRF e Contribuições Sociais retidas por Órgãos Públicos Federais/Municipais/Estaduais e do Distrito Federal
+                          incidentes sobre fatos geradores ocorridos no mês de&nbsp;<strong>abril/2026,</strong>&nbsp;arts. 30, 33 e 34
+                          da&nbsp;<a name="r29"></a><a href="javascript:link('29')">Lei nº 10.833/03</a>, § 1º do art. 1º da Instrução
+                          Normativa SRF nº 475/04 e&nbsp;art. 7º da Instrução Normativa RFB nº 1.234/12).</p>
+                      </td>
+                      <td>
+                        <p><a name="r93"></a><a href="javascript:link('93')">Ver tabela anexo I da IN RFB nº 1.234/12</a></p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="IRRF e Contribuições Sociais Retidas (Órgãos Públicos)" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>DIRBI</p>
+                      </td>
+                      <td>
+                        <p>Declaração de Incentivos, Renúncias, Benefícios e Imunidades de Natureza Tributária (DIRBI), com informações
+                          relativas ao período de&nbsp;<strong>março/2026</strong>&nbsp;(art. 5º e 6º da Instrução Normativa RFB nº
+                          2.198/24).<br>
+                          Obs. As informações relativas aos benefícios referentes ao IRPJ e à CSLL deverão ser prestadas no caso de
+                          período de apuração trimestral, na declaração referente ao mês de encerramento do período de apuração, e no caso
+                          de período de apuração anual, na declaração referente ao mês de dezembro.</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Centro Virtual de Atendimento ao Contribuinte (e-CAC)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="DIRBI" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>IRPJ/CSLL/PIS/PASEP e COFINS Regime Especial - Incorporação Imobiliária</p>
+                      </td>
+                      <td>
+                        <p>Recolhimento Unificado dos optantes pelo Regime Especial Tributário do Patrimônio de Afetação (RET), inclusive
+                          para incorporação de imóveis residenciais de interesse social referente ao mês
+                          de&nbsp;<strong>abril/2026,</strong>&nbsp;(<a name="r30"></a><a href="javascript:link('30')">art. 5º da Lei nº
+                            10.931/04</a>, com alteração dada pelo&nbsp;<a name="r31"></a><a href="javascript:link('31')">art. 1º da Lei
+                            nº 12.024/09</a>&nbsp;e Instrução Normativa RFB nº 1.179/24).</p>
+                      </td>
+                      <td>
+                        <p>4095<br>
+                          1068<br>
+                          4112<br>
+                          4153<br>
+                          4138<br>
+                          4166</p>
+                      </td>
+                      <td>
+                        <p>DARF<br>
+                          (<a name="r94"></a><a href="javascript:link('94')">Veja instruções para preenchimento</a>)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="Incorporação Imobiliária" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>SIMPLES Nacional<br>
+                          (DAS)</p>
+                      </td>
+                      <td>
+                        <p>Tributos devidos sobre a receita bruta do mês de&nbsp;<strong>abril/2026,</strong>&nbsp;pelas Microempresas e
+                          Empresas de Pequeno Porte optantes pelo sistema SIMPLES Nacional (art. 40 da Resolução CGSN nº 140/18).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>DAS</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="SIMPLES Nacional" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>DAS-MEI</p>
+                      </td>
+                      <td>
+                        <p>Tributos devidos pelo Microempreendedor Individual - MEI optante pelo sistema SIMEI em relação ao mês
+                          de&nbsp;<strong>abril/2026,</strong>&nbsp;(<a name="r105"></a><a href="javascript:link('105')">art. 104 da
+                            Resolução CGSN nº 140/18</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>PGMEI<br>
+                          Programa Gerador do DAS disponível<br>
+                          no Portal do SIMPLES Nacional</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="DAS-MEI" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>PGDAS-D</p>
+                      </td>
+                      <td>
+                        <p>Programa Gerador do Documento de Arrecadação do Simples Nacional relativo ao período de apuração
+                          de&nbsp;<strong>abril/2026</strong>&nbsp;(art. 38 da Resolução CGSN nº 140/18).<br>
+                          <strong><em>Nota Cenofisco:&nbsp;</em></strong><em>A apuração no PGDAS-D deverá ser realizada e transmitida,
+                            mensalmente, ainda que a ME ou a EPP não tenha auferido receita em determinado período de apuração ou
+                            permaneça inativa durante todo o ano-calendário, hipótese em que o campo de receita bruta deverá ser
+                            preenchido com valor igual a zero.</em>
+                        </p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>PGDAS-D<br>
+                          (Programa disponível no Portal do SIMPLES Nacional)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="PGDAS-D" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>SIMPLES Doméstico</p>
+                      </td>
+                      <td>
+                        <p>Recolhimentos de tributos e depósitos decorrentes da relação de emprego doméstico referente ao mês
+                          de&nbsp;<strong>abril/2026 (</strong><a name="r32"></a><a href="javascript:link('32')">Lei Complementar nº
+                            150/2015</a>&nbsp;e Portaria Interministerial MF/MPS/MTE nº 822/2015).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Documento de Arrecadação do Empregador Doméstico (DAE) disponibilizado no site www.esocial.gov.br</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="SIMPLES Doméstico" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>Previdência Social<br>
+                          Retenção 11%</p>
+                      </td>
+                      <td>
+                        <p>A empresa contratante de serviços executados mediante cessão de mão de obra ou empreitada, inclusive em regime
+                          de trabalho temporário, deverá recolher 11% do valor bruto da nota fiscal ou fatura de prestação de serviços,
+                          referente a competência<strong>&nbsp;abril/2026 (</strong><a name="r33"></a><a href="javascript:link('33')">art.
+                            31 da Lei nº 8.212/1991</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Atendimento Virtual (e-CAC) da Receita Federal do Brasil, disponível no endereço eletrônico
+                          idg.receita.fazenda.gov.br.</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="Previdência Social - Retenção 11%" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>Previdência&nbsp;Social<br>
+                          Receita Bruta</p>
+                      </td>
+                      <td>
+                        <p>Contribuição incidente sobre a receita bruta (arts. 7º a 10 da&nbsp;<a name="r34"></a><a
+                            href="javascript:link('34')">Lei nº 12.546/2011</a>), em substituição às contribuições previdenciárias sobre a
+                          folha de pagamento previstas nos incisos I e III do&nbsp;<a name="r35"></a><a href="javascript:link('35')">art.
+                            22 da Lei nº 8.212/1991</a>, referente aos fatos geradores do mês de&nbsp;<strong>abril/2026.</strong></p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Atendimento Virtual (e-CAC) da Receita Federal do Brasil, disponível no endereço eletrônico
+                          idg.receita.fazenda.gov.br.</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="Previdência&nbsp;Social Receita Bruta" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>Previdência Social - Segurado Especial</p>
+                      </td>
+                      <td>
+                        <p>Contribuições previdenciárias relativas à competência&nbsp;<strong>abril/2026&nbsp;</strong>descontadas dos
+                          trabalhadores a serviço do segurado especial (<a name="r106"></a><a href="javascript:link('106')">art. 52 da
+                            Instrução Normativa RFB nº 2.110/2022</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Documento Unificado de Arrecadação (DAE) disponibilizado no site www.esocial.gov.br</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="Previdência Social - Segurado Especial" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>Previdência Social - Empresa e Produção Rural</p>
+                      </td>
+                      <td>
+                        <p>Contribuições previdenciárias, relativas à competência&nbsp;<strong>abril/2026,</strong>&nbsp;devidas pela
+                          empresa (<a name="r36"></a><a href="javascript:link('36')">art. 6º da Lei nº 11.933/2009</a>) e aquelas
+                          relativas à comercialização da produção rural, referente aos fatos geradores do mês de&nbsp;<strong>abril/2026
+                            (</strong><a name="r37"></a><a href="javascript:link('37')">art. 30 da Lei nº 8.212/1991</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Atendimento Virtual (e-CAC) da Receita Federal do Brasil, disponível no endereço eletrônico
+                          idg.receita.fazenda.gov.br.</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="Previdência Social - Empresa e Produção Rural" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>FGTS</p>
+                      </td>
+                      <td>
+                        <p>Depósito relativo à remuneração de<strong>&nbsp;abril/2026 (</strong><a name="r38"></a><a
+                            href="javascript:link('38')">art. 15 da Lei nº 8.036/1990</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>Guia do FGTS Digital (meio eletrônico)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="FGTS" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>Dia 20<br>
+                          Quarta-feira</p>
+                      </td>
+                      <td>
+                        <p>Previdência Social - MEI</p>
+                      </td>
+                      <td>
+                        <p>Contribuições previdenciárias relativas à competência&nbsp;<strong>abril/2026&nbsp;</strong>descontada do
+                          trabalhador a serviço do MEI (<a name="r107"></a><a href="javascript:link('107')">art. 105-A da Resolução CGSN
+                            140/2018</a>).</p>
+                      </td>
+                      <td>
+                        <p>-</p>
+                      </td>
+                      <td>
+                        <p>DAS (Documento de Arrecadação do Simples Nacional)</p>
+                      </td>
+                      <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="20/05/2026" data-title="Previdência Social - MEI" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                    </tr>
+                  </table>
+
+                <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-23-05-2026">Calendário Federal - Data de vencimento: Dia 23/05/2026 - Sábado</h1>
+                <table class="tabela-agenda w-full">
+                  <tr>
+                    <th>
+                      <p><strong>Data de Vencimento</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Tributo/Obrigação</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Descrição da Obrigação</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Código</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Formulário/Programa/Guia</strong></p>
+                    </th>
+                    <th>&nbsp;</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 23<br>
+                        Sábado</p>
+                    </td>
+                    <td>
+                      <p>SCANC</p>
+                    </td>
+                    <td>
+                      <p><strong>Arquivo Magnético (SCANC) - Refinaria de Petróleo e Suas Bases</strong> <br>
+                        Entrega das informações por transmissão eletrônica de dados (SCANC), relativas a operações interestaduais com
+                        combustíveis derivados de petróleo, em que o imposto tenha sido retido anteriormente, ou com álcool etílico
+                        anidro combustível ou Biodiesel B100 (<a name="r39"></a><a href="javascript:link('39')">Ato COTEPE/ICMS nº
+                          152/2025</a>, V, &quot;b&quot;, e Convênios ICMS nºs 110/07, 199/2022 e 15/2023).<br>
+                        <strong><em>Nota Cenofisco:</em></strong> <br>
+                        <em>As informações somente serão consideradas entregues após a validação pelo programa, com a emissão do
+                          respectivo protocolo.</em>
+                      </p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Apresentação pela internet.</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="23/05/2026" data-title="SCANC" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                  </tr>
+                </table>
+
+                <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-25-05-2026">Calendário Federal - Data de vencimento: Dia 25/05/2026 - Segunda-feira</h1>
+               <table class="tabela-agenda w-full">
+                  <tr>
+                    <th>
+                      <p><strong>Data de Vencimento</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Tributo/Obrigação</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Descrição da Obrigação</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Código</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Formulário/Programa/Guia</strong></p>
+                    </th>
+                    <th>&nbsp;</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>IRRF</p>
+                    </td>
+                    <td>
+                      <p>IRRF com periodicidade decendial relativo a fatos geradores ocorridos de&nbsp;<strong>11 a 20/05/2026</strong>,
+                        incidentes sobre rendimentos provenientes de juros sobre o capital próprio e aplicações financeiras, inclusive
+                        os atribuídos a residentes ou domiciliados no exterior, e títulos de capitalização; prêmios, inclusive os
+                        distribuídos sob a forma de bens e serviços, obtidos em concursos e sorteios de qualquer espécie e lucros
+                        decorrentes desses prêmios; e multas ou qualquer vantagem (art. 70, inciso I, letra b da&nbsp;<a
+                          name="r40"></a><a href="javascript:link('40')">Lei nº 11.196/05</a>).</p>
+                    </td>
+                    <td>
+                      <p><a name="r96"></a><a href="javascript:link('96')">Veja tabela de códigos</a></p>
+                    </td>
+                    <td rowspan="5">
+                      <p>DARF<br>
+                        (<a name="r95"></a><a href="javascript:link('95')">Veja instruções para preenchimento</a>)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="IRRF" data-description="" data-type="Federal">Salvar
+                      Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>COFINS<br>
+                        Cervejas</p>
+                    </td>
+                    <td>
+                      <p>Tributação de Bebidas Frias - Cerveja relativa aos fatos geradores ocorridos no mês
+                        de&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r41"></a><a href="javascript:link('41')">Decreto nº
+                          8.442/15</a>&nbsp;e Ato Declaratório Executivo CODAC nº 21/15).</p>
+                    </td>
+                    <td>
+                      <p>0760</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="COFINS - Cervejas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>COFINS<br>
+                        Demais Bebidas</p>
+                    </td>
+                    <td>
+                      <p>Tributação de Bebidas Frias - Demais Bebidas relativa aos fatos geradores ocorridos no mês
+                        de&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r42"></a><a href="javascript:link('42')">Decreto nº
+                          8.442/15</a>&nbsp;e&nbsp;Ato Declaratório Executivo CODAC nº 21/15)</p>
+                    </td>
+                    <td>
+                      <p>0776</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="COFINS - Demais bebidas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>COFINS<br>
+                        Álcool</p>
+                    </td>
+                    <td>
+                      <p>Regime Especial de Tributação relativo aos fatos geradores ocorridos no mês
+                        de&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r43"></a><a href="javascript:link('43')">art. 5º da Lei nº
+                          9.718/98</a>).</p>
+                    </td>
+                    <td>
+                      <p>0929</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="COFINS - Álcool" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>COFINS<br>
+                        Demais Empresas</p>
+                    </td>
+                    <td>
+                      <p>Contribuição relativa aos fatos geradores ocorridos no mês de&nbsp;<strong>abril/2026</strong>, devida pelas
+                        demais pessoas jurídicas (<a name="r44"></a><a href="javascript:link('44')">art. 18 da Medida Provisória nº
+                          2.158-35/01</a>, alterado pelo&nbsp;<a name="r45"></a><a href="javascript:link('45')">art. 1º da Lei nº
+                          11.933/09</a>).</p>
+                    </td>
+                    <td>
+                      <p>2172<br>
+                        5856</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="COFINS - Demais empresas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>PIS/PASEP<br>
+                        Cervejas</p>
+                    </td>
+                    <td>
+                      <p>Tributação de Bebidas Frias - Cerveja relativa aos fatos geradores ocorridos no mês
+                        de&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r46"></a><a href="javascript:link('46')">Decreto nº
+                          8.442/15</a>&nbsp;e Ato Declaratório Executivo CODAC nº 21/15).</p>
+                    </td>
+                    <td>
+                      <p>0679</p>
+                    </td>
+                    <td rowspan="11">
+                      <p>DARF<br>
+                        (<a name="r97"></a><a href="javascript:link('97')">Veja instruções para preenchimento</a>)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="PIS/PASEP - Cervejas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>PIS/PASEP<br>
+                        Demais Bebidas</p>
+                    </td>
+                    <td>
+                      <p>Tributação de Bebidas Frias - Demais Bebidas relativa aos fatos geradores ocorridos no mês
+                        de&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r47"></a><a href="javascript:link('47')">Decreto nº
+                          8.442/15</a>&nbsp;e Ato Declaratório Executivo CODAC nº 21/15).</p>
+                    </td>
+                    <td>
+                      <p>0691</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="PIS/PASEP - Demais bebidas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>PIS/PASEP<br>
+                        Álcool</p>
+                    </td>
+                    <td>
+                      <p>Regime Especial de Tributação relativo aos fatos geradores ocorridos no
+                        mês&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r48"></a><a href="javascript:link('48')">art. 5º da Lei nº
+                          9.718/98</a>).</p>
+                    </td>
+                    <td>
+                      <p>0906</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="PIS/PASEP - Álcool" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>PIS/PASEP<br>
+                        Demais Empresas</p>
+                    </td>
+                    <td>
+                      <p>Contribuição relativa aos fatos geradores ocorridos no mês de&nbsp;<strong>abril/2026,</strong>&nbsp;devida
+                        pelas demais pessoas jurídicas (<a name="r49"></a><a href="javascript:link('49')">art. 18 da Medida Provisória
+                          nº 2.158-35/01</a>, alterado pelo&nbsp;<a name="r50"></a><a href="javascript:link('50')">art. 1º da Lei nº
+                          11.933/09</a>).</p>
+                    </td>
+                    <td>
+                      <p>6912<br>
+                        8109</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="PIS/PASEP - Demais empresas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>PIS/PASEP<br>
+                        Folha de Pagamento</p>
+                    </td>
+                    <td>
+                      <p>Contribuição relativa aos fatos geradores ocorridos no mês&nbsp;<strong>abril/2026,&nbsp;</strong>devida pelas
+                        entidades sem fins lucrativos e pelas cooperativas (arts. 13 e 18 da&nbsp;<a name="r51"></a><a
+                          href="javascript:link('51')">Medida Provisória nº 2.158-35/01</a>).</p>
+                    </td>
+                    <td>
+                      <p>8301</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="PIS/PASEP - Folha de Pagamento" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>IOF<br>
+                        11 a 20/Maio/2026</p>
+                    </td>
+                    <td>
+                      <p>Operações de crédito - Pessoa jurídica<br>
+                        Operações de crédito - Pessoa física<br>
+                        Operações de câmbio - Entrada de moeda<br>
+                        Operações de câmbio - Saída de moeda<br>
+                        Aplicações financeiras<br>
+                        <em>Factoring</em>&nbsp;(<a name="r52"></a><a href="javascript:link('52')">art. 58 da Lei nº 9.532/97</a>)<br>
+                        Seguros<br>
+                        Ouro, ativo Financeiro
+                      </p>
+                    </td>
+                    <td>
+                      <p>1150<br>
+                        7893<br>
+                        4290<br>
+                        5220<br>
+                        6854<br>
+                        6895<br>
+                        3467<br>
+                        4028</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="IOF" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>IPI</p>
+                    </td>
+                    <td>
+                      <p>IPI apurado no mês de abril/2026<strong>,</strong>&nbsp;relativo às operações realizadas com os produtos
+                        classificados nas posições 84.29, 84.32, 84.33, 87.01, 87.02, 87.04, 87.05, 87.11 e veículos classificados nas
+                        posições 87.03 e 87.06 da TIPI.</p>
+                    </td>
+                    <td>
+                      <p>1097<br>
+                        (respectivos produtos)<br>
+                        0676<br>
+                        (automóveis)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="IPI" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>IPI</p>
+                    </td>
+                    <td>
+                      <p>IPI apurado no mês de abril/2026<strong>,</strong>&nbsp;relativo aos produtos classificados no Capítulo 22
+                        (bebidas, líquidos alcoólicos e vinagres).</p>
+                    </td>
+                    <td>
+                      <p>0668<br>
+                        (bebidas)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="IPI - Bebidas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>IPI</p>
+                    </td>
+                    <td>
+                      <p>IPI apurado no mês de abril/2026<strong>,&nbsp;</strong>relativo às operações com cigarros classificados no
+                        código 2402.90.00 e &quot;demais produtos&quot;, com exceção de bebidas do Capítulo 22 e cigarros (código
+                        2402.20.00).</p>
+                    </td>
+                    <td>
+                      <p>5110<br>
+                        (cigarros)<br>
+                        5123<br>
+                        (demais<br>
+                        produtos)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="IPI - Cigarros" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>IPI</p>
+                    </td>
+                    <td>
+                      <p>IPI apurado no mês de abril/2026<strong>,&nbsp;</strong>relativo às operações realizadas com cervejas.</p>
+                    </td>
+                    <td>
+                      <p>0821</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="IPI - Cervejas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 25<br>
+                        Segunda-feira</p>
+                    </td>
+                    <td>
+                      <p>IPI</p>
+                    </td>
+                    <td>
+                      <p>IPI apurado no mês de abril/2026<strong>,&nbsp;</strong>relativo às operações realizadas com as demais bebidas
+                        frias.</p>
+                    </td>
+                    <td>
+                      <p>0838</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="25/05/2026" data-title="IPI - Demais bebidas" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                </table>
+
+                <h1 class="bg-blue-900 text-lg text-white p-2 rounded-t-md mt-6 text-center" id="dia-29-05-2026">Calendário Federal - Data de vencimento: Dia 29/05/2026 - Sexta-feira</h1>
+              <table class="tabela-agenda w-full">
+                  <tr>
+                    <th>
+                      <p><strong>Data de Vencimento</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Tributo/Obrigação</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Descrição da Obrigação</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Código</strong></p>
+                    </th>
+                    <th>
+                      <p><strong>Formulário/Programa/Guia</strong></p>
+                    </th>
+                    <th>&nbsp;</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>DCTFWeb</p>
+                    </td>
+                    <td>
+                      <p>Transmissão de informações relativas aos fatos geradores ocorridos na
+                        competência&nbsp;<strong>abril/2026</strong>&nbsp;(<a name="r108"></a><a href="javascript:link('108')">art. 6º
+                          da Instrução Normativa RFB nº 2.237/2024</a>).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Atendimento Virtual (e-CAC) da RFB, disponível no endereço eletrônico idg.receita.fazenda.gov.br</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="DCTFWeb" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Módulo de Inclusão de Tributos (MIT)</p>
+                    </td>
+                    <td>
+                      <p>Inclusão dos débitos relativos ao seguintes tributos: IRPJ, CSLL, PIS/PASEP, IPI, COFINS, CIDE, IOF, Condecine,
+                        CPSS e RET. O acesso é efetuado pelo mesmo endereço da DCTFWeb e o preenchimento é realizado diretamente na
+                        aplicação ou por meio de importação de arquivo (<a name="r109"></a><a href="javascript:link('109')">art. 9º da
+                          Instrução Normativa RFB nº 2.237/2024</a>).<br>
+                        É transmitido juntamente com a DCTFWeb da competência&nbsp;<strong>abril/2026</strong>&nbsp;(<a
+                          name="r110"></a><a href="javascript:link('110')">art. 9º da Instrução Normativa RFB nº 2.237/2024</a>).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Atendimento Virtual (e-CAC) da Receita Federal do Brasil, disponível no endereço eletrônico
+                        idg.receita.fazenda.gov.br</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Módulo de Inclusão de Tributos (MIT)" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Retenção PIS/PASEP e COFINS Autopeças</p>
+                    </td>
+                    <td>
+                      <p>PIS/PASEP e COFINS incidentes no período de&nbsp;<strong>01 a 15/05/2026</strong>&nbsp;sobre os pagamentos
+                        referentes à aquisição de autopeças, exceto pneumáticos, quando efetuados por pessoa jurídica fabricante (<a
+                          name="r53"></a><a href="javascript:link('53')">art. 3º, § 3º, da Lei nº 10.485/02</a>, com redação dada
+                        pelo&nbsp;<a name="r54"></a><a href="javascript:link('54')">art. 42 da Lei nº 11.196/05</a>).</p>
+                    </td>
+                    <td>
+                      <p>COFINS<br>
+                        3746<br>
+                        PIS/PASEP<br>
+                        3770</p>
+                    </td>
+                    <td rowspan="6">
+                      <p>DARF<br>
+                        (<a name="r98"></a><a href="javascript:link('98')">Veja instruções para preenchimento</a>)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Retenção PIS/PASEP e COFINS Autopeças" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRPJ<br>
+                        Trimestral</p>
+                    </td>
+                    <td>
+                      <p><strong>2ª quota&nbsp;</strong>do IRPJ relativo ao 1<strong>º trimestre/2026</strong>&nbsp;devido pelas pessoas
+                        jurídicas optantes pela apuração trimestral do lucro real e pelo lucro presumido ou arbitrado (art. 55 da
+                        Instrução Normativa RFB nº 1.700/17).</p>
+                    </td>
+                    <td>
+                      <p>1599<br>
+                        0220<br>
+                        3373<br>
+                        2089<br>
+                        5625</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRPJ - Trimestral" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                      <p>CSLL<br>
+                        Trimestral</p>
+                    </td>
+                    <td>
+                      <p><strong>2ª quota&nbsp;</strong>da CSLL relativa ao 1<strong>º trimestre/2026</strong>&nbsp;devida pelas pessoas
+                        jurídicas optantes pela apuração trimestral do lucro real e pelo lucro presumido ou arbitrado (<a
+                          name="r111"></a><a href="javascript:link('111')">art. 55 da Instrução Normativa RFB nº 1.700/17</a>).</p>
+                    </td>
+                    <td>
+                      <p>2030<br>
+                        6012<br>
+                        2372</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="CSLL - Trimestral" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira a</p>
+                    </td>
+                    <td>
+                      <p>IRPJ<br>
+                        Mensal</p>
+                    </td>
+                    <td>
+                      <p>IRPJ relativo ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>devido pelas pessoas jurídicas optantes pelo
+                        pagamento do imposto por estimativa mensal (art. 56 da Instrução Normativa RFB nº 1.700/17).</p>
+                    </td>
+                    <td>
+                      <p>2319<br>
+                        2362<br>
+                        5993</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRPJ - Mensal" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>CSLL<br>
+                        Mensal</p>
+                    </td>
+                    <td>
+                      <p>CSLL relativa ao mês de&nbsp;<strong>abril/2026,</strong>&nbsp;devida pelas pessoas jurídicas optantes pelo
+                        pagamento do imposto por estimativa mensal (art. 56 da Instrução Normativa RFB nº 1.700/17).</p>
+                    </td>
+                    <td>
+                      <p>2469<br>
+                        2484</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="CSLL - Mensal" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRPJ<br>
+                        Renda Variável</p>
+                    </td>
+                    <td>
+                      <p>IRPJ devido sobre os ganhos líquidos percebidos por pessoas jurídicas no mês
+                        de&nbsp;<strong>abril/2026,</strong>&nbsp;em operações nas bolsas de valores, mercadorias, futuros e
+                        assemelhadas e na alienação de ouro, ativo financeiro, fora de bolsa (art. 101 da Instrução Normativa RFB nº
+                        1.585/15 e Ato Declaratório Executivo CODAC nº 63/11).<br>
+                        IRPJ - Ganhos Líquidos em Operações na Bolsa - Lucro Real<br>
+                        IRPJ - Ganhos Líquidos em Operações na Bolsa - Lucro Presumido ou Arbitrado<br>
+                        <strong><em>Nota Cenofisco:&nbsp;</em></strong><em>Veja alterações trazidas pelo&nbsp;</em><a name="r55"></a><a
+                          href="javascript:link('55')">art. 15 da Lei nº 12.024/09</a><em>, em relação ao tratamento tributável dos
+                          fundos de investimentos imobiliários.</em>
+                      </p>
+                    </td>
+                    <td>
+                      <p>3317<br>
+                        0231</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRPJ - Renda Variável" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRRF</p>
+                    </td>
+                    <td>
+                      <p>Ganho de Capital na alienação de bens e direitos do ativo não circulante localizados no Brasil, por Pessoa
+                        Jurídica Residente ou domiciliada no Exterior relativo aos ganhos auferidos
+                        em&nbsp;<strong>abril/2026</strong>&nbsp;(Instrução Normativa RFB nº 1.455/14 art. 21, §1º).</p>
+                    </td>
+                    <td>
+                      <p>0473</p>
+                    </td>
+                    <td rowspan="6">
+                      <p>DARF<br>
+                        (<a name="r99"></a><a href="javascript:link('99')">Veja instruções para preenchimento</a>)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRRF" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRPJ/SIMPLES Nacional - Ganho de Capital</p>
+                    </td>
+                    <td>
+                      <p>IRPJ devido por ME e EPP optantes pelo SIMPLES Nacional, incidente sobre ganhos de capital obtidos na alienação
+                        de ativos no mês de&nbsp;<strong>abril/2026</strong>&nbsp;(art. 5º, V, &quot;b&quot;, da Resolução CGSN nº
+                        140/18).<br>
+                        <strong><em>Nota Cenofisco:&nbsp;</em></strong><em>Vide art. 2º § 6º da Resolução CGSN nº 140/18.</em>
+                      </p>
+                    </td>
+                    <td>
+                      <p>0507</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRPJ/SIMPLES Nacional - Ganho de Capital" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRRF</p>
+                    </td>
+                    <td>
+                      <p>IRRF referente aos rendimentos e ganhos de capital distribuído pelos fundos de investimentos imobiliários no
+                        mês de&nbsp;<strong>abril/2026</strong>&nbsp;(art. 70, I e &quot;c&quot;, da&nbsp;<a name="r56"></a><a
+                          href="javascript:link('56')">Lei nº 11.196/05</a>).</p>
+                    </td>
+                    <td>
+                      <p>5232</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRRF" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRPF Mensal<br>
+                        (Carnê-Leão)</p>
+                    </td>
+                    <td>
+                      <p>IRPF devido sobre rendimentos recebidos no mês de&nbsp;<strong>abril/2026</strong>&nbsp;(arts. 118 e 123
+                        do&nbsp;<a name="r57"></a><a href="javascript:link('57')">Decreto nº 9.580/18</a>).</p>
+                    </td>
+                    <td>
+                      <p>0190</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRPF Mensal (Carnê-Leão)" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRPF<br>
+                        Renda Variável</p>
+                    </td>
+                    <td>
+                      <p>IRPF devido sobre os ganhos líquidos obtidos em operações em bolsas de valores e auferido por pessoas físicas
+                        no mês de&nbsp;<strong>abril/2026</strong>&nbsp;(art. 101 da Instrução Normativa RFB nº 1.585/15).</p>
+                    </td>
+                    <td>
+                      <p>6015</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRPF - Renda Variável" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>IRPF<br>
+                        Ganho de Capital</p>
+                    </td>
+                    <td>
+                      <p>IRPF devido sobre o ganho de capital apurado na alienação de bens ou direitos no mês
+                        de&nbsp;<strong>abril/2026,&nbsp;</strong>por pessoas físicas residentes ou domiciliadas no País ou no
+                        exterior&nbsp;(art. 30 § 3º inciso I da Instrução Normativa SRF nº 84/01).</p>
+                    </td>
+                    <td>
+                      <p>4600<br>
+                        8523</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="IRPF - Ganho de Capital" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Declaração de Operações Imobiliárias (DOI)</p>
+                    </td>
+                    <td>
+                      <p>Declaração relativa à operação de aquisição ou alienação de imóveis realizada no mês
+                        de&nbsp;<strong>abril/2026</strong>&nbsp;(Instrução Normativa RFB nº 2.186/24).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>DOI-Web,<br>
+                        disponível no site da RFB no endereço www.receita.gov.br</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Declaração de Operações Imobiliárias (DOI)" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Declaração de Operações Liquidadas com Moeda em Espécie (DME)</p>
+                    </td>
+                    <td>
+                      <p>Declaração de Operações Liquidadas com Moeda em Espécie relativa a quitações ocorridas
+                        em&nbsp;<strong>abril/2026</strong>&nbsp;(art. 5º da Instrução Normativa RFB nº 1.761/17).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Centro Virtual de Atendimento ao Contribuinte (e-CAC)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Declaração de Operações Liquidadas com Moeda em Espécie (DME)" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Declaração de Informações sobre Atividades Imobiliárias (DIMOB) Eventos Especiais</p>
+                    </td>
+                    <td>
+                      <p>Declaração relativa aos eventos de extinção, fusão, incorporação e cisão total ocorridos no mês
+                        de&nbsp;<strong>abril/2026</strong>&nbsp;(art. 1º § 2º da Instrução Normativa RFB nº 1.115/10).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>PGD-DIMOB<br>
+                        disponível no site da RFB no endereço www.receita.gov.br</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Declaração de Informações sobre Atividades Imobiliárias (DIMOB) Eventos Especiais" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>DIRPF/2026</p>
+                    </td>
+                    <td>
+                      <p>Entrega à RFB da Declaração de Ajuste Anual do Imposto sobre a Renda da Pessoa Física referente ao exercício de
+                        2026 (DIRPF/2026), ano-calendário de 2025 (<a name="r112"></a><a href="javascript:link('112')">Instrução
+                          Normativa RFB nº 2.312/26</a>).</p>
+                    </td>
+                    <td>
+                      <p>&nbsp;</p>
+                    </td>
+                    <td>
+                      <p>Programa Gerador da Declaração (PGD) ou MIR - disponível no site da RFB</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="DIRPF/2026" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>1ª Quota do IRPF 2026</p>
+                    </td>
+                    <td>
+                      <p>Primeira quota ou quota única do Imposto sobre a Renda da Pessoa Física (IRPF) apurado com base na Declaração
+                        de Ajuste Anual (DIRPF/26), correspondente ao ano-base de 2025 (<a name="r113"></a><a
+                          href="javascript:link('113')">Instrução Normativas RFB nº 2.312/26</a>).</p>
+                    </td>
+                    <td>
+                      <p>0211</p>
+                    </td>
+                    <td>
+                      <p>DARF<br>
+                        (<a name="r100"></a><a href="javascript:link('100')">Veja instruções para preenchimento</a>)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="1ª Quota do IRPF 2026" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Declaração Anual do SIMPLES Nacional para o MEI (DASN-SIMEI)</p>
+                    </td>
+                    <td>
+                      <p>Declaração anual devida pelo MEI optante pelo SIMEI relativa ao ano de 2025 (art. 109 da Resolução CGSN nº
+                        140/18).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Módulo do aplicativo PGDAS-D disponível no site da RFB no endereço www.receita.fazenda.gov.br.</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Declaração Anual do SIMPLES Nacional para o MEI (DASN-SIMEI)" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Declaração de Serviços Médicos e de Saúde (DMED) Eventos Especiais</p>
+                    </td>
+                    <td>
+                      <p>Declaração de Serviços Médicos e de Saúde (DMED) relativa aos eventos especiais ocorridos nos
+                        meses&nbsp;<strong>de abril/2026</strong>&nbsp;(<a name="r114"></a><a href="javascript:link('114')">art. 5º da
+                          Instrução Normativa RFB nº 2.074/22</a>).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>PGD DMED disponível no site da RFB no endereço www.receita.gov.br</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Declaração de Serviços Médicos e de Saúde (DMED) Eventos Especiais" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>REFIS</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo à parcela mensal devida referente ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>ou na
+                        prestação do parcelamento alternativo (<a name="r58"></a><a href="javascript:link('58')">Lei nº 9.964/00</a>).
+                      </p>
+                    </td>
+                    <td rowspan="6">
+                      <p>-</p>
+                    </td>
+                    <td rowspan="6">
+                      <p>DARF<br>
+                        (<a name="r101"></a><a href="javascript:link('101')">Veja instruções para preenchimento</a>)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="REFIS" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>PAES<br>
+                        (REFIS II)</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo à parcela mensal devida referente ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>relativo
+                        ao Parcelamento Especial (PAES) (<a name="r59"></a><a href="javascript:link('59')">Lei nº 10.684/03</a>).</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="PAES (REFIS II)" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>PAEX<br>
+                        (REFIS III)</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo à parcela mensal devida referente ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>relativo
+                        ao Parcelamento Excepcional (PAEX) (<a name="r60"></a><a href="javascript:link('60')">Medida Provisória nº
+                          303/06</a>).</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="PAEX" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Parcelamento Diverso (<a name="r61"></a><a href="javascript:link('61')">Lei nº 11.941/09</a>)</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo à parcela mensal devida referente ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>relativo
+                        ao parcelamento ordinário da dívida ou dos débitos descritos nos arts. 1º a 3º da&nbsp;<a name="r62"></a><a
+                          href="javascript:link('62')">Lei nº 11.941/09</a>.</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Parcelamento Diverso" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>PRT</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo à parcela mensal devida referente ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>relativo
+                        ao Parcelamento Programa de Regularização Tributária (PRT) (<a name="r63"></a><a
+                          href="javascript:link('63')">Medida Provisória nº 766/17</a>).</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="PRT" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>PERT</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo à parcela mensal devida referente ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>relativo
+                        ao Parcelamento Programa Especial de Regularização Tributária (PERT) (<a name="r64"></a><a
+                          href="javascript:link('64')">Lei nº 13.496/17</a>).</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="PERT" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Parcelamento de Débitos do SIMPLES Nacional</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo à parcela mensal devida referente ao mês de&nbsp;<strong>abril/2026,&nbsp;</strong>relativo
+                        ao parcelamento consolidado do Simples Nacional nos termos das Instruções Normativas nºs 767/07, 902/08,
+                        1.508/14, 1.677/16 e 1.713/17, Resolução CGSN nº 132/16 e Portaria PGFN nº 1.110/16.</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>DAS para pagamento da parcela deverá ser emitido diretamente no e-CAC ou no Portal do SIMPLES Nacional</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Parcelamento de Débitos do SIMPLES Nacional" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>DCTFWeb - Aferição de Obras</p>
+                    </td>
+                    <td>
+                      <p>Transmissão da DCTFWeb Aferição de Obras deverá ser transmitida até o último dia útil do mês em que as
+                        informações referentes à obra forem prestadas por meio do Serviço Eletrônico para Aferição de Obras (Sero),
+                        mesmo quando não forem apurados créditos tributários na aferição da obra (<a name="r115"></a><a
+                          href="javascript:link('115')">art. 7º, inciso III da Instrução Normativa RFB nº 2.237/2024</a>).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Atendimento Virtual (e-CAC) da Receita Federal do Brasil, disponível no endereço eletrônico
+                        idg.receita.fazenda.gov.br</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="DCTFWeb - Aferição de Obras" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Contribuição Adicional - SENAI</p>
+                    </td>
+                    <td>
+                      <p>Recolhimento da Contribuição Adicional de 20% calculada sobre a contribuição normal de 1% devida ao Serviço
+                        Nacional de Aprendizagem Industrial (SENAI), pelas empresas sujeitas à contribuição de 1%, que tenham mais de
+                        500 empregados (<a name="r65"></a><a href="javascript:link('65')">art. 6º do Decreto-Lei nº 4.048/1942</a>).</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Guia própria do SENAI</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Contribuição Adicional - SENAI" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia 29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Contribuição Sindical</p>
+                    </td>
+                    <td>
+                      <p>Pagamento da Contribuição Sindical descontada dos empregados sobre a folha de pagamento de abril/2026, desde
+                        que devidamente autorizado.<br>
+                        <strong><em>Nota Cenofisco:</em></strong> <br>
+                        <em>Orientamos que a empresa verifique no documento coletivo da categoria profissional e no sindicato se há
+                          previsão de antecipação desse recolhimento.</em>
+                      </p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>GRCSU<br>
+                        A Guia estará disponível no endereço da Ministério do Trabalho e Previdência (MTP) - (gov.br) e da Caixa
+                        (www.caixa.gov.br)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Contribuição Sindical" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Solicitação de Comprovante de Frequência de Escolar</p>
+                    </td>
+                    <td>
+                      <p>O segurado da Previdência Social que recebe o salário-família deve apresentar o comprovante de frequência à
+                        escola dos filhos, enteados ou os menores tutelados a partir dos sete anos de idade e, com mais de quatro anos
+                        de idade, no caso de requerimentos posteriores a 01/07/2020, data da publicação do&nbsp;<a name="r66"></a><a
+                          href="javascript:link('66')">Decreto nº 10.410/2020</a>.</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Documento expedido pela instituição de ensino</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Solicitação de Comprovante de Frequência de Escolar" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>Previdência Social Parcela do PAES</p>
+                    </td>
+                    <td>
+                      <p>Parcelamento especial de débitos ao INSS com base na&nbsp;<a name="r67"></a><a href="javascript:link('67')">Lei
+                          nº 10.684/2003</a>, conforme o art. 15 da Instrução Normativa INSS nº 91/2003, referente a parcela calculada
+                        referente a<strong>&nbsp;abril/2026.</strong></p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>Débito automático em conta-corrente</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="Previdência Social Parcela do PAES" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>PERT-SN</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo ao Programa Especial de Regularização Tributária das Microempresas e Empresas de Pequeno
+                        Porte optantes pelo Simples Nacional (Pert-SN) -&nbsp;<a name="r68"></a><a href="javascript:link('68')">Lei
+                          Complementar nº 162/2018</a>.</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>DAS (Documento de Arrecadação do Simples Nacional)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="PERT-SN" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Dia29<br>
+                        Sexta-feira</p>
+                    </td>
+                    <td>
+                      <p>PERT-SN (MEI)</p>
+                    </td>
+                    <td>
+                      <p>Pagamento relativo ao Programa Especial de Regularização Tributária das Microempresas e Empresas de Pequeno
+                        Porte optantes pelo Simples Nacional (Pert-SN) Microempreendedor Individual. -&nbsp;<a name="r69"></a><a
+                          href="javascript:link('69')">Lei Complementar nº 162/2018</a>.</p>
+                    </td>
+                    <td>
+                      <p>-</p>
+                    </td>
+                    <td>
+                      <p>DAS-MEI<br>
+                        (Documento de Arrecadação Simplificada do Microempreendedor Individual)</p>
+                    </td>
+                    <td><button
+                          class="save-obligation-btn mt-1 px-2 py-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition text-xs"
+                          data-date="29/05/2026" data-title="PERT-SN (MEI)" data-description="" data-type="Federal">Salvar
+                    Obrigacão</button></td>
+                  </tr>
+                </table>
+</div>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-2 mb-4">
+                    <img src="img/logobranco-cenofisco.png">
+                </div>
+                <p class="text-sm">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Legislação</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">Federal</a></li>
+                    <li><a href="#" class="hover:text-white">Estadual</a></li>
+                    <li><a href="#" class="hover:text-white">Municipal</a></li>
+                    <li><a href="#" class="hover:text-white">Trabalhista</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Ferramentas</h4>
+                <ul class="text-sm space-y-2">
+                    <li><a href="#" class="hover:text-white">CNAE</a></li>
+                    <li><a href="#" class="hover:text-white">Substituição Tributária</a></li>
+                    <li><a href="#" class="hover:text-white">Tabelas Práticas</a></li>
+                    <li><a href="#" class="hover:text-white">Agenda</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold mb-4">Newsletter</h4>
+                <p class="text-xs mb-4">Receba as principais notícias fiscais no seu e-mail.</p>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail" class="bg-white border-none rounded-l-lg px-3 py-2 text-sm w-full focus:ring-1 focus:ring-blue-500">
+                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-r-lg hover:bg-yello-500 transition"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs">
+            © Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62
+        </div>
+    </footer>
+    <script src="./agenda-obrigacoes.js"></script>
+</body>
+</html>

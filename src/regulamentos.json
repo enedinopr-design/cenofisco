@@ -1,0 +1,37 @@
+[
+	{
+		"id": "ricms-pr",
+		"title": "Regulamento do ICMS (RICMS/PR)",
+		"summary": "Decreto nº 45.490/2000 e suas alterações, que consolida a legislação do ICMS no Estado de Paraná.",
+		"date": "01/01/2000",
+		"link": "regulamento-pr.html"
+	},
+	{
+		"id": "ripi",
+		"title": "Regulamento do IPI (RIPI)",
+		"summary": "Decreto nº 7.212/2010, que aprova o Regulamento do Imposto sobre Produtos Industrializados.",
+		"date": "15/06/2010",
+		"link": "regulamento-ipi.html"
+	},
+	{
+		"id": "rir",
+		"title": "Regulamento do Imposto de Renda (RIR)",
+		"summary": "Decreto nº 9.580/2018, que regulamenta a tributação, fiscalização, arrecadação e administração do Imposto sobre a Renda e Proventos de Qualquer Natureza.",
+		"date": "22/11/2018",
+		"link": "regulamento-rir.html"
+	},
+	{
+		"id": "rps",
+		"title": "Regulamento da Previdência Social (RPS)",
+		"summary": "Decreto nº 3.048/1999, que aprova o Regulamento da Previdência Social.",
+		"date": "06/05/1999",
+		"link": "regulamento-rps.html"
+	},
+	{
+		"id": "simples-nacional",
+		"title": "Regulamento do Simples Nacional",
+		"summary": "Resolução CGSN nº 140/2018, que dispõe sobre o Regime Especial Unificado de Arrecadação de Tributos e Contribuições devidos pelas Microempresas e Empresas de Pequeno Porte (Simples Nacional).",
+		"date": "29/05/2018",
+		"link": "regulamento-simples-nacional.html"
+	}
+]
