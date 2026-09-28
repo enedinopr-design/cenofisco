@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (sliderTrack && slides.length > 0) {
         const total = slides.length;
-        const dots = $$('.dot', slider);
+        const dots = $$('#slider-dots .dot');
         const prevBtn = document.getElementById('prev-slide');
         const nextBtn = document.getElementById('next-slide');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -308,8 +308,11 @@ document.addEventListener('DOMContentLoaded', function () {
             index = (i + total) % total;
             sliderTrack.style.transform = `translateX(${-index * (100 / total)}%)`;
             dots.forEach((dot, d) => {
-                dot.classList.toggle('opacity-100', d === index);
-                dot.classList.toggle('opacity-50', d !== index);
+                const active = d === index;
+                dot.classList.toggle('w-5', active);
+                dot.classList.toggle('bg-blue-900', active);
+                dot.classList.toggle('w-2', !active);
+                dot.classList.toggle('bg-slate-300', !active);
                 dot.setAttribute('aria-current', d === index ? 'true' : 'false');
             });
         }
