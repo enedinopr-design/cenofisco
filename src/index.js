@@ -289,7 +289,8 @@ document.addEventListener('DOMContentLoaded', function () {
      * ------------------------------------------------------------------ */
     const slider = document.getElementById('image-slider');
     const sliderTrack = slider && $('.slider-images', slider);
-    const slides = sliderTrack ? $$('img', sliderTrack) : [];
+    // Cada slide é um filho direto da trilha (link com a imagem do especial)
+    const slides = sliderTrack ? Array.from(sliderTrack.children) : [];
 
     if (sliderTrack && slides.length > 0) {
         const total = slides.length;
@@ -301,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let autoplay = null;
 
         sliderTrack.style.width = `${total * 100}%`;
-        slides.forEach(img => { img.style.width = `${100 / total}%`; });
+        slides.forEach(slide => { slide.style.width = `${100 / total}%`; });
 
         function goTo(i) {
             index = (i + total) % total;
@@ -360,6 +361,11 @@ document.addEventListener('DOMContentLoaded', function () {
         sliderTrack.addEventListener('touchmove', dragMove, { passive: true });
         window.addEventListener('mouseup', dragEnd);
         sliderTrack.addEventListener('touchend', dragEnd);
+
+        // Arrastar não deve abrir o especial do slide
+        sliderTrack.addEventListener('click', e => {
+            if (Math.abs(deltaPct) > 3) e.preventDefault();
+        });
 
         goTo(0);
         startAutoplay();

@@ -1,11 +1,11 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <title>Notícias e Destaques - Portal Fiscal</title>
+  <title>Especiais - Cenofisco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -41,7 +41,7 @@
       </a>
 
       <!-- Busca global -->
-    <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
+      <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
         <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
         <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
         <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-32 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
@@ -60,11 +60,11 @@
     <div id="main-menu" class="hidden border-t border-slate-100 md:block">
       <nav class="container mx-auto flex flex-col px-4 md:flex-row md:items-center md:gap-7" aria-label="Navegação principal">
         <a href="index.html" class="cf-nav-link">Início</a>
-        <a href="noticias.html" class="cf-nav-link" aria-current="page">Notícias</a>
+        <a href="noticias.html" class="cf-nav-link">Notícias</a>
         <a href="legislacao.html" class="cf-nav-link">Legislação</a>
         <a href="procedimentos.html" class="cf-nav-link">Procedimentos</a>
         <a href="regulamentos.html" class="cf-nav-link">Regulamentos</a>
-        <a href="especiais.html" class="cf-nav-link">Especiais</a>
+        <a href="especiais.html" class="cf-nav-link" aria-current="page">Especiais</a>
         <a href="aplicativos.html" class="cf-nav-link">Ferramentas</a>
         <a href="agenda-obrigacoes.html" class="cf-nav-link">Agenda</a>
         <a href="index.html#consultoria-cenofisco" class="cf-btn cf-btn-primary my-3 sm:hidden"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
@@ -72,100 +72,77 @@
     </div>
   </header>
 
-    <main id="conteudo" class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <!-- Left Sidebar -->
-            <aside class="busca-sidebar sticky top-30 self-start hidden md:block">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-6">
-                    <div>
-                        <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-filter text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Filtrar por Área
-                        </h3>
-                        <ul id="area-filter-list" class="space-y-2 text-sm">
-                            <li>
-                                <label class="flex items-center gap-2 p-2 rounded-md hover:bg-blue-50 cursor-pointer">
-                                    <input type="checkbox" name="area" value="todos" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" checked>
-                                    <span>Todas</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="flex items-center gap-2 p-2 rounded-md hover:bg-blue-50 cursor-pointer">
-                                    <input type="checkbox" name="area" value="Tributário" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                    <span>Tributário</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="flex items-center gap-2 p-2 rounded-md hover:bg-blue-50 cursor-pointer">
-                                    <input type="checkbox" name="area" value="Trabalhista" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                    <span>Trabalhista</span>
-                                </label>
-                            </li>
-                             <li>
-                                <label class="flex items-center gap-2 p-2 rounded-md hover:bg-blue-50 cursor-pointer">
-                                    <input type="checkbox" name="area" value="Federal" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                    <span>Federal</span>
-                                </label>
-                            </li>
-                            <li>
-                                <label class="flex items-center gap-2 p-2 rounded-md hover:bg-blue-50 cursor-pointer">
-                                    <input type="checkbox" name="area" value="Previdenciário" class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-                                    <span>Previdenciário</span>
-                                </label>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="border-t pt-6">
-                         <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                            <i class="fas fa-calendar-day text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Filtrar por Data
-                        </h3>
-                        <div class="space-y-3 text-sm">
-                            <div>
-                                <label for="date-from" class="block text-xs font-medium text-gray-700 mb-1">De:</label>
-                                <input type="date" id="date-from" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                             <div>
-                                <label for="date-to" class="block text-xs font-medium text-gray-700 mb-1">Até:</label>
-                                <input type="date" id="date-to" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </aside>
+  <!-- ===================== HERO ===================== -->
+  <section class="relative overflow-hidden bg-blue-950 text-white">
+    <svg class="pointer-events-none absolute -top-10 -right-24 hidden h-[26rem] w-[26rem] opacity-50 md:block" viewBox="0 0 400 400" aria-hidden="true">
+      <circle cx="200" cy="200" r="195" fill="#1e2a5e" stroke="#4a5c9c" stroke-width="3"/>
+      <circle cx="200" cy="200" r="178" fill="none" stroke="#56689f" stroke-width="1.5"/>
+      <circle cx="200" cy="200" r="150" fill="none" stroke="#56689f" stroke-width="1" stroke-dasharray="2 6"/>
+      <circle cx="200" cy="200" r="120" fill="none" stroke="#4a5c9c" stroke-width="1"/>
+      <g fill="#8093c9" font-family="Georgia, serif" font-size="30" text-anchor="middle">
+        <text x="200" y="52">N</text><text x="200" y="372">S</text><text x="362" y="210">E</text><text x="40" y="210">W</text>
+      </g>
+      <g fill="#6f82bd">
+        <polygon points="200,200 190,190 200,70 210,190"/><polygon points="200,200 210,210 200,330 190,210"/>
+        <polygon points="200,200 210,190 330,200 210,210"/><polygon points="200,200 190,210 70,200 190,190"/>
+        <polygon points="200,200 196,188 270,130 212,204" opacity=".7"/><polygon points="200,200 188,196 130,130 204,188" opacity=".7"/>
+        <polygon points="200,200 204,212 270,270 188,204" opacity=".7"/><polygon points="200,200 212,196 130,270 196,212" opacity=".7"/>
+      </g>
+      <g transform="rotate(20 200 200)"><polygon points="200,60 208,200 192,200" fill="#2f6fe0"/><polygon points="200,340 208,200 192,200" fill="#9aa8d4"/></g>
+      <circle cx="200" cy="200" r="9" fill="#9aa8d4" stroke="#172554" stroke-width="3"/>
+    </svg>
+    <div class="relative container mx-auto px-4 py-8 md:py-10">
+      <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
+        <a href="index.html" class="transition hover:text-white">Início</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <span class="font-bold text-white" aria-current="page">Especiais</span>
+      </nav>
+      <div class="mt-4 mb-3 flex items-center gap-3">
+        <span class="rounded bg-amber-400 px-2 py-0.5 text-[11px] font-bold tracking-wide text-blue-950 uppercase">Especiais Cenofisco</span>
+      </div>
+      <h1 class="max-w-xl text-3xl leading-tight font-bold tracking-tight md:text-4xl">Especiais</h1>
+      <p class="mt-3 max-w-xl text-sm text-blue-100 md:text-base">Conteúdos aprofundados sobre temas tributários, contábeis, trabalhistas e previdenciários, organizados em capítulos.</p>
+    </div>
+  </section>
 
-            <!-- Main Content Area -->
-            <div class="md:col-span-3 space-y-6">
-                <div class="mb-6">
-                    <a href="index.html" class="text-blue-600 hover:underline">&larr; Voltar ao Início</a>
-                </div>
+  <main id="conteudo" class="container mx-auto px-4 py-8">
 
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                        <i class="fas fa-newspaper text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Notícias e Destaques
-                    </h2>
-
-                    <div class="relative mb-8">
-                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                        <input type="text" id="noticia-search" placeholder="Buscar por título ou palavra-chave..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-
-                    <div class="space-y-6" id="noticias-list">
-                        <!-- Notícias will be loaded dynamically -->
-                    </div>
-
-                    <!-- Pagination -->
-                    <div id="pagination-container" class="flex justify-center items-center space-x-2 mt-8">
-                        <!-- Pagination buttons will be loaded dynamically -->
-                    </div>
-                </div>
-            </div>
+    <!-- Busca e filtros -->
+    <div class="mb-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div class="relative w-full lg:max-w-sm">
+          <label for="especial-search" class="sr-only">Buscar especial</label>
+          <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
+          <input type="search" id="especial-search" autocomplete="off" placeholder="Buscar por tema ou palavra-chave..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-4 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
         </div>
-    </main>
+        <div id="area-filters" class="flex flex-wrap gap-2" role="group" aria-label="Filtrar por área">
+          <!-- Filtros de área gerados a partir de especiais.json -->
+        </div>
+      </div>
+    </div>
+
+    <p id="result-count" class="mb-4 text-sm text-slate-500" aria-live="polite"></p>
+
+    <div id="especiais-list" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Especiais carregados de especiais.json -->
+    </div>
+
+    <!-- Consultoria -->
+    <div class="mt-10 flex flex-col gap-4 rounded-2xl bg-blue-950 p-6 text-white md:flex-row md:items-center md:justify-between md:p-8">
+      <div>
+        <span class="text-[11px] font-bold tracking-wide text-amber-400 uppercase">Consultoria Cenofisco</span>
+        <h2 class="mt-2 mb-1 text-lg leading-snug font-bold">Não encontrou o tema que procurava?</h2>
+        <p class="text-sm text-blue-100">Nossos consultores respondem sua consulta com base na legislação vigente.</p>
+      </div>
+      <a href="index.html#consultoria-cenofisco" class="inline-flex shrink-0 items-center gap-2 self-start rounded-lg bg-amber-400 px-4 py-2 text-sm font-bold text-blue-950 transition hover:bg-amber-300 md:self-auto">Enviar consulta <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></a>
+    </div>
+  </main>
 
     <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center gap-2 mb-4">
-                    <img  src="img/logobranco-cenofisco.png">
+                    <img src="img/logobranco-cenofisco.png" alt="Logo Cenofisco Branco">
                 </div>
                 <p class="text-sm">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
             </div>
@@ -200,6 +177,6 @@
             © Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62
         </div>
     </footer>
-    <script src="./noticias.js"></script>
+    <script src="./especiais.js"></script>
 </body>
 </html>

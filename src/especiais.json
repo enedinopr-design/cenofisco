@@ -1,0 +1,62 @@
+[
+    {
+        "sigla": "LGPD",
+        "title": "Lei Geral de Proteção de Dados Pessoais (LGPD)",
+        "area": "Federal",
+        "summary": "Tratamento de dados pessoais por pessoas físicas e jurídicas: direitos do titular, agentes de tratamento, fiscalização, penalidades e modelos práticos.",
+        "image": "",
+        "chapters": 17,
+        "updated": "11/02/2022",
+        "link": "especial-lgpd.html"
+    },
+    {
+        "sigla": "DIRPF",
+        "title": "Declaração do Imposto de Renda Pessoa Física (DIRPF)",
+        "area": "Tributário",
+        "summary": "Quem está obrigado a declarar, prazos, rendimentos, deduções permitidas e orientações para o preenchimento da declaração.",
+        "image": "img/especiais/DIRPF.jpg",
+        "chapters": null,
+        "updated": "",
+        "link": "#"
+    },
+    {
+        "sigla": "eSocial",
+        "title": "eSocial",
+        "area": "Trabalhista e Previdenciário",
+        "summary": "Escrituração digital das obrigações fiscais, previdenciárias e trabalhistas: eventos, prazos de envio e orientações por tipo de empregador.",
+        "image": "img/especiais/eSocial.jpg",
+        "chapters": null,
+        "updated": "",
+        "link": "#"
+    },
+    {
+        "sigla": "Consignado",
+        "title": "Empréstimo Consignado em Folha de Pagamento",
+        "area": "Trabalhista e Previdenciário",
+        "summary": "Regras para o desconto de empréstimos na folha de pagamento, margem consignável e responsabilidades do empregador.",
+        "image": "img/especiais/Emprestimo-Consignado-em-Folha-de-Pagamento.jpg",
+        "chapters": null,
+        "updated": "",
+        "link": "#"
+    },
+    {
+        "sigla": "COAF",
+        "title": "COAF - Prevenção à Lavagem de Dinheiro",
+        "area": "Contábil",
+        "summary": "Obrigações dos profissionais e das organizações contábeis perante o Conselho de Controle de Atividades Financeiras (COAF).",
+        "image": "img/especiais/COAF.jpg",
+        "chapters": null,
+        "updated": "",
+        "link": "#"
+    },
+    {
+        "sigla": "FEC",
+        "title": "FEC",
+        "area": "Contábil",
+        "summary": "[RESUMO DO ESPECIAL FEC]",
+        "image": "img/especiais/FEC.jpg",
+        "chapters": null,
+        "updated": "",
+        "link": "#"
+    }
+]
