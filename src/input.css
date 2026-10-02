@@ -314,7 +314,6 @@ border:1px solid #ccc;
       @apply absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-blue-900;
     }
   }
-
   /* Faixa de novidades (substitui o <marquee>, que é obsoleto) */
   .cf-ticker-track {
     display: inline-block;
