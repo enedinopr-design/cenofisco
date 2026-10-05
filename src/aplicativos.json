@@ -1,0 +1,240 @@
+[
+    {
+        "id": "calculo-de-ferias",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Cálculo de Férias",
+        "icon": "fa-umbrella-beach",
+        "link": "calculo-ferias.html"
+    },
+    {
+        "id": "calculo-de-rescisao",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Cálculo de Rescisão",
+        "icon": "fa-handshake-slash",
+        "link": ""
+    },
+    {
+        "id": "calculo-de-seguro-desemprego",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Cálculo de Seguro-Desemprego",
+        "icon": "fa-briefcase-medical",
+        "link": ""
+    },
+    {
+        "id": "calculo-do-13-salario",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Cálculo do 13º Salário",
+        "icon": "fa-gift",
+        "link": ""
+    },
+    {
+        "id": "custo-mensal-empregado-domestico",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Custo Mensal - Empregado Doméstico",
+        "icon": "fa-house-user",
+        "link": ""
+    },
+    {
+        "id": "desoneracao-da-folha-de-pagamento",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Desoneração da Folha de Pagamento",
+        "icon": "fa-money-bill-transfer",
+        "link": ""
+    },
+    {
+        "id": "inss-calculo-de-contribuicao-de-empregados",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "INSS - Cálculo de Contribuição de Empregados",
+        "icon": "fa-shield-halved",
+        "link": ""
+    },
+    {
+        "id": "periodo-aquisitivo-ferias",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Período Aquisitivo - Férias",
+        "icon": "fa-calendar-check",
+        "link": ""
+    },
+    {
+        "id": "retencao-previdenciaria-inss",
+        "categoria": "Trabalhista/Previdenciário",
+        "title": "Retenção Previdenciária - INSS",
+        "icon": "fa-hand-holding-dollar",
+        "link": ""
+    },
+    {
+        "id": "calculo-de-depreciacao",
+        "categoria": "Federal",
+        "title": "Cálculo de Depreciação",
+        "icon": "fa-chart-line",
+        "link": ""
+    },
+    {
+        "id": "calculo-de-retencoes-federais",
+        "categoria": "Federal",
+        "title": "Cálculo de Retenções Federais",
+        "icon": "fa-file-invoice-dollar",
+        "link": ""
+    },
+    {
+        "id": "calculo-de-pensao-alimenticia",
+        "categoria": "Federal",
+        "title": "Cálculo de Pensão Alimentícia",
+        "icon": "fa-child-reaching",
+        "link": ""
+    },
+    {
+        "id": "calculo-do-reintegra",
+        "categoria": "Federal",
+        "title": "Cálculo do Reintegra",
+        "icon": "fa-money-bill-trend-up",
+        "link": ""
+    },
+    {
+        "id": "comparativo-da-reforma-tributaria",
+        "categoria": "Federal",
+        "title": "Comparativo da Reforma Tributária",
+        "icon": "fa-balance-scale-right",
+        "link": ""
+    },
+    {
+        "id": "conversor-de-moedas-fiscais",
+        "categoria": "Federal",
+        "title": "Conversor de Moedas Fiscais",
+        "icon": "fa-exchange-alt",
+        "link": ""
+    },
+    {
+        "id": "exclusao-do-icms-da-base-de-calculo-do-pis-cofins",
+        "categoria": "Federal",
+        "title": "Exclusão do ICMS da Base de Cálculo do PIS/COFINS",
+        "icon": "fa-file-circle-xmark",
+        "link": ""
+    },
+    {
+        "id": "formacao-do-preco-de-venda",
+        "categoria": "Federal",
+        "title": "Formação do Preço de Venda",
+        "icon": "fa-cash-register",
+        "link": ""
+    },
+    {
+        "id": "importacao-de-servicos",
+        "categoria": "Federal",
+        "title": "Importação de Serviços",
+        "icon": "fa-file-import",
+        "link": ""
+    },
+    {
+        "id": "iof-operacoes-de-credito-e-factoring",
+        "categoria": "Federal",
+        "title": "IOF - Operações de Crédito e Factoring",
+        "icon": "fa-piggy-bank",
+        "link": ""
+    },
+    {
+        "id": "lucro-presumido",
+        "categoria": "Federal",
+        "title": "Lucro Presumido",
+        "icon": "fa-chart-pie",
+        "link": ""
+    },
+    {
+        "id": "lucro-real",
+        "categoria": "Federal",
+        "title": "Lucro Real",
+        "icon": "fa-chart-line",
+        "link": ""
+    },
+    {
+        "id": "mei-microempreendedor-individual",
+        "categoria": "Federal",
+        "title": "MEI - Microempreendedor Individual",
+        "icon": "fa-store",
+        "link": ""
+    },
+    {
+        "id": "pagamento-indevido-ou-a-maior",
+        "categoria": "Federal",
+        "title": "Pagamento Indevido ou a Maior",
+        "icon": "fa-undo",
+        "link": ""
+    },
+    {
+        "id": "pis-cofins",
+        "categoria": "Federal",
+        "title": "PIS/COFINS",
+        "icon": "fa-percent",
+        "link": ""
+    },
+    {
+        "id": "recolhimento-em-atraso",
+        "categoria": "Federal",
+        "title": "Recolhimento em Atraso",
+        "icon": "fa-calendar-times",
+        "link": ""
+    },
+    {
+        "id": "simulador-irpf",
+        "categoria": "Federal",
+        "title": "Simulador IRPF",
+        "icon": "fa-user-tie",
+        "link": ""
+    },
+    {
+        "id": "simulador-plr",
+        "categoria": "Federal",
+        "title": "Simulador PLR",
+        "icon": "fa-chart-simple",
+        "link": ""
+    },
+    {
+        "id": "simples-nacional",
+        "categoria": "Federal",
+        "title": "Simples Nacional",
+        "icon": "fa-percent",
+        "link": ""
+    },
+    {
+        "id": "pert-simples-nacional",
+        "categoria": "Federal",
+        "title": "PERT-SIMPLES Nacional",
+        "icon": "fa-file-signature",
+        "link": ""
+    },
+    {
+        "id": "difal-ec-87-2015-nao-contribuinte",
+        "categoria": "Estadual",
+        "title": "Difal - EC 87/2015 - Não contribuinte",
+        "icon": "fa-right-left",
+        "link": ""
+    },
+    {
+        "id": "mva-ajustado",
+        "categoria": "Estadual",
+        "title": "MVA-Ajustado",
+        "icon": "fa-scale-unbalanced",
+        "link": ""
+    },
+    {
+        "id": "reducao-de-icms-na-operacao-propria",
+        "categoria": "Estadual",
+        "title": "Redução de ICMS na Operação Própria",
+        "icon": "fa-arrow-trend-down",
+        "link": ""
+    },
+    {
+        "id": "icms-importacao",
+        "categoria": "Estadual",
+        "title": "ICMS-Importação",
+        "icon": "fa-ship",
+        "link": ""
+    },
+    {
+        "id": "sup-sociedades-de-profissionais",
+        "categoria": "Municipal",
+        "title": "SUP - Sociedades de Profissionais",
+        "icon": "fa-user-group",
+        "link": ""
+    }
+]
