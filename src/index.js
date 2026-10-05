@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const regulamentosEstados = document.getElementById('regulamentos-estados');
     if (regulamentosEstados) {
         regulamentosEstados.innerHTML = UFS.map(({ uf, nome, bandeira, link }) => `
-            <a href="${link || 'regulamentos.html'}" class="group state-item" title="Regulamento do ICMS – ${nome}" aria-label="Regulamento do ICMS – ${nome}">
+            <a href="${link || `regulamentos.html?esfera=estadual&uf=${uf}`}" class="group state-item" title="Regulamento do ICMS – ${nome}" aria-label="Regulamento do ICMS – ${nome}">
                 <span class="state-abbr rounded-md bg-slate-100 text-xs font-semibold text-slate-600 transition-all duration-300 group-hover:scale-90 group-hover:opacity-0 group-focus-visible:opacity-0">${uf}</span>
                 <img class="state-flag rounded-md object-cover shadow-sm transition-all duration-300 group-hover:opacity-100 group-focus-visible:opacity-100" src="img/bandeiras/${bandeira}.png" alt="" loading="lazy">
             </a>`).join('');

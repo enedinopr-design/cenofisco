@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,42 +73,83 @@
     </div>
   </header>
 
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-blue-950 text-white">
+    <div class="container mx-auto px-4 py-8 md:py-10">
+      <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
+        <a href="index.html" class="transition hover:text-white">Início</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <span class="font-bold text-white" aria-current="page">Regulamentos</span>
+      </nav>
+      <div class="mt-4 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <h1 class="text-3xl leading-tight font-bold tracking-tight md:text-4xl">Regulamentos</h1>
+          <p class="mt-3 max-w-xl text-sm text-blue-100 md:text-base">Regulamentos federais, estaduais e municipais consolidados e atualizados, com índice por Livro, Título e artigo.</p>
+        </div>
+        <!-- Números por esfera (preenchidos por regulamentos.js); clicar filtra a lista -->
+        <div id="esfera-stats" class="grid grid-cols-3 gap-3 sm:min-w-[26rem]"></div>
+      </div>
+    </div>
+  </section>
+
     <main id="conteudo" class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
-            <!-- Sidebar de Artigos -->
-            <aside class="lg:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100 sticky top-24 self-start">
-                <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                    <i class="fas fa-book-open text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Regulamentos Salvos
-                </h3>
-                <ul id="articles-list" class="space-y-2 text-sm">
-                    <!-- Artigos serão carregados via JavaScript -->
-                </ul>
+        <div class="grid items-start gap-8 lg:grid-cols-[17rem_1fr]">
+
+            <!-- ============ LATERAL ============ -->
+            <!-- No celular a lateral vem depois da lista; no desktop fica à esquerda -->
+            <aside class="order-last space-y-6 lg:sticky lg:top-30 lg:order-none">
+                <!-- Filtro por tributo -->
+                <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-tributos">
+                    <h2 id="titulo-tributos" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+                        <span class="inline-flex size-8 items-center justify-center rounded-lg bg-blue-50 text-blue-700"><i class="fa-solid fa-filter text-sm" aria-hidden="true"></i></span>
+                        Tributo
+                    </h2>
+                    <ul id="tributo-filters" class="space-y-0.5 text-sm">
+                        <!-- Gerado a partir de regulamentos.json -->
+                    </ul>
+                </section>
+
+                <!-- Regulamentos salvos -->
+                <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-salvos">
+                    <h2 id="titulo-salvos" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+                        <span class="inline-flex size-8 items-center justify-center rounded-lg bg-amber-50 text-amber-500"><i class="fa-solid fa-bookmark text-sm" aria-hidden="true"></i></span>
+                        Regulamentos Salvos
+                    </h2>
+                    <ul id="articles-list" class="space-y-1 text-sm">
+                        <!-- Gerado via JavaScript -->
+                    </ul>
+                </section>
             </aside>
 
-            <!-- Conteúdo Principal de Regulamentos -->
-            <div class="lg:col-span-3 space-y-6">
-                <div class="mb-6">
-                    <a href="index.html" class="text-blue-600 hover:underline">&larr; Voltar ao Início</a>
+            <!-- ============ LISTA ============ -->
+            <div class="min-w-0 space-y-5">
+                <!-- Esfera, busca e UF -->
+                <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+                    <div id="esfera-tabs" class="cf-tabs mb-4 border-b border-slate-200" role="tablist" aria-label="Esfera">
+                        <!-- Abas geradas via JavaScript -->
+                    </div>
+                    <div class="flex flex-col gap-3 sm:flex-row">
+                        <div class="relative flex-1">
+                            <label for="regulation-search" class="sr-only">Buscar regulamento</label>
+                            <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
+                            <input type="search" id="regulation-search" autocomplete="off" placeholder="Buscar por regulamento, norma, estado ou município..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-4 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
+                        </div>
+                        <div id="uf-filter-wrap" class="sm:w-60">
+                            <label for="uf-filter" class="sr-only">Estado (UF)</label>
+                            <select id="uf-filter" class="cf-input rounded-full py-2.5">
+                                <option value="">Todos os estados</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex flex-wrap items-center justify-between gap-2">
+                        <p id="result-count" class="text-sm text-slate-500" aria-live="polite"></p>
+                        <button type="button" id="clear-filters" class="hidden cursor-pointer text-sm font-medium text-blue-700 hover:text-blue-900 hover:underline">Limpar filtros</button>
+                    </div>
                 </div>
 
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                        <i class="fas fa-gavel text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Regulamentos
-                    </h2>
-
-                    <div class="relative mb-8">
-                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                        <input type="text" id="regulation-search" placeholder="Buscar regulamento por título ou palavra-chave..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
-                    </div>
-
-                    <div id="regulations-list" class="space-y-6">
-                        <!-- Regulamentos serão carregados via JavaScript -->
-                    </div>
-
-                    <!-- Paginação -->
-                    <div id="pagination-container" class="flex justify-center items-center space-x-2 mt-8">
-                        <!-- Botões de paginação serão carregados via JavaScript -->
-                    </div>
+                <!-- Resultados agrupados (Federais / Estaduais / Municipais) -->
+                <div id="regulations-results" class="space-y-8">
+                    <!-- Gerado via JavaScript -->
                 </div>
             </div>
         </div>
