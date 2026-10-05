@@ -375,6 +375,96 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ------------------------------------------------------------------
+     * Slider de banners da lateral (setas, indicadores, arrastar e autoplay)
+     * ------------------------------------------------------------------ */
+    const bannerSlider = document.getElementById('banner-slider');
+    const bannerTrack = bannerSlider && $('.banner-track', bannerSlider);
+    const bannerSlides = bannerTrack ? Array.from(bannerTrack.children) : [];
+
+    if (bannerTrack && bannerSlides.length > 0) {
+        const total = bannerSlides.length;
+        const dotsBox = $('.banner-dots', bannerSlider);
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let index = 0;
+        let autoplay = null;
+
+        // Indicadores gerados conforme a quantidade de slides
+        const dots = bannerSlides.map((_, i) => {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'h-1.5 cursor-pointer rounded-full transition-all';
+            dot.setAttribute('aria-label', `Ir para o banner ${i + 1}`);
+            dot.addEventListener('click', () => goTo(i));
+            dotsBox.appendChild(dot);
+            return dot;
+        });
+        if (total < 2) dotsBox.classList.add('hidden');
+
+        function goTo(i) {
+            index = (i + total) % total;
+            bannerTrack.style.transform = `translateX(${-index * 100}%)`;
+            bannerSlides.forEach((slide, s) => {
+                slide.setAttribute('aria-hidden', s === index ? 'false' : 'true');
+                slide.tabIndex = s === index ? 0 : -1;
+            });
+            dots.forEach((dot, d) => {
+                const active = d === index;
+                dot.classList.toggle('w-5', active);
+                dot.classList.toggle('bg-white', active);
+                dot.classList.toggle('w-1.5', !active);
+                dot.classList.toggle('bg-white/50', !active);
+                dot.setAttribute('aria-current', active ? 'true' : 'false');
+            });
+        }
+
+        const startAutoplay = () => {
+            if (reduceMotion || autoplay || total < 2) return;
+            autoplay = setInterval(() => goTo(index + 1), 5000);
+        };
+        const stopAutoplay = () => { clearInterval(autoplay); autoplay = null; };
+
+        $('.banner-prev', bannerSlider)?.addEventListener('click', () => goTo(index - 1));
+        $('.banner-next', bannerSlider)?.addEventListener('click', () => goTo(index + 1));
+
+        bannerSlider.addEventListener('mouseenter', stopAutoplay);
+        bannerSlider.addEventListener('mouseleave', startAutoplay);
+        bannerSlider.addEventListener('focusin', stopAutoplay);
+        bannerSlider.addEventListener('focusout', startAutoplay);
+
+        // Arrastar (mouse e toque)
+        let dragging = false, startX = 0, deltaPct = 0;
+        const pointX = e => (e.touches ? e.touches[0].clientX : e.clientX);
+
+        bannerTrack.addEventListener('mousedown', e => { dragging = true; startX = pointX(e); deltaPct = 0; bannerTrack.classList.remove('transition-transform'); stopAutoplay(); });
+        bannerTrack.addEventListener('touchstart', e => { dragging = true; startX = pointX(e); deltaPct = 0; bannerTrack.classList.remove('transition-transform'); stopAutoplay(); }, { passive: true });
+        const bannerMove = e => {
+            if (!dragging) return;
+            deltaPct = ((pointX(e) - startX) / bannerSlider.offsetWidth) * 100;
+            bannerTrack.style.transform = `translateX(${-index * 100 + deltaPct}%)`;
+        };
+        const bannerEnd = () => {
+            if (!dragging) return;
+            dragging = false;
+            bannerTrack.classList.add('transition-transform');
+            if (deltaPct < -20) goTo(index + 1);
+            else if (deltaPct > 20) goTo(index - 1);
+            else goTo(index);
+        };
+        window.addEventListener('mousemove', bannerMove);
+        bannerTrack.addEventListener('touchmove', bannerMove, { passive: true });
+        window.addEventListener('mouseup', bannerEnd);
+        bannerTrack.addEventListener('touchend', bannerEnd);
+
+        // Arrastar não deve abrir o link do banner
+        bannerTrack.addEventListener('click', e => {
+            if (Math.abs(deltaPct) > 3) e.preventDefault();
+        });
+
+        goTo(0);
+        startAutoplay();
+    }
+
+    /* ------------------------------------------------------------------
      * Legislação (filtros + busca avançada) — dados em legislacao.json
      * ------------------------------------------------------------------ */
     const legislacaoArticlesContainer = document.getElementById('legislacao-articles');
