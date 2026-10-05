@@ -1,51 +1,72 @@
 [
     {
+        "id": "indice-de-precos-ao-consumidor-ipc-fipe",
         "area": "Contabilidade",
         "title": "Índice de Preços ao Consumidor (IPC) (FIPE)",
         "summary": "Abr. - Mensal = 0,40%",
-        "details": "Indicadores e Taxas | 07/05/2026",
+        "assunto": "Indicadores e Taxas",
+        "date": "07/05/2026",
+        "numero": "",
         "link": "#"
     },
     {
+        "id": "cesta-basica-alimentos-e-construcao-civil-tratamento-fiscal",
         "area": "ICMS e Outros",
         "title": "Cesta Básica (Alimentos e Construção Civil) - Tratamento Fiscal",
         "summary": "Trabalho com esclarecimentos sobre o tratamento fiscal dispensados às operações com produtos da cesta básica de alimentos e da construção civil.",
-        "details": "Paraná | 05/05/2026 | Número: 19/2026",
+        "assunto": "Paraná",
+        "date": "05/05/2026",
+        "numero": "19/2026",
         "link": "#"
     },
     {
+        "id": "contribuicao-adicional-senai",
         "area": "Prev/Trab",
         "title": "Contribuição Adicional - SENAI",
         "summary": "Procedimentos sobre a contribuição adicional para o Serviço Nacional de Aprendizagem Industrial (SENAI).",
-        "details": "Previdência Social | 05/05/2026 | Número: 19/2026",
+        "assunto": "Previdência Social",
+        "date": "05/05/2026",
+        "numero": "19/2026",
         "link": "#"
     },
     {
+        "id": "declaracao-de-ajuste-anual-do-irpf-2026",
         "area": "IR",
         "title": "Declaração de Ajuste Anual do IRPF 2026",
         "summary": "Procedimentos e prazos para a entrega da Declaração de Imposto de Renda Pessoa Física.",
-        "details": "Federal | 01/05/2026",
+        "assunto": "Federal",
+        "date": "01/05/2026",
+        "numero": "",
         "link": "#"
     },
     {
+        "id": "esocial-novos-eventos-de-sst",
         "area": "Federal",
         "title": "eSocial - Novos Eventos de SST",
         "summary": "Orientações sobre o preenchimento e envio dos novos eventos de Saúde e Segurança do Trabalho no eSocial.",
-        "details": "Federal | 28/04/2026",
+        "assunto": "Federal",
+        "date": "28/04/2026",
+        "numero": "",
         "link": "#"
     },
     {
+        "id": "iss-retencao-na-fonte-para-servicos-de-ti",
         "area": "ISS e Outros",
         "title": "ISS - Retenção na Fonte para Serviços de TI",
         "summary": "Análise sobre a obrigatoriedade de retenção do ISS para serviços de tecnologia da informação prestados por empresas de outros municípios.",
-        "details": "Municipal - São Paulo | 25/04/2026",
+        "assunto": "Municipal - São Paulo",
+        "date": "25/04/2026",
+        "numero": "",
         "link": "#"
     },
     {
+        "id": "normas-de-contabilidade-para-criptoativos",
         "area": "Contabilidade",
         "title": "Normas de Contabilidade para Criptoativos",
         "summary": "Procedimentos contábeis para o registro e mensuração de criptoativos no balanço das empresas.",
-        "details": "Contabilidade | 22/04/2026",
+        "assunto": "Contabilidade",
+        "date": "22/04/2026",
+        "numero": "",
         "link": "#"
     }
 ]
