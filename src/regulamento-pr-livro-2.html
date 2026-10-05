@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <title>RICMS/PR - Regulamentos - Cenofisco</title>
+  <title>Livro II - RICMS/PR - Cenofisco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -80,7 +80,9 @@
             <i class="fa-solid fa-chevron-right text-[9px] text-slate-400" aria-hidden="true"></i>
             <a href="regulamentos.html" class="transition hover:text-blue-800">Regulamentos</a>
             <i class="fa-solid fa-chevron-right text-[9px] text-slate-400" aria-hidden="true"></i>
-            <span class="font-semibold text-slate-800" aria-current="page">RICMS/PR</span>
+            <a href="regulamento-pr.html" class="transition hover:text-blue-800">RICMS/PR</a>
+            <i class="fa-solid fa-chevron-right text-[9px] text-slate-400" aria-hidden="true"></i>
+            <span class="font-semibold text-slate-800" aria-current="page">Livro II</span>
         </nav>
 
         <div class="grid items-start gap-8 lg:grid-cols-[18rem_1fr]">
@@ -139,8 +141,8 @@
                             <button type="button" onclick="window.print()" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition hover:bg-slate-50 hover:text-blue-900" aria-label="Imprimir"><i class="fa-solid fa-print text-sm" aria-hidden="true"></i></button>
                         </div>
                     </div>
-                    <h1 class="mt-2 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">Regulamento do ICMS do Paraná (RICMS/PR)</h1>
-                    <p class="mt-2 text-sm text-slate-500">Aprovado pelo Decreto nº 7.871, de 29 de setembro de 2017 · DOE-PR de 03/10/2017 (nº 10.041, pág. 4)</p>
+                    <h1 class="mt-2 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">RICMS/PR — Livro II</h1>
+                    <p class="mt-2 text-sm text-slate-500">[Denominação do Livro II] · Arts. 10 a 15</p>
                 </header>
 
                 <!-- Barra de localização: mostra onde o leitor está (Livro › Título › Subtítulo › Art.) -->
@@ -156,27 +158,40 @@
                       O conteúdo entre colchetes é EXEMPLO de estrutura — substituir pelo texto oficial.
                     -->
 
-                    <section>
-                    <h2 id="decreto" data-nivel="decreto" class="reg-h mb-4 text-lg font-bold text-slate-900"><span class="reg-num block">Decreto nº 7.871/2017</span><span class="reg-nome mt-1 block text-sm font-medium text-slate-500">Aprova o RICMS/PR</span></h2>
-                    <p>O GOVERNADOR DO ESTADO DO PARANÁ, no uso das atribuições que lhe confere o inciso V do caput do
-                        art. 87 da Constituição Estadual e tendo em vista o disposto na Lei nº 11.580, de 14 de novembro
-                        de 1996, no parágrafo único do art. 9º da Lei Complementar nº 107, de 11 de janeiro de 2005 e
-                        no art. 212 do Código Tributário Nacional - CTN, decreta:</p>
-                    <p class="mt-3"><strong class="text-slate-900">Art. 1º</strong> Fica aprovado o Regulamento do Imposto sobre Operações Relativas à Circulação
-                        de Mercadorias e sobre Prestações de Serviços de Transporte Interestadual e Intermunicipal
-                        e de Comunicação do Estado do Paraná - RICMS/PR, anexo ao presente.</p>
-                    <p class="mt-3"><strong class="text-slate-900">Art. 2º</strong> As remissões ao Regulamento do ICMS, aprovado pelo Decreto nº 6.080, de 28 de
-                        setembro de 2012, constantes em normas de procedimento fiscal ou administrativo e em
-                        regimes especiais, vigentes em 30 de setembro de 2017, entendem-se reportadas no que
-                        couber, aos dispositivos que tratam das correspondentes matérias no Regulamento do ICMS
-                        anexo ao presente.</p>
-                    </section>
-
-                    <!-- Partes do regulamento (cartões montados por regulamento.js a partir de regulamento-pr.json) -->
-                    <section class="border-t border-slate-200 pt-6" aria-labelledby="titulo-partes">
-                        <h2 id="titulo-partes" class="mb-4 text-lg font-bold text-slate-900">Partes do regulamento</h2>
-                        <div id="reg-partes" class="grid gap-3 sm:grid-cols-2"></div>
-                    </section>
+                    <h2 id="livro-2" data-nivel="livro" class="reg-h mt-12 mb-6 border-t-2 border-blue-900 pt-6 text-center text-lg font-bold tracking-wide text-blue-950 uppercase"><span class="reg-num block">Livro II</span><span class="reg-nome mt-1 block text-[0.95em] font-semibold normal-case">[Denominação do Livro II]</span></h2>
+                    <h3 id="livro-2-titulo-1" data-nivel="titulo" class="reg-h mt-10 mb-4 text-center font-bold text-slate-900 uppercase"><span class="reg-num block">Título I</span><span class="reg-nome mt-1 block text-[0.95em] font-semibold normal-case">[Denominação do Título I]</span></h3>
+                    <h4 id="livro-2-titulo-1-subtitulo-1" data-nivel="subtitulo" class="reg-h mt-8 mb-3 text-center font-semibold text-slate-800"><span class="reg-num block">Subtítulo I</span><span class="reg-nome mt-1 block text-[0.95em] font-semibold normal-case">[Denominação do Subtítulo I]</span></h4>
+                    <div id="art-10" data-art="10" class="artigo scroll-mt-8">
+                        <p><strong class="text-slate-900">Art. 10</strong> [Texto do art. 10 do Regulamento.]</p>
+                        <p class="mt-2 pl-6">§ 1º [Texto do parágrafo.]</p>
+                        <p class="mt-2 pl-6">I - [Texto do inciso.]</p>
+                    </div>
+                    <div id="art-11" data-art="11" class="artigo scroll-mt-8">
+                        <p><strong class="text-slate-900">Art. 11</strong> [Texto do art. 11 do Regulamento.]</p>
+                        <p class="mt-2 pl-6">§ 1º [Texto do parágrafo.]</p>
+                        <p class="mt-2 pl-6">I - [Texto do inciso.]</p>
+                    </div>
+                    <div id="art-12" data-art="12" class="artigo scroll-mt-8">
+                        <p><strong class="text-slate-900">Art. 12</strong> [Texto do art. 12 do Regulamento.]</p>
+                        <p class="mt-2 pl-6">§ 1º [Texto do parágrafo.]</p>
+                        <p class="mt-2 pl-6">I - [Texto do inciso.]</p>
+                    </div>
+                    <h3 id="livro-2-titulo-2" data-nivel="titulo" class="reg-h mt-10 mb-4 text-center font-bold text-slate-900 uppercase"><span class="reg-num block">Título II</span><span class="reg-nome mt-1 block text-[0.95em] font-semibold normal-case">[Denominação do Título II]</span></h3>
+                    <div id="art-13" data-art="13" class="artigo scroll-mt-8">
+                        <p><strong class="text-slate-900">Art. 13</strong> [Texto do art. 13 do Regulamento.]</p>
+                        <p class="mt-2 pl-6">§ 1º [Texto do parágrafo.]</p>
+                        <p class="mt-2 pl-6">I - [Texto do inciso.]</p>
+                    </div>
+                    <div id="art-14" data-art="14" class="artigo scroll-mt-8">
+                        <p><strong class="text-slate-900">Art. 14</strong> [Texto do art. 14 do Regulamento.]</p>
+                        <p class="mt-2 pl-6">§ 1º [Texto do parágrafo.]</p>
+                        <p class="mt-2 pl-6">I - [Texto do inciso.]</p>
+                    </div>
+                    <div id="art-15" data-art="15" class="artigo scroll-mt-8">
+                        <p><strong class="text-slate-900">Art. 15</strong> [Texto do art. 15 do Regulamento.]</p>
+                        <p class="mt-2 pl-6">§ 1º [Texto do parágrafo.]</p>
+                        <p class="mt-2 pl-6">I - [Texto do inciso.]</p>
+                    </div>
                 </div>
 
                 <!-- Navegação entre as partes (anterior / próxima), montada por regulamento.js -->

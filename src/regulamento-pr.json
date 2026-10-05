@@ -1,0 +1,57 @@
+{
+  "id": "ricms-pr",
+  "titulo": "Regulamento do ICMS (RICMS/PR)",
+  "capa": "regulamento-pr.html",
+  "partes": [
+    {
+      "id": "decreto",
+      "nivel": "decreto",
+      "num": "Decreto nº 7.871/2017",
+      "nome": "Aprova o RICMS/PR",
+      "pagina": "regulamento-pr.html"
+    },
+    {
+      "id": "livro-1",
+      "nivel": "livro",
+      "num": "Livro I",
+      "nome": "[Denominação do Livro I]",
+      "pagina": "regulamento-pr-livro-1.html",
+      "arts": [
+        1,
+        9
+      ]
+    },
+    {
+      "id": "livro-2",
+      "nivel": "livro",
+      "num": "Livro II",
+      "nome": "[Denominação do Livro II]",
+      "pagina": "regulamento-pr-livro-2.html",
+      "arts": [
+        10,
+        15
+      ]
+    },
+    {
+      "id": "anexo-1",
+      "nivel": "anexo",
+      "num": "Anexo I",
+      "nome": "[Denominação do Anexo I]",
+      "pagina": "regulamento-pr-anexos.html"
+    },
+    {
+      "id": "anexo-2",
+      "nivel": "anexo",
+      "num": "Anexo II",
+      "nome": "[Denominação do Anexo II]",
+      "pagina": "regulamento-pr-anexos.html"
+    },
+    {
+      "id": "anexo-3",
+      "nivel": "anexo",
+      "num": "Anexo III",
+      "nome": "[Denominação do Anexo III]",
+      "pagina": "regulamento-pr-anexos.html"
+    }
+  ]
+}
