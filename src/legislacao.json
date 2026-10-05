@@ -1,5 +1,6 @@
 [
     {
+        "id": "lei-n-15-396-de-28-de-abril-de-2026-29-04-2026",
         "type": "federal",
         "title": "LEI Nº 15.396, DE 28 DE ABRIL DE 2026",
         "summary": "Dispõe sobre o ofício de profissional da dança.",
@@ -7,7 +8,9 @@
         "area": "Federal",
         "tipo_de_publicacao": "LEI",
         "link": "detail.html?title=LEI%20N%C2%BA%2015.396%2C%20DE%2028%20DE%20ABRIL%20DE%202026"
-    },{
+    },
+    {
+        "id": "resolucao-cfo-n-287-de-22-de-abril-de-2026-29-04-2026",
         "type": "federal",
         "title": "RESOLUÇÃO CFO Nº 287, DE 22 DE ABRIL DE 2026",
         "summary": "Dispõe sobre a fixação de carga horária mínima de estágio supervisionado nos cursos de formação de Técnico em Saúde Bucal (TSB) e dá outras providências.",
@@ -17,6 +20,7 @@
         "link": "detail.html?title=RESOLU%C3%87%C3%83O%20CFO%20N%C2%BA%20287%2C%20DE%2022%20DE%20ABRIL%20DE%202026"
     },
     {
+        "id": "resolucao-cm-cmed-n-6-de-28-de-abril-de-2026-29-04-2026",
         "type": "federal",
         "title": "RESOLUÇÃO CM/CMED Nº 6, DE 28 DE ABRIL DE 2026",
         "summary": "Dispõe sobre a prorrogação do prazo de vacatio legis da Resolução CM-CMED nº 3, de 29 de dezembro de 2025.",
@@ -24,8 +28,9 @@
         "area": "CMED/CG/PR",
         "tipo_de_publicacao": "PUBLICAÇÃO NA ÍNTEGRA",
         "link": "detail.html?title=RESOLU%C3%87%C3%83O%20CM%2FCMED%20N%C2%BA%206%2C%20DE%2028%20DE%20ABRIL%20DE%202026"
-    }, 
+    },
     {
+        "id": "ato-cotepe-icms-n-57-de-28-de-abril-de-2026-29-04-2026",
         "type": "federal",
         "title": "ATO COTEPE/ICMS Nº 57, DE 28 DE ABRIL DE 2026",
         "summary": "Dispõe sobre o ofício de profissional da dança.",
@@ -33,8 +38,9 @@
         "area": "",
         "tipo_de_publicacao": "PUBLICAÇÃO NA ÍNTEGRA",
         "link": "detail.html?title=ATO%20COTEPE%2FICMS%20N%C2%BA%2057%2C%20DE%2028%20DE%20ABRIL%20DE%202026"
-    }, 
+    },
     {
+        "id": "ato-cotepe-icms-n-58-de-28-de-abril-de-2026-29-04-2026",
         "type": "federal",
         "title": "ATO COTEPE/ICMS Nº 58, DE 28 DE ABRIL DE 2026",
         "summary": "Altera o Ato COTEPE/ICMS nº 5, de 10 de janeiro de 2020, que divulga relação de contribuintes credenciados pelas Unidades Federadas para usufruir dos benefícios fiscais previstos no Convênio ICMS 03/18.'",
@@ -42,8 +48,9 @@
         "area": "CONFAZ/MF ",
         "tipo_de_publicacao": "PUBLICAÇÃO NA ÍNTEGRA",
         "link": "detail.html?title=ATO%20COTEPE%2FICMS%20N%C2%BA%2058%2C%20DE%2028%20DE%20ABRIL%20DE%202026"
-    },   
+    },
     {
+        "id": "lei-n-15-396-de-28-de-abril-de-2026-15-04-2026",
         "type": "federal",
         "title": "LEI Nº 15.396, DE 28 DE ABRIL DE 2026",
         "summary": "Dispõe sobre o ofício de profissional da dança.",
@@ -53,6 +60,7 @@
         "link": "detail.html?title=LEI%20N%C2%BA%2015.396%2C%20DE%2028%20DE%20ABRIL%20DE%202026"
     },
     {
+        "id": "lei-n-18-447-de-28-de-abril-de-2026-29-04-2026",
         "type": "estadual",
         "estado": "SP",
         "title": "LEI Nº 18.447, DE 28 DE ABRIL DE 2026",
@@ -62,7 +70,8 @@
         "tipo_de_publicacao": "LEI",
         "link": "detail.html?title=LEI%20N%C2%BA%2018.447%2C%20DE%2028%20DE%20ABRIL%20DE%202026"
     },
-     {
+    {
+        "id": "decreto-n-13-467-de-27-de-abril-de-2026-27-04-2026",
         "type": "estadual",
         "estado": "PR",
         "title": "DECRETO Nº 13.467, DE 27 DE ABRIL DE 2026",
@@ -73,6 +82,7 @@
         "link": "detail.html?title=DECRETO%20N%C2%BA%2013.467%2C%20DE%2027%20DE%20ABRIL%20DE%202026"
     },
     {
+        "id": "lei-n-11-234-de-27-de-abril-de-2026-rj-20-04-2026",
         "type": "estadual",
         "estado": "RJ",
         "title": "LEI Nº 11.234, DE 27 DE ABRIL DE 2026 - RJ",
@@ -83,6 +93,7 @@
         "link": "detail.html?title=LEI%20N%C2%BA%2011.234%2C%20DE%2027%20DE%20ABRIL%20DE%202026%20-%20RJ"
     },
     {
+        "id": "portaria-smt-setram-n-015-de-28-de-abril-de-2026-sao-paulo-29-04-2026",
         "type": "municipal",
         "municipio": "São Paulo",
         "estado": "SP",
