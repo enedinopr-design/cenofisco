@@ -19,7 +19,7 @@ html { scroll-behavior: smooth; }
 body.lp { margin: 0; font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--lp-ink); background: var(--lp-bg); -webkit-font-smoothing: antialiased; line-height: 1.5; }
 .lp img { max-width: 100%; display: block; }
 .lp a { color: inherit; }
-.lp-container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+.lp-container { width: 100%; max-width: 80rem; margin: 0 auto; padding: 0 20px; }
 .lp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* Botões */
