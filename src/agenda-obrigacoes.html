@@ -79,43 +79,47 @@
     <main id="conteudo" class="container mx-auto px-4 py-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
             <!-- Left Sidebar -->
-            <aside class="busca-sidebar self-start relative">
-                <!-- Section for Saved Calculations (from other apps like Férias) -->
-                <div class="bg-white p-6 calendar-container relative rounded-xl shadow-sm border border-gray-100 mt-4">
-                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-clock-rotate-left text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Agenda do Mês
+            <!-- Lateral fixa: calendário e obrigações salvas acompanham a rolagem (com rolagem própria se passar da altura da tela) -->
+            <aside class="busca-sidebar relative self-start md:sticky md:top-30 md:max-h-[calc(100vh-8.5rem)] md:overflow-y-auto md:pr-1 md:pb-2">
+                <!-- Calendário do mês (montado por agenda-obrigacoes.js a partir de agenda.json) -->
+                <section class="calendar-container mt-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-calendario">
+                    <h3 id="titulo-calendario" class="mb-4 flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
+                        <span class="inline-flex size-9 items-center justify-center rounded-lg bg-blue-50 text-blue-700"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i></span>
+                        Agenda do Mês
                     </h3>
-                        <div class="flex justify-between items-center mb-4">
-                            <button id="prevMonth" class="px-3 py-1 bg-gray-100 rounded-md hover:bg-gray-200 transition text-gray-700 text-sm"><i class="fas fa-chevron-left"></i></button>
-                            <span id="currentMonthYear" class="font-semibold text-lg text-gray-800"></span>
-                            <button id="nextMonth" class="px-3 py-1 bg-gray-100 rounded-md hover:bg-gray-200 transition text-gray-700 text-sm"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-                        <div class="grid grid-cols-7 text-center text-xs font-medium text-gray-500 mb-2">
-                            <span>Dom</span>
-                            <span>Seg</span>
-                            <span>Ter</span>
-                            <span>Qua</span>
-                            <span>Qui</span>
-                            <span>Sex</span>
-                            <span>Sáb</span>
-                        </div>
-                        <div id="calendarDays" class="grid grid-cols-7 gap-1 text-sm">
-                            <!-- Os dias serão populados via JavaScript -->
-                        </div>
-                        
-                  
-                </div>
-                <div class="md:sticky md:top-30">
-                <!-- New section for Saved Agenda Days -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mt-4">
-                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fa-solid fa-bookmark text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Obrigações Salvas
+
+                    <div class="mb-3 flex items-center justify-between">
+                        <button type="button" id="prevMonth" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg bg-slate-100 text-sm text-slate-600 transition hover:bg-slate-200 disabled:cursor-not-allowed disabled:opacity-40" aria-label="Mês anterior"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+                        <span id="currentMonthYear" class="font-semibold text-slate-800" aria-live="polite"></span>
+                        <button type="button" id="nextMonth" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg bg-slate-100 text-sm text-slate-600 transition hover:bg-slate-200 disabled:cursor-not-allowed disabled:opacity-40" aria-label="Próximo mês"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+                    </div>
+
+                    <div class="mb-1 grid grid-cols-7 text-center text-[11px] font-semibold tracking-wide text-slate-400 uppercase" aria-hidden="true">
+                        <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                    </div>
+                    <div id="calendarDays" class="grid grid-cols-7 gap-1 text-sm">
+                        <!-- Dias gerados via JavaScript -->
+                    </div>
+
+                    <!-- Legenda -->
+                    <ul class="mt-4 flex flex-wrap gap-x-4 gap-y-1.5 border-t border-slate-100 pt-3 text-xs text-slate-500">
+                        <li class="flex items-center gap-1.5"><span class="size-3 rounded bg-blue-50 ring-1 ring-blue-200" aria-hidden="true"></span>Com vencimentos</li>
+                        <li class="flex items-center gap-1.5"><span class="size-2 rounded-full bg-amber-400" aria-hidden="true"></span>Obrigação salva</li>
+                        <li class="flex items-center gap-1.5"><span class="size-3 rounded ring-2 ring-blue-600" aria-hidden="true"></span>Hoje</li>
+                    </ul>
+
+                    <p id="calendar-summary" class="mt-3 text-xs text-slate-500"></p>
+                </section>
+                <!-- Obrigações salvas (montadas por agenda-obrigacoes.js) -->
+                <section class="mt-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-salvas">
+                    <h3 id="titulo-salvas" class="mb-3 flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900">
+                        <span class="inline-flex size-9 items-center justify-center rounded-lg bg-amber-50 text-amber-500"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
+                        Obrigações Salvas
                     </h3>
                     <ul id="saved-agenda-days-list" class="space-y-2 text-sm">
-                        <!-- Saved agenda days will be populated via JS -->
+                        <!-- Preenchido via JavaScript -->
                     </ul>
-                </div>
-                </div>
+                </section>
             </aside>
 
             <!-- Main Content Area -->
