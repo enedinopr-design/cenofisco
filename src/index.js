@@ -816,6 +816,60 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ------------------------------------------------------------------
+     * Indicadores e Taxas: último mês de cada série (SGS/Banco Central),
+     * seta comparando com o mês anterior; cada linha abre indicadores.html
+     * ------------------------------------------------------------------ */
+    const homeIndicadores = document.getElementById('home-indicadores');
+    if (homeIndicadores && window.CF_INDICADORES) {
+        const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+        const fmt = (v, casas) => `${v.toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas })}%`;
+        const buscar = url => fetch(url).then(r => {
+            if (!r.ok) throw new Error(`HTTP ${r.status}`);
+            return r.json();
+        });
+        // A API do BCB às vezes falha numa requisição isolada: tenta mais uma vez após 1,5 s
+        const ultimos = ind => {
+            const url = `https://api.bcb.gov.br/dados/serie/bcdata.sgs.${ind.sgs}/dados/ultimos/2?formato=json`;
+            return buscar(url)
+                .catch(() => new Promise(res => setTimeout(res, 1500)).then(() => buscar(url)))
+                // A API nem sempre devolve em ordem: ordena por data (DD/MM/AAAA)
+                .then(rows => rows.map(r => ({ data: r.data.split('/').reverse().join('-'), v: parseFloat(r.valor) }))
+                    .sort((a, b) => a.data.localeCompare(b.data)));
+        };
+
+        Promise.allSettled(window.CF_INDICADORES.map(ultimos)).then(results => {
+            const rows = window.CF_INDICADORES.map((ind, i) => {
+                const pts = results[i].status === 'fulfilled' ? results[i].value : [];
+                const last = pts[pts.length - 1];
+                const prev = pts[pts.length - 2];
+                const href = `indicadores.html?indicador=${ind.id}`;
+                const nome = `<a href="${href}" class="after:absolute after:inset-0 group-hover:text-blue-800">${ind.nome}</a> <span class="text-xs text-slate-400">(${ind.fonte})</span>`;
+                if (!last) {
+                    return `<div class="cf-row group relative"><dt>${nome}</dt><dd class="text-xs text-slate-400">indisponível</dd></div>`;
+                }
+                const [ano, mes, dia] = last.data.split('-');
+                const cambio = ind.tipo === 'cambio';
+                // Câmbio: cotação do dia em R$ (seta vs. dia anterior); índices: variação % do mês (seta vs. mês anterior)
+                const quando = cambio ? `${dia}/${mes}/${ano}` : `${MESES[Number(mes) - 1]}/${ano}`;
+                const valor = cambio
+                    ? `R$ ${last.v.toLocaleString('pt-BR', { minimumFractionDigits: 4, maximumFractionDigits: 4 })}`
+                    : fmt(last.v, ind.id === 'tr' ? 4 : 2);
+                const sobe = prev && last.v > prev.v;
+                const desce = prev && last.v < prev.v;
+                const seta = sobe ? '<i class="fa-solid fa-arrow-trend-up text-xs" aria-label="em alta"></i>'
+                    : desce ? '<i class="fa-solid fa-arrow-trend-down text-xs" aria-label="em queda"></i>'
+                        : '<i class="fa-solid fa-minus text-xs" aria-label="estável"></i>';
+                const cor = sobe ? 'text-emerald-600' : desce ? 'text-red-600' : 'text-slate-500';
+                return `<div class="cf-row group relative transition hover:bg-slate-50">
+                    <dt>${nome}<span class="block text-[11px] text-slate-400">${quando}</span></dt>
+                    <dd class="flex items-center gap-1.5 font-semibold tabular-nums ${cor}">${valor} ${seta}</dd>
+                </div>`;
+            });
+            homeIndicadores.innerHTML = rows.join('');
+        });
+    }
+
+    /* ------------------------------------------------------------------
      * Rodapé: ano atual + botão "voltar ao topo"
      * ------------------------------------------------------------------ */
     const anoAtual = document.getElementById('ano-atual');

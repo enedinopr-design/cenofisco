@@ -832,7 +832,7 @@
             <li class="cf-row"><span>Taxa Legal</span><a href="#" class="cf-row-link">Ver tabela</a></li>
             <li class="cf-row"><span>Taxa Selic Acumulada</span><a href="#" class="cf-row-link">Ver tabela</a></li>
             <li class="cf-row"><span>Taxa Selic Mensal</span><a href="#" class="cf-row-link">Ver tabela</a></li>
-            <li class="cf-row"><span>Taxas de Câmbio</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Taxas de Câmbio</span><a href="indicadores.html?indicador=dolar" class="cf-row-link">Ver tabela</a></li>
             <li class="cf-row"><span>TJLP – Mensal</span><a href="#" class="cf-row-link">Ver tabela</a></li>
             <li class="cf-row"><span>TJLP – Trimestral</span><a href="#" class="cf-row-link">Ver tabela</a></li>
             <li class="cf-row"><span>TJLP – Acumulada</span><a href="#" class="cf-row-link">Ver tabela</a></li>
@@ -852,16 +852,12 @@
           <div class="cf-section-head">
             <h2 id="titulo-indicadores" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>Indicadores e Taxas</h2>
           </div>
-          <dl>
-            <div class="cf-row"><dt>IGP-M <span class="text-xs text-slate-400">(FGV)</span></dt><dd class="flex items-center gap-1.5 font-semibold text-emerald-600 tabular-nums">2,73% <i class="fa-solid fa-arrow-trend-up text-xs" aria-label="em alta"></i></dd></div>
-            <div class="cf-row"><dt>INCC-M <span class="text-xs text-slate-400">(FGV)</span></dt><dd class="flex items-center gap-1.5 font-semibold text-emerald-600 tabular-nums">1,04% <i class="fa-solid fa-arrow-trend-up text-xs" aria-label="em alta"></i></dd></div>
-            <div class="cf-row"><dt>Selic</dt><dd class="flex items-center gap-1.5 font-semibold text-red-600 tabular-nums">0,83% <i class="fa-solid fa-arrow-trend-down text-xs" aria-label="em queda"></i></dd></div>
-            <div class="cf-row"><dt>TR</dt><dd class="flex items-center gap-1.5 font-semibold text-emerald-600 tabular-nums">0,1679% <i class="fa-solid fa-arrow-trend-up text-xs" aria-label="em alta"></i></dd></div>
-            <div class="cf-row"><dt>IGP-DI <span class="text-xs text-slate-400">(FGV)</span></dt><dd class="flex items-center gap-1.5 font-semibold text-red-600 tabular-nums">0,49% <i class="fa-solid fa-arrow-trend-down text-xs" aria-label="em queda"></i></dd></div>
-            <div class="cf-row"><dt>INCC-DI <span class="text-xs text-slate-400">(FGV)</span></dt><dd class="flex items-center gap-1.5 font-semibold text-emerald-600 tabular-nums">1,55% <i class="fa-solid fa-arrow-trend-up text-xs" aria-label="em alta"></i></dd></div>
-            <div class="cf-row"><dt>INPC <span class="text-xs text-slate-400">(IBGE)</span></dt><dd class="flex items-center gap-1.5 font-semibold text-emerald-600 tabular-nums">1,87% <i class="fa-solid fa-arrow-trend-up text-xs" aria-label="em alta"></i></dd></div>
+          <!-- Preenchido por index.js com os dados do Banco Central (lista em indicadores-series.js); cada linha abre o indicador em indicadores.html -->
+          <dl id="home-indicadores" aria-live="polite">
+            <div class="cf-row"><dt class="text-slate-400">Carregando indicadores...</dt></div>
           </dl>
-          <a href="#" class="cf-btn cf-btn-soft mt-5 w-full">Ver todos os indicadores</a>
+          <p class="mt-3 text-[11px] text-slate-400">Índices: variação no último mês divulgado · Câmbio: PTAX de venda do dia · Fonte: Banco Central</p>
+          <a href="indicadores.html" class="cf-btn cf-btn-soft mt-4 w-full">Ver todos os indicadores</a>
         </section>
 
         <!-- Principais Normas -->
@@ -962,6 +958,7 @@
     <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
   </button>
 
+  <script src="./indicadores-series.js" defer></script>
   <script src="./index.js" defer></script>
   <script src="./buscafiscal.js" defer></script>
 </body>
