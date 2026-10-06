@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assine o Boletim Fiscal e Tributário Cenofisco: escolha o plano, informe seus dados e conclua o pagamento.">
+  <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Assinatura - Cenofisco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" href="img/logo.jpg">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-900 focus:shadow-lg">Pular para o conteúdo</a>
+
+  <!-- ===================== CABEÇALHO (enxuto, de compra) ===================== -->
+  <header class="border-b border-slate-200 bg-white">
+    <div class="container mx-auto flex flex-wrap items-center justify-between gap-3 px-4 py-3">
+      <a href="index.html" class="shrink-0" aria-label="Cenofisco — página inicial">
+        <img src="img/logo.jpg" alt="Cenofisco" width="200" height="62" class="h-10 w-auto sm:h-12">
+      </a>
+      <div class="flex items-center gap-4 text-sm text-slate-600">
+        <span class="hidden items-center gap-2 sm:flex"><i class="fa-solid fa-lock text-emerald-600" aria-hidden="true"></i>Ambiente seguro</span>
+        <a href="tel:1148620485" class="flex items-center gap-2 font-medium transition hover:text-blue-800"><i class="fa-solid fa-phone text-xs text-amber-500" aria-hidden="true"></i>11 4862-0485</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-blue-950 text-white">
+    <div class="container mx-auto px-4 py-8 md:py-10">
+      <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
+        <a href="index.html" class="transition hover:text-white">Início</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <a href="assine.html" class="transition hover:text-white">Assine</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <span class="font-bold text-white" aria-current="page">Assinatura</span>
+      </nav>
+      <h1 class="mt-4 text-3xl leading-tight font-bold tracking-tight md:text-4xl">Boletim Fiscal e Tributário Cenofisco</h1>
+      <p class="mt-3 max-w-xl text-sm text-blue-100 md:text-base">Escolha o plano, informe seus dados e conclua o pagamento. No plano Individual, os 7 primeiros dias são grátis.</p>
+
+      <ol class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-blue-100" aria-label="Etapas">
+        <li class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-amber-400 text-xs font-bold text-blue-950">1</span>Plano</li>
+        <li class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-white/15 text-xs font-bold text-white">2</span>Dados cadastrais</li>
+        <li class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-white/15 text-xs font-bold text-white">3</span>Pagamento</li>
+      </ol>
+    </div>
+  </section>
+
+  <main id="conteudo" class="container mx-auto px-4 py-8">
+    <form id="checkout-form" class="grid items-start gap-8 lg:grid-cols-[1fr_22rem]" novalidate>
+
+      <!-- ============ ETAPAS ============ -->
+      <div class="min-w-0 space-y-8">
+
+        <!-- 1. Plano -->
+        <section class="cf-card" aria-labelledby="titulo-plano">
+          <div class="cf-section-head">
+            <h2 id="titulo-plano" class="cf-section-title"><span class="cf-icon">1</span>Escolha o plano</h2>
+            <button type="button" id="ver-creditos" class="cf-link-more cursor-pointer">Como usar os créditos <i class="fa-regular fa-circle-question" aria-hidden="true"></i></button>
+          </div>
+
+          <fieldset>
+            <legend class="sr-only">Plano</legend>
+            <div id="planos" class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              <!-- Gerado via JavaScript -->
+            </div>
+          </fieldset>
+
+          <div class="mt-5 rounded-xl bg-slate-50 p-4">
+            <p class="cf-eyebrow mb-2 text-slate-500">Incluso em todos os planos</p>
+            <ul class="grid gap-x-6 gap-y-1.5 text-sm text-slate-700 sm:grid-cols-2">
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Substituição Tributária (27 Estados)</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Resenha Trabalhista e Previdenciária <span class="rounded-full bg-amber-100 px-1.5 text-[10px] font-bold text-amber-800 uppercase">Novo</span></li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Monitoramento de ST</li>
+              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Monitoramento de PIS/COFINS</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 2. Dados cadastrais -->
+        <section class="cf-card" aria-labelledby="titulo-dados">
+          <div class="cf-section-head">
+            <h2 id="titulo-dados" class="cf-section-title"><span class="cf-icon">2</span>Dados cadastrais</h2>
+          </div>
+
+          <fieldset class="mb-5">
+            <legend class="cf-label">Tipo de cadastro</legend>
+            <div class="grid max-w-sm grid-cols-2 gap-2">
+              <label><input type="radio" name="pessoa" value="pf" class="peer sr-only" checked><span class="cf-choice"><i class="fa-regular fa-user" aria-hidden="true"></i>Pessoa Física</span></label>
+              <label><input type="radio" name="pessoa" value="pj" class="peer sr-only"><span class="cf-choice"><i class="fa-regular fa-building" aria-hidden="true"></i>Pessoa Jurídica</span></label>
+            </div>
+          </fieldset>
+
+          <!-- Somente PJ -->
+          <div id="campos-pj" class="mb-4 hidden grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="cnpj" class="cf-label">CNPJ *</label>
+              <input type="text" id="cnpj" name="cnpj" inputmode="numeric" data-mask="cnpj" class="cf-input" placeholder="00.000.000/0000-00">
+            </div>
+            <div>
+              <label for="razao" class="cf-label">Razão social *</label>
+              <input type="text" id="razao" name="razao" autocomplete="organization" class="cf-input">
+            </div>
+            <div>
+              <label for="simples" class="cf-label">Optante do Simples Nacional? *</label>
+              <select id="simples" name="simples" class="cf-input">
+                <option value="">Selecione</option>
+                <option value="nao">Não</option>
+                <option value="sim">Sim</option>
+              </select>
+            </div>
+            <div>
+              <label for="ie" class="cf-label">Inscrição estadual *</label>
+              <input type="text" id="ie" name="ie" inputmode="numeric" data-mask="digitos" class="cf-input" placeholder="Apenas números">
+              <label class="mt-1.5 flex items-center gap-2 text-xs text-slate-600"><input type="checkbox" id="ie-isento" name="ieIsento" class="size-4 rounded border-slate-300 accent-blue-900">IE isento</label>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label for="nome" class="cf-label"><span data-pj-label="Nome completo do assinante *">Nome completo *</span></label>
+              <input type="text" id="nome" name="nome" autocomplete="name" class="cf-input">
+            </div>
+            <div>
+              <label for="cpf" class="cf-label"><span data-pj-label="CPF do assinante *">CPF *</span></label>
+              <input type="text" id="cpf" name="cpf" inputmode="numeric" data-mask="cpf" class="cf-input" placeholder="000.000.000-00">
+            </div>
+            <div>
+              <label for="email" class="cf-label"><span data-pj-label="E-mail do assinante *">E-mail *</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" class="cf-input" placeholder="voce@empresa.com.br">
+            </div>
+            <div>
+              <label for="celular" class="cf-label">Celular *</label>
+              <input type="tel" id="celular" name="celular" inputmode="numeric" data-mask="telefone" autocomplete="tel" class="cf-input" placeholder="(00) 00000-0000">
+            </div>
+            <div>
+              <label for="telefone" class="cf-label">Telefone fixo</label>
+              <input type="tel" id="telefone" name="telefone" inputmode="numeric" data-mask="telefone" class="cf-input" placeholder="(00) 0000-0000">
+            </div>
+          </div>
+
+          <h3 class="cf-eyebrow mt-6 mb-3 text-slate-500">Endereço</h3>
+          <div class="grid gap-4 sm:grid-cols-6">
+            <div class="sm:col-span-2">
+              <label for="cep" class="cf-label">CEP *</label>
+              <div class="relative">
+                <input type="text" id="cep" name="cep" inputmode="numeric" data-mask="cep" autocomplete="postal-code" class="cf-input pr-9" placeholder="00000-000">
+                <span id="cep-loading" class="absolute top-1/2 right-3 hidden -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"><i class="fa-solid fa-spinner fa-spin"></i></span>
+              </div>
+              <a href="https://buscacepinter.correios.com.br/" target="_blank" rel="noopener" class="mt-1 inline-block text-xs text-blue-700 hover:underline">Não sei meu CEP</a>
+            </div>
+            <div class="sm:col-span-4"></div>
+            <div class="sm:col-span-2">
+              <label for="logradouro-tipo" class="cf-label">Tipo *</label>
+              <select id="logradouro-tipo" name="logradouroTipo" class="cf-input"><!-- Gerado via JavaScript --></select>
+            </div>
+            <div class="sm:col-span-4">
+              <label for="endereco" class="cf-label">Endereço *</label>
+              <input type="text" id="endereco" name="endereco" autocomplete="address-line1" class="cf-input">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="numero" class="cf-label">Número *</label>
+              <input type="text" id="numero" name="numero" class="cf-input">
+            </div>
+            <div class="sm:col-span-4">
+              <label for="complemento" class="cf-label">Complemento</label>
+              <input type="text" id="complemento" name="complemento" autocomplete="address-line2" class="cf-input">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="bairro" class="cf-label">Bairro *</label>
+              <input type="text" id="bairro" name="bairro" class="cf-input">
+            </div>
+            <div class="sm:col-span-3">
+              <label for="cidade" class="cf-label">Cidade *</label>
+              <input type="text" id="cidade" name="cidade" autocomplete="address-level2" class="cf-input">
+            </div>
+            <div class="sm:col-span-1">
+              <label for="uf" class="cf-label">UF *</label>
+              <select id="uf" name="uf" class="cf-input"><!-- Gerado via JavaScript --></select>
+            </div>
+          </div>
+
+          <details class="group mt-5">
+            <summary class="inline-flex cursor-pointer list-none items-center gap-2 text-sm font-medium text-blue-700 hover:text-blue-900 [&::-webkit-details-marker]:hidden">
+              <i class="fa-solid fa-user-tie text-xs" aria-hidden="true"></i>Foi atendido por um consultor de vendas?
+              <i class="fa-solid fa-chevron-down text-[10px] transition group-open:rotate-180" aria-hidden="true"></i>
+            </summary>
+            <div class="mt-3 max-w-xs">
+              <label for="cpf-vendedor" class="cf-label">CPF do vendedor</label>
+              <input type="text" id="cpf-vendedor" name="cpfVendedor" inputmode="numeric" data-mask="cpf" class="cf-input" placeholder="000.000.000-00">
+            </div>
+          </details>
+        </section>
+
+        <!-- 3. Pagamento -->
+        <section class="cf-card" aria-labelledby="titulo-pagamento">
+          <div class="cf-section-head">
+            <h2 id="titulo-pagamento" class="cf-section-title"><span class="cf-icon">3</span>Pagamento</h2>
+          </div>
+
+          <fieldset class="mb-5">
+            <legend class="cf-label">Forma de pagamento</legend>
+            <div class="grid max-w-sm grid-cols-2 gap-2">
+              <label><input type="radio" name="pagamento" value="cartao" class="peer sr-only" checked><span class="cf-choice"><i class="fa-regular fa-credit-card" aria-hidden="true"></i>Cartão</span></label>
+              <label><input type="radio" name="pagamento" value="boleto" class="peer sr-only"><span class="cf-choice"><i class="fa-solid fa-barcode" aria-hidden="true"></i>Boleto</span></label>
+            </div>
+          </fieldset>
+
+          <div id="campos-cartao" class="grid gap-4 sm:grid-cols-6">
+            <div class="sm:col-span-6">
+              <label for="cartao-numero" class="cf-label">Número do cartão *</label>
+              <div class="relative">
+                <input type="text" id="cartao-numero" name="cartaoNumero" inputmode="numeric" data-mask="cartao" autocomplete="cc-number" class="cf-input pr-12" placeholder="0000 0000 0000 0000">
+                <span id="cartao-bandeira" class="absolute top-1/2 right-3 -translate-y-1/2 text-xs font-bold text-slate-500 uppercase"></span>
+              </div>
+            </div>
+            <div class="sm:col-span-6">
+              <label for="cartao-nome" class="cf-label">Nome do titular * <span class="font-normal text-slate-400">(como está no cartão)</span></label>
+              <input type="text" id="cartao-nome" name="cartaoNome" autocomplete="cc-name" class="cf-input uppercase">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="cartao-validade" class="cf-label">Validade *</label>
+              <input type="text" id="cartao-validade" name="cartaoValidade" inputmode="numeric" data-mask="validade" autocomplete="cc-exp" class="cf-input" placeholder="MM/AA">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="cartao-cvv" class="cf-label">CVV *</label>
+              <input type="text" id="cartao-cvv" name="cartaoCvv" inputmode="numeric" data-mask="cvv" autocomplete="cc-csc" class="cf-input" placeholder="000">
+            </div>
+            <div class="sm:col-span-2" id="grupo-cpf-titular">
+              <label for="cartao-cpf" class="cf-label">CPF do titular *</label>
+              <input type="text" id="cartao-cpf" name="cartaoCpf" inputmode="numeric" data-mask="cpf" class="cf-input" placeholder="000.000.000-00">
+            </div>
+            <div class="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600 sm:col-span-6">
+              <label class="flex items-center gap-2"><input type="checkbox" id="estrangeiro" name="estrangeiro" class="size-4 rounded border-slate-300 accent-blue-900">Sou estrangeiro</label>
+              <label class="flex items-center gap-2"><input type="checkbox" name="salvarCartao" class="size-4 rounded border-slate-300 accent-blue-900">Salvar dados de pagamento</label>
+            </div>
+          </div>
+
+          <div id="info-boleto" class="hidden rounded-xl bg-amber-50 p-4 text-sm text-amber-900">
+            <i class="fa-solid fa-circle-info mr-1" aria-hidden="true"></i>
+            O boleto será enviado ao e-mail informado e o produto ficará ativo após a confirmação do pagamento.
+          </div>
+
+          <div class="mt-5 max-w-sm">
+            <label for="parcelas" class="cf-label">Parcelas</label>
+            <select id="parcelas" name="parcelas" class="cf-input"><!-- Gerado via JavaScript --></select>
+          </div>
+        </section>
+      </div>
+
+      <!-- ============ RESUMO ============ -->
+      <aside class="space-y-4 lg:sticky lg:top-6">
+        <section class="cf-card" aria-labelledby="titulo-resumo">
+          <h2 id="titulo-resumo" class="cf-section-title mb-4"><span class="cf-icon"><i class="fa-solid fa-receipt" aria-hidden="true"></i></span>Resumo do pedido</h2>
+
+          <p class="text-xs text-slate-500">Boletim Fiscal e Tributário</p>
+          <p class="text-lg font-bold text-slate-900">Plano <span id="resumo-plano">—</span></p>
+          <p class="text-xs text-slate-500">Cód. <span id="resumo-codigo">—</span> · renovação anual</p>
+
+          <ul id="resumo-itens" class="mt-3">
+            <!-- Gerado via JavaScript -->
+          </ul>
+
+          <div id="resumo-trial" class="mt-4 hidden rounded-xl bg-emerald-50 p-3 text-sm text-emerald-900">
+            <p class="font-semibold"><i class="fa-solid fa-gift mr-1" aria-hidden="true"></i>7 dias grátis para testar</p>
+            <p class="mt-1 text-xs">Hoje você não paga nada. A cobrança só acontece se não cancelar até o 7º dia.</p>
+          </div>
+
+          <div class="mt-4 border-t border-slate-200 pt-4">
+            <div class="flex items-baseline justify-between gap-2">
+              <span class="text-sm text-slate-600">Total</span>
+              <span id="resumo-total" class="text-2xl font-bold text-slate-900">—</span>
+            </div>
+            <p id="resumo-parcelas" class="mt-1 text-right text-sm text-slate-500"></p>
+          </div>
+
+          <label class="mt-5 flex items-start gap-2 text-sm text-slate-600">
+            <input type="checkbox" id="aceite" name="aceite" class="mt-0.5 size-4 shrink-0 rounded border-slate-300 accent-blue-900">
+            <span>Li e aceito o <a href="https://checkout.cenofisco.com.br/Termo" target="_blank" rel="noopener" class="font-medium text-blue-700 hover:underline">Termo de adesão</a><span class="sr-only"> (abre em nova aba)</span>.</span>
+          </label>
+
+          <p id="form-erro" class="mt-3 hidden rounded-lg bg-red-50 p-3 text-sm text-red-700" role="alert"></p>
+
+          <button type="submit" id="btn-finalizar" class="cf-btn cf-btn-accent mt-4 w-full py-3 text-base">
+            <i class="fa-solid fa-lock" aria-hidden="true"></i><span id="btn-finalizar-texto">Finalizar assinatura</span>
+          </button>
+          <p class="mt-3 flex items-center justify-center gap-2 text-xs text-slate-500"><i class="fa-solid fa-shield-halved text-emerald-600" aria-hidden="true"></i>Seus dados são enviados de forma segura.</p>
+        </section>
+
+        <section class="cf-card p-5!" aria-labelledby="titulo-ajuda">
+          <h2 id="titulo-ajuda" class="font-semibold text-slate-900">Ainda tem dúvidas?</h2>
+          <ul class="mt-2 space-y-1.5 text-sm text-slate-600">
+            <li><a href="tel:1148620485" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-solid fa-phone w-4 text-xs text-slate-400" aria-hidden="true"></i>11 4862-0485</a></li>
+            <li><a href="https://wa.me/5511990069714" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-brands fa-whatsapp w-4 text-emerald-600" aria-hidden="true"></i>11 99006-9714</a></li>
+            <li><a href="https://wa.me/5511945335107" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-brands fa-whatsapp w-4 text-emerald-600" aria-hidden="true"></i>11 94533-5107</a></li>
+          </ul>
+        </section>
+      </aside>
+    </form>
+
+    <!-- Confirmação (exibida após finalizar) -->
+    <section id="confirmacao" class="cf-card mx-auto hidden max-w-xl text-center" tabindex="-1" aria-labelledby="titulo-confirmacao">
+      <span class="mx-auto inline-flex size-16 items-center justify-center rounded-full bg-emerald-50 text-2xl text-emerald-600"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+      <h2 id="titulo-confirmacao" class="mt-4 text-2xl font-bold text-slate-900">—</h2>
+      <p id="texto-confirmacao" class="mt-2 text-slate-600"></p>
+      <a href="index.html" class="cf-btn cf-btn-primary mt-6">Ir para o portal <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </section>
+
+    <!-- Importante -->
+    <section class="mt-10 rounded-2xl border border-slate-200 bg-white p-5 text-sm text-slate-600" aria-labelledby="titulo-importante">
+      <h2 id="titulo-importante" class="mb-2 font-semibold text-slate-900">Importante</h2>
+      <ul class="list-disc space-y-1 pl-5">
+        <li>Oferta "7 dias grátis" válida no plano Individual, apenas uma vez por cliente.</li>
+        <li>Para os 7 dias de acesso grátis, é preciso informar os dados pessoais e de cobrança.</li>
+        <li>Se não cancelar até o 7º dia de acesso gratuito, a cobrança da assinatura é efetivada conforme a promoção. Depois do período promocional, a assinatura segue por R$ 296,00 ao mês durante 12 meses.</li>
+        <li>Para cancelar a qualquer momento, ligue para <a href="tel:40001305" class="font-medium text-blue-700 hover:underline">4000-1305</a> (SAC) ou envie um e-mail para <a href="mailto:sac@cenofisco.com.br" class="font-medium text-blue-700 hover:underline">sac@cenofisco.com.br</a>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Créditos de consultoria -->
+  <dialog id="dialog-creditos" class="m-auto w-[calc(100%-2rem)] max-w-lg rounded-2xl p-0 shadow-xl backdrop:bg-slate-900/50" aria-labelledby="titulo-dialog-creditos">
+    <div class="p-6">
+      <div class="flex items-start justify-between gap-4">
+        <h2 id="titulo-dialog-creditos" class="text-lg font-semibold text-slate-900">Consultoria Cenofisco</h2>
+        <button type="button" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100" data-fechar aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+      </div>
+      <p class="mt-2 text-sm text-slate-600">Converse com especialistas sobre as áreas tributária, fiscal, trabalhista, previdenciária e de comércio exterior. Cada plano inclui créditos para usar nas consultas:</p>
+      <ul class="mt-4">
+        <li class="cf-row"><span>Telefone</span><strong class="font-semibold text-slate-900">4 créditos</strong></li>
+        <li class="cf-row"><span>Escrita em até 72h</span><strong class="font-semibold text-slate-900">4 créditos</strong></li>
+        <li class="cf-row"><span>Escrita em até 48h</span><strong class="font-semibold text-slate-900">8 créditos</strong></li>
+        <li class="cf-row"><span>Escrita em até 24h</span><strong class="font-semibold text-slate-900">12 créditos</strong></li>
+        <li class="cf-row"><span>Escrita em até 12h</span><strong class="font-semibold text-slate-900">24 créditos</strong></li>
+        <li class="cf-row"><span>Videoconferência</span><strong class="font-semibold text-slate-900">48 créditos</strong></li>
+        <li class="cf-row"><span>Presencial (1 hora)</span><strong class="font-semibold text-slate-900">96 créditos</strong></li>
+      </ul>
+      <p class="mt-3 text-xs text-slate-500">Você pode adquirir mais créditos a qualquer momento.</p>
+    </div>
+  </dialog>
+
+  <footer class="mt-4 bg-blue-950 py-8 text-center text-xs text-gray-400">
+    <div class="container mx-auto space-y-1 px-4">
+      <p>© Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62</p>
+      <p>Av. Paulista, 1.337 - 21º, 22º e 23º andar - São Paulo - SP - CEP 01311-200</p>
+    </div>
+  </footer>
+  <script src="./checkout.js"></script>
+</body>
+</html>
