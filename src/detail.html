@@ -1,11 +1,11 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="./output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <title>Detalhes da Legislação - Portal Fiscal</title>
+  <title>Legislação - Cenofisco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -73,92 +73,91 @@
     </div>
   </header>
 
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-blue-950 text-white">
+    <div class="container mx-auto px-4 py-8 md:py-10">
+      <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
+        <a href="index.html" class="transition hover:text-white">Início</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <a href="legislacao.html" class="transition hover:text-white">Legislação</a>
+        <span id="crumb-esfera" class="contents"></span>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <span class="font-bold text-white" aria-current="page">Detalhe</span>
+      </nav>
+      <div class="mt-4">
+        <div id="hero-badges" class="flex flex-wrap items-center gap-2"></div>
+        <h1 id="leg-title" class="mt-3 max-w-4xl text-2xl leading-tight font-bold tracking-tight md:text-3xl">Carregando legislação...</h1>
+        <p id="hero-meta" class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-blue-100"></p>
+      </div>
+    </div>
+  </section>
+
     <main id="conteudo" class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-             <aside class="busca-sidebar sticky top-30 self-start hidden md:block">
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-filter text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Filtros Rápidos
-                    </h3>
+        <div class="grid items-start gap-8 lg:grid-cols-[17rem_1fr]">
 
-                     <div id="legislacao-busca-avancada" class="space-y-4 pt-4">
-                 
-                    <div class="grid grid-cols-1 gap-3">
-                       
-                        <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Área:</label>
-                            <select id="adv-area" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option value="">Todas</option>
-                                <option value="tributaria">Federal</option>
-                                <option value="trabalhista">Estadual</option>
-                                <option value="ambiental">Municipal</option>
-                            </select>
-                        </div>
-                         <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Número</label>
-                            <input type="text" id="adv-numero-decreto" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ex: 123/2024">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Tipo de Publicação:</label>
-                            <select id="adv-tipo-publicacao" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option value="">Todas</option>
-                            </select>
-                        </div>
-                       <div id="adv-estado-container">
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Estado:</label>
-                            <select id="adv-estado" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option value="">Todos</option>
-                            </select>
-                        </div>
-                        <div id="adv-municipio-container">
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Município:</label>
-                            <select id="adv-municipio" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                <option value="">Todos</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Data De:</label>
-                            <input type="date" id="adv-data-de" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-medium text-gray-700 mb-1">Data Até:</label>
-                            <input type="date" id="adv-data-ate" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        </div>
-                    </div>
-                    <div class="flex gap-2 justify-end mt-3">
-                        <button id="adv-limpar" class="px-3 py-1.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition text-sm">Limpar</button>
-                        <button id="adv-aplicar" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">Aplicar Filtro</button>
-                    </div>
-                </div>
+            <!-- ============ LATERAL (no celular, vem depois do conteúdo) ============ -->
+            <aside class="order-last space-y-6 lg:sticky lg:top-30 lg:order-0">
+                <!-- Dados da publicação -->
+                <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-dados">
+                    <h2 id="titulo-dados" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+                        <span class="inline-flex size-8 items-center justify-center rounded-lg bg-blue-50 text-blue-700"><i class="fa-solid fa-circle-info text-sm" aria-hidden="true"></i></span>
+                        Dados da publicação
+                    </h2>
+                    <dl id="leg-dados" class="space-y-3 text-sm">
+                        <!-- Gerado via JavaScript -->
+                    </dl>
+                </section>
 
-  
-             
-                </div>
+                <!-- Legislações salvas -->
+                <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-salvas">
+                    <h2 id="titulo-salvas" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+                        <span class="inline-flex size-8 items-center justify-center rounded-lg bg-amber-50 text-amber-500"><i class="fa-solid fa-bookmark text-sm" aria-hidden="true"></i></span>
+                        Legislações Salvas
+                    </h2>
+                    <ul id="saved-list" class="space-y-1 text-sm">
+                        <!-- Gerado via JavaScript -->
+                    </ul>
+                </section>
 
-                <!-- Adicione mais blocos de conteúdo para a sidebar aqui, se necessário -->
+                <!-- Acessadas recentemente (mesma lista usada na home) -->
+                <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-recentes">
+                    <h2 id="titulo-recentes" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+                        <span class="inline-flex size-8 items-center justify-center rounded-lg bg-slate-100 text-slate-500"><i class="fa-solid fa-clock-rotate-left text-sm" aria-hidden="true"></i></span>
+                        Acessadas recentemente
+                    </h2>
+                    <ul id="recently-accessed-list" class="space-y-1 text-sm">
+                        <!-- Gerado via JavaScript -->
+                    </ul>
+                </section>
             </aside>
 
-                        <div class="md:col-span-3 space-y-6">
-                          <div class="mb-6">
-            <a href="javascript:history.back()" class="text-blue-600 hover:underline">&larr; Voltar</a>
-        </div>    
+            <!-- ============ CONTEÚDO ============ -->
+            <div class="min-w-0 space-y-5">
+                <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
+                    <header class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-4">
+                        <a href="legislacao.html" id="back-link" class="inline-flex items-center gap-2 text-sm font-medium text-blue-700 hover:text-blue-900 hover:underline"><i class="fa-solid fa-arrow-left text-xs" aria-hidden="true"></i>Voltar para Legislação</a>
+                        <div class="flex gap-2">
+                            <button type="button" id="save-btn" class="cf-btn cf-btn-soft hidden py-1.5" aria-pressed="false"><i class="fa-regular fa-bookmark" aria-hidden="true"></i><span>Salvar</span></button>
+                            <button type="button" onclick="window.print()" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition hover:bg-slate-50 hover:text-blue-900" aria-label="Imprimir" title="Imprimir"><i class="fa-solid fa-print text-sm" aria-hidden="true"></i></button>
+                            <button type="button" id="share-btn" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-lg border border-slate-300 text-slate-600 transition hover:bg-slate-50 hover:text-blue-900" aria-label="Compartilhar" title="Compartilhar"><i class="fa-solid fa-share-nodes text-sm" aria-hidden="true"></i></button>
+                        </div>
+                    </header>
+                    <p id="share-msg" class="mt-3 hidden text-xs font-medium text-emerald-700" role="status"></p>
 
-           <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                <i class="fas fa-gavel text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Detalhes da Legislação
-            </h2>
-            <div id="legislation-detail" class="space-y-4">
-                <!-- Conteúdo da legislação será carregado aqui -->
-                <p class="text-gray-600">Carregando detalhes da legislação...</p>
+                    <div id="legislation-detail" class="mt-6">
+                        <p class="text-sm text-slate-500">Carregando detalhes da legislação...</p>
+                    </div>
+                </article>
+
+                <!-- Relacionadas (mesma esfera e mesmo tipo/órgão) -->
+                <section id="related-wrap" class="hidden" aria-labelledby="titulo-relacionadas">
+                    <h2 id="titulo-relacionadas" class="mb-3 font-semibold text-slate-900">Publicações relacionadas</h2>
+                    <div id="related-list" class="space-y-3">
+                        <!-- Gerado via JavaScript -->
+                    </div>
+                </section>
             </div>
         </div>
-                        </div>
-
-</div>
-
-
-      
-     
     </main>
 
   <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
