@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const escapeHTML = text => String(text ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const normalize = text => (text || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
     const isoDate = d => (d ? d.split('/').reverse().join('-') : '');
+    // Endereço da notícia (o link do JSON, ou a página de detalhe pelo id)
+    const urlOf = n => (n.link && n.link !== '#' ? n.link : `noticia.html?id=${encodeURIComponent(n.id)}`);
     const readList = key => {
         try {
             const data = JSON.parse(localStorage.getItem(key));
@@ -139,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const s = styleOf(n.area);
         return `<span class="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide uppercase ${s.badge}"><i class="fa-solid ${s.icon} text-[10px]" aria-hidden="true"></i>${escapeHTML(n.area)}</span>`;
     };
-    const titleLink = n => `<a href="${escapeHTML(n.link || '#')}" class="after:absolute after:inset-0 group-hover:text-blue-800">${escapeHTML(n.title)}</a>`;
+    const titleLink = n => `<a href="${escapeHTML(urlOf(n))}" class="after:absolute after:inset-0 group-hover:text-blue-800">${escapeHTML(n.title)}</a>`;
 
     function card(n) {
         return `
@@ -191,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!n) return;
         let list = readList(SAVED_KEY);
         if (list.some(s => s.id === id)) list = list.filter(s => s.id !== id);
-        else list.unshift({ id: n.id, title: n.title, link: n.link, area: n.area, date: n.date });
+        else list.unshift({ id: n.id, title: n.title, link: urlOf(n), area: n.area, date: n.date });
         writeList(SAVED_KEY, list);
         render();
         renderSaved();
@@ -201,7 +203,7 @@ document.addEventListener('DOMContentLoaded', function () {
         savedList.innerHTML = list.length
             ? list.map(s => `
                 <li class="group flex items-start gap-1 rounded-lg hover:bg-blue-50">
-                    <a href="${escapeHTML(s.link || '#')}" class="min-w-0 flex-1 px-2 py-1.5" title="${escapeHTML(s.title)}">
+                    <a href="${escapeHTML(urlOf(s))}" class="min-w-0 flex-1 px-2 py-1.5" title="${escapeHTML(s.title)}">
                         <span class="block truncate text-slate-700 group-hover:text-blue-800">${escapeHTML(s.title)}</span>
                         <span class="block text-[11px] text-slate-400">${escapeHTML([s.area, s.date].filter(Boolean).join(' · '))}</span>
                     </a>
