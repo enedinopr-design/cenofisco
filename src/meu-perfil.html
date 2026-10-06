@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,9 +24,9 @@
       </div>
       <!-- Usuário logado (simulação) -->
       <div class="ml-auto flex items-center gap-3 sm:gap-4">
-        <span class="hidden sm:inline">Olá, <strong class="font-semibold text-white">Enedino</strong></span>
+        <span class="hidden sm:inline">Olá, <strong class="font-semibold text-white" data-perfil-primeiro-nome>Enedino</strong></span>
         <span class="hidden h-4 w-px bg-blue-800 sm:block" aria-hidden="true"></span>
-        <a href="meu-perfil.html" class="flex items-center gap-1.5 font-medium transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
+        <a href="meu-perfil.html" aria-current="page" class="flex items-center gap-1.5 font-medium text-white transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
         <a href="meu-perfil.html#documentos" class="flex items-center gap-1.5 font-medium transition hover:text-white"><i class="fa-regular fa-folder-open" aria-hidden="true"></i>Meus Documentos</a>
         <button type="button" class="cursor-pointer rounded-md bg-amber-400 px-3 py-1 text-xs font-bold text-blue-950 transition hover:bg-amber-300">Sair</button>
       </div>
@@ -41,7 +41,7 @@
       </a>
 
       <!-- Busca global -->
-    <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
+      <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
         <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
         <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
         <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-32 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
@@ -73,253 +73,280 @@
     </div>
   </header>
 
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-blue-950 text-white">
+    <div class="container mx-auto px-4 py-8 md:py-10">
+      <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
+        <a href="index.html" class="transition hover:text-white">Início</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <span class="font-bold text-white" aria-current="page">Meu Perfil</span>
+      </nav>
+
+      <div class="mt-5 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="flex items-center gap-4">
+          <span id="perfil-avatar" class="inline-flex size-16 shrink-0 items-center justify-center rounded-full bg-amber-400 text-xl font-bold text-blue-950 ring-4 ring-white/10 md:size-20 md:text-2xl" aria-hidden="true">EN</span>
+          <div class="min-w-0">
+            <h1 class="text-2xl leading-tight font-bold tracking-tight md:text-3xl" data-perfil="nome">Enedino</h1>
+            <p class="mt-1 truncate text-sm text-blue-100" data-perfil="email">enedino.pr@multieditoras.com.br</p>
+            <p class="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold text-blue-50">
+              <i class="fa-solid fa-circle-check text-emerald-400" aria-hidden="true"></i>Plano Individual · válido até 12/05/2027
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button type="button" id="btn-editar-perfil" class="cf-btn cf-btn-accent"><i class="fa-solid fa-pen" aria-hidden="true"></i>Editar perfil</button>
+          <a href="#documentos" class="cf-btn bg-white/10 text-white hover:bg-white/20"><i class="fa-regular fa-folder-open" aria-hidden="true"></i>Meus documentos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
     <main id="conteudo" class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold text-gray-800 mb-8 flex items-center gap-3">
-            <i class="fas fa-user-circle text-blue-600 bg-blue-50 p-3 rounded-full"></i> Meu Perfil 
-            <button class="ml-4 px-4 py-2 bg-blue-600 text-white cursor-pointer rounded-lg hover:bg-blue-700 transition text-sm font-medium flex items-center gap-2">
-                <i class="fas fa-edit"></i> Editar Perfil
-            </button>
-        </h1>
+        <!-- Resumo -->
+        <ul class="mb-8 grid grid-cols-2 gap-3 lg:grid-cols-4" aria-label="Resumo da conta">
+            <li class="cf-card flex items-center gap-3 p-4!">
+                <span class="cf-icon bg-amber-50 text-amber-500"><i class="fa-solid fa-coins" aria-hidden="true"></i></span>
+                <div><p class="text-xl font-bold text-slate-900" data-resumo="creditos">150</p><p class="text-xs text-slate-500">créditos de consulta</p></div>
+            </li>
+            <li class="cf-card flex items-center gap-3 p-4!">
+                <span class="cf-icon"><i class="fa-solid fa-box-open" aria-hidden="true"></i></span>
+                <div><p class="text-xl font-bold text-slate-900" data-resumo="produtos">7</p><p class="text-xs text-slate-500">produtos ativos</p></div>
+            </li>
+            <li class="cf-card flex items-center gap-3 p-4!">
+                <span class="cf-icon bg-emerald-50 text-emerald-700"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>
+                <div><p class="text-xl font-bold text-slate-900" data-resumo="documentos">0</p><p class="text-xs text-slate-500">documentos salvos</p></div>
+            </li>
+            <li class="cf-card flex items-center gap-3 p-4!">
+                <span class="cf-icon bg-violet-50 text-violet-700"><i class="fa-solid fa-users" aria-hidden="true"></i></span>
+                <div><p class="text-xl font-bold text-slate-900" data-resumo="usuarios">0</p><p class="text-xs text-slate-500">usuários ativos</p></div>
+            </li>
+        </ul>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Seção de Administração de Usuários -->
-            <div class="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-                    <i class="fas fa-users-cog text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Administração de Usuários
-                </h2>
-                <div class="mb-6">
-                    <button id="toggle-add-user-form" class="px-4 py-2 bg-blue-600 text-white cursor-pointer rounded-lg hover:bg-blue-700 transition text-sm font-medium flex items-center gap-2">
-                        <i class="fas fa-user-plus"></i> Adicionar Novo Usuário
-                    </button>
-                </div>
+        <div class="grid items-start gap-8 lg:grid-cols-[1fr_22rem]">
 
-                <div id="add-user-form-container" class="bg-gray-50 p-4 rounded-lg mb-6 border border-gray-200 hidden">
-                    <h3 class="text-lg font-semibold mb-4 flex items-center gap-2">
-                        <i class="fas fa-user-plus text-blue-600"></i> Formulário de Cadastro
-                    </h3>
-                    <form class="space-y-4">
-                        <div>
-                            <label for="new-user-name" class="block text-sm font-medium text-gray-700">Nome Completo</label>
-                            <input type="text" id="new-user-name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Ex: Ana Paula Silva">
-                        </div>
-                        <div>
-                            <label for="new-user-email" class="block text-sm font-medium text-gray-700">Email</label>
-                            <input type="email" id="new-user-email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Ex: ana.silva@empresa.com">
-                        </div>
-                        <div>
-                            <label for="new-user-status" class="block text-sm font-medium text-gray-700">Status</label>
-                            <select id="new-user-status" name="status" class="mt-1 block border border-gray-200 w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                <option value="ativo">Ativo</option>
-                                <option value="inativo">Inativo</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="new-user-password" class="block text-sm font-medium text-gray-700">Senha Provisória</label>
-                            <input type="password" id="new-user-password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Gerar senha ou definir">
-                        </div>
-                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            <i class="fas fa-plus mr-2"></i> Adicionar Usuário
-                        </button>
-                    </form>
-                </div>
+            <!-- ============ PRINCIPAL ============ -->
+            <div class="min-w-0 space-y-8">
 
-                <div class="overflow-x-auto mb-6">
-                    <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-                        <thead>
-                            <tr class="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 text-left">Nome</th>
-                                <th class="py-3 px-6 text-left">Email</th>
-                                <th class="py-3 px-6 text-center">Status</th>
-                                <th class="py-3 px-6 text-center">Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-700 text-sm font-light">
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="py-3 px-6 text-left whitespace-nowrap">João Silva</td>
-                                <td class="py-3 px-6 text-left">joao.silva@empresa.com</td>
-                                <td class="py-3 px-6 text-center">
-                                    <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Ativo</span>
-                                </td>
-                                <td class="py-3 px-6 text-center">
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-full text-xs transition">Bloquear</button>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="py-3 px-6 text-left whitespace-nowrap">Maria Oliveira</td>
-                                <td class="py-3 px-6 text-left">maria.o@empresa.com</td>
-                                <td class="py-3 px-6 text-center">
-                                    <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Inativo</span>
-                                </td>
-                                <td class="py-3 px-6 text-center">
-                                    <button class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-3 rounded-full text-xs transition">Liberar</button>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                <td class="py-3 px-6 text-left whitespace-nowrap">Carlos Souza</td>
-                                <td class="py-3 px-6 text-left">carlos.s@empresa.com</td>
-                                <td class="py-3 px-6 text-center">
-                                    <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Ativo</span>
-                                </td>
-                                <td class="py-3 px-6 text-center">
-                                    <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-3 rounded-full text-xs transition">Bloquear</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <!-- Produtos adquiridos -->
+                <section class="cf-card" aria-labelledby="titulo-produtos">
+                    <div class="cf-section-head">
+                        <h2 id="titulo-produtos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-box-open" aria-hidden="true"></i></span>Produtos adquiridos</h2>
+                    </div>
+                    <ul class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                        <li class="group flex flex-col rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="cf-icon"><i class="fa-solid fa-laptop-file" aria-hidden="true"></i></span>
+                                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Ativo</span>
+                            </div>
+                            <h3 class="mt-3 font-semibold text-slate-900">Portal Cenofisco</h3>
+                            <p class="mt-1 text-sm text-slate-600">Plano Individual.</p>
+                            <p class="mt-2 text-xs text-slate-500"><i class="fa-regular fa-calendar mr-1" aria-hidden="true"></i>12/05/2026 a 12/05/2027</p>
+                            <a href="index.html" class="cf-link-more mt-auto pt-4">Acessar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="group flex flex-col rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="cf-icon"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></span>
+                                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Ativo</span>
+                            </div>
+                            <h3 class="mt-3 font-semibold text-slate-900">Reforma Tributária</h3>
+                            <p class="mt-1 text-sm text-slate-600">Módulo de acompanhamento e análises.</p>
+                            <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-link-more mt-auto pt-4">Acessar <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only">(abre em nova aba)</span></a>
+                        </li>
+                        <li class="group flex flex-col rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="cf-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>
+                                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Ativo</span>
+                            </div>
+                            <h3 class="mt-3 font-semibold text-slate-900">Consultoria Cenofisco</h3>
+                            <p class="mt-1 text-sm text-slate-600">Consultas por telefone, escrita, vídeo e presencial.</p>
+                            <a href="index.html#consultoria-cenofisco" class="cf-link-more mt-auto pt-4">Acessar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="group flex flex-col rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="cf-icon"><i class="fa-solid fa-gear" aria-hidden="true"></i></span>
+                                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Ativo</span>
+                            </div>
+                            <h3 class="mt-3 font-semibold text-slate-900">Interface Compliance Solutions</h3>
+                            <p class="mt-1 text-sm text-slate-600">Gestão de conformidade fiscal.</p>
+                            <a href="#" class="cf-link-more mt-auto pt-4">Acessar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="group flex flex-col rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="cf-icon"><i class="fa-solid fa-file-invoice" aria-hidden="true"></i></span>
+                                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Ativo</span>
+                            </div>
+                            <h3 class="mt-3 font-semibold text-slate-900">Cenofisco ECF</h3>
+                            <p class="mt-1 text-sm text-slate-600">Gerador e validador da Escrituração Contábil Fiscal.</p>
+                            <a href="#" class="cf-link-more mt-auto pt-4">Acessar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="group flex flex-col rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="cf-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>
+                                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Ativo</span>
+                            </div>
+                            <h3 class="mt-3 font-semibold text-slate-900">DIME</h3>
+                            <p class="mt-1 text-sm text-slate-600">Declaração de Informações Econômico-Fiscais.</p>
+                            <a href="#" class="cf-link-more mt-auto pt-4">Acessar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="group flex flex-col rounded-xl border border-slate-200 p-4 transition hover:border-blue-300 hover:shadow-md">
+                            <div class="flex items-start justify-between gap-2">
+                                <span class="cf-icon"><i class="fa-solid fa-coins" aria-hidden="true"></i></span>
+                                <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">Ativo</span>
+                            </div>
+                            <h3 class="mt-3 font-semibold text-slate-900">Lucro Real</h3>
+                            <p class="mt-1 text-sm text-slate-600">Cálculo e apuração do Lucro Real.</p>
+                            <a href="#" class="cf-link-more mt-auto pt-4">Acessar <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </section>
 
-                <!-- Produtos Adquiridos -->
-                
-                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-box-open text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Produtos Adquiridos
-                    </h2>
-                   
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between">
-                            <div>
-                                
-                                <h3 class="font-semibold text-gray-800 mb-1 uppercase flex gap-2"><i class="fa-solid fa-laptop-file text-blue-400 mb-2"></i> Portal Cenofisco</h3>
-                                <p class="text-xs text-gray-600">Tipo de assinatura: Plano INDIVIDUAL</p>
-                                <p class="text-xs text-blue-500 mt-6">Data: 12/05/2026 | Expira em: 12/05/2027</p>
-                            </div>
-                            <a href="#" class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium text-center flex items-center justify-center">
-                                Acessar <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between">
-                            <div>
-                                
-                                <h3 class="font-semibold text-gray-800 mb-1 uppercase flex gap-2"><i class="fa-solid fa-scale-balanced text-blue-400 mb-2"></i> Reforma Tributária</h3>
-                                <p class="text-xs text-gray-600">Módulo de acompanhamento e análises.</p>
-                            </div>
-                            <a href="#" class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium text-center flex items-center justify-center">
-                                Acessar <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between">
-                            <div>
-                                
-                                <h3 class="font-semibold text-gray-800 mb-1 uppercase flex gap-2"><i class="fa-solid fa-users text-blue-400 mb-2"></i> Consultoria Cenofisco</h3>
-                                <p class="text-xs text-gray-600">Créditos de consultoria disponíveis: 5.</p>
-                            </div>
-                            <a href="#" class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium text-center flex items-center justify-center">
-                                Acessar <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between">
-                            <div>
-                                
-                                <h3 class="font-semibold text-gray-800 mb-1 uppercase flex gap-2"><i class="fa-solid fa-gear text-blue-400 mb-2"></i> Interface Compliance Solutions</h3>
-                                <p class="text-xs text-gray-600">Ferramenta de gestão de conformidade fiscal.</p>
-                            </div>
-                            <a href="#" class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium text-center flex items-center justify-center">
-                                Acessar <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between">
-                            <div>
-                                
-                                <h3 class="font-semibold text-gray-800 mb-1 uppercase flex gap-2"><i class="fa-solid fa-file-invoice text-blue-400 mb-2"></i> Cenofisco ECF</h3>
-                                <p class="text-xs text-gray-600">Gerador e validador de Escrituração Contábil Fiscal.</p>
-                            </div>
-                            <a href="#" class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium text-center flex items-center justify-center">
-                                Acessar <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between">
-                            <div>
-                                
-                                <h3 class="font-semibold text-gray-800 mb-1 uppercase flex gap-2"><i class="fa-solid fa-chart-line text-blue-400 mb-2"></i> DIME</h3>
-                                <p class="text-xs text-gray-600">Declaração de Informações Econômico-Fiscais.</p>
-                            </div>
-                            <a href="#" class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium text-center flex items-center justify-center">
-                                Acessar <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
-                        </div>
-                        <div class="bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 hover:shadow-md hover:border-blue-300 transition-all duration-200 flex flex-col justify-between">
-                            <div>
-                                
-                                <h3 class="font-semibold text-gray-800 mb-1 uppercase flex gap-2"><i class="fa-solid fa-coins text-blue-400 mb-2"></i> Lucro Real</h3>
-                                <p class="text-xs text-gray-600">Ferramenta para cálculo e apuração do Lucro Real.</p>
-                            </div>
-                            <a href="#" class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm font-medium text-center flex items-center justify-center">
-                                Acessar <i class="fas fa-arrow-right ml-1"></i>
-                            </a>
+                <!-- Meus documentos (itens salvos nas demais páginas) -->
+                <section id="documentos" class="cf-card scroll-mt-32" aria-labelledby="titulo-documentos">
+                    <div class="cf-section-head">
+                        <h2 id="titulo-documentos" class="cf-section-title"><span class="cf-icon bg-emerald-50 text-emerald-700"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>Meus documentos</h2>
+                    </div>
+                    <div class="border-b border-slate-200">
+                        <div id="doc-tabs" class="cf-tabs" role="tablist" aria-label="Tipos de documento">
+                            <!-- Gerado via JavaScript -->
                         </div>
                     </div>
-                
-            </div>
-            
-            <!-- Seção de Créditos e Documentos Salvos -->
-            <div id="documentos" class="lg:col-span-1 space-y-8">
-                <!-- Créditos de Consulta -->
-                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                    <h2 class="text-xl font-bold mb-4 flex items-center gap-2">
-                        <i class="fas fa-coins text-yellow-500 bg-yellow-50 p-2.5 rounded-full"></i> Créditos de Consulta
-                    </h2>
-                    <p class="text-gray-700 text-lg mb-4">Você possui <span class="font-bold text-blue-600">150</span> créditos disponíveis.</p>
-                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition flex items-center justify-center gap-2">
-                        <i class="fas fa-plus-circle"></i> Adicionar Créditos
-                    </button>
-                <div class="overflow-x-auto mb-6 mt-6">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Tipo de Consulta
-                                </th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Créditos por Consulta
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200 text-sm">
-                            <tr>
-                                <td class="px-6 py-4">Consulta por Telefone &amp; suporte técnico</td>
-                                <td class="px-6 py-4">4 créditos</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="px-6 py-4">Consulta por Escrita em até 72h &amp; suporte técnico</td>
-                                <td class="px-6 py-4">4 créditos</td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4">Consulta por Escrita em até 48h &amp; suporte técnico</td>
-                                <td class="px-6 py-4">8 créditos</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="px-6 py-4">Consulta por Escrita em até 24h &amp; suporte técnico</td>
-                                <td class="px-6 py-4">12 créditos</td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4">Consulta por Escrita em até 12h &amp; suporte técnico</td>
-                                <td class="px-6 py-4">24 créditos</td>
-                            </tr>
-                            <tr class="bg-gray-50">
-                                <td class="px-6 py-4">Consulta Vídeo Conferência</td>
-                                <td class="px-6 py-4">48 créditos</td>
-                            </tr>
-                            <tr>
-                                <td class="px-6 py-4">Consulta Presencial (1 hora)</td>
-                                <td class="px-6 py-4">96 créditos</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                    
-                </div>
+                    <ul id="doc-list" class="mt-2" role="tabpanel">
+                        <!-- Gerado via JavaScript -->
+                    </ul>
+                </section>
 
-          
+                <!-- Administração de usuários -->
+                <section class="cf-card" aria-labelledby="titulo-usuarios">
+                    <div class="cf-section-head flex-wrap">
+                        <h2 id="titulo-usuarios" class="cf-section-title"><span class="cf-icon bg-violet-50 text-violet-700"><i class="fa-solid fa-users-gear" aria-hidden="true"></i></span>Usuários da conta</h2>
+                        <button type="button" id="toggle-add-user-form" class="cf-btn cf-btn-soft" aria-expanded="false" aria-controls="add-user-form"><i class="fa-solid fa-user-plus" aria-hidden="true"></i>Adicionar usuário</button>
+                    </div>
 
-              
+                    <form id="add-user-form" class="mb-6 hidden rounded-xl bg-slate-50 p-4" novalidate>
+                        <div class="grid gap-3 sm:grid-cols-2">
+                            <div>
+                                <label for="new-user-name" class="cf-label">Nome completo</label>
+                                <input type="text" id="new-user-name" name="name" required autocomplete="off" class="cf-input" placeholder="Ex.: Ana Paula Silva">
+                            </div>
+                            <div>
+                                <label for="new-user-email" class="cf-label">E-mail</label>
+                                <input type="email" id="new-user-email" name="email" required autocomplete="off" class="cf-input" placeholder="Ex.: ana.silva@empresa.com">
+                            </div>
+                            <div>
+                                <label for="new-user-status" class="cf-label">Situação</label>
+                                <select id="new-user-status" name="status" class="cf-input">
+                                    <option value="ativo">Ativo</option>
+                                    <option value="inativo">Inativo</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="new-user-password" class="cf-label">Senha provisória</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="new-user-password" name="password" required minlength="8" autocomplete="off" class="cf-input font-mono" placeholder="Mínimo de 8 caracteres">
+                                    <button type="button" id="gerar-senha" class="cf-btn cf-btn-secondary shrink-0 px-3" title="Gerar senha"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i><span class="sr-only">Gerar senha</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="add-user-error" class="mt-3 hidden text-sm text-red-700" role="alert"></p>
+                        <div class="mt-4 flex justify-end gap-2">
+                            <button type="button" id="cancel-add-user" class="cf-btn cf-btn-secondary">Cancelar</button>
+                            <button type="submit" class="cf-btn cf-btn-primary"><i class="fa-solid fa-plus" aria-hidden="true"></i>Adicionar</button>
+                        </div>
+                    </form>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="border-b border-slate-200 text-xs tracking-wider text-slate-500 uppercase">
+                                <tr>
+                                    <th scope="col" class="py-2 pr-4 font-semibold">Usuário</th>
+                                    <th scope="col" class="py-2 pr-4 font-semibold">Situação</th>
+                                    <th scope="col" class="py-2 text-right font-semibold">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-tbody" class="divide-y divide-slate-100">
+                                <!-- Gerado via JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
             </div>
+
+            <!-- ============ LATERAL ============ -->
+            <aside class="space-y-6 lg:sticky lg:top-30">
+                <!-- Créditos de consulta -->
+                <section class="cf-card" aria-labelledby="titulo-creditos">
+                    <h2 id="titulo-creditos" class="cf-section-title mb-4"><span class="cf-icon bg-amber-50 text-amber-500"><i class="fa-solid fa-coins" aria-hidden="true"></i></span>Créditos de consulta</h2>
+                    <div class="rounded-xl bg-blue-950 p-4 text-white">
+                        <p class="text-xs text-blue-100">Saldo disponível</p>
+                        <p class="mt-1 text-3xl font-bold"><span data-resumo="creditos">150</span> <span class="text-base font-medium text-blue-100">créditos</span></p>
+                    </div>
+                    <a href="index.html#consultoria-cenofisco" class="cf-btn cf-btn-primary mt-4 w-full"><i class="fa-solid fa-circle-plus" aria-hidden="true"></i>Adicionar créditos</a>
+
+                    <h3 class="cf-eyebrow mt-6 mb-1 text-slate-500">Custo por consulta</h3>
+                    <ul>
+                        <li class="cf-row"><span>Telefone e suporte técnico</span><strong class="shrink-0 font-semibold text-slate-900">4</strong></li>
+                        <li class="cf-row"><span>Escrita em até 72h</span><strong class="shrink-0 font-semibold text-slate-900">4</strong></li>
+                        <li class="cf-row"><span>Escrita em até 48h</span><strong class="shrink-0 font-semibold text-slate-900">8</strong></li>
+                        <li class="cf-row"><span>Escrita em até 24h</span><strong class="shrink-0 font-semibold text-slate-900">12</strong></li>
+                        <li class="cf-row"><span>Escrita em até 12h</span><strong class="shrink-0 font-semibold text-slate-900">24</strong></li>
+                        <li class="cf-row"><span>Videoconferência</span><strong class="shrink-0 font-semibold text-slate-900">48</strong></li>
+                        <li class="cf-row"><span>Presencial (1 hora)</span><strong class="shrink-0 font-semibold text-slate-900">96</strong></li>
+                    </ul>
+                    <p class="mt-3 text-xs text-slate-500">Consultas por escrita incluem suporte técnico. Valores em créditos.</p>
+                </section>
+
+                <!-- Dados da conta -->
+                <section class="cf-card" aria-labelledby="titulo-dados">
+                    <div class="cf-section-head mb-3!">
+                        <h2 id="titulo-dados" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-id-card" aria-hidden="true"></i></span>Dados da conta</h2>
+                        <button type="button" class="cf-link-more cursor-pointer" data-editar-perfil>Editar</button>
+                    </div>
+                    <dl class="text-sm">
+                        <div class="cf-row"><dt class="text-slate-500">Nome</dt><dd class="truncate text-right font-medium text-slate-900" data-perfil="nome">Enedino</dd></div>
+                        <div class="cf-row"><dt class="text-slate-500">E-mail</dt><dd class="truncate text-right font-medium text-slate-900" data-perfil="email">enedino.pr@multieditoras.com.br</dd></div>
+                        <div class="cf-row"><dt class="text-slate-500">Telefone</dt><dd class="truncate text-right font-medium text-slate-900" data-perfil="telefone">—</dd></div>
+                        <div class="cf-row"><dt class="text-slate-500">Empresa</dt><dd class="truncate text-right font-medium text-slate-900" data-perfil="empresa">—</dd></div>
+                    </dl>
+                </section>
+            </aside>
         </div>
     </main>
+
+    <!-- Editar perfil -->
+    <dialog id="dialog-perfil" class="m-auto w-[calc(100%-2rem)] max-w-md rounded-2xl p-0 shadow-xl backdrop:bg-slate-900/50" aria-labelledby="titulo-dialog-perfil">
+        <form id="form-perfil" method="dialog" class="p-6">
+            <h2 id="titulo-dialog-perfil" class="text-lg font-semibold text-slate-900">Editar perfil</h2>
+            <div class="mt-4 space-y-3">
+                <div>
+                    <label for="perfil-nome" class="cf-label">Nome</label>
+                    <input type="text" id="perfil-nome" name="nome" required autocomplete="name" class="cf-input">
+                </div>
+                <div>
+                    <label for="perfil-email" class="cf-label">E-mail</label>
+                    <input type="email" id="perfil-email" name="email" required autocomplete="email" class="cf-input">
+                </div>
+                <div>
+                    <label for="perfil-telefone" class="cf-label">Telefone</label>
+                    <input type="tel" id="perfil-telefone" name="telefone" autocomplete="tel" class="cf-input" placeholder="(00) 00000-0000">
+                </div>
+                <div>
+                    <label for="perfil-empresa" class="cf-label">Empresa</label>
+                    <input type="text" id="perfil-empresa" name="empresa" autocomplete="organization" class="cf-input">
+                </div>
+            </div>
+            <div class="mt-6 flex justify-end gap-2">
+                <button type="button" id="cancelar-perfil" class="cf-btn cf-btn-secondary">Cancelar</button>
+                <button type="submit" class="cf-btn cf-btn-primary">Salvar</button>
+            </div>
+        </form>
+    </dialog>
 
     <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center gap-2 mb-4">
-                    <img  src="img/logobranco-cenofisco.png" alt="Logo Cenofisco Branco">
+                    <img  src="img/logobranco-cenofisco.png" alt="Cenofisco">
                 </div>
                 <p class="text-sm">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
             </div>
@@ -346,7 +373,7 @@
                 <p class="text-xs mb-4">Receba as principais notícias fiscais no seu e-mail.</p>
                 <div class="flex">
                     <input type="email" placeholder="Seu e-mail" class="bg-white border-none rounded-l-lg px-3 py-2 text-sm w-full focus:ring-1 focus:ring-blue-500">
-                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-r-lg hover:bg-yello-500 transition"><i class="fas fa-paper-plane"></i></button>
+                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-r-lg hover:bg-yellow-500 transition"><i class="fas fa-paper-plane"></i></button>
                 </div>
             </div>
         </div>
@@ -355,17 +382,6 @@
         </div>
     </footer>
     <script src="./index.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const toggleButton = document.getElementById('toggle-add-user-form');
-            const formContainer = document.getElementById('add-user-form-container');
-
-            if (toggleButton && formContainer) {
-                toggleButton.addEventListener('click', function() {
-                    formContainer.classList.toggle('hidden');
-                });
-            }
-        });
-    </script>
+    <script src="./meu-perfil.js"></script>
 </body>
 </html>
