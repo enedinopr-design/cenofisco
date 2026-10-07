@@ -158,6 +158,145 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ------------------------------------------------------------------
+     * Faixa de novidades: manchete + obrigações salvas na Agenda que vencem
+     * nos próximos dias (localStorage "savedObligations", gravado por
+     * agenda-obrigacoes.js). Alterna as mensagens a cada 7s; pausa com mouse
+     * ou foco, tem botão de pausar (WCAG 2.2.2) e setas; sem troca automática
+     * para quem prefere menos movimento.
+     * ------------------------------------------------------------------ */
+    const novidades = document.getElementById('novidades');
+    if (novidades) {
+        const JANELA_DIAS = 15;       // obrigações que vencem de hoje até daqui a 15 dias
+        const MAX_OBRIGACOES = 5;
+        const INTERVALO_MS = 7000;
+        const link = document.getElementById('novidades-link');
+        const badge = document.getElementById('novidades-badge');
+        const texto = document.getElementById('novidades-texto');
+        const cta = document.getElementById('novidades-cta');
+        const controles = document.getElementById('novidades-controles');
+        const contador = document.getElementById('novidades-contador');
+        const btnAnterior = document.getElementById('novidades-anterior');
+        const btnProxima = document.getElementById('novidades-proxima');
+        const btnPausa = document.getElementById('novidades-pausa');
+        const reduzMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        // 1ª mensagem: a manchete que já está no HTML
+        const manchete = {
+            badge: badge.textContent.trim(),
+            texto: texto.textContent.trim(),
+            href: link.getAttribute('href'),
+            cta: 'Leia mais',
+            urgente: false
+        };
+
+        const parseBR = str => {
+            const [d, m, a] = String(str || '').split('/').map(Number);
+            return d && m && a ? new Date(a, m - 1, d) : null;
+        };
+        const quandoVence = dias => (dias === 0 ? 'Vence hoje' : dias === 1 ? 'Vence amanhã' : `Vence em ${dias} dias`);
+
+        function obrigacoesAVencer() {
+            let salvas = [];
+            try {
+                const data = JSON.parse(localStorage.getItem('savedObligations'));
+                if (Array.isArray(data)) salvas = data;
+            } catch (_) { /* localStorage indisponível */ }
+            const hoje = new Date();
+            hoje.setHours(0, 0, 0, 0);
+            return salvas
+                .map(o => ({ o, data: parseBR(o.date) }))
+                .filter(({ data }) => data)
+                .map(({ o, data }) => ({ o, dias: Math.round((data - hoje) / 86400000) }))
+                .filter(({ dias }) => dias >= 0 && dias <= JANELA_DIAS)
+                .sort((a, b) => a.dias - b.dias)
+                .slice(0, MAX_OBRIGACOES)
+                .map(({ o, dias }) => ({
+                    badge: quandoVence(dias),
+                    texto: [o.title, o.subtitle].filter(Boolean).join(' – ') + ` · ${o.type ? o.type + ' · ' : ''}vencimento em ${o.date}`,
+                    href: `agenda-obrigacoes.html#${o.rowId || 'dia-' + String(o.date).replace(/\//g, '-')}`,
+                    cta: 'Ver na agenda',
+                    urgente: dias <= 1
+                }));
+        }
+
+        let mensagens = [];
+        let atual = 0;
+        let timer = null;
+        let pausadoPeloUsuario = reduzMovimento;
+        let pausadoPorInteracao = false;
+
+        function mostrar(i, { anunciar = false } = {}) {
+            atual = (i + mensagens.length) % mensagens.length;
+            const m = mensagens[atual];
+            const aplicar = () => {
+                badge.textContent = m.badge;
+                // Vencimento hoje/amanhã: selo em vermelho para chamar atenção (o texto do selo já diz a urgência)
+                badge.classList.toggle('bg-amber-400', !m.urgente);
+                badge.classList.toggle('text-blue-950', !m.urgente);
+                badge.classList.toggle('bg-red-600', m.urgente);
+                badge.classList.toggle('text-white', m.urgente);
+                texto.textContent = m.texto;
+                link.setAttribute('href', m.href);
+                cta.firstChild.nodeValue = m.cta + ' ';
+                contador.textContent = `${atual + 1}/${mensagens.length}`;
+                link.style.opacity = '';
+            };
+            // Leitores de tela só são avisados quando a troca é feita pelo usuário (setas), nunca na troca automática
+            novidades.setAttribute('aria-live', anunciar ? 'polite' : 'off');
+            if (reduzMovimento || mensagens.length < 2) aplicar();
+            else { link.style.opacity = '0'; setTimeout(aplicar, 200); }
+        }
+
+        function agendar() {
+            clearInterval(timer);
+            timer = null;
+            if (mensagens.length > 1 && !pausadoPeloUsuario && !pausadoPorInteracao) {
+                timer = setInterval(() => mostrar(atual + 1), INTERVALO_MS);
+            }
+        }
+
+        function atualizarBotaoPausa() {
+            btnPausa.setAttribute('aria-pressed', String(pausadoPeloUsuario));
+            btnPausa.setAttribute('aria-label', pausadoPeloUsuario ? 'Retomar troca automática' : 'Pausar troca automática');
+            btnPausa.innerHTML = `<i class="fa-solid ${pausadoPeloUsuario ? 'fa-play' : 'fa-pause'} text-xs" aria-hidden="true"></i>`;
+        }
+
+        function montar() {
+            const anterior = mensagens[atual];
+            mensagens = [manchete, ...obrigacoesAVencer()];
+            const varias = mensagens.length > 1;
+            controles.classList.toggle('hidden', !varias);
+            controles.classList.toggle('flex', varias);
+            // Mantém a mensagem que estava na tela, se ela ainda existir
+            const idx = anterior ? mensagens.findIndex(m => m.href === anterior.href && m.texto === anterior.texto) : 0;
+            mostrar(Math.max(0, idx));
+            atualizarBotaoPausa();
+            agendar();
+        }
+
+        btnAnterior.addEventListener('click', () => { mostrar(atual - 1, { anunciar: true }); agendar(); });
+        btnProxima.addEventListener('click', () => { mostrar(atual + 1, { anunciar: true }); agendar(); });
+        btnPausa.addEventListener('click', () => {
+            pausadoPeloUsuario = !pausadoPeloUsuario;
+            atualizarBotaoPausa();
+            agendar();
+        });
+        // Pausa enquanto o usuário lê (mouse em cima) ou navega por teclado dentro da faixa
+        const pausar = () => { pausadoPorInteracao = true; agendar(); };
+        const retomar = () => { pausadoPorInteracao = false; agendar(); };
+        novidades.addEventListener('mouseenter', pausar);
+        novidades.addEventListener('mouseleave', retomar);
+        novidades.addEventListener('focusin', pausar);
+        novidades.addEventListener('focusout', e => { if (!novidades.contains(e.relatedTarget)) retomar(); });
+        // Obrigação salva/removida na Agenda em outra aba: atualiza a faixa
+        window.addEventListener('storage', e => { if (e.key === 'savedObligations') montar(); });
+        // Volta para a aba depois de dias: recalcula "vence hoje/amanhã"
+        document.addEventListener('visibilitychange', () => { if (!document.hidden) montar(); });
+
+        montar();
+    }
+
+    /* ------------------------------------------------------------------
      * Busca global (placeholder até existir página de resultados)
      * ------------------------------------------------------------------ */
     const globalSearchForm = document.getElementById('globalSearchForm');

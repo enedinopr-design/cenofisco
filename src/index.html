@@ -82,13 +82,23 @@
     <h1 class="sr-only">Cenofisco – Portal Tributário, Fiscal e Trabalhista</h1>
 
     <!-- Faixa de novidades -->
-    <!-- Manchete fixa (antes era um letreiro rolante, que ficava vazio por alguns segundos e dificultava a leitura).
-         A faixa inteira é o link; no celular a manchete usa até 2 linhas, no desktop 1 linha com reticências. -->
-    <a href="legislacao.html" class="group cf-on-dark mb-6 flex items-center gap-3 rounded-xl bg-blue-900 px-4 py-3 text-white shadow-sm transition-colors hover:bg-blue-800 sm:mb-8 sm:gap-4">
-      <span class="shrink-0 rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-bold tracking-wider text-blue-950 uppercase">Novidades</span>
-      <p class="line-clamp-2 min-w-0 flex-1 text-sm leading-snug font-medium lg:line-clamp-1">Foi publicado o DECRETO Nº 12.955, DE 29 DE ABRIL DE 2026 – DOU de 30/04/2026, que regulamenta a Contribuição Social sobre Bens e Serviços – CBS e dá outras providências.</p>
-      <span class="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-amber-300 group-hover:underline sm:inline-flex">Leia mais <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span>
-    </a>
+    <!-- Faixa de novidades: a 1ª mensagem é a manchete abaixo (funciona sem JavaScript).
+         index.js acrescenta as obrigações salvas na Agenda que vencem nos próximos dias e alterna as mensagens
+         (pausa com mouse/foco, botão de pausar e setas; sem troca automática para quem prefere menos movimento). -->
+    <section id="novidades" class="cf-on-dark mb-6 flex items-center gap-2 rounded-xl bg-blue-900 py-1.5 pr-2 pl-4 text-white shadow-sm sm:mb-8 sm:gap-3" aria-label="Novidades e avisos">
+      <a href="legislacao.html" id="novidades-link" class="group flex min-w-0 flex-1 items-center gap-3 py-1.5 transition-opacity duration-200 sm:gap-4">
+        <span id="novidades-badge" class="shrink-0 rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-bold tracking-wider whitespace-nowrap text-blue-950 uppercase">Novidades</span>
+        <p id="novidades-texto" class="line-clamp-2 min-w-0 flex-1 text-sm leading-snug font-medium group-hover:underline group-hover:underline-offset-2 lg:line-clamp-1">Foi publicado o DECRETO Nº 12.955, DE 29 DE ABRIL DE 2026 – DOU de 30/04/2026, que regulamenta a Contribuição Social sobre Bens e Serviços – CBS e dá outras providências.</p>
+        <span id="novidades-cta" class="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-amber-300 sm:inline-flex">Leia mais <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span>
+      </a>
+      <!-- Controles: só aparecem quando há mais de uma mensagem -->
+      <div id="novidades-controles" class="hidden shrink-0 items-center gap-0.5 border-l border-white/15 pl-1.5 sm:pl-2">
+        <button type="button" id="novidades-anterior" class="hidden size-8 cursor-pointer items-center justify-center rounded-md text-blue-100 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Mensagem anterior"><i class="fa-solid fa-chevron-left text-xs" aria-hidden="true"></i></button>
+        <span id="novidades-contador" class="hidden min-w-8 text-center text-xs text-blue-100 tabular-nums sm:inline" aria-hidden="true"></span>
+        <button type="button" id="novidades-proxima" class="hidden size-8 cursor-pointer items-center justify-center rounded-md text-blue-100 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Próxima mensagem"><i class="fa-solid fa-chevron-right text-xs" aria-hidden="true"></i></button>
+        <button type="button" id="novidades-pausa" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-md text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Pausar troca automática" aria-pressed="false"><i class="fa-solid fa-pause text-xs" aria-hidden="true"></i></button>
+      </div>
+    </section>
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
 
