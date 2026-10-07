@@ -394,6 +394,40 @@ border:1px solid #ccc;
     mask-image: linear-gradient(to right, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent);
   }
 
+  /* Tabela padrão de resultados (Busca Fiscal e detalhe de NCM).
+     No celular cada linha vira um cartão; o rótulo de cada célula vem de data-label (preenchido pelo JS). */
+  .cf-table {
+    @apply w-full border-collapse text-sm;
+  }
+  .cf-table thead th {
+    @apply border-b border-slate-200 bg-slate-50 px-4 py-3 text-left text-xs font-semibold tracking-wide text-slate-500 uppercase;
+  }
+  .cf-table tbody td {
+    @apply border-b border-slate-100 px-4 py-3 align-top text-slate-700;
+  }
+  .cf-table tbody tr:last-child td { @apply border-b-0; }
+  .cf-table tbody tr { @apply transition-colors; }
+  .cf-table tbody tr:hover { @apply bg-blue-50/40; }
+  .cf-table .cf-num { @apply text-right whitespace-nowrap tabular-nums; }
+  .cf-table thead .cf-num { @apply text-right; }
+  .cf-table mark { @apply rounded-sm bg-amber-100 text-inherit; } /* sem padding: não separa "cerveja" de "s" em "cervejas" */
+  @media (max-width: 767.98px) {
+    .cf-table thead {
+      position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+    }
+    .cf-table, .cf-table tbody, .cf-table tr, .cf-table td { display: block; width: 100%; }
+    .cf-table tbody tr { @apply border-b border-slate-200 py-2; }
+    .cf-table tbody tr:hover { background: transparent; }
+    .cf-table tbody td { @apply flex items-baseline justify-between gap-4 border-b-0 px-1 py-1.5; }
+    .cf-table tbody td[data-label]::before {
+      content: attr(data-label);
+      @apply shrink-0 text-xs font-semibold tracking-wide text-slate-500 uppercase;
+    }
+    .cf-table tbody td.cf-table-full { @apply block; }
+    .cf-table tbody td.cf-table-full::before { @apply mb-0.5 block; }
+    .cf-table .cf-num { text-align: right; }
+  }
+
   /* Rodapé: títulos e links (py-1 = alvo de toque de 28px; sublinhado no hover reforça que é link) */
   .cf-footer-title {
     @apply mb-4 text-xs font-semibold tracking-[0.12em] text-white uppercase;
