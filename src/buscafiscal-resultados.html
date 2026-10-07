@@ -94,18 +94,17 @@
                         busca</a></div>
             </div>
             <div class="border-b border-gray-200 mb-6">
-                <nav class="-mb-px flex gap-6" aria-label="Tabs">
-                    <button class="tab-button active" onclick="openTab(event, 'ipi-tab')">IPI</button>
-                    <button class="tab-button" onclick="openTab(event, 'ii-tab')">II</button>
-                    <button class="tab-button" onclick="openTab(event, 'pis-cofins-tab')">PIS/COFINS</button>
-                    <button class="tab-button" onclick="openTab(event, 'pis-cofins-importacao-tab')">PIS/COFINS
-                        Importação</button>
-                    <button class="tab-button" onclick="openTab(event, 'icms-normal-tab')">ICMS Normal</button>
-                    <button class="tab-button" onclick="openTab(event, 'icms-st-tab')">ICMS/ST</button>
+                <nav class="cf-tabs" role="tablist" aria-label="Tributos">
+                    <button type="button" role="tab" id="tab-ipi-tab" aria-controls="ipi-tab" class="tab-button active" onclick="openTab(event, 'ipi-tab')">IPI</button>
+                    <button type="button" role="tab" id="tab-ii-tab" aria-controls="ii-tab" class="tab-button" onclick="openTab(event, 'ii-tab')">II</button>
+                    <button type="button" role="tab" id="tab-pis-cofins-tab" aria-controls="pis-cofins-tab" class="tab-button" onclick="openTab(event, 'pis-cofins-tab')">PIS/COFINS</button>
+                    <button type="button" role="tab" id="tab-pis-cofins-importacao-tab" aria-controls="pis-cofins-importacao-tab" class="tab-button" onclick="openTab(event, 'pis-cofins-importacao-tab')">PIS/COFINS Importação</button>
+                    <button type="button" role="tab" id="tab-icms-normal-tab" aria-controls="icms-normal-tab" class="tab-button" onclick="openTab(event, 'icms-normal-tab')">ICMS Normal</button>
+                    <button type="button" role="tab" id="tab-icms-st-tab" aria-controls="icms-st-tab" class="tab-button" onclick="openTab(event, 'icms-st-tab')">ICMS/ST</button>
                 </nav>
             </div>
 
-            <div id="ipi-tab" class="tab-content">
+            <div id="ipi-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-ipi-tab">
                 <h3 class="text-xl font-semibold mb-2">Resultados para <span class="text-blue-600">IPI</span></h3>
                 <p class="text-gray-600 mb-2">Alíquota do Imposto sobre Produtos Industrializados (IPI) de acordo com a
                     Tabela de Incidência do IPI (aprovado pelo <a href="#">Decreto nº 11.158/2022</a>).</p>
@@ -182,7 +181,7 @@
                 </div>
             </div>
 
-            <div id="ii-tab" class="tab-content hidden">
+            <div id="ii-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-ii-tab">
                 <h3 class="text-xl font-semibold mb-4">Resultados para <span class="text-blue-600">II</span></h3>
                 <p class="text-gray-600 mb-2">Alíquota do Imposto sobre a Importação (II) que compõe a Tarifa Externa Comum – TEC de acordo
                     com <a href="/Documentos?guid=ef3b1c97cf844d4caa63029188913768" target="blank">Resolução GECEX/CAMEX nº
@@ -247,16 +246,16 @@
                 </div>
             </div>
 
-                   <div id="pis-cofins-tab" class="tab-content hidden">
+                   <div id="pis-cofins-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-pis-cofins-tab">
                     
                     teste 1
                 
                 
                 </div>
                    
-                   <div id="pis-cofins-importacao-tab" class="tab-content hidden">teste 2</div>
+                   <div id="pis-cofins-importacao-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-pis-cofins-importacao-tab">teste 2</div>
 
-            <div id="icms-normal-tab" class="tab-content hidden">
+            <div id="icms-normal-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-icms-normal-tab">
                 <h3 class="text-xl font-semibold mb-4">Resultados para <span class="text-blue-600">ICMS Normal</span></h3>
                 <p class="text-gray-600">Aqui serão exibidos os resultados da busca fiscal relacionados ao ICMS Normal.
                 </p>
@@ -371,7 +370,7 @@
                 </table>
             </div>
 
-            <div id="icms-st-tab" class="tab-content hidden">
+            <div id="icms-st-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-icms-st-tab">
                 <h3 class="text-xl font-semibold mb-4">Resultados para ICMS/ST</h3>
                 <p class="text-gray-600">Aqui serão exibidos os resultados da busca fiscal relacionados ao ICMS/ST
                     (Substituição Tributária).</p>

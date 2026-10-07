@@ -8,6 +8,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // --- Tabelas de vencimentos no celular ---
+    // Copia o título de cada coluna (1ª linha da tabela) para as células (data-label).
+    // Abaixo de 1280px o CSS mostra cada linha como um cartão, com o rótulo acima do valor (ver .tabela-agenda em input.css).
+    document.querySelectorAll('table.tabela-agenda').forEach(table => {
+        const rows = Array.from(table.rows);
+        if (!rows.length) return;
+        const labels = Array.from(rows[0].cells).map(cell => cell.textContent.replace(/\s+/g, ' ').trim());
+        rows.slice(1).forEach(row => {
+            Array.from(row.cells).forEach((cell, i) => {
+                if (labels[i]) cell.dataset.label = labels[i];
+            });
+        });
+        // Títulos como "Formulário/Programa/Guia" não quebram e travam a largura das colunas:
+        // um espaço de largura zero após cada "/" permite quebrar ali (sem mudar o texto visível).
+        Array.from(rows[0].cells).forEach(cell => {
+            const walker = document.createTreeWalker(cell, NodeFilter.SHOW_TEXT);
+            for (let node = walker.nextNode(); node; node = walker.nextNode()) {
+                node.nodeValue = node.nodeValue.replace(/\/(?!​)/g, '/​');
+            }
+        });
+    });
+
     // --- Elementos do DOM ---
     const savedAgendaDaysList = document.getElementById('saved-agenda-days-list');
     const calendarDays = document.getElementById('calendarDays');

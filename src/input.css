@@ -83,6 +83,7 @@
   padding: .8em;
   border:1px solid #ccc;
   font-size: .9em;
+  overflow-wrap: anywhere; /* URLs e termos longos (ex.: Federais/Municipais/Estaduais) quebram em vez de alargar a tabela */
 
 }
 .tabela-agenda tr:hover {
@@ -97,6 +98,57 @@ border:1px solid #ccc;
   font-weight: 500!important;
 }
 
+/* Modo tabela: a descrição concentra quase todo o texto, então recebe a maior parte da largura */
+@media (min-width: 1280px) {
+  .tabela-agenda th:nth-child(3),
+  .tabela-agenda td:nth-child(3) { width: 40%; }
+}
+
+/* Até 1279px (celular, tablet e notebook pequeno): a tabela de 5 colunas não cabe ao lado da barra lateral e vira uma lista de cartões, um por obrigação.
+   O título de cada coluna vem do atributo data-label, preenchido por agenda-obrigacoes.js. */
+@media (max-width: 1279.98px) {
+  .tabela-agenda,
+  .tabela-agenda tbody,
+  .tabela-agenda tr,
+  .tabela-agenda td {
+    display: block;
+    width: 100%;
+  }
+  /* Linha de cabeçalho: escondida na tela, mas mantida para leitores de tela */
+  .tabela-agenda tr:first-child:has(th) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .tabela-agenda tr {
+    margin-top: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  .tabela-agenda tr:hover { background-color: #fff; }
+  .tabela-agenda td {
+    border: 0;
+    border-bottom: 1px solid #ebebeb;
+    padding: 0.6em 0.9em;
+    overflow-wrap: anywhere;
+  }
+  .tabela-agenda td:last-child { border-bottom: 0; }
+  .tabela-agenda td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-slate-500);
+  }
+}
 .item-salvo {
   border-bottom:#ccc 1px solid;
   padding: .4em;
