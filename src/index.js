@@ -861,11 +861,28 @@ document.addEventListener('DOMContentLoaded', function () {
             renderCalendar();
         }
 
+        // Mesmo critério da página da Agenda: abre no mês atual se ele tiver obrigações;
+        // senão, no mês com obrigações mais próximo de hoje
+        function pickInitialMonth() {
+            const months = [...new Set(agendaEvents
+                .map(e => String(e.date || '').split('/'))
+                .filter(p => p.length === 3)
+                .map(([, m, y]) => `${y}-${m}`))];
+            if (!months.length) return;
+            const current = `${today.getFullYear()}-${pad(today.getMonth() + 1)}`;
+            const dist = key => Math.abs(new Date(`${key}-01T00:00:00`) - today);
+            const chosen = months.includes(current) ? current : months.reduce((best, m) => (dist(m) < dist(best) ? m : best));
+            const [y, m] = chosen.split('-').map(Number);
+            currentYear = y;
+            currentMonth = m - 1;
+        }
+
         async function loadAgendaEvents() {
             try {
                 const response = await fetch('./agenda.json');
                 if (!response.ok) throw new Error(`HTTP ${response.status}`);
                 agendaEvents = await response.json();
+                pickInitialMonth();
             } catch (error) {
                 console.error('Erro ao carregar eventos da agenda:', error);
             }
