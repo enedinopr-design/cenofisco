@@ -134,6 +134,30 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /* ------------------------------------------------------------------
+     * Listas que rolam na horizontal (abas e áreas da consultoria):
+     * data-overflow="start|end|both" esmaece a borda onde ainda há conteúdo,
+     * indicando que dá para rolar (estilo em input.css). Sem rolagem, nada muda.
+     * ------------------------------------------------------------------ */
+    const scrollHints = $$('.cf-tabs, [data-scroll-hint]');
+    if (scrollHints.length) {
+        const updateHint = el => {
+            const max = el.scrollWidth - el.clientWidth;
+            if (max <= 1) { el.removeAttribute('data-overflow'); return; }
+            const atStart = el.scrollLeft <= 1;
+            const atEnd = el.scrollLeft >= max - 1;
+            el.dataset.overflow = atStart ? 'end' : atEnd ? 'start' : 'both';
+        };
+        scrollHints.forEach(el => {
+            el.addEventListener('scroll', () => updateHint(el), { passive: true });
+            updateHint(el);
+        });
+        if ('ResizeObserver' in window) {
+            const ro = new ResizeObserver(entries => entries.forEach(entry => updateHint(entry.target)));
+            scrollHints.forEach(el => ro.observe(el));
+        }
+    }
+
+    /* ------------------------------------------------------------------
      * Busca global (placeholder até existir página de resultados)
      * ------------------------------------------------------------------ */
     const globalSearchForm = document.getElementById('globalSearchForm');
@@ -528,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const tipoInfo = {
             federal: { label: () => 'Federal', cor: 'text-blue-700' },
             estadual: { label: i => `Estadual · ${i.estado}`, cor: 'text-emerald-700' },
-            municipal: { label: i => `Municipal · ${i.municipio} · ${i.estado}`, cor: 'text-orange-600' }
+            municipal: { label: i => `Municipal · ${i.municipio} · ${i.estado}`, cor: 'text-orange-700' }
         };
 
         function renderLegislacao(data) {
@@ -555,7 +579,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span class="cf-eyebrow ${info.cor}">${escapeHtml(info.label(item))}</span>
                     <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="${escapeHtml(item.link)}" class="transition hover:text-blue-800">${escapeHtml(item.title)}</a></h3>
                     <p class="mt-1 text-sm text-slate-600">${escapeHtml(item.summary)}</p>
-                    <p class="mt-2 text-xs text-slate-400">Publicado em ${escapeHtml(item.date)}${meta ? ' · ' + meta : ''}</p>`;
+                    <p class="mt-2 text-xs text-slate-500">Publicado em ${escapeHtml(item.date)}${meta ? ' · ' + meta : ''}</p>`;
 
                 article.querySelector('a').addEventListener('click', () => {
                     saveAccessedLegislation({ title: item.title, date: item.date, link: item.link });
@@ -800,22 +824,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ------------------------------------------------------------------
-     * Newsletter (feedback visual; integrar ao back-end quando houver)
-     * ------------------------------------------------------------------ */
-    const newsletterForm = document.getElementById('newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', e => {
-            e.preventDefault();
-            const feedback = document.getElementById('newsletter-feedback');
-            if (feedback) {
-                feedback.textContent = 'Obrigado! Seu e-mail foi cadastrado.';
-                feedback.classList.remove('hidden');
-            }
-            newsletterForm.reset();
-        });
-    }
-
-    /* ------------------------------------------------------------------
      * Indicadores e Taxas: último mês de cada série (SGS/Banco Central),
      * seta comparando com o mês anterior; cada linha abre indicadores.html
      * ------------------------------------------------------------------ */
@@ -843,9 +851,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 const last = pts[pts.length - 1];
                 const prev = pts[pts.length - 2];
                 const href = `indicadores.html?indicador=${ind.id}`;
-                const nome = `<a href="${href}" class="after:absolute after:inset-0 group-hover:text-blue-800">${ind.nome}</a> <span class="text-xs text-slate-400">(${ind.fonte})</span>`;
+                const nome = `<a href="${href}" class="after:absolute after:inset-0 group-hover:text-blue-800">${ind.nome}</a> <span class="text-xs text-slate-500">(${ind.fonte})</span>`;
                 if (!last) {
-                    return `<div class="cf-row group relative"><dt>${nome}</dt><dd class="text-xs text-slate-400">indisponível</dd></div>`;
+                    return `<div class="cf-row group relative"><dt>${nome}</dt><dd class="text-xs text-slate-500">indisponível</dd></div>`;
                 }
                 const [ano, mes, dia] = last.data.split('-');
                 const cambio = ind.tipo === 'cambio';
@@ -859,9 +867,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 const seta = sobe ? '<i class="fa-solid fa-arrow-trend-up text-xs" aria-label="em alta"></i>'
                     : desce ? '<i class="fa-solid fa-arrow-trend-down text-xs" aria-label="em queda"></i>'
                         : '<i class="fa-solid fa-minus text-xs" aria-label="estável"></i>';
-                const cor = sobe ? 'text-emerald-600' : desce ? 'text-red-600' : 'text-slate-500';
+                const cor = sobe ? 'text-emerald-700' : desce ? 'text-red-600' : 'text-slate-500';
                 return `<div class="cf-row group relative transition hover:bg-slate-50">
-                    <dt>${nome}<span class="block text-[11px] text-slate-400">${quando}</span></dt>
+                    <dt>${nome}<span class="block text-xs text-slate-500">${quando}</span></dt>
                     <dd class="flex items-center gap-1.5 font-semibold tabular-nums ${cor}">${valor} ${seta}</dd>
                 </div>`;
             });
@@ -870,11 +878,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ------------------------------------------------------------------
-     * Rodapé: ano atual + botão "voltar ao topo"
+     * Botão "voltar ao topo" (ano do rodapé e newsletter ficam em rodape.js)
      * ------------------------------------------------------------------ */
-    const anoAtual = document.getElementById('ano-atual');
-    if (anoAtual) anoAtual.textContent = new Date().getFullYear();
-
     const backToTop = document.getElementById('back-to-top');
     if (backToTop) {
         const onScroll = () => {

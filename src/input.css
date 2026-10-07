@@ -7,67 +7,77 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
+/* ==========================================================================
+   Foco de teclado (WCAG 2.4.7 / 2.4.11): o mesmo contorno visível em todos os navegadores.
+   :where() mantém especificidade zero, então classes como focus-visible:ring-* continuam valendo.
+   Campos de formulário usam o próprio anel (focus:ring-*) e ficam de fora.
+   ========================================================================== */
+@layer base {
+  :where(a[href], button, summary, [role="tab"], [role="slider"], [tabindex]:not([tabindex="-1"])):focus-visible {
+    outline: 2px solid var(--color-blue-600);
+    outline-offset: 2px;
+  }
+  /* Em fundos escuros (barra superior, faixa de novidades, cartões azuis, rodapé) o azul some: usa o âmbar da marca */
+  .cf-on-dark :where(a[href], button, [role="slider"]):focus-visible {
+    outline-color: var(--color-amber-400);
+  }
+}
+
 #tipo_de_publicacao {
     border-left: 1px solid #ccc;
     padding-left: 5px;
 }
+/* Popup de eventos do calendário (posicionado via JS em relação à página) */
 #eventDetailsPopup {
     position: absolute;
-    max-width: calc(100vw - 20px); /* nunca ultrapassa a tela */
-    width: 260px;
-    box-sizing: border-box;
     left: 0;
+    box-sizing: border-box;
+    width: 260px;
+    max-width: calc(100vw - 20px); /* nunca ultrapassa a tela */
+    overflow-wrap: break-word;
 }
-#eventDetailsPopup {
-    word-wrap: break-word;
-}
+
+/* Regulamentos estaduais: sigla que vira bandeira no hover/foco */
 .state-item {
-      position: relative;
-      display: inline-block;
-      width: 40px; /* Ajustado para um tamanho menor */
-      height: 28px; /* Ajustado para um tamanho menor */
-      text-align: center;
-    }
-    .state-abbr, .state-flag {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .state-flag {
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .state-item:hover .state-abbr {
-      opacity: 0;
-    }
-    .state-item:hover .state-flag {
-      opacity: 1;
-    }
-     .has-event {
-        position: relative;
-        background-color: rgb(255, 244, 201);
-        color:#333!important;
-        
-    }
-    .has-event::after {
-        content: '';
-        position: absolute;
-        bottom: 2px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 5px;
-        height: 5px;
-        background-color: #155dfc; /* Vermelho para eventos */
-        border-radius: 50%;
-    }
-    .has-event.bg-blue-600::after {
-    background-color: #155dfc!important; /* Azul para eventos fiscais */
-    
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 28px;
+    text-align: center;
+}
+.state-abbr, .state-flag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.state-flag {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.state-item:hover .state-abbr { opacity: 0; }
+.state-item:hover .state-flag { opacity: 1; }
+
+/* Dias com obrigações no calendário */
+.has-event {
+    position: relative;
+    background-color: rgb(255, 244, 201);
+    color: #333 !important; /* precisa vencer as classes de cor aplicadas pelo JS */
+}
+.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: #155dfc;
+    border-radius: 50%;
 }
 .tabela-agenda td {
   padding: .8em;
@@ -86,6 +96,7 @@ border:1px solid #ccc;
   padding: .8em;
   font-weight: 500!important;
 }
+
 .item-salvo {
   border-bottom:#ccc 1px solid;
   padding: .4em;
@@ -223,7 +234,7 @@ border:1px solid #ccc;
     border-bottom: 2px solid transparent;
     font-weight: 600;
     color: #4B5563;
-    transition: all 0.2s;
+    transition: color 0.2s, border-color 0.2s; /* só o que muda: "all" animaria também o contorno de foco */
   }
   .tab-button:hover { color: #2563EB; }
   .tab-button.active { color: #2563EB; border-bottom-color: #2563EB; }
@@ -234,14 +245,16 @@ border:1px solid #ccc;
    ========================================================================== */
 @layer components {
   /* Cards e cabeçalhos de seção */
+  /* Padding menor no celular: devolve 8px de largura útil em telas de 320–390px */
   .cf-card {
-    @apply rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_1px_2px_rgba(15,23,42,0.04)];
+    @apply rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)] sm:p-6;
   }
+  /* flex-wrap: quando não cabe, o link/botão desce para a linha de baixo em vez de espremer o título ou vazar da tela */
   .cf-section-head {
-    @apply mb-5 flex items-center justify-between gap-4;
+    @apply mb-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-3;
   }
   .cf-section-title {
-    @apply flex items-center gap-3 text-lg font-semibold tracking-tight text-slate-900;
+    @apply flex min-w-0 items-center gap-3 text-lg font-semibold tracking-tight text-slate-900;
   }
   .cf-icon {
     @apply inline-flex size-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-[0.95rem] text-blue-700;
@@ -264,8 +277,9 @@ border:1px solid #ccc;
   }
 
   /* Formulários */
+  /* text-base no celular: abaixo de 16px o Safari do iOS dá zoom ao focar o campo */
   .cf-input {
-    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 transition placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none;
+    @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-base text-slate-900 transition placeholder:text-slate-500 sm:text-sm focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none;
   }
   .cf-label {
     @apply mb-1 block text-xs font-medium text-slate-600;
@@ -281,8 +295,15 @@ border:1px solid #ccc;
   .cf-btn-accent { @apply bg-amber-400 text-blue-950 hover:bg-amber-300; }
 
   /* Opções (radio/checkbox estilizados) — o <span> vem logo após o <input class="peer"> */
+  /* h-full: opções da mesma linha ficam com a mesma altura quando uma delas quebra em duas linhas.
+     hyphens-auto: em telas estreitas palavras longas ("Substituição") quebram com hífen (página em pt-BR) */
   .cf-choice {
-    @apply flex items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2 text-center text-sm font-semibold text-slate-700 transition hover:border-slate-300 peer-checked:border-blue-900 peer-checked:bg-blue-900 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-blue-600 peer-focus-visible:ring-offset-2;
+    @apply flex h-full min-h-10 items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-center text-sm leading-snug font-semibold hyphens-auto text-slate-700 transition hover:border-slate-300 peer-checked:border-blue-900 peer-checked:bg-blue-900 peer-checked:text-white peer-focus-visible:ring-2 peer-focus-visible:ring-blue-600 peer-focus-visible:ring-offset-2 sm:px-4;
+  }
+  /* No celular o check (invisível até marcar) deixa de ocupar espaço ao lado do texto e vai para o canto */
+  @media (max-width: 639.98px) {
+    .cf-choice { position: relative; padding-inline: 0.5rem; }
+    .cf-choice > i { position: absolute; top: 0.25rem; right: 0.25rem; font-size: 0.625rem; }
   }
   .cf-pill {
     @apply flex items-center justify-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-600 transition hover:border-slate-300 peer-focus-visible:ring-2 peer-focus-visible:ring-blue-600;
@@ -295,10 +316,38 @@ border:1px solid #ccc;
   }
   .cf-tabs::-webkit-scrollbar { display: none; }
   .cf-tabs .tab-button {
-    @apply border-b-2 border-transparent px-0.5 pt-1 pb-3 text-sm font-semibold whitespace-nowrap text-slate-500 hover:text-slate-900 focus-visible:text-slate-900 focus-visible:outline-none;
+    @apply border-b-2 border-transparent px-0.5 pt-1 pb-3 text-sm font-semibold whitespace-nowrap text-slate-500 hover:text-slate-900 focus-visible:text-slate-900;
+  }
+  /* O contêiner rola na horizontal e cortaria o contorno de foco externo: desenha-o por dentro */
+  .cf-tabs .tab-button:focus-visible {
+    outline-offset: -2px;
+    border-radius: 4px;
   }
   .cf-tabs .tab-button.active {
     @apply border-blue-700 text-blue-700;
+  }
+
+  /* Listas que rolam na horizontal (abas, áreas): esmaece a borda onde ainda há conteúdo escondido.
+     O atributo data-overflow é mantido por index.js conforme a posição da rolagem. */
+  [data-overflow="end"] {
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 2.5rem), transparent);
+  }
+  [data-overflow="start"] {
+    -webkit-mask-image: linear-gradient(to left, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to left, #000 calc(100% - 2.5rem), transparent);
+  }
+  [data-overflow="both"] {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 2.5rem, #000 calc(100% - 2.5rem), transparent);
+  }
+
+  /* Rodapé: títulos e links (py-1 = alvo de toque de 28px; sublinhado no hover reforça que é link) */
+  .cf-footer-title {
+    @apply mb-4 text-xs font-semibold tracking-[0.12em] text-white uppercase;
+  }
+  .cf-footer-link {
+    @apply inline-block py-1 underline-offset-4 transition-colors hover:text-white hover:underline;
   }
 
   /* Navegação principal */
@@ -314,22 +363,6 @@ border:1px solid #ccc;
       @apply absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-blue-900;
     }
   }
-  /* Faixa de novidades (substitui o <marquee>, que é obsoleto) */
-  .cf-ticker-track {
-    display: inline-block;
-    white-space: nowrap;
-    padding-left: 100%;
-    animation: cf-ticker 38s linear infinite;
-  }
-  .cf-ticker:hover .cf-ticker-track,
-  .cf-ticker:focus-within .cf-ticker-track {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes cf-ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-100%); }
 }
 
 /* Calendário da Home: ponto amarelo no dia atual com evento */
@@ -339,14 +372,26 @@ border:1px solid #ccc;
 
 /* Acessibilidade: respeita quem prefere menos animação */
 @media (prefers-reduced-motion: reduce) {
-  .cf-ticker-track {
-    animation: none;
-    padding-left: 0;
-    white-space: normal;
-  }
   *, *::before, *::after {
     scroll-behavior: auto !important;
   }
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 9rem; }
+
+/* Font Awesome 6 também define .sr-only, fora de camadas CSS. Estilos fora de camada sempre vencem os do
+   Tailwind (em camadas), então variantes como focus:not-sr-only (link "Pular para o conteúdo") e
+   sm:not-sr-only nunca funcionavam. revert-layer devolve cada propriedade ao valor das camadas do Tailwind.
+   Navegador sem suporte ignora a regra e mantém o comportamento anterior.
+   "html .sr-only" tem especificidade maior, então vence mesmo nas páginas que carregam o Font Awesome depois deste CSS. */
+html .sr-only {
+  position: revert-layer;
+  width: revert-layer;
+  height: revert-layer;
+  padding: revert-layer;
+  margin: revert-layer;
+  overflow: revert-layer;
+  clip: revert-layer;
+  white-space: revert-layer;
+  border-width: revert-layer;
+}

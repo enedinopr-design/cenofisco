@@ -168,46 +168,61 @@
         </div>
     </main>
 
-  <footer class="bg-blue-950 text-gray-400 py-12 mt-12">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-1">
-                <div class="flex items-center gap-2 mb-4">
-                    <img  src="img/logobranco-cenofisco.png" alt="Logo Cenofisco Branco">
-                </div>
-                <p class="text-sm">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4">Legislação</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:text-white">Federal</a></li>
-                    <li><a href="#" class="hover:text-white">Estadual</a></li>
-                    <li><a href="#" class="hover:text-white">Municipal</a></li>
-                    <li><a href="#" class="hover:text-white">Trabalhista</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4">Ferramentas</h4>
-                <ul class="text-sm space-y-2">
-                    <li><a href="#" class="hover:text-white">CNAE</a></li>
-                    <li><a href="#" class="hover:text-white">Substituição Tributária</a></li>
-                    <li><a href="#" class="hover:text-white">Tabelas Práticas</a></li>
-                    <li><a href="#" class="hover:text-white">Agenda</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-white font-bold mb-4">Newsletter</h4>
-                <p class="text-xs mb-4">Receba as principais notícias fiscais no seu e-mail.</p>
-                <div class="flex">
-                    <input type="email" placeholder="Seu e-mail" class="bg-white border-none rounded-l-lg px-3 py-2 text-sm w-full focus:ring-1 focus:ring-blue-500">
-                    <button class="bg-yellow-400 text-blue-900 px-4 py-2 rounded-r-lg hover:bg-yello-500 transition"><i class="fas fa-paper-plane"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-slate-800 text-center text-xs">
-            © Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62
-        </div>
-    </footer>
+  <!-- Grade de 12 colunas no desktop: marca (4) · Legislação (2) · Ferramentas (3) · Newsletter (3).
+       No celular, Legislação e Ferramentas ficam lado a lado (listas curtas) e marca/newsletter ocupam a largura toda. -->
+  <footer class="cf-on-dark mt-12 bg-blue-950 text-slate-400">
+    <div class="container mx-auto grid grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:py-14 md:grid-cols-6 lg:grid-cols-12 lg:gap-x-8">
+      <div class="col-span-2 md:col-span-6 lg:col-span-4 lg:pr-8">
+        <!-- -ml-3: o arquivo do logo tem ~12px de margem transparente à esquerda (na altura de 40px); assim ele alinha com o texto -->
+        <img src="img/logobranco-cenofisco.png" alt="Cenofisco" width="201" height="49" loading="lazy" decoding="async" class="mb-4 -ml-3 h-10 w-auto">
+        <p class="max-w-sm text-sm leading-relaxed">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
+        <ul class="mt-5 space-y-1 text-sm">
+          <li><a href="tel:08009403055" class="inline-flex items-center gap-2.5 py-1 transition hover:text-white"><i class="fa-solid fa-phone w-4 text-center text-amber-400" aria-hidden="true"></i>0800 940 3055</a></li>
+          <li><a href="mailto:contato@cenofisco.com.br" class="inline-flex items-center gap-2.5 py-1 break-all transition hover:text-white"><i class="fa-solid fa-envelope w-4 text-center text-amber-400" aria-hidden="true"></i>contato@cenofisco.com.br</a></li>
+        </ul>
+      </div>
+      <nav class="md:col-span-2 lg:col-span-2" aria-label="Legislação">
+        <h2 class="cf-footer-title">Legislação</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="legislacao.html" class="cf-footer-link">Federal</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Estadual</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Municipal</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Trabalhista</a></li>
+        </ul>
+      </nav>
+      <nav class="md:col-span-2 lg:col-span-3" aria-label="Ferramentas">
+        <h2 class="cf-footer-title">Ferramentas</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="buscafiscal-resultados.html" class="cf-footer-link">Busca Fiscal</a></li>
+          <li><a href="aplicativos.html" class="cf-footer-link">Aplicativos</a></li>
+          <li><a href="index.html#titulo-tabelas" class="cf-footer-link">Tabelas Práticas</a></li>
+          <li><a href="agenda-obrigacoes.html" class="cf-footer-link">Agenda de Obrigações</a></li>
+        </ul>
+      </nav>
+      <div class="col-span-2 md:col-span-2 lg:col-span-3">
+        <h2 class="cf-footer-title">Newsletter</h2>
+        <p class="mb-4 text-sm leading-relaxed">Receba as principais notícias fiscais no seu <span class="whitespace-nowrap">e-mail</span>.</p>
+        <form id="newsletter-form" class="flex max-w-md overflow-hidden rounded-lg ring-1 ring-white/10 focus-within:ring-2 focus-within:ring-amber-400">
+          <label for="newsletter-email" class="sr-only">Seu e-mail</label>
+          <!-- appearance-none/rounded-none: tira a sombra interna e os cantos que o Safari do iOS aplica em campos de texto -->
+          <input type="email" id="newsletter-email" required autocomplete="email" inputmode="email" placeholder="Seu e-mail" class="w-full min-w-0 appearance-none rounded-none border-0 bg-white px-3 py-2.5 text-base text-slate-900 placeholder:text-slate-500 focus:outline-none sm:text-sm">
+          <button type="submit" class="inline-flex min-w-11 shrink-0 cursor-pointer items-center justify-center bg-amber-400 px-4 text-blue-950 transition hover:bg-amber-300" aria-label="Assinar newsletter"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+        </form>
+        <p id="newsletter-feedback" class="mt-2 hidden text-xs text-emerald-400" role="status"></p>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container mx-auto flex flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs sm:flex-row sm:gap-6 sm:text-left">
+        <p class="leading-relaxed">© <span id="ano-atual">2026</span> Cenofisco Editora de Publicações Tributárias Ltda <span class="hidden sm:inline" aria-hidden="true">·</span><br class="sm:hidden"> <span class="whitespace-nowrap">CNPJ: 82.429.556/0001-62</span></p>
+        <ul class="flex shrink-0 gap-5">
+          <li><a href="#" class="cf-footer-link">Política de Privacidade</a></li>
+          <li><a href="#" class="cf-footer-link">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
     <script src="./indicadores-series.js"></script>
     <script src="./indicadores.js"></script>
+  <script src="./rodape.js" defer></script>
 </body>
 </html>
