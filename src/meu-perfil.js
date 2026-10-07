@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'savedProcedimentos', label: 'Procedimentos', icon: 'fa-list-check', pagina: 'procedimentos.html', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
         { key: 'savedRegulations', label: 'Regulamentos', icon: 'fa-book', pagina: 'regulamentos.html', meta: d => d.sigla },
         { key: 'savedAplicativos', label: 'Ferramentas', icon: 'fa-screwdriver-wrench', pagina: 'aplicativos.html', meta: () => '' },
+        { key: 'monitorNcm', label: 'NCMs monitoradas', icon: 'fa-bell', pagina: 'buscafiscal-resultados.html', meta: d => d.date ? `Monitorada desde ${d.date}` : '' },
         {
             key: 'savedObligations', label: 'Obrigações', icon: 'fa-calendar-check', pagina: 'agenda-obrigacoes.html',
             id: d => d.key,
@@ -297,10 +298,33 @@ document.addEventListener('DOMContentLoaded', function () {
         renderUsers();
     });
 
+    // ------------------------------------------------------------------
+    // Créditos de consultoria: saldo e últimas compras (creditos.js; compra em consultoria.html)
+    // ------------------------------------------------------------------
+    const comprasList = $('compras-creditos');
+    function renderCreditos() {
+        if (!window.CFCreditos) return;
+        const { saldo, compras } = window.CFCreditos.ler();
+        setResumo('creditos', saldo.toLocaleString('pt-BR'));
+        if (!comprasList) return;
+        const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        comprasList.innerHTML = compras.length
+            ? compras.slice(0, 3).map(c => `
+                <li class="flex items-start justify-between gap-3 py-2">
+                    <span class="min-w-0">
+                        <span class="block font-medium text-slate-800">+${c.creditos.toLocaleString('pt-BR')} créditos</span>
+                        <span class="block text-xs text-slate-500">${new Date(c.data).toLocaleDateString('pt-BR')} · ${brl(c.valor)} · ${c.pagamento === 'boleto' ? 'boleto' : c.parcelas > 1 ? `cartão em ${c.parcelas}x` : 'cartão à vista'}</span>
+                    </span>
+                    <span class="shrink-0 rounded-full px-2 py-0.5 text-[11px] font-semibold ${c.status === 'pendente' ? 'bg-amber-50 text-amber-800' : 'bg-emerald-50 text-emerald-700'}">${c.status === 'pendente' ? 'Aguardando pagamento' : 'Aprovada'}</span>
+                </li>`).join('')
+            : '<li class="py-2 text-xs text-slate-500">Nenhuma compra de créditos ainda.</li>';
+    }
+
     // Atualiza se outra aba salvar/remover algo
-    window.addEventListener('storage', () => { renderPerfil(); renderDocs(); renderUsers(); });
+    window.addEventListener('storage', () => { renderPerfil(); renderDocs(); renderUsers(); renderCreditos(); });
 
     renderPerfil();
     renderDocs();
     renderUsers();
+    renderCreditos();
 });

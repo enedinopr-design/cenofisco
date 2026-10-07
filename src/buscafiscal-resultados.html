@@ -1,18 +1,16 @@
 <!doctype html>
-<html>
-
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./output.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>Resultados da Busca Fiscal - Portal Fiscal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Busca Fiscal - Cenofisco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
   <link rel="icon" href="img/logo.jpg">
 </head>
-
 <body class="bg-slate-50 font-sans text-slate-900 antialiased">
 
   <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-900 focus:shadow-lg">Pular para o conteúdo</a>
@@ -43,7 +41,7 @@
       </a>
 
       <!-- Busca global -->
-    <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
+      <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
         <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
         <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
         <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-32 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
@@ -75,309 +73,121 @@
     </div>
   </header>
 
-    <main id="conteudo" class="container mx-auto px-4 py-8">
-        <div class="mb-6">
-            <a href="index.html" class="text-blue-600 hover:underline">&larr; Voltar ao Início</a>
+  <!-- ===================== HERO ===================== -->
+  <section class="cf-on-dark bg-blue-950 text-white">
+    <div class="container mx-auto px-4 py-8 md:py-10">
+      <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
+        <a href="index.html" class="transition hover:text-white">Início</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <a href="aplicativos.html" class="transition hover:text-white">Ferramentas</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <span class="font-bold text-white" aria-current="page">Busca Fiscal</span>
+      </nav>
+      <h1 class="mt-4 text-3xl leading-tight font-bold tracking-tight md:text-4xl">Busca Fiscal</h1>
+      <p id="bf-resumo" class="mt-3 max-w-2xl text-sm text-blue-100 md:text-base">IPI, II, PIS/COFINS, ICMS e Substituição Tributária por NCM ou descrição da mercadoria.</p>
+    </div>
+  </section>
+
+  <main id="conteudo" class="container mx-auto px-4 py-8">
+    <!-- ============ COMPOR A PESQUISA: mesmo formulário da página inicial (buscafiscal.js controla as opções) ============ -->
+    <!-- Recolhível: com resultados, abre fechado mostrando só o resumo da busca (buscafiscal-resultados.js) -->
+    <details id="bf-compor" class="group cf-card mb-6" open>
+      <summary class="flex cursor-pointer list-none flex-wrap items-center justify-between gap-x-4 gap-y-2 [&::-webkit-details-marker]:hidden">
+        <span class="flex min-w-0 items-center gap-3">
+          <span class="cf-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
+          <span class="min-w-0">
+            <h2 id="titulo-busca-fiscal" class="text-lg font-semibold tracking-tight text-slate-900">Nova pesquisa</h2>
+            <span id="bf-compor-resumo" class="block text-sm text-slate-500"></span>
+          </span>
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-lg px-2 py-1 text-sm font-semibold text-blue-700 group-hover:bg-blue-50"><span class="group-open:hidden">Alterar pesquisa</span><span class="hidden group-open:inline">Ocultar</span><i class="fa-solid fa-chevron-down text-xs transition group-open:rotate-180" aria-hidden="true"></i></span>
+      </summary>
+      <div class="mt-5">
+      <form id="bf-form" action="buscafiscal-resultados.html" method="get">
+        <fieldset class="rounded-xl bg-slate-50 p-3 sm:p-4">
+          <legend class="sr-only">Tipo de busca</legend>
+          <div class="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4" id="busca-fiscal-options">
+            <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="ncm" class="peer sr-only" checked><span class="cf-choice"><span>NCM – Alíquotas</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+            <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="cnae" class="peer sr-only"><span class="cf-choice"><span>CNAE</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+            <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="st" class="peer sr-only"><span class="cf-choice"><span>Substituição Tributária</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+            <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="tipi" class="peer sr-only"><span class="cf-choice"><span>TIPI/TEC</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+          </div>
+
+          <div id="ncm-tipo-busca-container" class="mt-4 space-y-4 border-t border-slate-200 pt-4 text-center">
+            <p class="text-sm font-medium text-slate-600">Selecione os tipos de busca (múltipla seleção):</p>
+            <div class="flex flex-wrap justify-center gap-3" id="ncm-tipo-busca-options">
+              <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="ipi" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-blue-300 peer-checked:bg-blue-100 peer-checked:text-blue-800"><span>IPI</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="ii" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-blue-300 peer-checked:bg-blue-100 peer-checked:text-blue-800"><span>II</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="piscofins" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>PIS/COFINS</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+              <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="icms" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-green-300 peer-checked:bg-green-100 peer-checked:text-green-800"><span>ICMS</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+            </div>
+
+            <div id="pis-cofins-tipo-venda-container" class="hidden space-y-4 rounded-xl border border-violet-200 bg-violet-50 p-4 text-left">
+              <p class="text-sm font-semibold text-violet-700">PIS/COFINS – Tipo de operação</p>
+              <div class="grid grid-cols-2 gap-3" id="pis-cofins-options">
+                <label class="cursor-pointer"><input type="radio" name="pis_cofins_tipo_venda" value="importacao" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Na importação</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                <label class="cursor-pointer"><input type="radio" name="pis_cofins_tipo_venda" value="venda_interna" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Venda interna</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+              </div>
+
+              <div id="venda-interna-regime-container" class="hidden space-y-4 border-t border-violet-200 pt-4">
+                <p class="text-sm font-semibold text-violet-700">Regime</p>
+                <div class="grid grid-cols-2 gap-3 md:grid-cols-3" id="venda-interna-options">
+                  <label class="cursor-pointer"><input type="radio" name="venda_interna_regime" value="cumulativo" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Cumulativo</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                  <label class="cursor-pointer"><input type="radio" name="venda_interna_regime" value="nao_cumulativo" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Não cumulativo</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                  <label class="cursor-pointer"><input type="radio" name="venda_interna_regime" value="monofasico" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Monofásico</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                </div>
+              </div>
+            </div>
+
+            <div id="icms-tipo-operacao-container" class="hidden space-y-4 rounded-xl border border-green-200 bg-green-50 p-4 text-left">
+              <p class="text-sm font-semibold text-green-700">ICMS – Tipo de operação</p>
+              <div class="grid grid-cols-2 gap-3" id="icms-tipo-operacao-options">
+                <label class="cursor-pointer"><input type="radio" name="icms_tipo_operacao" value="interestadual" class="peer sr-only"><span class="cf-pill peer-checked:border-green-300 peer-checked:bg-green-100 peer-checked:text-green-800"><span>Operação interestadual</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                <label class="cursor-pointer"><input type="radio" name="icms_tipo_operacao" value="interna" class="peer sr-only"><span class="cf-pill peer-checked:border-green-300 peer-checked:bg-green-100 peer-checked:text-green-800"><span>Operação interna</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+              </div>
+
+              <div id="icms-estados-container" class="hidden border-t border-green-200 pt-4">
+                <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div id="estado-origem-container" class="hidden">
+                    <label for="icms-uf-origem" class="cf-label text-green-700">Estado de origem</label>
+                    <select id="icms-uf-origem" name="uf_origem" class="cf-input js-uf-select">
+                      <option value="">Selecione...</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="icms-uf-destino" class="cf-label text-green-700">Estado de destino</label>
+                    <select id="icms-uf-destino" name="uf_destino" class="cf-input js-uf-select">
+                      <option value="">Selecione...</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="relative mt-4">
+          <label for="busca-fiscal-input" class="sr-only">Código NCM ou descrição</label>
+          <input type="search" id="busca-fiscal-input" name="q" placeholder="Digite o código NCM ou a descrição..." class="w-full rounded-xl border border-slate-300 py-3 pr-24 pl-4 text-base transition placeholder:text-slate-500 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none sm:pr-32">
+          <button type="submit" class="absolute top-1/2 right-1.5 -translate-y-1/2 cursor-pointer rounded-lg bg-blue-900 px-4 py-2 font-semibold text-white transition-colors hover:bg-blue-800 sm:px-6">Buscar</button>
         </div>
+      </form>
+      </div>
+    </details>
 
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                        <i class="fas fa-search text-blue-600 bg-blue-50 p-2.5 rounded-full"></i> Resultados da Busca
-                        Fiscal
-                    </h2>
-                </div>
-
-                <div><a href="#"
-                        class="border border-blue-500 text-blue-500 hover:bg-blue-500 font-semibold hover:text-white px-4 py-2 rounded-md transition">Refazer
-                        busca</a></div>
-            </div>
-            <div class="border-b border-gray-200 mb-6">
-                <nav class="cf-tabs" role="tablist" aria-label="Tributos">
-                    <button type="button" role="tab" id="tab-ipi-tab" aria-controls="ipi-tab" class="tab-button active" onclick="openTab(event, 'ipi-tab')">IPI</button>
-                    <button type="button" role="tab" id="tab-ii-tab" aria-controls="ii-tab" class="tab-button" onclick="openTab(event, 'ii-tab')">II</button>
-                    <button type="button" role="tab" id="tab-pis-cofins-tab" aria-controls="pis-cofins-tab" class="tab-button" onclick="openTab(event, 'pis-cofins-tab')">PIS/COFINS</button>
-                    <button type="button" role="tab" id="tab-pis-cofins-importacao-tab" aria-controls="pis-cofins-importacao-tab" class="tab-button" onclick="openTab(event, 'pis-cofins-importacao-tab')">PIS/COFINS Importação</button>
-                    <button type="button" role="tab" id="tab-icms-normal-tab" aria-controls="icms-normal-tab" class="tab-button" onclick="openTab(event, 'icms-normal-tab')">ICMS Normal</button>
-                    <button type="button" role="tab" id="tab-icms-st-tab" aria-controls="icms-st-tab" class="tab-button" onclick="openTab(event, 'icms-st-tab')">ICMS/ST</button>
-                </nav>
-            </div>
-
-            <div id="ipi-tab" class="tab-content" role="tabpanel" aria-labelledby="tab-ipi-tab">
-                <h3 class="text-xl font-semibold mb-2">Resultados para <span class="text-blue-600">IPI</span></h3>
-                <p class="text-gray-600 mb-2">Alíquota do Imposto sobre Produtos Industrializados (IPI) de acordo com a
-                    Tabela de Incidência do IPI (aprovado pelo <a href="#">Decreto nº 11.158/2022</a>).</p>
-
-
-                <!-- Conteúdo detalhado para IPI -->
-                <div class="overflow-x-auto">
-                    <table class="tec-result__table">
-                        <thead style="">
-                            <tr>
-                                <th>Código</th>
-                                <th>Descrição</th>
-                                <th>IPI (%)</th>
-                            </tr>
-                        </thead>
-                        <thead style="position: fixed; top: 0px; left: 0px; display: none;">
-                            <tr>
-                                <th>Código</th>
-                                <th>Descrição</th>
-                                <th>IPI (%)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="ncm">2202</td>
-                                <td class="conteudo">ÁGUAS, INCLUINDO AS ÁGUAS MINERAIS E AS ÁGUAS GASEIFICADAS,
-                                    ADICIONADAS DE AÇÚCAR OU DE OUTROS EDULCORANTES OU AROMATIZADAS E OUTRAS BEBIDAS NÃO
-                                    ALCOÓLICAS, EXCETO SUCOS (SUMOS) DE FRUTA OU DE PRODUTOS HORTÍCOLAS DA POSIÇÃO
-                                    20.09.</td>
-                                <td class="aliquota">-</td>
-                            </tr>
-                            <tr class="odd tec-nivel-simples">
-                                <td class="ncm">2202.9</td>
-                                <td class="conteudo"><span class="hifens-nivel">-</span> Outras:</td>
-                                <td class="aliquota">-</td>
-                            </tr>
-                            <tr>
-                                <td class="ncm">2202.91.00</td>
-                                <td class="conteudo"><span class="hifens-nivel">--</span> <em>Cerveja</em> sem álcool
-                                </td>
-                                <td class="aliquota">3,9</td>
-                            </tr>
-                            <tr class="odd">
-                                <td class="ncm">2203.00.00</td>
-                                <td class="conteudo"><em>CERVEJAS</em> DE MALTE.</td>
-                                <td class="aliquota">3,9</td>
-                            </tr>
-                            <tr>
-                                <td class="ncm">2303</td>
-                                <td class="conteudo">RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE
-                                    BETERRABA, BAGAÇOS DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR,
-                                    BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA <em>CERVEJA</em> E DAS DESTILARIAS, MESMO EM
-                                    PELLETS.</td>
-                                <td class="aliquota">-</td>
-                            </tr>
-                            <tr class="odd tec-nivel-simples">
-                                <td class="ncm">2303.30.00</td>
-                                <td class="conteudo"><span class="hifens-nivel">-</span> Borras e desperdícios da
-                                    indústria da <em>cerveja</em> e das destilarias</td>
-                                <td class="aliquota">NT</td>
-                            </tr>
-                            <tr>
-                                <td class="ncm">3807.00.00</td>
-                                <td class="conteudo">ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE
-                                    MADEIRA; METILENO; BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA
-                                    <em>CERVEJA</em> E PREPARAÇÕES SEMELHANTES À BASE DE COLOFÔNIAS, DE ÁCIDOS RESÍNICOS
-                                    OU DE BREU (PEZ) VEGETAL.</td>
-                                <td class="aliquota">0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-
-                </div>
-            </div>
-
-            <div id="ii-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-ii-tab">
-                <h3 class="text-xl font-semibold mb-4">Resultados para <span class="text-blue-600">II</span></h3>
-                <p class="text-gray-600 mb-2">Alíquota do Imposto sobre a Importação (II) que compõe a Tarifa Externa Comum – TEC de acordo
-                    com <a href="/Documentos?guid=ef3b1c97cf844d4caa63029188913768" target="blank">Resolução GECEX/CAMEX nº
-                        272/2021</a>.</p>
-                <!-- Conteúdo detalhado para II -->
-                <div class="overflow-x-auto">
-                <table class="tec-result__table">
-                    <thead style="">
-                        <tr>
-                            <th>Código</th>
-                            <th>Descrição</th>
-                            <th>II (%)</th>
-                            <th title="Sem Similar Nacional">SSN</th>
-                        </tr>
-                    </thead>
-                    <thead style="position: fixed; top: 0px; left: 312.094px; display: none;">
-                        <tr>
-                            <th>Código</th>
-                            <th>Descrição</th>
-                            <th>II (%)</th>
-                            <th title="Sem Similar Nacional">SSN</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="ncm"><em>2202</em></td>
-                            <td class="conteudo">ÁGUAS, INCLUINDO AS ÁGUAS MINERAIS E AS ÁGUAS GASEIFICADAS, ADICIONADAS DE AÇÚCAR OU DE
-                                OUTROS EDULCORANTES OU AROMATIZADAS E OUTRAS BEBIDAS NÃO ALCOÓLICAS, EXCETO SUCOS (SUMOS) DE FRUTA OU DE
-                                PRODUTOS HORTÍCOLAS DA POSIÇÃO 20.09.</td>
-                            <td class="aliquota">-</td>
-                            <td class="aliquota">-</td>
-                        </tr>
-                        <tr class="odd tec-nivel-simples">
-                            <td class="ncm"><em>2202.10.00</em></td>
-                            <td class="conteudo"><span class="hifens-nivel">-</span> Águas, incluindo as águas minerais e as águas
-                                gaseificadas, adicionadas de açúcar ou de outros edulcorantes ou aromatizadas</td>
-                            <td class="aliquota">18</td>
-                            <td class="aliquota">-</td>
-                        </tr>
-                        <tr class="tec-nivel-simples">
-                            <td class="ncm"><em>2202.9</em></td>
-                            <td class="conteudo"><span class="hifens-nivel">-</span> Outras:</td>
-                            <td class="aliquota">-</td>
-                            <td class="aliquota">-</td>
-                        </tr>
-                        <tr class="odd">
-                            <td class="ncm"><em>2202.91.00</em></td>
-                            <td class="conteudo"><span class="hifens-nivel">--</span> Cerveja sem álcool</td>
-                            <td class="aliquota">18</td>
-                            <td class="aliquota">-</td>
-                        </tr>
-                        <tr>
-                            <td class="ncm"><em>2202.99.00</em></td>
-                            <td class="conteudo"><span class="hifens-nivel">--</span> Outras</td>
-                            <td class="aliquota">18</td>
-                            <td class="aliquota">-</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-                </div>
-            </div>
-
-                   <div id="pis-cofins-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-pis-cofins-tab">
-                    
-                    teste 1
-                
-                
-                </div>
-                   
-                   <div id="pis-cofins-importacao-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-pis-cofins-importacao-tab">teste 2</div>
-
-            <div id="icms-normal-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-icms-normal-tab">
-                <h3 class="text-xl font-semibold mb-4">Resultados para <span class="text-blue-600">ICMS Normal</span></h3>
-                <p class="text-gray-600">Aqui serão exibidos os resultados da busca fiscal relacionados ao ICMS Normal.
-                </p>
-                <!-- Conteúdo detalhado para ICMS Normal -->
-
-                <table class="protoloco__titulo">
-                    <thead>
-                        <tr>
-                            <th>Ato Legal</th>
-                            <th>UF</th>
-                            <th>Início da Vigência</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="titulo_protocolo"><a
-                                    href="/Composicao/Regulamentos/Regulamento-de-ICMS/Centro-Oeste/Goias?guid=af54d1db6307a1f9796155c30bd0f59c">DECRETO
-                                    Nº 4.852, DE 29 DE DEZEMBRO DE 1997</a></td>
-                            <td class="uf_destinatario">GO</td>
-                            <td class="inicio_vigencia">29/12/1997</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <table class="tec-result__table">
-                    <thead>
-                        <tr>
-                            <th>NCM</th>
-                            <th>Descrição da Mercadoria</th>
-                            <th>Alíquota de Destino (%)</th>
-                            <th>Alíquota FCP</th>
-                            <th>Alíquota Efetiva</th>
-                            <th>Alíq. Inter (%)</th>
-                            <th>Alíq. Inter MI (%)</th>
-                            <th title="Carga Tributária">Carga Trib.</th>
-                            <th title="Base Tributária">Base Trib.</th>
-                            <th title="Base de Cálculo Reduzida">% BC Red.</th>
-                            <th title="Crédito Presumido">% Créd. Pres.</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="ncm">2303</td>
-                            <td class="mercadoria">RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE BETERRABA, BAGAÇOS
-                                DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR, BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA
-                                <em>CERVEJA</em> E DAS DESTILARIAS, MESMO EM PELLETS.</td>
-                            <td class="aliquota">-</td>
-                            <td class="aliquota">-</td>
-                            <td class="aliquota">-</td>
-                            <td class="aliquota_ie">-</td>
-                            <td class="aliquota_ie_mi">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                        </tr>
-                        <tr width="100%">
-                            <td colspan="9" class="notas_td" style="display:none" id="r-1413325">
-                                <div align="center" bis_skin_checked="1">
-                                    <p style="font-weight:bold;color:#3E648B;">Autentique-se para visualizar o tratamento tributário.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr onclick="abreResultadoICMS('23033000','undefined','r-1413328','ICMS');" style="cursor: pointer;"
-                            title="Para acessar tratamento tributário e aplicativo clique na mercadoria." ;="" class="linhaSTimpar">
-                            <td class="ncm">2303.30.00</td>
-                            <td class="mercadoria">Borras e desperdícios da indústria da <em>cerveja</em> e das destilarias</td>
-                            <td class="aliquota">19</td>
-                            <td class="aliquota">-</td>
-                            <td class="aliquota">19</td>
-                            <td class="aliquota_ie">-</td>
-                            <td class="aliquota_ie_mi">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                        </tr>
-                        <tr width="100%">
-                            <td colspan="9" class="notas_td" style="display:none" id="r-1413328">
-                                <div align="center" bis_skin_checked="1">
-                                    <p style="font-weight:bold;color:#3E648B;">Autentique-se para visualizar o tratamento tributário.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr onclick="abreResultadoICMS('38070000','undefined','r-1417759','ICMS');" style="cursor: pointer;"
-                            title="Para acessar tratamento tributário e aplicativo clique na mercadoria." ;="" class="linhaST">
-                            <td class="ncm">3807.00.00</td>
-                            <td class="mercadoria">ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE MADEIRA; METILENO;
-                                BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA <em>CERVEJA</em> E PREPARAÇÕES SEMELHANTES À BASE DE
-                                COLOFÔNIAS, DE ÁCIDOS RESÍNICOS OU DE BREU (PEZ) VEGETAL.</td>
-                            <td class="aliquota">19</td>
-                            <td class="aliquota">-</td>
-                            <td class="aliquota">19</td>
-                            <td class="aliquota_ie">-</td>
-                            <td class="aliquota_ie_mi">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                            <td class="icms_geral">-</td>
-                        </tr>
-                        <tr width="100%">
-                            <td colspan="9" class="notas_td" style="display:none" id="r-1417759">
-                                <div align="center" bis_skin_checked="1">
-                                    <p style="font-weight:bold;color:#3E648B;">Autentique-se para visualizar o tratamento tributário.
-                                    </p>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div id="icms-st-tab" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-icms-st-tab">
-                <h3 class="text-xl font-semibold mb-4">Resultados para ICMS/ST</h3>
-                <p class="text-gray-600">Aqui serão exibidos os resultados da busca fiscal relacionados ao ICMS/ST
-                    (Substituição Tributária).</p>
-                <!-- Conteúdo detalhado para ICMS/ST -->
-            </div>
-        </div>
-    </main>
+    <!-- ============ RESULTADOS ============ -->
+    <section class="cf-card" aria-labelledby="bf-titulo">
+      <h2 id="bf-titulo" class="sr-only">Resultados por tributo</h2>
+      <div class="mb-5 border-b border-slate-200">
+        <nav id="bf-abas" class="cf-tabs" role="tablist" aria-label="Tributos">
+          <!-- Gerado via JavaScript (buscafiscal-resultados.js) -->
+        </nav>
+      </div>
+      <div id="bf-paineis">
+        <p class="text-sm text-slate-500">Carregando resultados…</p>
+      </div>
+    </section>
+  </main>
 
   <!-- Grade de 12 colunas no desktop: marca (4) · Legislação (2) · Ferramentas (3) · Newsletter (3).
        No celular, Legislação e Ferramentas ficam lado a lado (listas curtas) e marca/newsletter ocupam a largura toda. -->
@@ -432,8 +242,10 @@
       </div>
     </div>
   </footer>
-    <script src="./index.js"></script>
+
+  <script src="./monitor-ncm.js"></script>
+  <script src="./buscafiscal.js"></script>
+  <script src="./buscafiscal-resultados.js"></script>
   <script src="./rodape.js" defer></script>
 </body>
-
 </html>

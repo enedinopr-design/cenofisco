@@ -1,0 +1,555 @@
+{
+  "_leia": "Dados da Busca Fiscal (buscafiscal-resultados.html e ncm.html). Listas reais da consulta pública da Cenofisco para \"cerveja\" (ICMS com destino SP; ICMS/ST PR → SP). As alíquotas não são públicas: as conhecidas vêm da página anterior do projeto; null = não informado. Tratamentos com exemplo: true são texto de demonstração.",
+  "atos": {
+    "ipi": "Tabela de Incidência do IPI – TIPI (Decreto nº 11.158/2022)",
+    "ii": "Tarifa Externa Comum – TEC (Resolução GECEX nº 272/2021)",
+    "ssn": "Sem Similar Nacional (Resolução GECEX nº 553/2024)"
+  },
+  "posicoes": {
+    "2202": "ÁGUAS, INCLUINDO AS ÁGUAS MINERAIS E AS ÁGUAS GASEIFICADAS, ADICIONADAS DE AÇÚCAR OU DE OUTROS EDULCORANTES OU AROMATIZADAS E OUTRAS BEBIDAS NÃO ALCOÓLICAS, EXCETO SUCOS (SUMOS) DE FRUTA OU DE PRODUTOS HORTÍCOLAS DA POSIÇÃO 20.09.",
+    "2203": "CERVEJAS DE MALTE.",
+    "2303": "RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE BETERRABA, BAGAÇOS DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR, BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA CERVEJA E DAS DESTILARIAS, MESMO EM PELLETS.",
+    "3807": "ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE MADEIRA; METILENO; BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA CERVEJA E PREPARAÇÕES SEMELHANTES À BASE DE COLOFÔNIAS, DE ÁCIDOS RESÍNICOS OU DE BREU (PEZ) VEGETAL.",
+    "22029": "Outras:"
+  },
+  "tec": [
+    {
+      "id": "tec-62179",
+      "ncm": "22029100",
+      "descricao": "Cerveja sem álcool",
+      "ex": null,
+      "tipi": true,
+      "ipi": "3,9",
+      "ii": "18"
+    },
+    {
+      "id": "tec-2265",
+      "ncm": "22030000",
+      "descricao": "CERVEJAS DE MALTE.",
+      "ex": null,
+      "tipi": true,
+      "ipi": "3,9",
+      "ii": null
+    },
+    {
+      "id": "tec-2375",
+      "ncm": "2303",
+      "descricao": "RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE BETERRABA, BAGAÇOS DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR, BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA CERVEJA E DAS DESTILARIAS, MESMO EM PELLETS.",
+      "ex": null,
+      "tipi": true,
+      "ipi": "-",
+      "ii": null
+    },
+    {
+      "id": "tec-2378",
+      "ncm": "23033000",
+      "descricao": "Borras e desperdícios da indústria da cerveja e das destilarias",
+      "ex": null,
+      "tipi": true,
+      "ipi": "NT",
+      "ii": null
+    },
+    {
+      "id": "tec-8728",
+      "ncm": "38070000",
+      "descricao": "ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE MADEIRA; METILENO; BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA CERVEJA E PREPARAÇÕES SEMELHANTES À BASE DE COLOFÔNIAS, DE ÁCIDOS RESÍNICOS OU DE BREU (PEZ) VEGETAL.",
+      "ex": null,
+      "tipi": true,
+      "ipi": "0",
+      "ii": null
+    },
+    {
+      "id": "tec-151276",
+      "ncm": "84212200",
+      "descricao": "Ex 032 Módulos de membranas hidrofílicas de microltrafiltração para filtração e clarificação de cervejas, com modo de operação permitindo altas concentrações de levedura no fluxo de alimentação, para aplicação em \"skids\" de filtragem por membranas, com tecnologia de filtragem pelo princípio de operação contínua de purga e alimentação tipo \"feed and bleed\" em fluxo cruzado (cross flow filtration) com retrolavagem regular, com fluxo de permeado de 200 até 2.500L/h, área de filtração da membrana de 5 até 27m² e tamanho do poro de 0,2 até 0,8 micrômetro, compostas de polietersulfona (PES) e polivinilpirrolidona (PVP), com estrutura assimétrica/microporosa, diâmetro da membrana de 1,5 até 3mm, módulo com comprimento de 1.020 até 1.500mm e diâmetro de 160 até 250mm, permitindo limpeza CIP (clean in place), com operação anti-incrustante, com pressão de operação de até 10bar e temperatura máxima de operação de até 80 graus Celsius.",
+      "ex": "Ex 032",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151277",
+      "ncm": "84212200",
+      "descricao": "Ex 033 Combinações de máquinas para filtração e clarificação de cerveja por membranas com capacidade máxima de até 900hl/h, com 1 até 6 \"skids\" e com 4 até 18 módulos de microfiltração por membranas hidrofílicas em polietersulfona e polivinilpirrolidona (PES/PVP) por skid (até 108 módulos de membranas), com tecnologia de filtragem pelo princípio de operação contínua de purga e alimentação tipo \"feed and bleed\" em fluxo cruzado (\"cross flow filtration\") com retrolavagem regular, e com perda de cerveja de 0,2 até 2%, com remoção de células de fermento e de componentes com tamanho de 0,5micron ou superior, operando com cerveja de -2 até 2 graus Celsius, compostas de: unidade de filtragem com 1 até 6 \"skids\" e com 4 até 18 módulos de membranas hidrofílicas de microltrafiltração, com modo de operação permitindo altas concentrações de levedura no fluxo de alimentação, com tecnologia de filtragem pelo princípio de operação contínua de purga e alimentação tipo \"feed and bleed\" em fluxo cruzado (cross flow filtration) com retro lavagem regular, com fluxo de permeado de 200 até 2.500L/h, área de filtração da membrana de 5 até 27m² e tamanho do poro de 0,2 até 0,8micrometros, com estrutura assimétrica/microporosa, diâmetro da membrana de 1,5 até 3mm, módulo com comprimento de 1.020 até 1.500mm, diâmetro de 160 até 250mm e com operação anti-incrustante, com estruturação da unidade em \"manifolds\" de interligação com válvulas de assento duplo, válvulas borboleta, dispositivos de controle e monitoramento de válvulas com módulo eletrônico com comunicação em 24VDC, As-i, DeviceNet, 110VAC e/ou IO-link e graus de proteção IP65, IP67 e IP69K combinados com \"Ex-zone\" II 3G e 3D, tubos SS 304, com \"skid\" para CIP (clean in place), com cada \"skid\" acompanhado de transmissores de pressão e temperatura, válvulas, dispositivos de controle e monitoramento com módulo eletrônico, bomba de circulação de cerveja, bombas de armazenamento de cerveja, filtro de segurança, chave de fluxo, medidor de condutividade, chaves de nível, visor, filtro, carcaças, \"skid\" da válvula de amostra, indicadores de pressão, tubulação e acompanhados de redutores, acessórios de montagem, curvas e componentes de fixação, com tubulações e conexões com rugosidade Ra de 0,8micrometros ou superior; com ou sem unidade de refrigeração de cerveja não filtrada com resfriamento até -1 grau Celsius com unidade de armazenamento de 50 até 450hl, acessórios de abastecimento de CO2 e pré misturador; no mínimo 1 unidade de dosagem de hidrogel com tanque de dosagem com capacidade de até 50hl e \"skid\"; unidade de armazenamento de cerveja filtrada com capacidade de armazenamento de 50 até 450hl e acessórios CIP; no mínimo 1 unidade de dosagem pós-filtragem com capacidade de 1 até 10 ingredientes, tanque com capacidade de armazenamento de até 30hl, tanques de dosagem e \"skid\" de dosagem; unidade de carbonatação com taxa de dosagem de CO2 de até 6 g/l de cerveja e diluição de cerveja, com vazão de entrada de até 900hl/h e de saída de até 1.350hl/h; dispositivo de filtragem tipo \"trap filter\"; unidade de refrigeração de cerveja filtrada com resfriamento até -1 grau Celsius; unidade de limpeza CIP com tanque, medidores, válvulas, dispositivos de controle e monitoramento, bomba, filtro de água, acessórios para controle de temperatura e unidade de armazenamento de produtos químicos; unidade de drenagem de CO2; sistema automático de garantia de adsorção e estabilização de cerveja com mínimo 1 skid adsorvedor, \"skid\" CIP, tubulações, painel CCM, painel de campo, cabeamento e mangueiras; controladas por painel de controle MCP com CLP, painéis de campo com sistema de E/S remoto com módulo de \"interface\" e placas digitais e analógicas, acompanhados de acessórios como cabeamento, mangueiras, bombas, válvulas, instrumentos, entre outros.",
+      "ex": "Ex 033",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-149763",
+      "ncm": "84212200",
+      "descricao": "Ex 046 Filtros tangenciais automáticos, com estrutura em aço inoxidável, equipados com membranas cerâmicas com 8 ou 23 canais, com porosidade nominal de 0,2 ou 0,45 micrometro, com área filtrante total variável entre 20 e 680m², conforme a configuração instalada, destinados à filtração ou depuração de bebidas como, cerveja e/ou vinho e/ou espumantes e/ou sucos de frutas e/ou suco de uva e/ou vinagres, com controle por CLP com tela \"touchscreen\", dotados de bomba de alimentação, bomba dosadora para produtos de limpeza e sistema de retrolavagem.",
+      "ex": "Ex 046",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-156439",
+      "ncm": "84212200",
+      "descricao": "Ex 049 Filtros a terra (diatomita), para filtração e clarificação de vinhos, cervejas, óleos e produtos químicos, com superfície filtrante entre 5 e 60m², construídos integralmente em aço inoxidável, dotado com conjunto de discos filtrantes horizontais, com sistema automático de descarga da torta filtrante, dotados de sistema de filtração final do líquido residual por discos internos e/ou filtro de resíduo externo, com bomba de alimentação e bomba dosadora de vazão variável para dosagem de diatomita, com tanque dosador com agitador integrado.",
+      "ex": "Ex 049",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151283",
+      "ncm": "84213990",
+      "descricao": "Ex 063 Filtros para ar ou gás para filtração estéril eficiente para evitar contaminação, desperdício e perda de produto no processo de produção de água, cerveja, bebidas, alimentos, laticínios e outros, com membranas filtrantes em PTFE (politetrafluoroetileno) entre os discos segmentados de aço inoxidável com taxa de retenção absoluta de 0,20µm e eficiência da membrana de 100%, com material do filtro em aço inox, interligados por conexões de até DN80 (diâmetro nominal básico em milímetros), com capacidade de filtração de 40 até 5.440Nm3/h e pressão de trabalho de 1 a 16barg.",
+      "ex": "Ex 063",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-149903",
+      "ncm": "84384000",
+      "descricao": "Ex 025 Equipamentos para desalcoolização de bebidas alcoólicas como cervejas e vinhos utilizados para produção de bebidas com baixo teor alcoólico (LAB) e sem álcool (NAB), através de sistema de cascateamento em passe único, sob vácuo até temperatura de 45 graus celsius, garantindo percentual ABV <0,05%, com controle automático e capacidade de produção mínima de 5hL/h e máxima de 100hL/h, com concentração inicial de álcool na bebida de 4,5 a 8% em volume, e concentração final de álcool menor que 0,05% em volume, através de processos de desgaseificação, geração de vapor culinário, decapagem a vácuo e condensação de álcool, construídas com \"design\" sanitário com capacidade para CIP (Cleaning in Place) e SIP (Sterilization in Place) e equipados com coluna de remoção vertical, trocador de calor de placas para resfriamento, gerador de vapor culinário, pré-tratamento com separador, carbonatação e mistura do produto final e recirculação da água de selagem, com consumo de água branda de 2 a 16hl/h, consumo de aquecimento de 100 a 1.950kg/h, consumo de resfriamento de 70 a 1.170kW e água de selagem para sistema de vácuo de 10 a 20 hl/h, com controlador lógico (CLP) e interface homem-máquina (IHM).",
+      "ex": "Ex 025",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-150016",
+      "ncm": "84633000",
+      "descricao": "Ex 225 Máquinas automáticas para trabalhar arames e fios de metal, de construção própria, com sistema de formação e produção de gabietas em arame cilíndrico, destinados a retenção de rolhas em garrafas de bebidas gaseificadas tais como espumantes, filtrados e cervejas, sem eliminação de matéria, acionadas por motor elétrico com potência de 5,7kW, tensão de alimentação de 380 a 415Vac, frequência 50Hz, potência instalada de 8kW, comando 24Vdc, forca de alimentação pneumática de 6bar, 4 estacoes de comando, sendo 1 principal e 3 secundarias, com sistema automático de aplicação de disco/chapéu, acionado por um motor elétrico com potência de 2,3kW, com descarregador manual.",
+      "ex": "Ex 225",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151801",
+      "ncm": "84818097",
+      "descricao": "Ex 024 Válvulas de bloqueio duplo de movimento único articulado para separação segura e inteligente de fluidos líquidos em processos de limpeza e esterilização \"Clean in Place\" (CIP) em processos de produção de cervejas, bebidas, alimentos e outros processos higiênicos, à prova de mistura, com acabamento sanitário, com corpo em aço inoxidável 1.4404 (AISI316L), com eficiência de operação de até 3 válvulas únicas por possuir 1 câmara de vazamento com 2 válvulas auxiliares, 2 drenos, 2 discos de bloqueio com rolamentos para diminuição do atrito com o corpo da válvula e melhor centralização durante a abertura e fechamento, movimentadas simultaneamente para isolar completamente a câmara de vazamento, com alta resistência a choque de pressão, sistema articulado com proteção de manuseio para isolamento do sistema articulado de contato manual, com rugosidade (Ra) das superfícies em contato com o produto menor ou igual a 0,8 micrometros e das partes sem contato com o produto menor ou igual a 1,6 micrometros, pressão de operação de até 10bar, temperatura de trabalho de -5 a +130 graus Celsius e +140 graus Celsius em processo de esterilização, com ou sem suporte para até 2 sensores de proximidade e dispositivo de controle e monitoramento com módulo eletrônico para regulagem de fluxo de ar para controle de tempo de abertura e fechamento da válvula com sistema de identificação por indução magnética com até 2 válvulas solenoides, 2 sensores de posição e sistema de indicação visual de 360 graus por luz de LED, permitindo ajuste de operação por meio de função \"auto tune\" de identificação automática do posicionamento da válvula antes de operá-la, com comunicação em 24V DC, As-i, DeviceNet, 110V AC ou IO-link e graus de proteção IP65, IP67 e IP69K combinados com \"Ex-zone\" II 3G Ex nA IIC T4 X Tamb + 55 graus Celsius e II 3D Ex tD A22 IP67 T70 graus Celsius X ou dispositivo de monitoramento com 2 sensores de posição e sistema de indicação visual de 360 graus por luz de LED com comunicação PnP, digital, de 50mA, saída em 4-20mA, sistema de medição de posição com faixa de detecção 85mm e feedback 2 posições monitoradas, com comunicação em 24V DC e graus de proteção IP65 e IP67 combinados com \"Ex-zone\" II 3 G Ex nR IIC T4 Gc (-10 graus Celsius menor ou igual a Ta menor ou igual a +55 graus Celsius) e II 3 D Ex tc IIIC T135 graus Celsius Dc (-1 graus Celsius menor ou igual a Ta menor ou igual a +55 graus Celsius), com acionamento das válvulas por manípulo ou atuador pneumático (ar/mola ou ar/ar), livres de soldas internas, com identificação visual de tamanho, classe de pressão e material, vedação com geometria especial em EPDM, HNBR, FPM, VMQ, PTFE laminado ou outros com ranhuras que permitem sua expansão em altas temperaturas e tecnologia para contato seguro com produtos alimentícios.",
+      "ex": "Ex 024",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151810",
+      "ncm": "84818099",
+      "descricao": "Ex 122 Válvulas sanitárias e/ou assépticas de assento simples, tipo \"Overflow\" (alívio de pressão), com corpo em aço inoxidável 1.4404 (AISI316L) usinado em peça única com até 2 gomos e de 2 a 4 vias, para alívio e controle de pressão em processos de limpeza e esterilização \"Clean in Place\" (CIP) e de produção de cervejas, bebidas, alimentos, laticínios e outros processos higiênicos, com rugosidade (Ra) das superfícies em contato com o produto menor ou igual a 0,8 micrometros e das partes sem contato com o produto com Ra menor ou igual a 1,6 micrometros, livres de soldas internas, pressão de operação de até 12bar com pressão mínima de abertura do atuador pneumático (ar/mola ou ar/ar) em 0,5bar, com ajuste mecânico externo para ajuste de pressão de abertura, com ou sem suporte para até 2 sensores de posição e dispositivo de controle e monitoramento com módulo eletrônico para regulagem de fluxo de ar para controle de tempo de abertura e fechamento da válvula com sistema de identificação por indução magnética com até 2 válvulas solenoides, 2 sensores de posição e sistema de indicação visual de 360 graus/luz de LED, permitindo ajuste de operação por meio de função \"auto tune\" de identificação automática do posicionamento da válvula antes de operá-la, com comunicação em 24V DC, As-i, DeviceNet, 110V AC ou IO-link e graus de proteção IP65, IP67 e IP69K combinados com \"Ex-zone\" II 3G Ex nA IIC T4 X Tamb + 55 graus Celsius e II 3D Ex tD A22 IP67 T70 graus Celsius X ou dispositivo de monitoramento com 2 sensores de posição e sistema de indicação visual de 360 graus por luz de LED com comunicação PnP, digital, de 50mA, saída em 4-20mA, sistema de medição de posição com faixa de detecção 85mm e \"feedback\" 2 posições monitoradas, com comunicação em 24V DC e graus de proteção IP65 e IP67 combinados com \"Ex-zone\" II 3 G Ex nR IIC T4 Gc (-10 graus Celsius menor ou igual a Ta menor ou igual a +55 graus Celsius) e II 3 D Ex tc IIIC T135 graus Celsius Dc (-1 graus Celsius menor ou igual a Ta menor ou igual a +55 graus Celsius), com temperatura de trabalho para fluidos líquidos de -25 graus Celsius a +130 graus Celsius e até 150 graus Celsius em processo de esterilização, com identificação visual de tamanho, classe de pressão e material, anel (O-ring) em EPDM, FKM ou HNBR com tecnologia para contato seguro com produtos alimentícios, com ou sem diafragma com resistência de temperatura de até 150 graus Celsius e sistema de dreno para identificação visual de vazamento em processos assépticos.",
+      "ex": "Ex 122",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151811",
+      "ncm": "84818099",
+      "descricao": "Ex 124 Válvulas sanitárias e/ou assépticas de assento simples, tipo \"Change Over\" (desvio de fluxo), com corpo em aço inoxidável 1.4404 (AISI316L) usinado em peça única com 2 gomos e de 3 a 5 vias, para operações de desvios de fluxo em processos como limpeza e esterilização \"Clean in Place\" (CIP), processos prévios ou posteriores à pasteurização, produção de cervejas, bebidas, alimentos, laticínios, entre outros processos higiênicos, com rugosidade (Ra) das superfícies em contato com o produto menor ou igual a 0,8 micrometros e das partes sem contato com o produto com Ra menor ou igual a 1,6 micrometros, livres de soldas internas, pressão de operação de 5 a 10bar, conexões de DN10 a DN150 / OD0,5 polegadas a OD6 polegadas, com acionamento das válvulas por manípulo ou atuador pneumático blindado (ar/mola ou ar/ar) com inversão de posição, dos tipos \"booster\", 3 posições e/ou de curso longo, com ou sem dispositivo de controle e monitoramento com módulo eletrônico para regulagem de fluxo de ar para controle de tempo de abertura e fechamento da válvula com sistema de identificação por indução magnética com até 2 válvulas solenoides, 2 sensores de posição e sistema de indicação visual de 360 graus por luz de LED, permitindo ajuste de operação por meio de função \"auto tune\" de identificação automática do posicionamento da válvula antes de operá-la, com comunicação em 24V DC, As-i, DeviceNet, 110V AC ou IO-link e graus de proteção IP65, IP67 e IP69K combinados com \"Ex-zone\" II 3G Ex nA IIC T4 X Tamb + 55 graus Celsius e II 3D Ex tD A22 IP67 T70 graus Celsius X ou dispositivo de monitoramento com 2 sensores de posição e sistema de indicação visual de 360 graus por luz de LED com comunicação PnP, digital, de 50mA, saída em 4-20mA, sistema de medição de posição com faixa de detecção 85mm e feedback 2 posições monitoradas, com comunicação em 24V DC e graus de proteção IP65 e IP67 combinados com \"Ex-zone\" II 3 G Ex nR IIC T4 Gc (-10 graus Celsius menor ou igual a Ta menor ou igual a +55 graus Celsius) e II 3 D Ex tc IIIC T135 graus Celsius Dc (-1 graus Celsius menor ou igual a Ta menor ou igual a +55 graus Celsius), com temperatura de trabalho para fluidos líquidos de -25 a 130 graus Celsius e até 150 graus Celsius em processo de esterilização com vapor, com identificação visual de tamanho, classe de pressão e material, em conformidade com as normas FDA (Food and Drug Administration), 3-A, EHEDG (European Hygienic Engineering and Design Group), ATEX, CRN e USP Classe VI, com vedação superior radial e inferior axial em EPDM ou FKM ou HNBR, com tecnologia para contato seguro com produtos alimentícios, com ou sem diafragma com resistência de temperatura de até 150 graus Celsius, anel (O-ring), disco em PEEK (polieteretercetona) e sistema de dreno para identificação visual de vazamento em processos assépticos.",
+      "ex": "Ex 124",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151815",
+      "ncm": "84818099",
+      "descricao": "Ex 179 Válvulas controladoras sanitárias ou assépticas, com corpo em aço inoxidável, com eficiência de operação de até 2 válvulas únicas por conter corpo segmentado em até 3 partes e até 3 vias, para regulagem e controle de dosagem de fluxos líquidos diversos e gasosos como CO2 e ar comprimido, regulagem de pressão em tubulações de fluidos e/ou regulagem de controle de saídas tipo \"split range\", em processos de mistura de 3 vias ou distribuição de 3 vias ou \"Change Over\" (desvio de fluxo) ou de ângulo simples, aplicadas em controle das indústrias de bebidas, alimentos, laticínios, cervejarias, vinícolas e farmacêuticas e com capacidade para limpeza \"Clean in Place\" (CIP), com rugosidade (Ra) das superfícies em contato com o produto menor ou igual a 0,8 micrometros e sem contato com o produto com Ra menor ou igual a 1,6 micrometros, pressão de operação de até 10bar e pressão de controle de até 7 ou 8bar, conexões de DN25 a DN150 / OD1 a OD6 polegadas, com acionamento das válvulas por atuador pneumático ou atuador tipo diafragma (ar/mola), controladas por dispositivo de controle com sensor de posição, microprocessador, visor, sistema de atuação para baixa e alta vazão de ar, tecnologia para operação autônoma com 4 teclas e com funções operacionais auxiliares configuráveis via \"software\" ou por dispositivo posicionador eletropneumático, com temperatura de trabalho de até 130 e até 150°C em processo de esterilização com vapor, em conformidade com as normas 3-A, EHEDG e FDA, com vedação inferior metálica ou em anel \"o-ring\" em EPDM ou FKM ou HNBR ou em PEEK (polieteretercetona), com vedação superior em anel \"o-ring\" em EPDM ou FKM ou HNBR, com ou sem diafragma em P³ com resistência de temperatura de até 150 e até 160 graus celsius em processo de esterilização com vapor, resistência química para no mínimo 500 produtos e capacidade superior a 300.000 ciclos, com ou sem sistema de dreno para identificação visual de vazamento para padrões assépticos.",
+      "ex": "Ex 179",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151946",
+      "ncm": "90271000",
+      "descricao": "Ex 052 Medidores de teor de gás carbônico (CO2) pelo cálculo da entropia com opcional para medição de oxigênio (O2) por medição ótica, dissolvidos em cervejas, bebidas em geral, fixos, para medições em linha, com capacidade de registro 500 medições, faixa de medição de 2,0 a 10,0g/l (CO2) e 0 a 2.000ppb (O2-opcional), com acessórios normais de funcionamento.",
+      "ex": "Ex 052",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151947",
+      "ncm": "90271000",
+      "descricao": "Ex 058 Medidores ópticos de teor de oxigênio dissolvido em gases contidos em cervejas e bebidas em geral, fixos, para medições em linha, com capacidade de registro menor ou igual a 500 medições, faixa de medição de 0 a 200ppm, com acessórios normais de funcionamento.",
+      "ex": "Ex 058",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-149546",
+      "ncm": "90271000",
+      "descricao": "Ex 059 Medidores ópticos de teor de oxigênio dissolvido em cervejas e bebidas em geral, fixos e/ou portáteis, para medições em linha, com capacidade de registro =<500 medições (medidores fixos) e/ou =<400 medições (medidores portáteis), faixa de medição de 0 a 2.000ppb (cervejas e bebidas em geral), com acessórios normais de funcionamento.",
+      "ex": "Ex 059",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151948",
+      "ncm": "90271000",
+      "descricao": "Ex 060 Aparelhos para medição de teor de oxigênio dissolvido (DO) e de gás carbônico dissolvidos em cervejas e bebidas em geral, fixos, para medições em laboratório ou no pré-engarrafamento, com capacidade de registro =<250 medições, faixas de medição: 0,00 a 4,18% (O2), 0,000 a 2,000mg/l (DO) e 2,0 a 15,0g/l (CO2), com acessórios normais de funcionamento.",
+      "ex": "Ex 060",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151949",
+      "ncm": "90271000",
+      "descricao": "Ex 092 Medidores digitais de teor de oxigênio (O2) e/ou dióxido de carbono (CO2) dissolvidos em cervejas e bebidas em geral, para medições em linha e em laboratório, com faixa de medição de oxigênio de 0,0 até 2.000ppb e/ou faixa de medição de dióxido de carbono de 2,0 até 10,0g/L, com capacidade de programação de até 10 produtos e acessórios normais de funcionamento",
+      "ex": "Ex 092",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-155784",
+      "ncm": "90271000",
+      "descricao": "Ex 326 Medidores ópticos portáteis de teor de oxigênio dissolvido (OD) em mosto de cerveja, cerveja e outras bebidas carbonatadas, com faixa de medição padrão de oxigênio de 0 a 25.000ppb w/w e medições disponíveis complementares em µg/l, ppm w/w e mg/l, faixa de medição de temperatura de -5 a 40 graus Celsius, com medições a cada 2s, com precisão (a 20graus Celsius) de +/- 15ppb para 0 a 100ppb e inferior a 5% do valor medido para leituras acima de 100ppb, pressão máxima de operação de 5barg e temperatura máxima de limpeza de 60 graus Celsius, com capacidade de memória para 10 medições, classe de proteção dos medidores IP 66, bateria recarregável e acessórios normais para o seu funcionamento.",
+      "ex": "Ex 326",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-155785",
+      "ncm": "90271000",
+      "descricao": "Ex 327 Medidores digitais portáteis de dióxido de carbono (CO2) para medições de cervejas e bebidas em linhas de processos, vasos, tanques ou barris, com faixas de medições padrão de CO2 de 2 a 10 g/l, utilizando a lei de \"Lei de Henry\" como técnica de medição, de temperatura de -5 a 40 graus Celsius e de pressão de 0 a 5barg, com temperatura máxima de limpeza de 60 graus Celsius, classe de proteção dos medidores IP65, com capacidade para operação com coletores de amostras para medição de bebidas envasadas, com acessórios normais para o seu funcionamento.",
+      "ex": "Ex 327",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-151991",
+      "ncm": "90275090",
+      "descricao": "Ex 180 Aparelhos portáteis para medição de parâmetros de qualidade de cerveja, água e mosto desde o início do processo de fermentação ao engarrafamento do produto acabado, por meio de analisador termostatizado utilizando tecnologia fotométrica através de pontos de luz LED, aplicados diretamente em processos produtivos, sem o uso de compostos tóxicos, com capacidade para realizar simultaneamente até 16 medições, sendo para cerveja e mosto as medições das propriedades e seus ranges de medição de açúcares fermentáveis (de 0,1 a 200g/L), ácido lático D + L (de 150 a 3.500ppm), amargura (de 50 a 80IBU), volume de álcool (de 0,001 a 17%vol), VDKs (de 0,05 a 2mg/L), vitalidade do fermento (de 0,5 a 2,6AP), pH de mosto (de 3,60 a 6,00), amido (de 0,1 a 5g/L), ácido acético (de 20 a 220mg/L), Nitrogênio Amino Livre \"FAN\" (de 5 a 350mg/L), dióxido de enxofre (de 1,0 a 30,0ppm), polifenóis (de 5 a 550 mg/L), com tempo de teste máximo de 1 a 25min, e para água as medições das propriedades e seus ranges de medição de cálcio (de 20 a 250ppm), magnésio (de 2,0 a 50,0ppm), bicarbonato (de 1 a 300ppm), cloreto e potássio (de 50 a 500ppm), sulfato (de 10 a 250ppm), zinco (de 0,05 a 1ppm) e alcalinidade (de 5 a 600mg/L), com tempo de teste máximo de 1 a 10min, com módulo fotométrico com até 6 comprimentos de onda diferentes em 4 células de análise, sistema interno pré calibrado com \"software\" específico para captura, armazenamento (.CSV e .XML), gerenciamento de dados e emissão de relatórios das medições, dispositivo integrado para impressão de relatórios, tela sensível ao toque \"touchscreen\" colorida LCD tipo TFT (Transistor de Película Fina), com conexões tipo USB, \"Bluetooth\" e \"Ethernet\", acompanhados de frascos para acondicionamento de amostras, pipeta para adição correta de amostras aos frascos e \"kit\" de reagentes.",
+      "ex": "Ex 180",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-152008",
+      "ncm": "90278999",
+      "descricao": "Ex 035 Monitores de pasteurização para controle de microrganismos contidos na cerveja e bebidas em geral, para cálculo de unidades de pasteurização na faixa =<9999,9UPs, gamas de temperatura de 0 a 105ºC, de 1 e/ou 2 leituras de temperatura e/ou com opção de leitura de pressão, completo com pertences normais de funcionamento.",
+      "ex": "Ex 035",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-152016",
+      "ncm": "90278999",
+      "descricao": "Ex 145 Analisadores automáticos compactos de álcool e extrato para cerveja, conteúdo de álcool, densidade, grau de fermentação aparente e real, calorias, conteúdo de extrato real, aparente e original, gravidade presente e original e gravidade específica através de aproximadamente 40ml de amostra desgaseificada, análise de álcool na faixa de medição de 0,5 a 15% v/v, de densidade desde 0,95 a 1,2g/cm³ e temperatura de 10 a 32 graus Celsius, com precisão de 0,2% v/v de álcool e 0,001g/cm³ de densidade, e repetibilidade de 0,1% v/v de álcool e 0,0005g/cm³ de densidade, dotados de bomba peristáltica integrada, teclas sensíveis, \"bluetooth\", entrada USB, entrada RS- 232 e capacidade para 1.000 resultados de medição no modo padrão e 100 resultados de medição por ID (até 40 IDs) no modo de monitoramento de fermentação.",
+      "ex": "Ex 145",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-154908",
+      "ncm": "90278999",
+      "descricao": "Ex 537 Analisador de bebidas alcoólicas, com medição de teor alcoólico, extrato aparente ou extrato real ou extrato original ou densidade ou concentração de CO2, com faixa de medição para cerveja de extrato real de 0 a 12 grausPlato, extrato original de extrato original de 0 a 35 grausPlato, exatidão de 0,04p/p, faixa de medição de concentração de CO2 de 0 a 6 volumes, exatidão de 0,025vol, faixa de teor alcoólico de 0 a 12% p/p, com exatidão de 0,02 % p/p, temperatura de medição de -3 a 25 graus Celsius e para medições de vinhos possui a faixa de medição de extrato de 0 a 10% p/p, com exatidão de 0,04p/p, para CO2 de 0 a 6 volumes, exatidão de 0,025vol, faixa de teor alcoólico de a a 16p/p, exatidão 0,04 p/p, com temperatura de medição 0 a 25 graus Celsius, com instalação em linha, disponível em versões com ou sem display local, com conectividade via Modbus TCP, Modbus RTU, Ethernet/IP, PROFINET ou OPC UA.",
+      "ex": "Ex 537",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-155803",
+      "ncm": "90278999",
+      "descricao": "Ex 553 Medidor para análise de teor alcoólico utilizando princípio NIR (near infra red), preparados para análises de todos os tipos de cervejas, misturas de cerveja, vinhos, saquês, uísques, conhaques, sidras, melaços e mostos, capazes de realizar medições em cervejas com faixa do conteúdo de álcool entre 0 a 12, em vinhos entre 0 a 20, em destilados entre 35 a 65, e em conhaques 0 a 65%v/v, repetibilidade do conteúdo de álcool de 0,01 ou 0,03%v/v, faixa de temperatura de 15, 20 e 25 graus Celsius ou a 15 ou 20 graus Celsius.",
+      "ex": "Ex 553",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-157573",
+      "ncm": "90278999",
+      "descricao": "Ex 571 Aparelhos automáticos para medição da temperatura, pressão atmosférica e umidade (estabilidade) da espuma de cervejas, em laboratórios, com capacidade de programação na memória inferior ou igual a 9 produtos, capacidade de registro na memória do aparelho de até 400 medições, faixa de medição de 5 a 999s, gamas de temperatura de 10 a 40 graus Celsius, com adaptação para a exportação de dados para computador e acessórios normais de funcionamento.",
+      "ex": "Ex 571",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-149662",
+      "ncm": "90314990",
+      "descricao": "Ex 505 Analisadores ópticos para análise da qualidade da recravação de tampas metálicas de latas de alimentos, cervejas e bebidas em geral, com tecnologia baseada no princípio do processamento dimensional de imagem através de câmera de alta definição, com leitura das medições e resultados apresentados em tela com 1 clique por medição, aplicados em laboratórios das indústrias de bebidas e alimentos enlatados em geral, com precisão de medição de 0,01 a 0,001mm com variação de 3 a 20 micrometros, permitindo a medição e análise de latas de dimensões variadas, dotados de computador industrial de controle integrado com portas de comunicação para RS232, USB, HDMI e rede de internet e sistema operacional integrado, com câmera de alta definição com aproximação/foco de 60x e plataforma de suporte da amostra para inspeção detalhada da espessura e profundidade da recravação e inspeção complementar da altura da lata, controlados por \"software\" de controle com sistema de classificação e avaliação de erros com filtros de segurança, com acessórios normais para o processo de análise da qualidade da recravação como monitor com tela de 15 polegadas tipo TFT (Transistor de Película Fina), medidores complementares e acessórios para calibração com precisão de 0,01 a 0,001mm, preparadores de amostras, fonte de alimentação ininterrupta (UPS Nobreak), mini teclado, mouse, cabos e caixa de ferramentas essenciais, com ou sem fonte de alimentação ininterrupta (UPS Nobreak) de 230V, impressora a laser de 230V com comunicação por \"software\" para impressão de resultados exportados e pedal industrial de acionamento de operação.",
+      "ex": "Ex 505",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-149663",
+      "ncm": "90314990",
+      "descricao": "Ex 510 Analisadores ópticos para análise da qualidade da recravação de tampas metálicas de latas de alimentos, cervejas e bebidas em geral, com tecnologia baseada no princípio do processamento dimensional de imagem através de câmera de alta definição, com leitura das medições e resultados apresentados em tela com somente 1 clique, aplicados em laboratórios das indústrias de bebidas e alimentos enlatados em geral, com precisão de medição de 0,01 a 0,001mm com variação de 3 a 20micrometros, permitindo a medição e análise de latas de dimensões variadas, dotados de computador industrial de controle com portas de comunicação Ethernet (RJ45) e RS232, sistema operacional integrado e equipado com SSD (Solid State Drive), com câmera de alta definição com aproximação/foco de 60x, com operação \"plug and play\", controlados por software de controle com \"interface\" amigável ao operador, sistema de classificação e avaliação de erros críticos com filtros de segurança de valores incomuns, possibilidade de armazenamento de dados em disco rígido próprio ou servidor e execução de relatórios e estatísticas das medições, com acessórios normais para o processo de análise da qualidade da recravação como monitor com tela de 15 polegadas tipo TFT (Transistor de Película Fina) sensível ao toque com entrada HDMI, mesa combinada simultânea com medições automáticas para inspeção detalhada da espessura, profundidade da recravação, altura da lata e altura da recravação com precisão entre 0,001 a 0,01mm com variação máxima de 10 micrometros para as demais análises complementares e velocidade total de medições internas automáticas de aproximadamente 1s, acessórios para calibração com precisão de 0,01 a 0,001mm, preparadores de amostras, fonte de alimentação ininterrupta (UPS Nobreak) de 100 a 230V, mini teclado, mouse, cabos, caixa de ferramentas essenciais e pedal industrial de acionamento de operação.",
+      "ex": "Ex 510",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-155817",
+      "ncm": "90318099",
+      "descricao": "Ex 202 Equipamentos para monitoramento do processo de lavagem de barris das indústrias de cervejas e bebidas, preparados com registrador de dados, sondas de temperatura e sensor de pressão, com monitoramento da temperatura do produto na entrada e saída do barril, temperatura da parede do barril e pressão interna, com faixas de medição de temperatura de 0 a 150 graus Célsius e de pressão de -0,5 a 6barg, precisão de temperatura de +/- 0,1 graus celsius e +/- 0,01bar, com medições a cada 1s e capacidade para armazenamento de dados do registrador de 160 minutos, acompanhados de leitor de dados com capacidade de 4GB e dispositivo para carregamento e transferência de dados via \"Bluetooth\" para computador.",
+      "ex": "Ex 202",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    },
+    {
+      "id": "tec-152235",
+      "ncm": "90328989",
+      "descricao": "Ex 074 Dispositivos eletrônicos compactos para controle e monitoramento de válvulas pneumáticas de processos de limpeza e esterilização \"Clean in Place\" (CIP), processos prévios à pasteurização e de produção de cervejas, bebidas, alimentos, laticínios e outros processos higiênicos, com operação de regulagem de fluxo de ar para controle de tempo de abertura e fechamento da válvula, com tecnologia de otimização de limpeza \"Clean in Place\" (CIP) através de geração de movimento de acionamento pulsante, gerando economia de água e sanitizantes em até 60%, dotados de módulo eletrônico, microcontrolador integrado, sistema de medição de posição com 3 sinais de \"feedback\" e faixa de elevação de até 85mm, sistema de identificação por indução magnética com até 3 válvulas solenoides, sistema de detecção de trajetória e sistema de indicação visual de 360 graus por luz de LED, permitindo ajuste de operação por meio de função \"auto tune\" de identificação automática do posicionamento da válvula com 6 funções de ativação ou manual com 3 funções de ativação, com estrutura de comunicação em 24V DC ou \"Asinterface\" permitindo comunicação interligada de até 62 dispositivos eletrônicos ou \"DeviceNet\" permitindo comunicação em rede ou 110 V AC ou IO-link permitindo registros de parâmetros para manutenção preventiva e conexão \"Micro-USB\" para configuração e atualização do sistema, com capacidade para transferência de dados para computador, com graus de proteção IP65, IP67 e IP69K combinados com \"Ex-zone\" II 3G Ex nA IIC T4 X Tamb + 55°C e II 3D Ex tD A22 IP67 T70°C X.",
+      "ex": "Ex 074",
+      "tipi": false,
+      "ipi": null,
+      "ii": null
+    }
+  ],
+  "pis": [
+    {
+      "ncm": "22029100",
+      "descricao": "Cerveja sem álcool",
+      "unidade": "Litro",
+      "tratamentosVenda": 88,
+      "tratamentosCompra": 0
+    },
+    {
+      "ncm": "22030000",
+      "descricao": "CERVEJAS DE MALTE.",
+      "unidade": "Litro",
+      "tratamentosVenda": 88,
+      "tratamentosCompra": 0
+    },
+    {
+      "ncm": "23033000",
+      "descricao": "Borras e desperdícios da indústria da cerveja e das destilarias",
+      "unidade": "Kg Líquido",
+      "tratamentosVenda": 23,
+      "tratamentosCompra": 0
+    },
+    {
+      "ncm": "38070000",
+      "descricao": "ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE MADEIRA; METILENO; BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA CERVEJA E PREPARAÇÕES SEMELHANTES À BASE DE COLOFÔNIAS, DE ÁCIDOS RESÍNICOS OU DE BREU (PEZ) VEGETAL.",
+      "unidade": "Kg Líquido",
+      "tratamentosVenda": 19,
+      "tratamentosCompra": 0
+    }
+  ],
+  "icms": [
+    {
+      "id": "r-916789",
+      "ncm": "2303",
+      "mercadoria": "RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE BETERRABA, BAGAÇOS DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR, BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA CERVEJA E DAS DESTILARIAS, MESMO EM PELLETS.",
+      "ato": "DECRETO Nº 45.490, DE 30 DE NOVEMBRO DE 2000",
+      "uf": "SP",
+      "vigencia": "01/01/2001",
+      "responsabilidade": "REMETENTE",
+      "aliquotaDestino": null,
+      "fcp": null,
+      "aliquotaEfetiva": null,
+      "inter": null,
+      "interMI": null,
+      "cargaTributaria": null,
+      "baseTributaria": null,
+      "bcReduzida": null,
+      "creditoPresumido": null,
+      "tratamento": "icms-sp-exemplo"
+    },
+    {
+      "id": "r-916792",
+      "ncm": "23033000",
+      "mercadoria": "Borras e desperdícios da indústria da cerveja e das destilarias",
+      "ato": "DECRETO Nº 45.490, DE 30 DE NOVEMBRO DE 2000",
+      "uf": "SP",
+      "vigencia": "01/01/2001",
+      "responsabilidade": "REMETENTE",
+      "aliquotaDestino": null,
+      "fcp": null,
+      "aliquotaEfetiva": null,
+      "inter": null,
+      "interMI": null,
+      "cargaTributaria": null,
+      "baseTributaria": null,
+      "bcReduzida": null,
+      "creditoPresumido": null,
+      "tratamento": "icms-sp-exemplo"
+    },
+    {
+      "id": "r-921018",
+      "ncm": "38070000",
+      "mercadoria": "ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE MADEIRA; METILENO; BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA CERVEJA E PREPARAÇÕES SEMELHANTES À BASE DE COLOFÔNIAS, DE ÁCIDOS RESÍNICOS OU DE BREU (PEZ) VEGETAL.",
+      "ato": "DECRETO Nº 45.490, DE 30 DE NOVEMBRO DE 2000",
+      "uf": "SP",
+      "vigencia": "01/01/2001",
+      "responsabilidade": "REMETENTE",
+      "aliquotaDestino": null,
+      "fcp": null,
+      "aliquotaEfetiva": null,
+      "inter": null,
+      "interMI": null,
+      "cargaTributaria": null,
+      "baseTributaria": null,
+      "bcReduzida": null,
+      "creditoPresumido": null,
+      "tratamento": "icms-sp-exemplo"
+    }
+  ],
+  "st": [
+    {
+      "id": "r-200798",
+      "ncm": "22029100",
+      "mercadoria": "Cerveja sem álcool em garrafa de vidro retornável",
+      "ato": "PROTOCOLO ICMS Nº 11, DE 21 DE MAIO DE 1991",
+      "origem": "PR",
+      "destino": "SP",
+      "vigencia": "01/06/1991",
+      "responsabilidade": "REMETENTE",
+      "cest": "03.022.00",
+      "aliquotaDestino": "18",
+      "fcp": "-",
+      "aliquotaEfetiva": "18",
+      "inter": "12",
+      "interMI": "4",
+      "mvaOriginal": "-",
+      "mvaAjustada": "-",
+      "mvaAjustadaMI": "-",
+      "baseCalculo": "pauta",
+      "tratamento": "st-protocolo-11-91-pr-sp"
+    },
+    {
+      "id": "r-201686",
+      "ncm": "22030000",
+      "mercadoria": "Cerveja em garrafa de vidro retornável",
+      "ato": "PROTOCOLO ICMS Nº 11, DE 21 DE MAIO DE 1991",
+      "origem": "PR",
+      "destino": "SP",
+      "vigencia": "01/06/1991",
+      "responsabilidade": "REMETENTE",
+      "cest": "03.021.00",
+      "aliquotaDestino": null,
+      "fcp": null,
+      "aliquotaEfetiva": null,
+      "inter": "12",
+      "interMI": "4",
+      "mvaOriginal": null,
+      "mvaAjustada": null,
+      "mvaAjustadaMI": null,
+      "baseCalculo": "pauta",
+      "tratamento": "st-protocolo-11-91-pr-sp"
+    }
+  ],
+  "tratamentos": {
+    "st-protocolo-11-91-pr-sp": {
+      "exemplo": false,
+      "titulo": "Protocolo ICMS nº 11/91 · PR → SP",
+      "baseLegal": "<article> <h4 class=\"font-semibold text-blue-900\">Alíquota Interna – SP – Regra Geral</h4> <p>Alíquota de 18%, de acordo com o <a href=\"regulamentos.html\" class=\"text-blue-700 hover:underline\">inciso I do art. 52 do RICMS-SP</a>.</p> </article> <article class=\"border-t border-dashed border-slate-300 pt-5\"> <h4 class=\"font-semibold text-blue-900\">IVA/MVA – SP – IVA – Bebidas alcoólicas/Refrigerantes</h4> <p>Observar os valores de pauta fiscal dispostos nos Anexos I (Água Mineral e Natural), II (Refrigerantes), III (Bebidas Energéticas e Hidroeletrolíticas), IV (Cerveja e Chope) e V (Bebidas Alcoólicas) da <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">Portaria SRE nº 27/2026</a>.</p> <p class=\"mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500\"><span><i class=\"fa-regular fa-calendar-check mr-1\" aria-hidden=\"true\"></i>Início de vigência: 01/07/2026</span><span><i class=\"fa-regular fa-calendar-xmark mr-1\" aria-hidden=\"true\"></i>Final de vigência: 31/12/2026</span></p> </article> <div class=\"border-t border-dashed border-slate-300 pt-5\"> <a href=\"#\" class=\"cf-btn cf-btn-primary\"><i class=\"fa-solid fa-clock-rotate-left\" aria-hidden=\"true\"></i>Histórico de Atualização</a> </div>",
+      "beneficios": "<p class=\"text-slate-500\">Não há benefícios fiscais ou observações adicionais cadastrados para esta mercadoria nesta operação. <span class=\"text-xs\">(texto de exemplo)</span></p>",
+      "editoria": "<h4 class=\"font-semibold text-blue-900\">SP – Aplicação do regime</h4> <p>Conforme disposto na <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">Decisão Normativa CAT nº 12/09</a>, para aplicação do regime jurídico da substituição tributária nas operações com o Estado de São Paulo, deve-se observar a restrição às mercadorias que se enquadrem, cumulativamente, na descrição e na classificação na NCM constantes nos <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">Anexos da Portaria CAT nº 68/19</a>. Importante analisar ainda as disposições da cláusula quarta e do § 1º da cláusula sétima do <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">Convênio ICMS nº 142/18</a>.</p>",
+      "responsabilidade": "<p>Conforme determina a cláusula primeira do <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">Protocolo ICMS nº 11/91</a>, fica atribuída ao estabelecimento industrial, importador, arrematante de mercadoria importada e apreendida ou engarrafador de água, na qualidade de sujeito passivo por substituição, a responsabilidade pela retenção e recolhimento do ICMS.</p>",
+      "pagamento": "<h4 class=\"font-semibold text-blue-900\">Regra geral</h4> <p>O imposto retido será recolhido até o dia 9 (nove) do mês subsequente ao da remessa da mercadoria, mediante a Guia Nacional de Recolhimento de Tributos Estaduais (GNRE), sob o código de recolhimento <strong>10004.8</strong>.</p> <p>O estabelecimento remetente deve providenciar a inscrição de substituto tributário para fins de recolhimento do imposto retido a favor do Estado de destino. Do contrário, deverá recolher o imposto antecipadamente por meio da GNRE, sob o código <strong>10009.9</strong>.</p>",
+      "baseCalculo": "<p>De acordo com a <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">cláusula quarta do Protocolo ICMS nº 11/91</a>, o imposto a ser retido será calculado mediante aplicação da alíquota vigente para as operações internas, no Estado de destino da mercadoria, sobre o preço máximo de venda a varejo fixado pela autoridade competente, deduzindo-se, do valor obtido, o imposto devido pelo industrial, importador, arrematante ou engarrafador ou, na hipótese da cláusula anterior, o imposto devido pelo distribuidor, depósito ou estabelecimento atacadista.</p> <p>Na hipótese de não haver preço máximo fixado por autoridade, o imposto a ser retido pelo contribuinte corresponderá à Pauta Fiscal estabelecida internamente em cada Estado.</p>",
+      "inaplicabilidade": "<p>Veja as hipóteses de inaplicabilidade no <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">parágrafo único da cláusula segunda do Protocolo ICMS nº 11/1991</a>.</p>",
+      "mi": "<h4 class=\"font-semibold text-blue-900\">Produtos importados sujeitos à ST – aplicação da alíquota interestadual</h4> <p>Conforme dispõe a <a href=\"legislacao.html\" class=\"text-blue-700 hover:underline\">Resolução do Senado Federal nº 13/12</a>, nas operações interestaduais com bens e mercadorias importados do exterior será aplicada a alíquota de 4%.</p> <p>Essa alíquota aplica-se aos bens e mercadorias que, após seu desembaraço aduaneiro: a) não tenham sido submetidos a processo de industrialização; ou b) ainda que submetidos a processo de transformação, beneficiamento, montagem, acondicionamento, reacondicionamento, renovação ou recondicionamento, resultem em mercadorias com conteúdo de importação superior a 40%.</p>",
+      "cfopTitulo": "Principais CFOPs – Substituição Tributária (entradas)",
+      "cfop": [
+        {
+          "codigo": "1.401/2.401",
+          "descricao": "Compra para industrialização ou produção rural em operação com mercadoria sujeita ao regime de substituição tributária."
+        },
+        {
+          "codigo": "1.403/2.403",
+          "descricao": "Compra para comercialização em operação com mercadoria sujeita ao regime de substituição tributária."
+        }
+      ],
+      "cst": [
+        {
+          "codigo": "010",
+          "descricao": "Nacional – Tributada e com cobrança do ICMS por substituição tributária"
+        },
+        {
+          "codigo": "030",
+          "descricao": "Nacional – Isenta ou não tributada e com cobrança do ICMS por substituição tributária"
+        },
+        {
+          "codigo": "060",
+          "descricao": "Nacional – ICMS cobrado anteriormente por substituição tributária"
+        }
+      ],
+      "crtTexto": "O emitente da NF-e deve preencher o campo “Código de Regime Tributário (CRT)”, que identifica o regime de tributação do contribuinte, conforme o Anexo Único do Ajuste SINIEF nº 7/05.",
+      "crt": [
+        {
+          "codigo": "1",
+          "descricao": "Simples Nacional"
+        },
+        {
+          "codigo": "2",
+          "descricao": "Simples Nacional, excesso de sublimite de receita bruta"
+        },
+        {
+          "codigo": "3",
+          "descricao": "Regime Normal"
+        }
+      ],
+      "calculo": {
+        "aliquotaInterna": 18,
+        "aliquotaInter": 12,
+        "aliquotaImportada": 4,
+        "recolhimento": "GNRE 10004.8",
+        "pautaReferencia": "Portaria SRE nº 27/2026, Anexo IV (Cerveja e Chope)"
+      }
+    },
+    "icms-sp-exemplo": {
+      "exemplo": true,
+      "titulo": "Decreto nº 45.490/2000 (RICMS/SP)",
+      "baseLegal": "<p>Regulamento do ICMS do Estado de São Paulo – RICMS/SP (Decreto nº 45.490/2000). <em>Exemplo: informe aqui o artigo e o anexo aplicáveis à mercadoria.</em></p>",
+      "beneficios": "<p><em>Exemplo: redução de base de cálculo, crédito presumido, isenção ou diferimento, com o respectivo fundamento legal.</em></p>",
+      "editoria": "<p><em>Espaço para a nota da Editoria Cenofisco: orientações práticas, interpretações e alertas sobre a mercadoria.</em></p>",
+      "responsabilidade": "<p><em>Exemplo: indique quem é o responsável pelo recolhimento do ICMS e em quais operações.</em></p>",
+      "pagamento": "<p><em>Exemplo: prazo e forma de recolhimento do imposto, conforme a legislação estadual.</em></p>",
+      "baseCalculo": "<p><em>Exemplo: composição da base de cálculo, com o fundamento legal.</em></p>",
+      "inaplicabilidade": "<p><em>Exemplo: hipóteses em que o tratamento não se aplica.</em></p>",
+      "mi": "<p>Nas operações interestaduais com bens e mercadorias importados do exterior, aplica-se a alíquota de 4% (Resolução do Senado Federal nº 13/2012).</p>",
+      "cfop": [
+        {
+          "codigo": "5.102",
+          "descricao": "Venda de mercadoria adquirida ou recebida de terceiros"
+        },
+        {
+          "codigo": "6.102",
+          "descricao": "Venda de mercadoria adquirida ou recebida de terceiros (operação interestadual)"
+        }
+      ],
+      "cst": [
+        {
+          "codigo": "00",
+          "descricao": "Tributada integralmente"
+        },
+        {
+          "codigo": "20",
+          "descricao": "Com redução de base de cálculo"
+        }
+      ],
+      "crtTexto": "O emitente da NF-e deve preencher o campo “Código de Regime Tributário (CRT)”, conforme o Anexo Único do Ajuste SINIEF nº 7/05.",
+      "crt": [
+        {
+          "codigo": "1",
+          "descricao": "Simples Nacional"
+        },
+        {
+          "codigo": "2",
+          "descricao": "Simples Nacional, excesso de sublimite de receita bruta"
+        },
+        {
+          "codigo": "3",
+          "descricao": "Regime Normal"
+        }
+      ]
+    }
+  }
+}
