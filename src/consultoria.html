@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Assine o Boletim Fiscal e Tributário Cenofisco: escolha o plano, informe seus dados e conclua o pagamento.">
+  <meta name="description" content="Compre créditos de Consultoria Cenofisco: escolha o pacote, informe seus dados e conclua o pagamento. Pacotes com até 100% de bônus.">
   <link href="./output.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <title>Assinatura - Cenofisco</title>
+  <title>Créditos de Consultoria - Cenofisco</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -30,20 +30,20 @@
   </header>
 
   <!-- ===================== HERO ===================== -->
-  <section class="bg-blue-950 text-white">
+  <section class="cf-on-dark bg-blue-950 text-white">
     <div class="container mx-auto px-4 py-8 md:py-10">
       <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
         <a href="index.html" class="transition hover:text-white">Início</a>
         <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
-        <a href="assine.html" class="transition hover:text-white">Assine</a>
+        <a href="index.html#consultoria-cenofisco" class="transition hover:text-white">Consultoria</a>
         <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
-        <span class="font-bold text-white" aria-current="page">Assinatura</span>
+        <span class="font-bold text-white" aria-current="page">Comprar créditos</span>
       </nav>
-      <h1 class="mt-4 text-3xl leading-tight font-bold tracking-tight md:text-4xl">Boletim Fiscal e Tributário Cenofisco</h1>
-      <p class="mt-3 max-w-xl text-sm text-blue-100 md:text-base">Escolha o plano, informe seus dados e conclua o pagamento. No plano Individual, os 7 primeiros dias são grátis.</p>
+      <h1 class="mt-4 text-3xl leading-tight font-bold tracking-tight md:text-4xl">Créditos de Consultoria</h1>
+      <p class="mt-3 max-w-2xl text-sm text-blue-100 md:text-base">Tire dúvidas com especialistas nas áreas tributária, fiscal, trabalhista, previdenciária e de comércio exterior, por telefone, por escrito, por vídeo ou presencialmente. Quanto maior o pacote, maior o bônus de créditos.</p>
 
       <ol class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-blue-100" aria-label="Etapas">
-        <li class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-amber-400 text-xs font-bold text-blue-950">1</span>Plano</li>
+        <li class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-amber-400 text-xs font-bold text-blue-950">1</span>Pacote</li>
         <li class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-white/15 text-xs font-bold text-white">2</span>Dados cadastrais</li>
         <li class="flex items-center gap-2"><span class="inline-flex size-6 items-center justify-center rounded-full bg-white/15 text-xs font-bold text-white">3</span>Pagamento</li>
       </ol>
@@ -51,33 +51,38 @@
   </section>
 
   <main id="conteudo" class="container mx-auto px-4 py-8">
-    <form id="checkout-form" class="grid items-start gap-8 lg:grid-cols-[1fr_22rem]" novalidate>
+    <form id="checkout-form" class="grid grid-cols-1 items-start gap-8 lg:grid-cols-[1fr_22rem]" novalidate>
 
       <!-- ============ ETAPAS ============ -->
-      <div class="min-w-0 space-y-8">
+      <div class="min-w-0 space-y-6">
 
-        <!-- 1. Plano -->
-        <section class="cf-card" aria-labelledby="titulo-plano">
+        <!-- 1. Pacote -->
+        <section class="cf-card" aria-labelledby="titulo-pacote">
           <div class="cf-section-head">
-            <h2 id="titulo-plano" class="cf-section-title"><span class="cf-icon">1</span>Escolha o plano</h2>
-            <button type="button" id="ver-creditos" class="cf-link-more cursor-pointer">Como usar os créditos <i class="fa-regular fa-circle-question" aria-hidden="true"></i></button>
+            <h2 id="titulo-pacote" class="cf-section-title"><span class="cf-icon">1</span>Escolha o pacote</h2>
+            <span id="saldo-atual" class="hidden items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-800"><i class="fa-solid fa-coins" aria-hidden="true"></i><span>Seu saldo: <span id="saldo-atual-valor">0</span> créditos</span></span>
           </div>
 
           <fieldset>
-            <legend class="sr-only">Plano</legend>
-            <div id="planos" class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              <!-- Gerado via JavaScript -->
+            <legend class="sr-only">Pacote de créditos</legend>
+            <div id="pacotes" class="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              <!-- Gerado via JavaScript (consultoria.js) -->
             </div>
           </fieldset>
 
+          <!-- Quanto rende o pacote escolhido -->
           <div class="mt-5 rounded-xl bg-slate-50 p-4">
-            <p class="cf-eyebrow mb-2 text-slate-500">Incluso em todos os planos</p>
-            <ul class="grid gap-x-6 gap-y-1.5 text-sm text-slate-700 sm:grid-cols-2">
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Substituição Tributária (27 Estados)</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Resenha Trabalhista e Previdenciária <span class="rounded-full bg-amber-100 px-1.5 text-[10px] font-bold text-amber-800 uppercase">Novo</span></li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Monitoramento de ST</li>
-              <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-600" aria-hidden="true"></i>Monitoramento de PIS/COFINS</li>
-            </ul>
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <p class="cf-eyebrow text-slate-500">Quanto custa cada consulta</p>
+              <p class="text-xs text-slate-500">Com <strong id="rende-creditos" class="font-semibold text-slate-900">—</strong> créditos você faz até:</p>
+            </div>
+            <table class="mt-3 w-full text-xs sm:text-sm">
+              <caption class="sr-only">Créditos por tipo de consulta e quantas consultas o pacote escolhido permite</caption>
+              <tbody id="tabela-consultas" class="divide-y divide-slate-200">
+                <!-- Gerado via JavaScript (consultoria.js) -->
+              </tbody>
+            </table>
+            <p class="mt-3 text-xs text-slate-500">Consultas por telefone e por escrito incluem suporte técnico. Você pode combinar os tipos como preferir.</p>
           </div>
         </section>
 
@@ -122,15 +127,15 @@
 
           <div class="grid gap-4 sm:grid-cols-2">
             <div class="sm:col-span-2">
-              <label for="nome" class="cf-label"><span data-pj-label="Nome completo do assinante *">Nome completo *</span></label>
+              <label for="nome" class="cf-label">Nome completo do consulente *</label>
               <input type="text" id="nome" name="nome" autocomplete="name" class="cf-input">
             </div>
             <div>
-              <label for="cpf" class="cf-label"><span data-pj-label="CPF do assinante *">CPF *</span></label>
+              <label for="cpf" class="cf-label">CPF do consulente *</label>
               <input type="text" id="cpf" name="cpf" inputmode="numeric" data-mask="cpf" class="cf-input" placeholder="000.000.000-00">
             </div>
             <div>
-              <label for="email" class="cf-label"><span data-pj-label="E-mail do assinante *">E-mail *</span></label>
+              <label for="email" class="cf-label">E-mail *</label>
               <input type="email" id="email" name="email" autocomplete="email" class="cf-input" placeholder="voce@empresa.com.br">
             </div>
             <div>
@@ -142,6 +147,7 @@
               <input type="tel" id="telefone" name="telefone" inputmode="numeric" data-mask="telefone" class="cf-input" placeholder="(00) 0000-0000">
             </div>
           </div>
+          <p class="mt-2 text-xs text-slate-500">O consulente é a pessoa que vai usar os créditos nas consultas.</p>
 
           <h3 class="cf-eyebrow mt-6 mb-3 text-slate-500">Endereço</h3>
           <div class="grid gap-4 sm:grid-cols-6">
@@ -151,9 +157,9 @@
                 <input type="text" id="cep" name="cep" inputmode="numeric" data-mask="cep" autocomplete="postal-code" class="cf-input pr-9" placeholder="00000-000">
                 <span id="cep-loading" class="absolute top-1/2 right-3 hidden -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"><i class="fa-solid fa-spinner fa-spin"></i></span>
               </div>
-              <a href="https://buscacepinter.correios.com.br/" target="_blank" rel="noopener" class="mt-1 inline-block text-xs text-blue-700 hover:underline">Não sei meu CEP</a>
+              <a href="https://buscacepinter.correios.com.br/" target="_blank" rel="noopener" class="mt-1 inline-block text-xs text-blue-700 hover:underline">Não sei meu CEP<span class="sr-only"> (abre em nova aba)</span></a>
             </div>
-            <div class="sm:col-span-4"></div>
+            <div class="hidden sm:col-span-4 sm:block"></div>
             <div class="sm:col-span-2">
               <label for="logradouro-tipo" class="cf-label">Tipo *</label>
               <select id="logradouro-tipo" name="logradouroTipo" class="cf-input"><!-- Gerado via JavaScript --></select>
@@ -219,7 +225,7 @@
               </div>
             </div>
             <div class="sm:col-span-6">
-              <label for="cartao-nome" class="cf-label">Nome do titular * <span class="font-normal text-slate-400">(como está no cartão)</span></label>
+              <label for="cartao-nome" class="cf-label">Nome do titular * <span class="font-normal text-slate-500">(como está no cartão)</span></label>
               <input type="text" id="cartao-nome" name="cartaoNome" autocomplete="cc-name" class="cf-input uppercase">
             </div>
             <div class="sm:col-span-2">
@@ -242,32 +248,35 @@
 
           <div id="info-boleto" class="hidden rounded-xl bg-amber-50 p-4 text-sm text-amber-900">
             <i class="fa-solid fa-circle-info mr-1" aria-hidden="true"></i>
-            O boleto será enviado ao e-mail informado e o produto ficará ativo após a confirmação do pagamento.
+            O boleto será enviado ao e-mail informado e os créditos ficam disponíveis após a confirmação do pagamento.
           </div>
 
           <div class="mt-5 max-w-sm">
             <label for="parcelas" class="cf-label">Parcelas</label>
             <select id="parcelas" name="parcelas" class="cf-input"><!-- Gerado via JavaScript --></select>
+            <p class="mt-1 text-xs text-slate-500">No cartão, em até 5x sem juros. No boleto, à vista.</p>
           </div>
         </section>
       </div>
 
       <!-- ============ RESUMO ============ -->
-      <aside class="space-y-4 lg:sticky lg:top-6">
+      <aside class="min-w-0 space-y-4 lg:sticky lg:top-6">
         <section class="cf-card" aria-labelledby="titulo-resumo">
           <h2 id="titulo-resumo" class="cf-section-title mb-4"><span class="cf-icon"><i class="fa-solid fa-receipt" aria-hidden="true"></i></span>Resumo do pedido</h2>
 
-          <p class="text-xs text-slate-500">Boletim Fiscal e Tributário</p>
-          <p class="text-lg font-bold text-slate-900">Plano <span id="resumo-plano">—</span></p>
-          <p class="text-xs text-slate-500">Cód. <span id="resumo-codigo">—</span> · renovação anual</p>
+          <p class="text-xs text-slate-500">Consultoria Cenofisco</p>
+          <p class="text-lg font-bold text-slate-900">Pacote <span id="resumo-pacote">—</span> créditos</p>
 
-          <ul id="resumo-itens" class="mt-3">
-            <!-- Gerado via JavaScript -->
+          <ul class="mt-3 text-sm text-slate-700">
+            <li class="flex items-center justify-between gap-2 py-1"><span>Créditos do pacote</span><span id="resumo-base" class="tabular-nums">—</span></li>
+            <li id="resumo-linha-bonus" class="flex items-center justify-between gap-2 py-1 text-emerald-700"><span>Bônus (<span id="resumo-bonus-pct">0</span>%)</span><span id="resumo-bonus" class="tabular-nums">—</span></li>
+            <li class="mt-1 flex items-center justify-between gap-2 border-t border-slate-100 pt-2 font-semibold text-slate-900"><span>Você recebe</span><span><span id="resumo-total-creditos" class="tabular-nums">—</span> créditos</span></li>
           </ul>
+          <p class="mt-1 text-xs text-slate-500"><span id="resumo-por-credito">—</span> por crédito</p>
 
-          <div id="resumo-trial" class="mt-4 hidden rounded-xl bg-emerald-50 p-3 text-sm text-emerald-900">
-            <p class="font-semibold"><i class="fa-solid fa-gift mr-1" aria-hidden="true"></i>7 dias grátis para testar</p>
-            <p class="mt-1 text-xs">Hoje você não paga nada. A cobrança só acontece se não cancelar até o 7º dia.</p>
+          <div id="resumo-boletim" class="mt-4 hidden rounded-xl bg-emerald-50 p-3 text-sm text-emerald-900">
+            <p class="font-semibold"><i class="fa-solid fa-gift mr-1" aria-hidden="true"></i><span id="resumo-boletim-texto">—</span></p>
+            <p class="mt-1 text-xs">Acesso de cortesia ao Boletim Fiscal e Tributário.</p>
           </div>
 
           <div class="mt-4 border-t border-slate-200 pt-4">
@@ -286,17 +295,17 @@
           <p id="form-erro" class="mt-3 hidden rounded-lg bg-red-50 p-3 text-sm text-red-700" role="alert"></p>
 
           <button type="submit" id="btn-finalizar" class="cf-btn cf-btn-accent mt-4 w-full py-3 text-base">
-            <i class="fa-solid fa-lock" aria-hidden="true"></i><span id="btn-finalizar-texto">Finalizar assinatura</span>
+            <i class="fa-solid fa-lock" aria-hidden="true"></i><span id="btn-finalizar-texto">Comprar créditos</span>
           </button>
           <p class="mt-3 flex items-center justify-center gap-2 text-xs text-slate-500"><i class="fa-solid fa-shield-halved text-emerald-600" aria-hidden="true"></i>Seus dados são enviados de forma segura.</p>
         </section>
 
-        <section class="cf-card p-5!" aria-labelledby="titulo-ajuda">
+        <section class="cf-card" aria-labelledby="titulo-ajuda">
           <h2 id="titulo-ajuda" class="font-semibold text-slate-900">Ainda tem dúvidas?</h2>
           <ul class="mt-2 space-y-1.5 text-sm text-slate-600">
             <li><a href="tel:1148620485" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-solid fa-phone w-4 text-xs text-slate-400" aria-hidden="true"></i>11 4862-0485</a></li>
-            <li><a href="https://wa.me/5511990069714" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-brands fa-whatsapp w-4 text-emerald-600" aria-hidden="true"></i>11 99006-9714</a></li>
-            <li><a href="https://wa.me/5511945335107" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-brands fa-whatsapp w-4 text-emerald-600" aria-hidden="true"></i>11 94533-5107</a></li>
+            <li><a href="https://wa.me/5511990069714" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-brands fa-whatsapp w-4 text-emerald-600" aria-hidden="true"></i>11 99006-9714<span class="sr-only"> (WhatsApp, abre em nova aba)</span></a></li>
+            <li><a href="https://wa.me/5511945335107" target="_blank" rel="noopener" class="flex items-center gap-2 hover:text-blue-800"><i class="fa-brands fa-whatsapp w-4 text-emerald-600" aria-hidden="true"></i>11 94533-5107<span class="sr-only"> (WhatsApp, abre em nova aba)</span></a></li>
           </ul>
         </section>
       </aside>
@@ -304,52 +313,40 @@
 
     <!-- Confirmação (exibida após finalizar) -->
     <section id="confirmacao" class="cf-card mx-auto hidden max-w-xl text-center" tabindex="-1" aria-labelledby="titulo-confirmacao">
-      <span class="mx-auto inline-flex size-16 items-center justify-center rounded-full bg-emerald-50 text-2xl text-emerald-600"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
+      <span id="confirmacao-icone" class="mx-auto inline-flex size-16 items-center justify-center rounded-full bg-emerald-50 text-2xl text-emerald-600"><i class="fa-solid fa-check" aria-hidden="true"></i></span>
       <h2 id="titulo-confirmacao" class="mt-4 text-2xl font-bold text-slate-900">—</h2>
       <p id="texto-confirmacao" class="mt-2 text-slate-600"></p>
-      <a href="index.html" class="cf-btn cf-btn-primary mt-6">Ir para o portal <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <div id="confirmacao-saldo" class="mx-auto mt-5 hidden max-w-xs rounded-xl bg-blue-950 p-4 text-white">
+        <p class="text-xs text-blue-100">Saldo disponível</p>
+        <p class="mt-1 text-3xl font-bold"><span id="confirmacao-saldo-valor">0</span> <span class="text-base font-medium text-blue-100">créditos</span></p>
+      </div>
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        <a href="index.html#consultoria-cenofisco" class="cf-btn cf-btn-primary">Fazer uma consulta <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="meu-perfil.html" class="cf-btn cf-btn-secondary">Ver meu perfil</a>
+      </div>
     </section>
 
     <!-- Importante -->
     <section class="mt-10 rounded-2xl border border-slate-200 bg-white p-5 text-sm text-slate-600" aria-labelledby="titulo-importante">
       <h2 id="titulo-importante" class="mb-2 font-semibold text-slate-900">Importante</h2>
       <ul class="list-disc space-y-1 pl-5">
-        <li>Oferta "7 dias grátis" válida no plano Individual, apenas uma vez por cliente.</li>
-        <li>Para os 7 dias de acesso grátis, é preciso informar os dados pessoais e de cobrança.</li>
-        <li>Se não cancelar até o 7º dia de acesso gratuito, a cobrança da assinatura é efetivada conforme a promoção. Depois do período promocional, a assinatura segue por R$ 296,00 ao mês durante 12 meses.</li>
-        <li>Para cancelar a qualquer momento, ligue para <a href="tel:40001305" class="font-medium text-blue-700 hover:underline">4000-1305</a> (SAC) ou envie um e-mail para <a href="mailto:sac@cenofisco.com.br" class="font-medium text-blue-700 hover:underline">sac@cenofisco.com.br</a>.</li>
+        <li>Os créditos valem para consultas nas áreas tributária, fiscal, trabalhista, previdenciária e de comércio exterior.</li>
+        <li>O bônus é somado aos créditos do pacote no momento da compra.</li>
+        <li>No pagamento por boleto, os créditos ficam disponíveis após a confirmação do pagamento.</li>
+        <li>Nos pacotes com meses grátis do Boletim Fiscal e Tributário, os dados de acesso são enviados para o e-mail informado.</li>
+        <li>Dúvidas: ligue para <a href="tel:40001305" class="font-medium text-blue-700 hover:underline">4000-1305</a> (SAC) ou envie um e-mail para <a href="mailto:sac@cenofisco.com.br" class="font-medium text-blue-700 hover:underline">sac@cenofisco.com.br</a>.</li>
       </ul>
     </section>
   </main>
 
-  <!-- Créditos de consultoria -->
-  <dialog id="dialog-creditos" class="m-auto w-[calc(100%-2rem)] max-w-lg rounded-2xl p-0 shadow-xl backdrop:bg-slate-900/50" aria-labelledby="titulo-dialog-creditos">
-    <div class="p-6">
-      <div class="flex items-start justify-between gap-4">
-        <h2 id="titulo-dialog-creditos" class="text-lg font-semibold text-slate-900">Consultoria Cenofisco</h2>
-        <button type="button" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100" data-fechar aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-      </div>
-      <p class="mt-2 text-sm text-slate-600">Converse com especialistas sobre as áreas tributária, fiscal, trabalhista, previdenciária e de comércio exterior. Cada plano inclui créditos para usar nas consultas:</p>
-      <ul class="mt-4">
-        <li class="cf-row"><span>Telefone</span><strong class="font-semibold text-slate-900">4 créditos</strong></li>
-        <li class="cf-row"><span>Escrita em até 72h</span><strong class="font-semibold text-slate-900">4 créditos</strong></li>
-        <li class="cf-row"><span>Escrita em até 48h</span><strong class="font-semibold text-slate-900">8 créditos</strong></li>
-        <li class="cf-row"><span>Escrita em até 24h</span><strong class="font-semibold text-slate-900">12 créditos</strong></li>
-        <li class="cf-row"><span>Escrita em até 12h</span><strong class="font-semibold text-slate-900">24 créditos</strong></li>
-        <li class="cf-row"><span>Videoconferência</span><strong class="font-semibold text-slate-900">48 créditos</strong></li>
-        <li class="cf-row"><span>Presencial (1 hora)</span><strong class="font-semibold text-slate-900">96 créditos</strong></li>
-      </ul>
-      <p class="mt-3 text-xs text-slate-500">Você pode adquirir mais créditos a qualquer momento.</p>
-    </div>
-  </dialog>
-
-  <footer class="mt-4 bg-blue-950 py-8 text-center text-xs text-gray-400">
+  <footer class="mt-4 bg-blue-950 py-8 text-center text-xs text-slate-400">
     <div class="container mx-auto space-y-1 px-4">
       <p>© Cenofisco Editora de Publicações Tributárias Ltda | CNPJ: 82.429.556/0001-62</p>
       <p>Av. Paulista, 1.337 - 21º, 22º e 23º andar - São Paulo - SP - CEP 01311-200</p>
     </div>
   </footer>
   <script src="./checkout-base.js"></script>
-  <script src="./checkout.js"></script>
+  <script src="./creditos.js"></script>
+  <script src="./consultoria.js"></script>
 </body>
 </html>
