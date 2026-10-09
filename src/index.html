@@ -785,6 +785,8 @@
             </div>
             <button type="submit" class="cf-btn cf-btn-primary mt-3 w-full"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>Buscar</button>
           </form>
+          <!-- Resultados da aba CST/cClassTrib (tabela oficial do Portal da Conformidade Fácil, em cclasstrib.json) -->
+          <div id="cct-home-resultados" class="mt-4 hidden" aria-live="polite"></div>
         </section>
 
         <!-- Regulamentos Estaduais -->
@@ -807,8 +809,8 @@
             <input type="search" id="tabelas-praticas-filtro" placeholder="Pesquisar em tabelas..." class="cf-input pl-8">
           </div>
           <ul id="tabelas-praticas-lista">
-            <li class="cf-row"><span>Salário Mínimo 2024</span><span class="font-semibold text-slate-900 tabular-nums">R$ 1.412,00</span></li>
-            <li class="cf-row"><span>Alíquotas Internas – ICMS-FCP</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Salário Mínimo <span id="sm-ano">2026</span></span><a href="tabela.html?id=salario-minimo" id="sm-valor" class="font-semibold text-slate-900 tabular-nums hover:text-blue-800 hover:underline" title="Ver a tabela do salário mínimo">R$ 1.621,00</a></li>
+            <li class="cf-row"><span>Alíquotas Internas – ICMS-FCP</span><a href="tabela.html?id=aliquotas-internas-icms-fcp" class="cf-row-link">Ver tabela</a></li>
             <li class="cf-row"><span>Alíquotas Interestaduais – ICMS</span><a href="#" class="cf-row-link">Consultar</a></li>
             <li class="cf-row"><span>Alíquotas de ISS</span><a href="#" class="cf-row-link">Ver tabela</a></li>
             <li class="cf-row"><span>Alíquotas – Evolução – CP</span><a href="#" class="cf-row-link">Consultar</a></li>

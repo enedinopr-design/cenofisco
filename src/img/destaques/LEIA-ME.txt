@@ -1,0 +1,31 @@
+IMAGENS DO DESTAQUE PRINCIPAL (página inicial)
+==============================================
+
+Coloque nesta pasta as imagens das notícias em destaque.
+
+Como usar
+---------
+1. Salve a imagem aqui, por exemplo: 13-salario-2026.jpg
+2. Em src/noticias.json, na notícia desejada, troque o campo "image" pelo caminho do arquivo:
+
+       "image": "img/destaques/13-salario-2026.jpg",
+
+   Opcional: descreva a imagem para leitores de tela (acessibilidade):
+
+       "imageAlt": "Calendário com a data de pagamento do 13º salário",
+
+3. Salve o noticias.json e recarregue a página inicial.
+
+O destaque principal é sempre a notícia mais recente do noticias.json.
+Se o arquivo não for encontrado, a página mostra uma imagem padrão.
+
+Recomendações
+-------------
+- Formato: JPG (fotos) ou WebP. Evite PNG para fotografias.
+- Proporção 4:3 na horizontal. Tamanho ideal: 1200 x 900 pixels (mínimo 800 x 600).
+- Tamanho do arquivo: até 300 KB (comprima em tinypng.com ou squoosh.app).
+- Nome do arquivo: minúsculas, sem acentos e sem espaços (use hífen).
+  Certo:  reforma-tributaria-cbs.jpg      Errado: Reforma Tributária CBS.JPG
+- No celular a imagem aparece em 16:9 e no computador em 4:3, recortada pelo centro:
+  mantenha o assunto principal no meio da foto.
+- Use apenas imagens próprias, compradas ou de bancos gratuitos (ex.: Unsplash, Pexels).

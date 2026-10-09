@@ -109,16 +109,77 @@ document.addEventListener('DOMContentLoaded', function () {
     window.openConsultoriaTab = (evt, id) => activateTab(evt.currentTarget, id, 'consultoria-tab-content');
     window.openCodigosTab = (evt, id) => activateTab(evt.currentTarget, id, 'codigos-tab-content');
 
-    // Códigos › CST/cClassTrib: a busca abre a página própria (cst-cclasstrib.html)
+    // Códigos › CST/cClassTrib: resultados aqui mesmo, a partir da tabela oficial (cclasstrib.json,
+    // copiada de dfe-portal.svrs.rs.gov.br/DFE/ClassificacaoTributaria). Busca por CST, cClassTrib,
+    // NCM/NBS dos anexos (cclasstrib-itens.json, carregado só nesse caso) ou palavras da descrição.
     const codigosForm = document.getElementById('codigos-form');
-    if (codigosForm) {
+    const cctPainel = document.getElementById('cclasstrib');
+    const cctSaida = document.getElementById('cct-home-resultados');
+    if (codigosForm && cctPainel && cctSaida) {
+        const cctInput = cctPainel.querySelector('input[name="q"]');
+        const normalizar = v => String(v || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+        const pct = v => `${String(v).replace('.', ',')}%`;
+        let base = null, itens = null;
+        const carregar = url => fetch(url).then(r => (r.ok ? r.json() : Promise.reject(r.status)));
+
+        async function buscarCct() {
+            const q = cctInput.value.trim();
+            if (q.length < 2) { cctSaida.classList.add('hidden'); cctSaida.innerHTML = ''; return; }
+            cctSaida.classList.remove('hidden');
+            try {
+                base ||= await carregar('cclasstrib.json');
+                const num = q.replace(/\D/g, '');
+                const numerico = /^[\d.\s-]+$/.test(q);
+                // 4+ dígitos que não sejam um cClassTrib (6): procura também a NCM/NBS nos anexos
+                let noAnexo = null;
+                if (numerico && num.length >= 4 && num.length !== 6) {
+                    itens ||= await carregar('cclasstrib-itens.json');
+                    noAnexo = new Set(Object.entries(itens).filter(([, l]) => l.some(([c]) => c.startsWith(num) || num.startsWith(c))).map(([cod]) => cod));
+                }
+                const palavras = normalizar(q).split(/\s+/).filter(w => w.length >= 2);
+                const achados = [];
+                base.cst.forEach(c => c.classificacoes.forEach(t => {
+                    const ok = numerico
+                        ? (num.length <= 3 && c.cst.startsWith(num)) || t.codigo.startsWith(num) || (noAnexo && noAnexo.has(t.codigo))
+                        : palavras.every(w => normalizar(`${c.cst} ${c.nome} ${t.codigo} ${t.nome} ${t.descricao} ${t.anexo || ''}`).includes(w));
+                    if (ok) achados.push({ c, t });
+                }));
+                const verTodos = `cst-cclasstrib.html?q=${encodeURIComponent(q)}`;
+                if (!achados.length) {
+                    cctSaida.innerHTML = `<p class="rounded-lg bg-slate-50 px-3 py-3 text-sm text-slate-600">Nenhum CST ou cClassTrib para “${escapeHtml(q)}”. Tente o código (ex.: 200, 200003), uma NCM/NBS ou palavras da descrição.</p>`;
+                    return;
+                }
+                const MAX = 5;
+                cctSaida.innerHTML = `
+                    <p class="mb-2 text-xs font-medium text-slate-500">${achados.length} cClassTrib encontrado${achados.length > 1 ? 's' : ''}</p>
+                    <ul class="divide-y divide-slate-100 rounded-xl border border-slate-200">${achados.slice(0, MAX).map(({ c, t }) => {
+                        const red = t.redIbs === t.redCbs ? (t.redIbs ? `Redução de ${pct(t.redIbs)}` : '') : `Red. IBS ${pct(t.redIbs)} · CBS ${pct(t.redCbs)}`;
+                        return `
+                        <li><a href="cst-cclasstrib.html?q=${t.codigo}" class="group flex items-start gap-3 px-3 py-2.5 transition hover:bg-blue-50/60">
+                            <span class="mt-0.5 shrink-0 rounded bg-amber-100 px-1.5 py-0.5 font-mono text-xs font-bold text-amber-900">${t.codigo}</span>
+                            <span class="min-w-0 flex-1">
+                                <span class="line-clamp-2 text-sm font-medium text-slate-800 group-hover:text-blue-800">${escapeHtml(t.nome || t.descricao)}</span>
+                                <span class="mt-0.5 block text-[11px] text-slate-500">CST ${c.cst} · ${escapeHtml(c.nome)}${red ? ` · <span class="font-semibold text-emerald-700">${red}</span>` : ''}</span>
+                            </span>
+                        </a></li>`;
+                    }).join('')}</ul>
+                    <a href="${verTodos}" class="cf-link-more mt-3">${achados.length > MAX ? `Ver todos os ${achados.length} resultados` : 'Ver detalhes'} <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>`;
+            } catch (e) {
+                cctSaida.innerHTML = `<p class="text-sm text-red-600">Não foi possível consultar a tabela agora. <a href="cst-cclasstrib.html" class="font-semibold underline">Abrir a página de CST e cClassTrib</a>.</p>`;
+            }
+        }
+
         codigosForm.addEventListener('submit', e => {
-            const painel = document.getElementById('cclasstrib');
-            if (!painel || painel.classList.contains('hidden')) return;
+            if (cctPainel.classList.contains('hidden')) return; // demais abas seguem o envio normal
             e.preventDefault();
-            const q = painel.querySelector('input[name="q"]').value.trim();
-            location.href = 'cst-cclasstrib.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+            buscarCct();
         });
+        let cctTimer = null;
+        cctInput.addEventListener('input', () => { clearTimeout(cctTimer); cctTimer = setTimeout(buscarCct, 300); });
+        // Ao trocar de aba, os resultados só aparecem na aba CST/cClassTrib
+        document.querySelectorAll('.codigos-tab-button').forEach(b => b.addEventListener('click', () => {
+            cctSaida.classList.toggle('hidden', b.id !== 'tab-cclasstrib' || cctInput.value.trim().length < 2);
+        }));
     }
 
     // Estado inicial de ARIA + navegação por teclado (setas ←/→, Home, End)
@@ -1072,7 +1133,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const urlNoticia = n => (n.link && n.link !== '#' ? n.link : `noticia.html?id=${encodeURIComponent(n.id)}`);
         const isoData = d => d.split('/').reverse().join('-');
         const eyebrow = n => `<span class="cf-eyebrow ${corArea[n.area] || 'text-blue-700'}">${escapeHtml(n.area)} <span class="text-slate-400">·</span> <time datetime="${isoData(n.date)}" class="text-slate-500">${escapeHtml(n.date)}</time></span>`;
-        const img = (url, w) => url.replace(/([?&])w=\d+/, `$1w=${w}`);
+        // Imagem do destaque principal: campo "image" de noticias.json — um arquivo da pasta
+        // img/destaques/ (ex.: "img/destaques/13-salario.jpg") ou um endereço externo.
+        // Se o arquivo não existir, usa a imagem de reserva.
+        const IMAGEM_RESERVA = 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80';
+        const srcsetDe = url => (/[?&]w=\d+/.test(url) ? ` srcset="${escapeHtml(url.replace(/([?&])w=\d+/, '$1w=480'))} 480w, ${escapeHtml(url)} 800w" sizes="(min-width: 768px) 320px, 100vw"` : '');
 
         fetch('noticias.json')
             .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
@@ -1084,8 +1149,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 destaqueEl.innerHTML = `
                     <a href="${escapeHtml(urlNoticia(principal))}" class="group grid grid-cols-1 items-center gap-6 md:grid-cols-5">
                         ${principal.image ? `<div class="aspect-video overflow-hidden rounded-xl bg-slate-200 md:col-span-2 md:aspect-[4/3]">
-                            <img src="${escapeHtml(principal.image)}" srcset="${escapeHtml(img(principal.image, 480))} 480w, ${escapeHtml(principal.image)} 800w" sizes="(min-width: 768px) 320px, 100vw"
-                                 alt="" width="800" height="600" fetchpriority="high" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                            <img src="${escapeHtml(principal.image)}"${srcsetDe(principal.image)}
+                                 alt="${escapeHtml(principal.imageAlt || '')}" width="800" height="600" fetchpriority="high" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
                         </div>` : ''}
                         <div class="${principal.image ? 'md:col-span-3' : 'md:col-span-5'}">
                             ${eyebrow(principal)}
@@ -1102,6 +1167,13 @@ document.addEventListener('DOMContentLoaded', function () {
                         </a>`).join('')}
                     </div>`;
 
+                // Arquivo não encontrado: troca pela imagem de reserva
+                const imagem = destaqueEl.querySelector('img');
+                imagem?.addEventListener('error', () => {
+                    imagem.removeAttribute('srcset');
+                    imagem.src = IMAGEM_RESERVA;
+                }, { once: true });
+
                 const proximas = demais.slice(3, 7);
                 if (proximas.length) {
                     noticiasTabEl.innerHTML = `
@@ -1116,6 +1188,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             })
             .catch(() => { /* mantém o conteúdo estático */ });
+    }
+
+    /* ------------------------------------------------------------------
+     * Tabelas Práticas: salário mínimo vigente (1ª linha de tabelas/salario-minimo.json).
+     * Se o arquivo não carregar, fica o valor escrito no HTML.
+     * ------------------------------------------------------------------ */
+    const smValor = document.getElementById('sm-valor');
+    if (smValor) {
+        fetch('tabelas/salario-minimo.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(t => {
+                const atual = t.linhas && t.linhas[0];
+                if (!atual) return;
+                smValor.textContent = /^R\$/.test(atual.mensal) ? atual.mensal : `R$ ${atual.mensal}`;
+                document.getElementById('sm-ano').textContent = atual.vigencia.slice(-4);
+            })
+            .catch(() => { /* mantém o valor do HTML */ });
     }
 
     /* ------------------------------------------------------------------
