@@ -1,0 +1,492 @@
+{
+    "id": "aliquotas-internas-icms-fcp",
+    "titulo": "Alíquotas Internas dos Estados e do Distrito Federal",
+    "tituloCurto": "Alíquotas Internas – ICMS-FCP",
+    "area": "ICMS",
+    "publicado": "06/03/2020",
+    "atualizado": "",
+    "exemplo": false,
+    "introducao": "<p>Com fundamento na legislação de cada Estado e do Distrito Federal, elaboramos uma tabela de alíquotas internas do ICMS, relativamente a cada mercadoria e serviço, pertencentes ao campo de incidência do imposto.</p><p>Contudo, convém esclarecer que o contribuinte deverá atentar-se a eventuais alterações posteriores, visto que cada ente da federação tem competência para alterar suas alíquotas internas.</p><p>A alteração pode ocorrer a qualquer tempo, quando se tratar de diminuição do percentual aplicável. Em contrapartida, a alteração não poderá acarretar aumento de carga tributária no mesmo exercício financeiro, ou seja, somente poderá ser cobrado o aumento no ano seguinte em respeito ao princípio constitucional da anterioridade, bem como somente produzirá efeitos 90 dias após a publicação do ato, em atendimento ao princípio constitucional da noventena.</p><p>Ressalta-se que nem todos os Estados promoveram alterações em suas alíquotas, porém, este trabalho tem como objetivo compilar todas as alíquotas de todas as Unidades Federadas para auxiliar na pesquisa do contribuinte. Havendo alterações futuras, este texto será atualizado.</p>",
+    "tipo": "porEstado",
+    "estadoPadrao": "AC",
+    "colunas": [
+        {
+            "campo": "operacao",
+            "titulo": "Operações e Prestações Internas",
+            "html": true,
+            "nota": "nota",
+            "classe": "cf-table-full"
+        },
+        {
+            "campo": "aliquota",
+            "titulo": "Alíquotas",
+            "numero": true,
+            "destaque": true
+        },
+        {
+            "campo": "fcp",
+            "titulo": "FCP",
+            "numero": true
+        },
+        {
+            "campo": "baseLegal",
+            "titulo": "Base legal",
+            "classe": "text-xs leading-relaxed text-slate-600"
+        }
+    ],
+    "estados": {
+        "AC": {
+            "nome": "Acre",
+            "linhas": [
+                {
+                    "operacao": "Nas operações com bebidas alcoólicas, exceto cervejas e chopes.",
+                    "aliquota": "33%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso IX do art. 17 do RICMS-AC e inciso IX do art. 18 da Lei Complemetar nº 55/1997"
+                },
+                {
+                    "operacao": "Nas operações com fumos e seus derivados.",
+                    "aliquota": "30%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso VIII do art. 17 do RICMS-AC e inciso VIII do art. 18 da Lei Complementar nº 55/1997"
+                },
+                {
+                    "operacao": "Nas operações com cervejas e chopes, exceto cerveja sem álcool.",
+                    "aliquota": "27%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso VII do art. 17 do RICMS-AC e inciso VII do art. 18 da Lei Complementar nº 55/1997"
+                },
+                {
+                    "operacao": "Armas e munições, exceto espingardas, chumbos, pólvoras, espoletas e cartuchos.",
+                    "aliquota": "25%",
+                    "fcp": "-",
+                    "baseLegal": "Alínea \"a\" do inciso III do art. 17 do RICMS-AC e item 1 do inciso III do art. 18 da Lei Complementar nº 55/1997"
+                },
+                {
+                    "operacao": "Embarcações de esporte e recreação.",
+                    "aliquota": "19%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso I do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "A partir de 01/04/2023 a alíquota foi reduzida de 25% para 19%, conforme alteração introduzida pela Lei Complementar nº 422/2022 à Lei Complementar nº 55/1997, no entanto, a alínea \"b\" do inciso III do art. 17 do RICMS-AC não foi revogada pelo Decreto nº 11.206/2023."
+                },
+                {
+                    "operacao": "<p>Joias, semijoias, bijuterias, perfumes e cosméticos a seguir indicados, exceto antiperspirantes, condicionadores e xampus para o cabelo e sabonetes:</p><p>a) perfumes e águas-de-colônia (NCM/SH 3303.00);</p><p>b) produtos de beleza ou de maquilagem preparados e preparações para conservação ou cuidados da pele (exceto medicamentos), incluídas as preparações antisolares e os bronzeadores e as preparações para manicuros e pedicuros (NCM/SH 3304) e preparações capilares (NCM/SH 3305);</p><p>c) produtos do CEST 20.032.00, 20.032.01, 28.018.00 e 28.019.00, excetuados os demais produtos de NCM/SH 3307.</p>",
+                    "aliquota": "25%",
+                    "fcp": "-",
+                    "baseLegal": "Alínea \"c\" do inciso III e § 6º do art. 17 do RICMS-AC e alínea \"c\" do inciso III do 18 da Lei Complementar nº 55/1997",
+                    "nota": "Aplica-se alíquota de 25% para semijoias e bijuterias a partir de 01/04/2023."
+                },
+                {
+                    "operacao": "Automóveis importados.",
+                    "aliquota": "19%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso I do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "A partir de 01/04/2023 a alíquota foi reduzida de 25% para 19%, conforme alteração introduzida pela Lei Complementar nº 422/2022 à Lei Complementar nº 55/1997, no entanto, a alínea \"d\" do inciso III do art. 17 do RICMS-AC não foi revogada pelo Decreto nº 11.206/2023."
+                },
+                {
+                    "operacao": "Cervejas sem álcool, refrigerantes, águas minerais, exceto água mineral em embalagem retornável com capacidade igual ou superior a dez litros.",
+                    "aliquota": "25%",
+                    "fcp": "-",
+                    "baseLegal": "Alínea \"e\" do inciso III do art. 17 do RICMS-AC e item 5 do inciso III do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "A partir de 01/04/2023 aplica-se alíquota de 25% para águas minerais, exceto água mineral em embalagem retornável com capacidade igual ou superior a dez litros."
+                },
+                {
+                    "operacao": "Combustíveis, exceto gás liquefeito de petróleo para uso doméstico e óleo diesel destinado a geração em usinas geradoras de energia elétrica, concessionárias de serviço público.",
+                    "aliquota": "25%",
+                    "fcp": "-",
+                    "baseLegal": "Alínea \"f\" do inciso III do art. 17 do RICMS-AC e item 6 do inciso III do art. 18 da Lei Complementar nº 55/1997"
+                },
+                {
+                    "operacao": "Gasolina e Etanol Anidro Combustível",
+                    "aliquota": "Tributação Monofásica",
+                    "fcp": "-",
+                    "baseLegal": "Convênio ICMS nº 15/2023 (efeitos a partir de 01/06/2023",
+                    "nota": "Observar a alíquota prevista no Regime de Tributação Monofásica na operação com gasolina e etanol anidro combustível, conforme Cláusula Sétima do Convênio ICMS nº 15/2023 (OBS: Convênio ainda não regulamentado pelo estado do ACRE)."
+                },
+                {
+                    "operacao": "Diesel, Biodiesel e Gás Liquefeito de Petróleo, inclusive o derivado de Gás Natural",
+                    "aliquota": "Tributação Monofásica",
+                    "fcp": "-",
+                    "baseLegal": "Convênio ICMS nº 199/2022 (Efeitos desde 01/05/2023)",
+                    "nota": "Observar as alíquotas previstas no Regime de Tributação Monofásica na operação com diesel, biodiesel e gás liquefeito de petróleo, inclusive o derivado do gás natural, conforme Cláusula Sétima do Convênio ICMS nº 199/2022 e Anexo II da Lei Complementar nº 55/1997."
+                },
+                {
+                    "operacao": "Prestações de serviços de comunicação destinadas a empreendimentos enquadrados no programa de fomento às empresas prestadoras de serviços de telemarketing e call center.",
+                    "aliquota": "12%",
+                    "fcp": "-",
+                    "baseLegal": "Alínea \"b\" do inciso II do art. 17 do RICMS-AC e alínea \"b\" do inciso II do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "Efeitos a partir de 01/04/2023."
+                },
+                {
+                    "operacao": "Nas operações e prestações internas de distribuição de energia elétrica cujo consumo mensal seja acima de 140 kWh.",
+                    "aliquota": "19%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso I do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "Observar o Decreto nº 11.084/2022 que reduziu a alíquota, bem como a publicação da Lei Complementar nº 422/2022, que revoga a alínea \"d\" do inciso V do art. 18 da Lei Complementar nº 55/1997."
+                },
+                {
+                    "operacao": "Nas operações de importação realizadas por remessas postais ou expressas.",
+                    "aliquota": "20%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso XI do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "Efeitos a partir de 01/04/2025."
+                },
+                {
+                    "operacao": "Nas operações e prestações internas com mercadorias e prestações de serviços, ressalvadas as hipóteses de alíquota específica.",
+                    "aliquota": "19%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso I do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "Efeitos a partir de 01/04/2023"
+                },
+                {
+                    "operacao": "Operações internas com produtos da cesta básica previstos no art. 184-G do RICMS-AC.",
+                    "aliquota": "17%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso X do art. 17 do RICMS-AC e inciso X do art. 18 da Lei Complementar nº 55/1997",
+                    "nota": "A alíquota de 17% a partir de 01/04/2023."
+                },
+                {
+                    "operacao": "Nas operações e prestações internas de distribuição de energia elétrica cujo consumo mensal seja mais de 100 kwh até 140 kwh.",
+                    "aliquota": "16%",
+                    "fcp": "-",
+                    "baseLegal": "Alínea \"c\" do inciso V do art. 17 do RICMS-AC e alínea \"c\" do inciso V do art. 18 da Lei Complementar nº 55/1997"
+                },
+                {
+                    "operacao": "Nas operações de exportações e prestações de serviços de comunicações ao exterior.",
+                    "aliquota": "13%",
+                    "fcp": "-",
+                    "baseLegal": "Inciso IV do art. 17 do RICMS-AC e inciso IV do art. 18 da Lei Complementar nº 55/1997"
+                },
+                {
+                    "operacao": "<p>Nas operações interestaduais com bens e mercadorias importados do exterior que, após o desembaraço aduaneiro:</p><p>- não tenham sido submetidos a processo de industrialização; e,</p><p>- ainda que submetidos a processo de transformação, beneficiamento, montagem, acondicionamento, reacondicionamento, renovação ou recondicionamento, resultem em mercadorias ou bens com conteúdo de importação superior a 40%.</p>",
+                    "aliquota": "4%",
+                    "fcp": "-",
+                    "baseLegal": "§ 2º do art. 17 do RICMS-AC"
+                },
+                {
+                    "operacao": "Nas operações e prestações internas de distribuição de energia elétrica cujo consumo mensal seja de até 100 kWh.",
+                    "aliquota": "Isento",
+                    "fcp": "-",
+                    "baseLegal": "Alínea \"a\" do inciso V do art. 17 do RICMS-AC e alínea \"a\" do inciso V do art. 18 da Lei Complementar nº 55/1997"
+                }
+            ]
+        },
+        "AL": {
+            "nome": "Alagoas",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "19%",
+                    "fcp": "1%",
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "AP": {
+            "nome": "Amapá",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "18%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "AM": {
+            "nome": "Amazonas",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "BA": {
+            "nome": "Bahia",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20,5%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "CE": {
+            "nome": "Ceará",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "DF": {
+            "nome": "Distrito Federal",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "ES": {
+            "nome": "Espírito Santo",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "17%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "GO": {
+            "nome": "Goiás",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "19%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "MA": {
+            "nome": "Maranhão",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "23%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "MT": {
+            "nome": "Mato Grosso",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "17%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "MS": {
+            "nome": "Mato Grosso do Sul",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "17%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "MG": {
+            "nome": "Minas Gerais",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "18%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "PA": {
+            "nome": "Pará",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "19%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "PB": {
+            "nome": "Paraíba",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "PR": {
+            "nome": "Paraná",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "19,5%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "PE": {
+            "nome": "Pernambuco",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20,5%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "PI": {
+            "nome": "Piauí",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "22,5%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "RJ": {
+            "nome": "Rio de Janeiro",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": "2%",
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "RN": {
+            "nome": "Rio Grande do Norte",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "RS": {
+            "nome": "Rio Grande do Sul",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "17%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "RO": {
+            "nome": "Rondônia",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "19,5%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "RR": {
+            "nome": "Roraima",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "SC": {
+            "nome": "Santa Catarina",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "17%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "SP": {
+            "nome": "São Paulo",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "18%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "SE": {
+            "nome": "Sergipe",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "19%",
+                    "fcp": "1%",
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        },
+        "TO": {
+            "nome": "Tocantins",
+            "linhas": [
+                {
+                    "operacao": "Demais operações e prestações internas (alíquota geral)",
+                    "aliquota": "20%",
+                    "fcp": null,
+                    "baseLegal": ""
+                }
+            ],
+            "exemplo": true
+        }
+    },
+    "notas": [
+        "FCP: adicional destinado ao Fundo de Combate à Pobreza, conforme a legislação de cada Estado. \"-\" = não há FCP para a operação.",
+        "Nota Cenofisco: observações da equipe técnica do Cenofisco sobre a aplicação da alíquota."
+    ],
+    "avisoEstadoExemplo": "Tabela deste estado ainda em montagem: há apenas uma linha de demonstração (alíquota geral). Não utilize estes valores."
+}
