@@ -64,14 +64,12 @@
     <div id="main-menu" class="hidden border-t border-slate-100 md:block">
       <nav class="container mx-auto flex flex-col px-4 md:flex-row md:flex-wrap md:items-center md:gap-x-4 xl:gap-x-7" aria-label="Navegação principal">
         <a href="index.html" class="cf-nav-link" aria-current="page">Início</a>
-        <a href="noticias.html" class="cf-nav-link">Notícias</a>
-        <a href="legislacao.html" class="cf-nav-link">Legislação</a>
         <a href="procedimentos.html" class="cf-nav-link">Procedimentos</a>
-        <a href="regulamentos.html" class="cf-nav-link">Regulamentos</a>
         <a href="especiais.html" class="cf-nav-link">Especiais</a>
-        <a href="aplicativos.html" class="cf-nav-link">Ferramentas</a>
-        <a href="agenda-obrigacoes.html" class="cf-nav-link">Agenda</a>
         <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-nav-link">Reforma Tributária<i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400" aria-hidden="true"></i><span class="sr-only">(abre em nova aba)</span></a>
+        <a href="aplicativos.html" class="cf-nav-link">Ferramentas</a>
+        <a href="agenda-obrigacoes.html" class="cf-nav-link">Agendas</a>
+        <a href="legislacao.html" class="cf-nav-link">Legislação</a>
         <a href="#consultoria-cenofisco" class="cf-btn cf-btn-primary my-3 sm:hidden"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
       </nav>
     </div>
@@ -87,7 +85,7 @@
          (pausa com mouse/foco, botão de pausar e setas; sem troca automática para quem prefere menos movimento). -->
     <section id="novidades" class="cf-on-dark mb-6 flex items-center gap-2 rounded-xl bg-blue-900 py-1.5 pr-2 pl-4 text-white shadow-sm sm:mb-8 sm:gap-3" aria-label="Novidades e avisos">
       <a href="legislacao.html" id="novidades-link" class="group flex min-w-0 flex-1 items-center gap-3 py-1.5 transition-opacity duration-200 sm:gap-4">
-        <span id="novidades-badge" class="shrink-0 rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-bold tracking-wider whitespace-nowrap text-blue-950 uppercase">Novidades</span>
+        <span id="novidades-badge" class="shrink-0 rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-bold tracking-wider whitespace-nowrap text-blue-950 uppercase">Fique por dentro</span>
         <p id="novidades-texto" class="line-clamp-2 min-w-0 flex-1 text-sm leading-snug font-medium group-hover:underline group-hover:underline-offset-2 lg:line-clamp-1">Foi publicado o DECRETO Nº 12.955, DE 29 DE ABRIL DE 2026 – DOU de 30/04/2026, que regulamenta a Contribuição Social sobre Bens e Serviços – CBS e dá outras providências.</p>
         <span id="novidades-cta" class="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-amber-300 sm:inline-flex">Leia mais <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span>
       </a>
@@ -110,7 +108,7 @@
           <h2 id="titulo-noticias" class="sr-only">Notícias e destaques</h2>
           <div class="mb-6 border-b border-slate-200">
             <nav class="cf-tabs" role="tablist" aria-label="Notícias">
-              <button type="button" id="tab-destaque" aria-controls="destaque" role="tab" class="tab-button active" onclick="openTab(event, 'destaque')">Destaque</button>
+              <button type="button" id="tab-destaque" aria-controls="destaque" role="tab" class="tab-button active" onclick="openTab(event, 'destaque')">Destaque site</button>
               <button type="button" id="tab-noticias" aria-controls="noticias" role="tab" class="tab-button" onclick="openTab(event, 'noticias')">Notícias</button>
               <button type="button" id="tab-resenhas" aria-controls="resenhas" role="tab" class="tab-button" onclick="openTab(event, 'resenhas')">Resenhas</button>
               <button type="button" id="tab-procedimentos" aria-controls="procedimentos" role="tab" class="tab-button" onclick="openTab(event, 'procedimentos')">Procedimentos Edições</button>
@@ -190,7 +188,7 @@
           </div>
 
           <div class="mt-6 flex justify-end border-t border-slate-100 pt-4">
-            <a href="noticias.html" class="cf-link-more">Ver todas as notícias <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="noticias.html" class="cf-link-more">Ver todos os detaques <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </section>
 
@@ -206,9 +204,24 @@
               <div class="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4" id="busca-fiscal-options">
                 <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="ncm" class="peer sr-only" checked><span class="cf-choice"><span>NCM – Alíquotas</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
                 <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="cnae" class="peer sr-only"><span class="cf-choice"><span>CNAE</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
-                <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="st" class="peer sr-only"><span class="cf-choice"><span>Substituição Tributária</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
                 <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="tipi" class="peer sr-only"><span class="cf-choice"><span>TIPI/TEC</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="classtrib" class="peer sr-only"><span class="cf-choice"><span>Classificação Tributária</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
               </div>
+
+              <div id="classtrib-tipo-container" class="mt-4 hidden space-y-4 border-t border-slate-200 pt-4 text-center">
+
+                <p id="classtrib-tipo-titulo" class="text-sm font-medium text-slate-600">Opções:</p>
+
+                <div class="flex flex-wrap justify-center gap-3" role="radiogroup" aria-labelledby="classtrib-tipo-titulo">
+
+                  <label class="cursor-pointer"><input type="radio" name="classtrib_tipo" value="mercadoria" class="peer sr-only" checked><span class="cf-pill min-w-28 sm:min-w-[140px] peer-checked:border-amber-300 peer-checked:bg-amber-100 peer-checked:text-amber-900"><span>Mercadoria</span><i class="fa-solid fa-check opacity-100 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+
+                  <label class="cursor-pointer"><input type="radio" name="classtrib_tipo" value="servico" class="peer sr-only"><span class="cf-pill min-w-28 sm:min-w-[140px] peer-checked:border-amber-300 peer-checked:bg-amber-100 peer-checked:text-amber-900"><span>Serviço</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+
+                </div>
+
+              </div>
+
 
               <div id="ncm-tipo-busca-container" class="mt-4 space-y-4 border-t border-slate-200 pt-4 text-center">
                 <p class="text-sm font-medium text-slate-600">Selecione os tipos de busca (múltipla seleção):</p>
@@ -277,7 +290,7 @@
             <h2 id="titulo-procedimentos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></span>Últimos Procedimentos</h2>
             <a href="procedimentos.html" class="cf-link-more">Ver todos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
-          <div class="divide-y divide-slate-100">
+          <div id="home-procedimentos" class="divide-y divide-slate-100">
             <article class="py-4 first:pt-0 last:pb-0">
               <span class="cf-eyebrow text-blue-700">Contabilidade</span>
               <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="procedimentos.html" class="transition hover:text-blue-800">Índice de Preços ao Consumidor (IPC) (FIPE)</a></h3>
@@ -739,12 +752,13 @@
               <button type="button" id="tab-cbo" aria-controls="cbo" role="tab" class="codigos-tab-button tab-button active" onclick="openCodigosTab(event, 'cbo')">CBO</button>
               <button type="button" id="tab-cfop" aria-controls="cfop" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cfop')">CFOP</button>
               <button type="button" id="tab-cst" aria-controls="cst" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cst')">CST</button>
+              <button type="button" id="tab-cclasstrib" aria-controls="cclasstrib" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cclasstrib')">CST/cClassTrib</button>
               <button type="button" id="tab-cest" aria-controls="cest" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cest')">CEST</button>
               <button type="button" id="tab-efd-reinf" aria-controls="efd-reinf" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'efd-reinf')">EFD-Reinf</button>
             </nav>
           </div>
 
-          <form action="codigos.html" method="get">
+          <form action="codigos.html" method="get" id="codigos-form">
             <div id="cbo" class="codigos-tab-content" role="tabpanel" aria-labelledby="tab-cbo">
               <p class="mb-2 text-sm text-slate-600">Busque por código ou descrição da Classificação Brasileira de Ocupações.</p>
               <input type="search" name="cbo" aria-label="Pesquisar em CBO" placeholder="Pesquisar em CBO..." class="cf-input">
@@ -756,6 +770,10 @@
             <div id="cst" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-cst">
               <p class="mb-2 text-sm text-slate-600">Busque pelo Código de Situação Tributária.</p>
               <input type="search" name="cst" aria-label="Pesquisar em CST" placeholder="Pesquisar em CST..." class="cf-input">
+            </div>
+            <div id="cclasstrib" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-cclasstrib">
+              <p class="mb-2 text-sm text-slate-600">Busque o CST e o cClassTrib do IBS e da CBS (Reforma Tributária) por código, NCM/NBS ou descrição.</p>
+              <input type="search" name="q" aria-label="Pesquisar CST ou cClassTrib" placeholder="Ex.: 200, 200003 ou cesta básica" class="cf-input">
             </div>
             <div id="cest" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-cest">
               <p class="mb-2 text-sm text-slate-600">Busque pelo Código Especificador da Substituição Tributária.</p>

@@ -1,9 +1,10 @@
 // Resultados da Busca Fiscal (buscafiscal-resultados.html) — dados em buscafiscal.json.
 // Lê os mesmos parâmetros do formulário da página inicial:
-//   q, busca_fiscal_tipo (ncm|cnae|st|tipi), ncm_tipo_busca (ipi|ii|piscofins|icms, vários),
+//   q, busca_fiscal_tipo (ncm|cnae|tipi|classtrib), ncm_tipo_busca (ipi|ii|piscofins|icms, vários),
 //   pis_cofins_tipo_venda (importacao|venda_interna), venda_interna_regime, icms_tipo_operacao (interestadual|interna),
-//   uf_origem, uf_destino.
-// Abas (ordem da página de referência): IPI, II, PIS/COFINS Importação, PIS/COFINS, ICMS, ICMS/ST.
+//   uf_origem, uf_destino, classtrib_tipo (mercadoria|servico).
+// Abas (ordem da página de referência): IPI, II, PIS/COFINS Importação, PIS/COFINS, ICMS, ICMS/ST,
+// A busca do tipo "Classificação Tributária" (IBS e CBS da Reforma Tributária) tem só a aba própria.
 // Cada linha abre o detalhamento em ncm.html.
 document.addEventListener('DOMContentLoaded', function () {
     // --- Menu mobile ---
@@ -29,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const escapeHTML = text => String(text ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const normalizar = v => String(v || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
     const digitos = v => String(v || '').replace(/\D/g, '');
+    // NBS: 1.1302.21.00 (9 dígitos); códigos de nível superior ficam com os grupos que tiverem
+    const formatarNbs = d => [d.slice(0, 1), d.slice(1, 5), d.slice(5, 7), d.slice(7, 9)].filter(Boolean).join('.');
     const formatarNcm = d => (d.length <= 4 ? d : d.length <= 6 ? `${d.slice(0, 4)}.${d.slice(4)}` : `${d.slice(0, 4)}.${d.slice(4, 6)}.${d.slice(6)}`);
     const valor = v => (v === null || v === undefined ? '<span class="text-slate-400" title="Não informado">—</span>' : escapeHTML(v));
 
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const icmsOperacao = p.get('icms_tipo_operacao') || '';
     const ufOrigem = UFS.includes(p.get('uf_origem')) ? p.get('uf_origem') : 'PR';
     const ufDestino = UFS.includes(p.get('uf_destino')) ? p.get('uf_destino') : 'SP';
+    const servico = p.get('classtrib_tipo') === 'servico';
 
     // Preenche o formulário (o mesmo da página inicial) com a busca atual.
     // buscafiscal.js mostra/oculta os blocos condicionais só em eventos "change": marcamos as opções
@@ -55,35 +59,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const marcar = (nome, valores) => form.querySelectorAll(`input[name="${nome}"]`).forEach(el => { el.checked = valores.includes(el.value); });
     marcar('busca_fiscal_tipo', [tipoBusca]);
     marcar('ncm_tipo_busca', tributos);
+    marcar('classtrib_tipo', [servico ? 'servico' : 'mercadoria']);
     marcar('pis_cofins_tipo_venda', [pisTipo]);
     marcar('venda_interna_regime', p.get('venda_interna_regime') ? [regime] : []);
     marcar('icms_tipo_operacao', [icmsOperacao]);
-    ['busca_fiscal_tipo', 'ncm_tipo_busca', 'pis_cofins_tipo_venda', 'venda_interna_regime', 'icms_tipo_operacao'].forEach(nome => {
+    ['busca_fiscal_tipo', 'classtrib_tipo', 'ncm_tipo_busca', 'pis_cofins_tipo_venda', 'venda_interna_regime', 'icms_tipo_operacao'].forEach(nome => {
         form.querySelectorAll(`input[name="${nome}"]:checked`).forEach(el => el.dispatchEvent(new Event('change', { bubbles: true })));
     });
 
     // Com resultados, a pesquisa abre recolhida e mostra só o resumo do que foi buscado
-    const nomesTipo = { ncm: 'NCM – Alíquotas', cnae: 'CNAE', st: 'Substituição Tributária', tipi: 'TIPI/TEC' };
+    const nomesTipo = { ncm: 'NCM – Alíquotas', cnae: 'CNAE', tipi: 'TIPI/TEC', classtrib: 'Classificação Tributária' };
     const nomesTributo = { ipi: 'IPI', ii: 'II', piscofins: 'PIS/COFINS', icms: 'ICMS' };
-    const partesResumo = [nomesTipo[tipoBusca] || nomesTipo.ncm, tributos.length ? Object.keys(nomesTributo).filter(t => tributos.includes(t)).map(t => nomesTributo[t]).join(', ') : 'todos os tributos'];
-    if (icmsOperacao === 'interestadual') partesResumo.push(`ICMS interestadual ${ufOrigem} → ${ufDestino}`);
-    else if (icmsOperacao === 'interna') partesResumo.push(`ICMS interno ${ufDestino}`);
+    const classificacao = tipoBusca === 'classtrib';
+    const partesResumo = classificacao ? [nomesTipo.classtrib, servico ? 'Serviço (NBS)' : 'Mercadoria (NCM)'] : [nomesTipo[tipoBusca] || nomesTipo.ncm, tributos.length ? Object.keys(nomesTributo).filter(t => tributos.includes(t)).map(t => nomesTributo[t]).join(', ') : 'todos os tributos'];
+    if (!classificacao && icmsOperacao === 'interestadual') partesResumo.push(`ICMS interestadual ${ufOrigem} → ${ufDestino}`);
+    else if (!classificacao && icmsOperacao === 'interna') partesResumo.push(`ICMS interno ${ufDestino}`);
     $('bf-compor-resumo').textContent = termo ? `“${termo}” · ${partesResumo.join(' · ')}` : 'Escolha o tipo de busca e digite o NCM ou a descrição.';
     $('bf-compor').open = !termo;
 
     // Quais abas aparecem (nenhum tributo marcado = todos)
     const todos = tributos.length === 0;
-    const quer = t => todos || tributos.includes(t);
+    const quer = t => !classificacao && (todos || tributos.includes(t));
     const abasVisiveis = {
         ipi: quer('ipi'),
         ii: quer('ii'),
         pisimp: quer('piscofins') && pisTipo !== 'venda_interna',
         pis: quer('piscofins') && pisTipo !== 'importacao',
         icms: quer('icms') && icmsOperacao !== 'interestadual',
-        st: quer('icms') && icmsOperacao !== 'interna'
+        st: quer('icms') && icmsOperacao !== 'interna',
+        classtrib: classificacao
     };
-    // Aba inicial: ST para busca do tipo "Substituição Tributária", IPI para "TIPI/TEC"
-    const abaInicial = tipoBusca === 'st' ? 'st' : tipoBusca === 'tipi' ? 'ipi' : null;
+    // Aba inicial: IPI para busca do tipo "TIPI/TEC"
+    const abaInicial = tipoBusca === 'tipi' ? 'ipi' : null;
 
     // ------------------------------------------------------------------
     // Busca nos dados
@@ -146,6 +153,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const pis = dados.pis.filter(x => casa(x.ncm, x.descricao));
         const icms = dados.icms.filter(x => x.uf === ufDestino && casa(x.ncm, x.mercadoria));
         const st = dados.st.filter(x => x.origem === ufOrigem && x.destino === ufDestino && casa(x.ncm, x.mercadoria));
+        const classtrib = servico
+            ? (dados.classtribNbs || []).filter(x => casa(x.codigo, x.descricao))
+            : (dados.classtrib || []).filter(x => casa(x.ncm, x.descricao));
         const temBase = {
             icms: dados.icms.some(x => x.uf === ufDestino),
             st: dados.st.some(x => x.origem === ufOrigem && x.destino === ufDestino)
@@ -153,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Resumo no topo
         $('bf-resumo').innerHTML = termo
-            ? `Resultados para <strong class="text-white">“${escapeHTML(termo)}”</strong>${tipoBusca === 'cnae' ? ' · busca por CNAE' : ''} · ICMS com destino <strong class="text-white">${ufDestino}</strong> · ICMS/ST <strong class="text-white">${ufOrigem} → ${ufDestino}</strong>`
+            ? `Resultados para <strong class="text-white">“${escapeHTML(termo)}”</strong>${tipoBusca === 'cnae' ? ' · busca por CNAE' : ''}${classificacao ? ` · Classificação Tributária do IBS e da CBS · ${servico ? 'serviços (NBS)' : 'mercadorias (NCM)'}` : ` · ICMS com destino <strong class="text-white">${ufDestino}</strong> · ICMS/ST <strong class="text-white">${ufOrigem} → ${ufDestino}</strong>`}`
             : 'Informe o NCM ou a descrição da mercadoria para pesquisar.';
 
         const abas = [
@@ -162,7 +172,8 @@ document.addEventListener('DOMContentLoaded', function () {
             { id: 'pisimp', rotulo: 'PIS/COFINS Importação', itens: tecIpi, render: painelPisImportacao },
             { id: 'pis', rotulo: 'PIS/COFINS', itens: pis, render: painelPis },
             { id: 'icms', rotulo: `ICMS · ${ufDestino}`, itens: icms, render: painelIcms, semBase: !temBase.icms },
-            { id: 'st', rotulo: `ICMS/ST · ${ufOrigem} → ${ufDestino}`, itens: st, render: painelSt, semBase: !temBase.st }
+            { id: 'st', rotulo: `ICMS/ST · ${ufOrigem} → ${ufDestino}`, itens: st, render: painelSt, semBase: !temBase.st },
+            { id: 'classtrib', rotulo: servico ? 'Classificação Tributária · Serviços' : 'Classificação Tributária · Mercadorias', itens: classtrib, render: servico ? painelClassTribNbs : painelClassTrib }
         ].filter(a => abasVisiveis[a.id]);
 
         abasEl.innerHTML = abas.map(a => `
@@ -176,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!termo) painel.innerHTML = vazio('Digite um termo para pesquisar', 'Use o NCM (ex.: 2203.00.00) ou parte da descrição (ex.: cerveja).');
             else if (tipoBusca === 'cnae') painel.innerHTML = vazio('Busca por CNAE em construção', 'Nesta versão, pesquise pelo NCM ou pela descrição da mercadoria.');
             else if (a.semBase) painel.innerHTML = vazio(`Sem dados para ${a.id === 'st' ? `${ufOrigem} → ${ufDestino}` : ufDestino} nesta demonstração`, `Os dados disponíveis são de ICMS com destino SP e de ICMS/ST na operação PR → SP. As demais UFs entram quando a base de dados for integrada.`);
-            else if (!a.itens.length) painel.innerHTML = vazio(`Nenhum resultado para “${termo}”`, 'Confira a grafia, use menos palavras ou pesquise pelo NCM.');
+            else if (!a.itens.length) painel.innerHTML = vazio(`Nenhum resultado para “${termo}”`, a.id === 'classtrib' && servico ? 'Nesta demonstração há serviços para “consultoria” e “contabilidade”. Pesquise também pelo código NBS.' : 'Confira a grafia, use menos palavras ou pesquise pelo NCM.');
             else a.render(painel, a.itens, dados);
         });
 
@@ -196,10 +207,10 @@ document.addEventListener('DOMContentLoaded', function () {
             <p class="mt-1 text-sm text-slate-600">${texto}</p>
         </div>`;
 
-    const tabela = (cabecalhos, linhas) => `
+    const tabela = (cabecalhos, linhas, monitorar = true) => `
         <div class="overflow-x-auto rounded-xl border border-slate-200 max-md:rounded-none max-md:border-0">
             <table class="cf-table">
-                <thead><tr>${cabecalhos.map(([t, cls, title]) => `<th scope="col"${cls ? ` class="${cls}"` : ''}${title ? ` title="${title}"` : ''}>${t}</th>`).join('')}<th scope="col" class="cf-num">Monitorar</th></tr></thead>
+                <thead><tr>${cabecalhos.map(([t, cls, title]) => `<th scope="col"${cls ? ` class="${cls}"` : ''}${title ? ` title="${title}"` : ''}>${t}</th>`).join('')}${monitorar ? '<th scope="col" class="cf-num">Monitorar</th>' : ''}</tr></thead>
                 <tbody>${linhas}</tbody>
             </table>
         </div>`;
@@ -314,6 +325,29 @@ document.addEventListener('DOMContentLoaded', function () {
                     <td data-label="Alíq. inter (%)" class="cf-num">${valor(x.inter)}</td>
                     <td data-label="MVA (%)" class="cf-num">${x.baseCalculo === 'pauta' && (x.mvaOriginal === '-' || x.mvaOriginal === null) ? '<span class="text-xs text-slate-500">pauta fiscal</span>' : valor(x.mvaOriginal)}</td>
                     <td data-label="Detalhes" class="whitespace-nowrap"><a href="${linkNcm(x.ncm, 'st')}" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-700 hover:underline">Tratamento e cálculo <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></a></td>${celulaMonitor(x)}</tr>`).join(''))).join('<div class="h-6"></div>');
+    }
+
+    // Classificação Tributária (IBS/CBS): a lista é pública; CST e cClassTrib ficam no portal da Reforma (assinantes)
+    const URL_RT = (id, tipo = 'NCM') => `https://reformatributaria.cenofisco.com.br/BuscaTributaria/Detalhes?id=${encodeURIComponent(id)}&tipo=${tipo}`;
+    const linkRT = (id, tipo) => `<a href="${URL_RT(id, tipo)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-700 hover:underline">Ver classificação <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i><span class="sr-only">(abre o portal Reforma Tributária em nova aba)</span></a>`;
+    const avisoRT = '<p class="mt-3 text-xs text-slate-500">A consulta do CST e do cClassTrib no portal Reforma Tributária é exclusiva para assinantes.</p>';
+    function painelClassTrib(painel, itens, dados) {
+        painel.innerHTML = intro('Classificação Tributária · IBS e CBS', `Código de Situação Tributária (CST) e Código de Classificação Tributária (cClassTrib) do IBS e da CBS, conforme a ${escapeHTML(dados.atos.classtrib)}. O detalhamento abre no portal Reforma Tributária do Cenofisco.`)
+            + tabela([['NCM'], ['Descrição'], ['CST e cClassTrib']], itens.map(x => `<tr>
+                ${celulaNcm(x.ncm, 'classtrib')}
+                ${celulaDescricao(x.ncm, x.descricao, 'classtrib')}
+                <td data-label="CST e cClassTrib" class="whitespace-nowrap">${linkRT(x.idMercadoria, 'NCM')}</td>${celulaMonitor(x)}</tr>`).join(''))
+            + avisoRT;
+    }
+
+    // Serviços (NBS): só códigos completos (9 dígitos) têm classificação; os demais são agrupadores
+    function painelClassTribNbs(painel, todos, dados) {
+        paginar(painel, todos, itens => { painel.innerHTML = intro('Classificação Tributária · Serviços (NBS)', `CST e cClassTrib do IBS e da CBS por código da Nomenclatura Brasileira de Serviços (NBS), conforme a ${escapeHTML(dados.atos.classtrib)}. O detalhamento abre no portal Reforma Tributária do Cenofisco.`)
+            + tabela([['NBS'], ['Descrição'], ['CST e cClassTrib']], itens.map(x => `<tr>
+                <td data-label="NBS" class="font-semibold whitespace-nowrap text-slate-900 tabular-nums">${formatarNbs(x.codigo)}</td>
+                <td data-label="Descrição" class="cf-table-full text-slate-800">${destacar(x.descricao)}</td>
+                <td data-label="CST e cClassTrib" class="whitespace-nowrap">${x.codigo.length === 9 ? linkRT(x.idNbs, 'NBS') : '<span class="text-xs text-slate-500">Agrupador: escolha um código de 9 dígitos</span>'}</td></tr>`).join(''), false)
+            + avisoRT; });
     }
 
     const vazio = (titulo, texto) => `

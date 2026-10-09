@@ -1,9 +1,10 @@
 {
-  "_leia": "Dados da Busca Fiscal (buscafiscal-resultados.html e ncm.html). Listas reais da consulta pública da Cenofisco para \"cerveja\" (ICMS com destino SP; ICMS/ST PR → SP). As alíquotas não são públicas: as conhecidas vêm da página anterior do projeto; null = não informado. Tratamentos com exemplo: true são texto de demonstração.",
+  "_leia": "Dados da Busca Fiscal (buscafiscal-resultados.html e ncm.html). Listas reais da consulta pública da Cenofisco para \"cerveja\" (ICMS com destino SP; ICMS/ST PR → SP). As alíquotas não são públicas: as conhecidas vêm da página anterior do projeto; null = não informado. Tratamentos com exemplo: true são texto de demonstração. classtrib: lista pública da Busca de Classificação Tributária (reformatributaria.cenofisco.com.br); CST e cClassTrib ficam no detalhe, restrito a assinantes. classtribNbs: serviços (NBS) da mesma busca para \"consultoria\" e \"contabilidade\".",
   "atos": {
     "ipi": "Tabela de Incidência do IPI – TIPI (Decreto nº 11.158/2022)",
     "ii": "Tarifa Externa Comum – TEC (Resolução GECEX nº 272/2021)",
-    "ssn": "Sem Similar Nacional (Resolução GECEX nº 553/2024)"
+    "ssn": "Sem Similar Nacional (Resolução GECEX nº 553/2024)",
+    "classtrib": "Lei Complementar nº 214/2025 (IBS e CBS)"
   },
   "posicoes": {
     "2202": "ÁGUAS, INCLUINDO AS ÁGUAS MINERAIS E AS ÁGUAS GASEIFICADAS, ADICIONADAS DE AÇÚCAR OU DE OUTROS EDULCORANTES OU AROMATIZADAS E OUTRAS BEBIDAS NÃO ALCOÓLICAS, EXCETO SUCOS (SUMOS) DE FRUTA OU DE PRODUTOS HORTÍCOLAS DA POSIÇÃO 20.09.",
@@ -551,5 +552,289 @@
         }
       ]
     }
-  }
+  },
+  "classtrib": [
+    {
+      "ncm": "22029100",
+      "descricao": "Cerveja sem álcool",
+      "idMercadoria": 31491
+    },
+    {
+      "ncm": "22030000",
+      "descricao": "CERVEJAS DE MALTE.",
+      "idMercadoria": 31497
+    },
+    {
+      "ncm": "2303",
+      "descricao": "RESÍDUOS DA FABRICAÇÃO DO AMIDO E RESÍDUOS SEMELHANTES, POLPAS DE BETERRABA, BAGAÇOS DE CANA-DE-AÇÚCAR E OUTROS DESPERDÍCIOS DA INDÚSTRIA DO AÇÚCAR, BORRAS E DESPERDÍCIOS DA INDÚSTRIA DA CERVEJA E DAS DESTILARIAS, MESMO EM PELLETS.",
+      "idMercadoria": 31569
+    },
+    {
+      "ncm": "23033000",
+      "descricao": "Borras e desperdícios da indústria da cerveja e das destilarias",
+      "idMercadoria": 31572
+    },
+    {
+      "ncm": "38070000",
+      "descricao": "ALCATRÕES DE MADEIRA; ÓLEOS DE ALCATRÃO DE MADEIRA; CREOSOTO DE MADEIRA; METILENO; BREU (PEZ) VEGETAL; BREU (PEZ) PARA A INDÚSTRIA DA CERVEJA E PREPARAÇÕES SEMELHANTES À BASE DE COLOFÔNIAS, DE ÁCIDOS RESÍNICOS OU DE BREU (PEZ) VEGETAL.",
+      "idMercadoria": 35797
+    }
+  ],
+  "classtribNbs": [
+    {
+      "codigo": "106084000",
+      "descricao": "Serviços de consolidação ou desconsolidação documental de cargas no transporte multimodal",
+      "idNbs": 1696
+    },
+    {
+      "codigo": "109055000",
+      "descricao": "Serviços de consultoria financeira",
+      "idNbs": 1803
+    },
+    {
+      "codigo": "109057000",
+      "descricao": "Serviços de classificação de risco (rating)",
+      "idNbs": 1805
+    },
+    {
+      "codigo": "109058000",
+      "descricao": "Serviços fiduciários",
+      "idNbs": 1806
+    },
+    {
+      "codigo": "110014000",
+      "descricao": "Serviços de consultoria imobiliária",
+      "idNbs": 1837
+    },
+    {
+      "codigo": "110015000",
+      "descricao": "Serviços de assessoria de gestão condominial",
+      "idNbs": 1838
+    },
+    {
+      "codigo": "110019000",
+      "descricao": "Serviços imobiliários não classificados em subposições anteriores",
+      "idNbs": 1839
+    },
+    {
+      "codigo": "113011000",
+      "descricao": "Serviços de representação e consultoria jurídica criminal",
+      "idNbs": 1976
+    },
+    {
+      "codigo": "113012000",
+      "descricao": "Serviços de representação e consultoria jurídica em outras áreas do direito, exceto consultoria tributária",
+      "idNbs": 1977
+    },
+    {
+      "codigo": "113013000",
+      "descricao": "Serviços de documentação e certificação, exceto os serviços notariais e de registro",
+      "idNbs": 1978
+    },
+    {
+      "codigo": "11302",
+      "descricao": "Serviços de auditoria, contabilidade e serviços relacionados",
+      "idNbs": 1981
+    },
+    {
+      "codigo": "113022",
+      "descricao": "Serviços de contabilidade e serviços relacionados",
+      "idNbs": 1985
+    },
+    {
+      "codigo": "113022100",
+      "descricao": "Serviços de contabilidade",
+      "idNbs": 1986
+    },
+    {
+      "codigo": "113022200",
+      "descricao": "Serviços de escrituração mercantil",
+      "idNbs": 1987
+    },
+    {
+      "codigo": "113022300",
+      "descricao": "Serviços de folha de pagamento",
+      "idNbs": 1988
+    },
+    {
+      "codigo": "11303",
+      "descricao": "Serviços de consultoria tributária",
+      "idNbs": 1989
+    },
+    {
+      "codigo": "113031000",
+      "descricao": "Serviços de consultoria tributária para pessoas jurídicas",
+      "idNbs": 1990
+    },
+    {
+      "codigo": "113032000",
+      "descricao": "Serviços de consultoria tributária para pessoas físicas",
+      "idNbs": 1991
+    },
+    {
+      "codigo": "11401",
+      "descricao": "Serviços de gestão empresarial, consultoria em gestão empresarial e assessoria empresarial",
+      "idNbs": 1994
+    },
+    {
+      "codigo": "114011",
+      "descricao": "Serviços de consultoria em gestão empresarial",
+      "idNbs": 1995
+    },
+    {
+      "codigo": "114011100",
+      "descricao": "Serviços de consultoria em gestão estratégica",
+      "idNbs": 1996
+    },
+    {
+      "codigo": "114011200",
+      "descricao": "Serviços de consultoria em gestão financeira",
+      "idNbs": 1997
+    },
+    {
+      "codigo": "114011300",
+      "descricao": "Serviços de consultoria em gestão de recursos humanos",
+      "idNbs": 1998
+    },
+    {
+      "codigo": "114011400",
+      "descricao": "Serviços de consultoria em gestão de marketing",
+      "idNbs": 1999
+    },
+    {
+      "codigo": "114011500",
+      "descricao": "Serviços de consultoria em gestão operacional",
+      "idNbs": 2000
+    },
+    {
+      "codigo": "114011600",
+      "descricao": "Serviços de consultoria em gestão energética",
+      "idNbs": 2001
+    },
+    {
+      "codigo": "114011700",
+      "descricao": "Serviços de consultoria em gestão de cadeia logística",
+      "idNbs": 2002
+    },
+    {
+      "codigo": "114011800",
+      "descricao": "Serviços de consultoria em gestão hospitalar",
+      "idNbs": 2003
+    },
+    {
+      "codigo": "114011900",
+      "descricao": "Serviços de consultoria em gestão empresarial não classificados em subposições anteriores",
+      "idNbs": 2004
+    },
+    {
+      "codigo": "114013900",
+      "descricao": "Serviços de assessoria empresarial não classificados em subposições anteriores",
+      "idNbs": 2012
+    },
+    {
+      "codigo": "114021100",
+      "descricao": "Serviços de consultoria em arquitetura",
+      "idNbs": 2015
+    },
+    {
+      "codigo": "114023100",
+      "descricao": "Serviços de consultoria em paisagismo",
+      "idNbs": 2024
+    },
+    {
+      "codigo": "114023200",
+      "descricao": "Serviços de paisagismo, exceto consultoria",
+      "idNbs": 2025
+    },
+    {
+      "codigo": "114031000",
+      "descricao": "Serviços de consultoria em engenharia",
+      "idNbs": 2028
+    },
+    {
+      "codigo": "114041100",
+      "descricao": "Serviços de consultoria geológica e geofísica",
+      "idNbs": 2054
+    },
+    {
+      "codigo": "114070000",
+      "descricao": "Pesquisas de mercado e serviços de pesquisa de opinião pública",
+      "idNbs": 2093
+    },
+    {
+      "codigo": "11410",
+      "descricao": "Serviços de consultoria técnica e científica não classificados em posições anteriores",
+      "idNbs": 2116
+    },
+    {
+      "codigo": "114101000",
+      "descricao": "Serviços de consultoria ambiental",
+      "idNbs": 2117
+    },
+    {
+      "codigo": "114109000",
+      "descricao": "Serviços de consultoria técnica e científica não classificados em subposições anteriores",
+      "idNbs": 2118
+    },
+    {
+      "codigo": "114120000",
+      "descricao": "Serviços para registros de marcas comerciais e de franquias empresariais, exceto as licenças de uso de direito",
+      "idNbs": 2120
+    },
+    {
+      "codigo": "114130000",
+      "descricao": "Serviços de prospecção de clientes",
+      "idNbs": 2121
+    },
+    {
+      "codigo": "114140000",
+      "descricao": "Serviços de prospecção de fornecedores",
+      "idNbs": 2122
+    },
+    {
+      "codigo": "11501",
+      "descricao": "Serviços de consultoria, de segurança e de suporte em tecnologia da informação (TI)",
+      "idNbs": 2125
+    },
+    {
+      "codigo": "115011000",
+      "descricao": "Serviços de consultoria em tecnologia da informação (TI)",
+      "idNbs": 2126
+    },
+    {
+      "codigo": "115012000",
+      "descricao": "Serviços de segurança em tecnologia da informação (TI)",
+      "idNbs": 2127
+    },
+    {
+      "codigo": "115071000",
+      "descricao": "Serviços de gerenciamento de redes em tecnologia da informação (TI)",
+      "idNbs": 2148
+    },
+    {
+      "codigo": "115072000",
+      "descricao": "Serviços de gerenciamento de sistemas computacionais",
+      "idNbs": 2149
+    },
+    {
+      "codigo": "115079000",
+      "descricao": "Serviços de gerenciamento de infraestrutura em tecnologia da informação (TI) não classificados em subposições anteriores",
+      "idNbs": 2150
+    },
+    {
+      "codigo": "115100000",
+      "descricao": "Serviços de tecnologia da informação (TI) não classificados em subposições anteriores",
+      "idNbs": 2153
+    },
+    {
+      "codigo": "118022000",
+      "descricao": "Serviços de consultoria em segurança",
+      "idNbs": 2219
+    },
+    {
+      "codigo": "118061000",
+      "descricao": "Serviços de informação cadastral e análise de crédito",
+      "idNbs": 2253
+    }
+  ]
 }

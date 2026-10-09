@@ -109,6 +109,18 @@ document.addEventListener('DOMContentLoaded', function () {
     window.openConsultoriaTab = (evt, id) => activateTab(evt.currentTarget, id, 'consultoria-tab-content');
     window.openCodigosTab = (evt, id) => activateTab(evt.currentTarget, id, 'codigos-tab-content');
 
+    // Códigos › CST/cClassTrib: a busca abre a página própria (cst-cclasstrib.html)
+    const codigosForm = document.getElementById('codigos-form');
+    if (codigosForm) {
+        codigosForm.addEventListener('submit', e => {
+            const painel = document.getElementById('cclasstrib');
+            if (!painel || painel.classList.contains('hidden')) return;
+            e.preventDefault();
+            const q = painel.querySelector('input[name="q"]').value.trim();
+            location.href = 'cst-cclasstrib.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+        });
+    }
+
     // Estado inicial de ARIA + navegação por teclado (setas ←/→, Home, End)
     $$('[role="tablist"]').forEach(list => {
         const tabs = $$('[role="tab"]', list);
@@ -1047,5 +1059,85 @@ document.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('scroll', onScroll, { passive: true });
         backToTop.addEventListener('click', () => window.scrollTo({ top: 0 }));
         onScroll();
+    }
+
+    /* ------------------------------------------------------------------
+     * Notícias da home (abas "Destaque" e "Notícias") a partir de noticias.json.
+     * Se o arquivo não carregar, fica o conteúdo estático do HTML.
+     * ------------------------------------------------------------------ */
+    const destaqueEl = document.getElementById('destaque');
+    const noticiasTabEl = document.getElementById('noticias');
+    if (destaqueEl && noticiasTabEl) {
+        const corArea = { 'Tributário': 'text-emerald-700', 'Trabalhista': 'text-orange-700', 'Federal': 'text-blue-700', 'Previdenciário': 'text-violet-700' };
+        const urlNoticia = n => (n.link && n.link !== '#' ? n.link : `noticia.html?id=${encodeURIComponent(n.id)}`);
+        const isoData = d => d.split('/').reverse().join('-');
+        const eyebrow = n => `<span class="cf-eyebrow ${corArea[n.area] || 'text-blue-700'}">${escapeHtml(n.area)} <span class="text-slate-400">·</span> <time datetime="${isoData(n.date)}" class="text-slate-500">${escapeHtml(n.date)}</time></span>`;
+        const img = (url, w) => url.replace(/([?&])w=\d+/, `$1w=${w}`);
+
+        fetch('noticias.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(lista => {
+                if (!Array.isArray(lista) || !lista.length) return;
+                lista = lista.slice().sort((a, b) => isoData(b.date).localeCompare(isoData(a.date)));
+                const [principal, ...demais] = lista;
+
+                destaqueEl.innerHTML = `
+                    <a href="${escapeHtml(urlNoticia(principal))}" class="group grid grid-cols-1 items-center gap-6 md:grid-cols-5">
+                        ${principal.image ? `<div class="aspect-video overflow-hidden rounded-xl bg-slate-200 md:col-span-2 md:aspect-[4/3]">
+                            <img src="${escapeHtml(principal.image)}" srcset="${escapeHtml(img(principal.image, 480))} 480w, ${escapeHtml(principal.image)} 800w" sizes="(min-width: 768px) 320px, 100vw"
+                                 alt="" width="800" height="600" fetchpriority="high" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                        </div>` : ''}
+                        <div class="${principal.image ? 'md:col-span-3' : 'md:col-span-5'}">
+                            ${eyebrow(principal)}
+                            <h3 class="mt-2 mb-3 text-2xl leading-tight font-bold tracking-tight text-slate-900 transition group-hover:text-blue-800 lg:text-[1.75rem]">${escapeHtml(principal.title)}</h3>
+                            <p class="text-slate-600">${escapeHtml(principal.summary)}</p>
+                        </div>
+                    </a>
+                    <div class="mt-8 grid grid-cols-1 gap-6 border-t border-slate-200 pt-6 sm:grid-cols-3">
+                        ${demais.slice(0, 3).map(n => `
+                        <a href="${escapeHtml(urlNoticia(n))}" class="group block">
+                            ${eyebrow(n)}
+                            <h3 class="mt-1.5 leading-snug font-semibold text-slate-900 transition group-hover:text-blue-800">${escapeHtml(n.title)}</h3>
+                            <p class="mt-2 line-clamp-3 text-sm text-slate-500">${escapeHtml(n.summary)}</p>
+                        </a>`).join('')}
+                    </div>`;
+
+                const proximas = demais.slice(3, 7);
+                if (proximas.length) {
+                    noticiasTabEl.innerHTML = `
+                        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                            ${proximas.map(n => `
+                            <a href="${escapeHtml(urlNoticia(n))}" class="group block rounded-xl border border-slate-200 p-5 transition hover:border-blue-200 hover:bg-blue-50/40">
+                                ${eyebrow(n)}
+                                <h3 class="mt-1.5 leading-snug font-semibold text-slate-900 transition group-hover:text-blue-800">${escapeHtml(n.title)}</h3>
+                                <p class="mt-2 line-clamp-3 text-sm text-slate-500">${escapeHtml(n.summary)}</p>
+                            </a>`).join('')}
+                        </div>`;
+                }
+            })
+            .catch(() => { /* mantém o conteúdo estático */ });
+    }
+
+    /* ------------------------------------------------------------------
+     * Últimos Procedimentos (3 mais recentes de procedimentos.json).
+     * Se o arquivo não carregar, fica o conteúdo estático do HTML.
+     * ------------------------------------------------------------------ */
+    const homeProcEl = document.getElementById('home-procedimentos');
+    if (homeProcEl) {
+        const corProc = { 'Contabilidade': 'text-sky-700', 'ICMS e Outros': 'text-emerald-700', 'Prev/Trab': 'text-orange-700', 'IR': 'text-red-700', 'Federal': 'text-violet-700', 'ISS e Outros': 'text-amber-700' };
+        const chaveData = d => String(d || '').split('/').reverse().join('');
+        fetch('procedimentos.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(lista => {
+                if (!Array.isArray(lista) || !lista.length) return;
+                homeProcEl.innerHTML = lista.slice().sort((a, b) => chaveData(b.date).localeCompare(chaveData(a.date))).slice(0, 3).map(p => `
+                    <article class="py-4 first:pt-0 last:pb-0">
+                        <span class="cf-eyebrow ${corProc[p.area] || 'text-blue-700'}">${escapeHtml(p.area)}</span>
+                        <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="${p.link && p.link !== '#' ? escapeHtml(p.link) : `procedimento.html?id=${encodeURIComponent(p.id)}`}" class="transition hover:text-blue-800">${escapeHtml(p.title)}</a></h3>
+                        <p class="mt-1 line-clamp-3 text-sm text-slate-600">${escapeHtml(p.summary)}</p>
+                        <p class="mt-2 text-xs text-slate-500">${escapeHtml([p.assunto, p.date, p.numero ? `Número: ${p.numero}` : ''].filter(Boolean).join(' · '))}</p>
+                    </article>`).join('');
+            })
+            .catch(() => { /* mantém o conteúdo estático */ });
     }
 });

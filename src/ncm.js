@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const codigo = digitos(params.get('codigo'));
     const origem = UFS.includes(params.get('origem')) ? params.get('origem') : 'PR';
     const destino = UFS.includes(params.get('destino')) ? params.get('destino') : 'SP';
-    // Aba de origem na página de resultados (ipi, ii, pisimp, pis, icms, st): mostra só esse tributo
+    // Aba de origem na página de resultados (ipi, ii, pisimp, pis, icms, st, classtrib): mostra só esse tributo
     const tributo = params.get('tributo') || '';
     // Mantém o tributo escolhido ao navegar (classificação, itens de uma posição); todos = sem o filtro
     const urlNcm = (d, todos) => `ncm.html?codigo=${formatar(d)}&origem=${origem}&destino=${destino}${tributo && !todos ? `&tributo=${tributo}#${tributo}` : ''}`;
@@ -168,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const pis = dados.pis.find(x => x.ncm === d);
         const icms = dados.icms.find(x => x.ncm === d && x.uf === destino);
         const st = dados.st.find(x => x.ncm === d && x.origem === origem && x.destino === destino);
+        const classtrib = (dados.classtrib || []).find(x => x.ncm === d);
         // Só com Ex-tarifários a descrição da NCM não está nos dados: usa uma frase neutra em vez do texto de um Ex
         const descricao = tipi?.descricao || pis?.descricao || st?.mercadoria || icms?.mercadoria || (exs.length ? `NCM com ${exs.length} Ex-tarifário${exs.length > 1 ? 's' : ''} relacionado${exs.length > 1 ? 's' : ''} à busca` : '');
         cabecalho(dados, d, descricao, 'Item NCM');
@@ -258,6 +259,14 @@ document.addEventListener('DOMContentLoaded', function () {
                             ${linhaValor('MVA ajustada', st.mvaAjustada)}
                         </dl>` + nota + (t ? tratamentoEmAbas('st', t) : '') + (t?.calculo ? simuladorSt(st, t.calculo, tipi?.ipi) : ''));
                 }
+            },
+            // Reforma Tributária: CST e cClassTrib ficam no portal Reforma Tributária do Cenofisco (assinantes)
+            classtrib: {
+                titulo: 'Classificação Tributária', existe: Boolean(classtrib),
+                html: () => card('classtrib', 'Classificação Tributária · IBS e CBS', 'fa-tags', `
+                    <p class="text-sm text-slate-700">Código de Situação Tributária (<strong>CST</strong>) e Código de Classificação Tributária (<strong>cClassTrib</strong>) do IBS e da CBS para esta NCM, conforme a ${escapeHTML(dados.atos.classtrib)}.</p>
+                    <a href="https://reformatributaria.cenofisco.com.br/BuscaTributaria/Detalhes?id=${encodeURIComponent(classtrib.idMercadoria)}&tipo=NCM" target="_blank" rel="noopener" class="cf-btn cf-btn-primary mt-4">Ver CST e cClassTrib <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i><span class="sr-only">(abre o portal Reforma Tributária em nova aba)</span></a>
+                    <p class="mt-3 text-xs text-slate-500">Consulta no portal Reforma Tributária do Cenofisco, exclusiva para assinantes.</p>`)
             }
         };
 
@@ -295,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     ${tile(`ICMS · ${destino}`, valorPct(icms?.aliquotaEfetiva ?? null), icms ? 'Alíquota efetiva' : 'Sem tratamento cadastrado')}
                     ${tile(`ICMS/ST · ${origem} → ${destino}`, valorPct(st?.aliquotaDestino ?? null), st ? 'Alíquota de destino' : 'Sem ST nesta rota')}
                 </dl>` + legenda);
-            ['ii', 'pis', 'icms', 'st'].forEach(id => {
+            ['ii', 'pis', 'icms', 'st', 'classtrib'].forEach(id => {
                 const b = blocos[id];
                 // II só entra na visão geral quando há Ex-tarifários (a alíquota já está no resumo acima)
                 if (!b.existe || (id === 'ii' && !exs.length)) return;

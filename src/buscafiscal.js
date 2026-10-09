@@ -5,6 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const ncmTipoBuscaContainer = document.getElementById('ncm-tipo-busca-container');
     const pisCofinsContainer = document.getElementById('pis-cofins-tipo-venda-container');
     const icmsContainer = document.getElementById('icms-tipo-operacao-container');
+    // Classificação Tributária: opções Mercadoria (NCM) / Serviço (NBS)
+    const classTribContainer = document.getElementById('classtrib-tipo-container');
+    const buscaInput = document.getElementById('busca-fiscal-input');
+    const placeholderPadrao = buscaInput ? buscaInput.placeholder : '';
     
     // Mostrar o container correto baseado na seleção inicial
     updateBuscaFiscalContainers();
@@ -17,6 +21,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Classificação Tributária: Mercadoria (NCM) ou Serviço (NBS)
+    document.querySelectorAll('input[name="classtrib_tipo"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+            updateCheckIcons('classtrib_tipo');
+            updatePlaceholder();
+        });
+    });
+
+    function updatePlaceholder() {
+        if (!buscaInput) return;
+        const tipo = document.querySelector('input[name="busca_fiscal_tipo"]:checked');
+        const servico = document.querySelector('input[name="classtrib_tipo"][value="servico"]:checked');
+        buscaInput.placeholder = tipo && tipo.value === 'classtrib' && servico
+            ? 'Digite o código NBS ou a descrição do serviço...'
+            : placeholderPadrao;
+    }
+
     // Controlar checkboxes de NCM (múltipla seleção)
     const ncmTipoBuscaCheckboxes = document.querySelectorAll('input[name="ncm_tipo_busca"]');
     const pisCofinsContainer2 = document.getElementById('pis-cofins-tipo-venda-container');
@@ -118,10 +139,14 @@ document.addEventListener('DOMContentLoaded', function() {
         ncmTipoBuscaContainer.classList.add('hidden');
         pisCofinsContainer.classList.add('hidden');
         icmsContainer.classList.add('hidden');
+        if (classTribContainer) classTribContainer.classList.add('hidden');
         
         // Mostrar o container selecionado
         if (selectedType && selectedType.value === 'ncm') {
             ncmTipoBuscaContainer.classList.remove('hidden');
+        } else if (selectedType && selectedType.value === 'classtrib' && classTribContainer) {
+            classTribContainer.classList.remove('hidden');
         }
+        updatePlaceholder();
     }
 });
