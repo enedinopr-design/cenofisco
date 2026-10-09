@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const escapeHTML = text => String(text ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const normalize = text => (text || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    // Endereço do procedimento (o link do JSON, ou a página de detalhe pelo id)
+    const urlOf = p => (p.link && p.link !== '#' ? p.link : `procedimento.html?id=${encodeURIComponent(p.id)}`);
     const dateKey = d => (d ? d.split('/').reverse().join('') : '');
 
     let all = [];
@@ -122,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function card(p) {
         const s = styleOf(p.area);
         const saved = isSaved(p.id);
-        const hasLink = p.link && p.link !== '#';
         const meta = [p.assunto, p.date, p.numero ? `Nº ${p.numero}` : ''].filter(Boolean)
             .map(escapeHTML).join('<span class="text-slate-300" aria-hidden="true">·</span>');
         return `
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <span class="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] font-semibold tracking-wide uppercase ${s.badge}"><i class="fa-solid ${s.icon} text-[10px]" aria-hidden="true"></i>${escapeHTML(p.area)}</span>
                 </div>
                 <h2 class="mt-2 pr-10 text-lg leading-snug font-semibold text-slate-900">
-                    <a href="${escapeHTML(hasLink ? p.link : '#')}" class="after:absolute after:inset-0 group-hover:text-blue-800">${escapeHTML(p.title)}</a>
+                    <a href="${escapeHTML(urlOf(p))}" class="after:absolute after:inset-0 group-hover:text-blue-800">${escapeHTML(p.title)}</a>
                 </h2>
                 <p class="mt-1 text-sm text-slate-600">${escapeHTML(p.summary)}</p>
                 <p class="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-slate-500">${meta}</p>
@@ -194,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!p) return;
         let list = readSaved();
         if (list.some(s => s.id === id)) list = list.filter(s => s.id !== id);
-        else list.unshift({ id: p.id, title: p.title, link: p.link, area: p.area, date: p.date });
+        else list.unshift({ id: p.id, title: p.title, link: urlOf(p), area: p.area, date: p.date });
         writeSaved(list);
         render();
         renderSaved();
@@ -208,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         savedList.innerHTML = list.map(s => `
             <li class="group flex items-start gap-1 rounded-lg hover:bg-blue-50">
-                <a href="${escapeHTML(s.link && s.link !== '#' ? s.link : '#')}" class="min-w-0 flex-1 px-2 py-1.5" title="${escapeHTML(s.title)}">
+                <a href="${escapeHTML(urlOf(s))}" class="min-w-0 flex-1 px-2 py-1.5" title="${escapeHTML(s.title)}">
                     <span class="block truncate text-slate-700 group-hover:text-blue-800">${escapeHTML(s.title)}</span>
                     <span class="block text-[11px] text-slate-400">${escapeHTML([s.area, s.date].filter(Boolean).join(' · '))}</span>
                 </a>
@@ -247,9 +248,6 @@ document.addEventListener('DOMContentLoaded', function () {
             toggleSaved(save.dataset.id);
             return;
         }
-        // Procedimento ainda sem página: não navega para "#"
-        const link = e.target.closest('a[href="#"]');
-        if (link) e.preventDefault();
     });
     savedList.addEventListener('click', e => {
         const b = e.target.closest('.remove-saved');
@@ -259,6 +257,5 @@ document.addEventListener('DOMContentLoaded', function () {
             renderSaved();
             return;
         }
-        if (e.target.closest('a[href="#"]')) e.preventDefault();
     });
 });

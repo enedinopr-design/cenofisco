@@ -1,56 +1,133 @@
 [
     {
-        "id": "agenda-tributaria-obrigacoes-principais-e-acessorias-maio-de-2026-28-0",
-        "area": "Tributário",
-        "date": "28/04/2026",
-        "title": "Agenda Tributária - Obrigações Principais e Acessórias - Maio de 2026",
-        "summary": "Alertamos para os prazos de pagamentos dos tributos e entregas das obrigações acessórias do mês de maio de 2026.",
-        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
-        "link": "#"
-    },
-    {
-        "id": "fique-atento-a-nova-redacao-da-nr-1-gerenciamento-de-riscos-ocupaciona",
+        "id": "13-salario-pagamento-da-segunda-parcela-2026-09-10-2026",
         "area": "Trabalhista",
-        "date": "28/04/2026",
-        "title": "Fique atento a nova redação da NR-1 - Gerenciamento de Riscos Ocupacionais (GRO)",
-        "summary": "A alteração da NR-1 que entrará em vigor a partir de 26/05/2026 traz uma exigência importante para as empresas no que diz respeito ao gerenciamento de riscos.",
+        "date": "09/10/2026",
+        "title": "13º salário - Pagamento da segunda parcela - 2026",
+        "summary": "Em 2026, a primeira parcela do 13º salário deve ser paga até 30/11/2026 e a segunda, antecipada para 18/12/2026 (sexta-feira), já que o dia 20 de dezembro não é dia útil.",
+        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "content": "<p>Entre os meses de fevereiro e novembro de cada ano, o empregador deverá pagar como adiantamento da primeira parcela do 13º salário, de uma só vez, metade do salário recebido pelo respectivo empregado no mês anterior, salvo se o empregado já o recebeu por ocasião das férias.</p><p>Assim, para o ano de 2026, a primeira parcela deve ser paga até <strong>30/11/2026 (segunda-feira)</strong>.</p><p>Já a segunda parcela do 13º salário deve ser paga até o dia 20 de dezembro, porém, caso o dia 20 recaia em dia não útil, o empregador deve antecipar o referido pagamento.</p><p>Neste caso, neste ano de 2026, terá o prazo de pagamento antecipado para <strong>18/12/2026, uma sexta-feira</strong>.</p><p>Oportunamente, esclarecemos que a primeira parcela corresponde a antecipação de metade do salário do mês anterior e é paga sem quaisquer descontos de contribuição previdenciária e Imposto de Renda. Na segunda parcela são aplicados os descontos previstos na legislação.</p><p>Para os aposentados e pensionistas do INSS, as regras do 13º salário (abono anual) se dá da seguinte forma:</p><ol class=\"list-[lower-alpha] space-y-2 pl-6\"><li>quem já recebia o benefício até abril, teve o pagamento do 13º salário antecipado e pago nos meses de abril e maio de 2026; e</li><li>quem passou a receber o benefício a partir de maio, receberá a parcela única do abono proporcional no calendário do fim do ano, agendado entre 24/11/2026 e 07/12/2026.</li></ol><p>Ressaltamos ainda que, os beneficiários do BPC/Loas, não têm direito ao 13º salário, por se tratar de um benefício assistencial e não previdenciário, ou seja, o BPC não é uma aposentadoria nem uma pensão. Ele é um benefício de caráter assistencial, instituído pela Lei nº 8.742/1993 (Lei Orgânica da Assistência Social - LOAS), que prevê apenas o pagamento de 12 parcelas mensais por ano.</p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "processo-trabalhista-pagamento-de-multa-rescisoria-do-fgts-07-10-2026",
+        "area": "Trabalhista",
+        "date": "07/10/2026",
+        "title": "Processo Trabalhista - Pagamento de multa rescisória do FGTS",
+        "summary": "Em um processo trabalhista houve a determinação do pagamento de multa rescisória do FGTS maior do que o valor calculado automaticamente pelo FGTS Digital. Como pagar a diferença?",
+        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Processo-Trabalhista-Pagamento-de-multa-rescisoria-do-FGTS/5d3e1418f3542affe0637f0110ac8858",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Processo-Trabalhista-Pagamento-de-multa-rescisoria-do-FGTS/5d3e1418f3542affe0637f0110ac8858\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "simples-nacional-regime-de-reconhecimento-de-receita-pelo-faturamento-07-10-2026",
+        "area": "Tributário",
+        "date": "07/10/2026",
+        "title": "Simples Nacional: Regime de reconhecimento de receita pelo faturamento",
+        "summary": "O valor devido mensalmente, a ser recolhido pela ME ou EPP, será o resultante da aplicação da alíquota efetiva sobre a receita bruta mensal auferida (regime de competência).",
         "image": "https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?auto=format&fit=crop&w=800&q=80",
-        "link": "#"
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Simples-Nacional-Regime-de-reconhecimento-de-receita-pelo-faturamento/5d3e1418f3532affe0637f0110ac8858",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Simples-Nacional-Regime-de-reconhecimento-de-receita-pelo-faturamento/5d3e1418f3532affe0637f0110ac8858\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
     },
     {
-        "id": "simples-nacional-utilizacao-da-nota-fiscal-de-servicos-eletronica-de-p",
-        "area": "Tributário",
-        "date": "27/04/2026",
-        "title": "Simples Nacional - Utilização da Nota Fiscal de Serviços eletrônica de padrão nacional",
-        "summary": "A Resolução CGSN nº 189/2026 estabelece novas regras para a utilização da NFS-e em padrão nacional para os optantes do Simples Nacional.",
-        "image": "https://images.unsplash.com/photo-1605905524455-3a8aa5527314?auto=format&fit=crop&w=800&q=80",
-        "link": "#"
-    },
-    {
-        "id": "tributos-municipais-cuiaba-mt-mutirao-fiscal-prorrogacao-26-04-2026",
-        "area": "Tributário",
-        "date": "26/04/2026",
-        "title": "Tributos Municipais/Cuiabá-MT - Mutirão Fiscal - Prorrogação",
-        "summary": "Prorrogado o prazo para a adesão ao Mutirão Fiscal, que oferece condições especiais para a regularização de débitos tributários com o município de Cuiabá.",
-        "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
-        "link": "#"
-    },
-    {
-        "id": "receita-federal-prorroga-prazo-para-adesao-ao-pert-25-04-2026",
+        "id": "transacao-regularizacao-de-debitos-com-autarquias-e-fundacoes-publicas-07-10-2026",
         "area": "Federal",
-        "date": "25/04/2026",
-        "title": "Receita Federal prorroga prazo para adesão ao PERT",
-        "summary": "Contribuintes ganham mais tempo para regularizar débitos com condições especiais do Programa Especial de Regularização Tributária.",
-        "image": "https://images.unsplash.com/photo-1560520653-9e0e4c89eb18?auto=format&fit=crop&w=800&q=80",
-        "link": "#"
+        "date": "07/10/2026",
+        "title": "Transação - Regularização de débitos com autarquias e fundações públicas federais",
+        "summary": "A AGU publicou edital de transação destinado a regularização de débitos de pequeno valor na cobrança da dívida ativa das autarquias e fundações públicas federais para o Microempreendedor Individual (MEI).",
+        "image": "https://images.unsplash.com/photo-1605905524455-3a8aa5527314?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Transacao-Regularizacao-de-debitos-com-autarquias-e-fundacoes-publicas-federais/5d3e1418f35f2affe0637f0110ac8858",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Transacao-Regularizacao-de-debitos-com-autarquias-e-fundacoes-publicas-federais/5d3e1418f35f2affe0637f0110ac8858\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
     },
     {
-        "id": "inss-altera-regras-para-comprovacao-de-vida-24-04-2026",
-        "area": "Previdenciário",
-        "date": "24/04/2026",
-        "title": "INSS altera regras para comprovação de vida",
-        "summary": "Novos procedimentos visam facilitar a vida dos aposentados e pensionistas, utilizando cruzamento de dados para realizar a prova de vida.",
+        "id": "emprestimo-consignado-correcao-retificacao-no-esocial-06-10-2026",
+        "area": "Trabalhista",
+        "date": "06/10/2026",
+        "title": "Empréstimo Consignado - Correção/Retificação no eSocial",
+        "summary": "Posso corrigir/retificar no eSocial informações da retenção de parcelas de empréstimo consignado? Como será o impacto no FGTS Digital?",
+        "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Emprestimo-Consignado-Correcao-Retificacao-no-eSocial/5d2a11312147c084e0637f0110ac45c0",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Emprestimo-Consignado-Correcao-Retificacao-no-eSocial/5d2a11312147c084e0637f0110ac45c0\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "transacao-iii-semana-nacional-da-regularizacao-tributaria-06-10-2026",
+        "area": "Federal",
+        "date": "06/10/2026",
+        "title": "Transação - III Semana Nacional da Regularização Tributária",
+        "summary": "A PGFN publicou edital que estabelece as condições para adesão à proposta de transação destinada à regularização de débitos inscritos em dívida ativa da União com condições facilitadas.",
+        "image": "https://images.unsplash.com/photo-1560520653-9e0e4c89eb18?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Transacao-III-Semana-Nacional-da-Regularizacao-Tributaria/5d2a11312156c084e0637f0110ac45c0",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Transacao-III-Semana-Nacional-da-Regularizacao-Tributaria/5d2a11312156c084e0637f0110ac45c0\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "esocial-honorarios-de-sucumbencia-05-10-2026",
+        "area": "Trabalhista",
+        "date": "05/10/2026",
+        "title": "eSocial - Honorários de Sucumbência",
+        "summary": "Como devem ser informados os valores de honorários advocatícios de sucumbência recebido pelo advogado?",
         "image": "https://images.unsplash.com/photo-1611069215112-a8c53389d243?auto=format&fit=crop&w=800&q=80",
-        "link": "#"
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/eSocial-Honorarios-de-Sucumbencia/5d160bf8bcbaa333e0637f0110acb1bc",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/eSocial-Honorarios-de-Sucumbencia/5d160bf8bcbaa333e0637f0110acb1bc\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "exame-de-suficiencia-prazo-para-inscricao-da-3-edicao-05-10-2026",
+        "area": "Federal",
+        "date": "05/10/2026",
+        "title": "Exame de Suficiência - Prazo para inscrição da 3ª edição",
+        "summary": "O CFC publicou edital divulgando o período de inscrição, valor da taxa e data da realização da Prova Objetiva da terceira edição do Exame de Suficiência.",
+        "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Exame-de-Suficiencia-Prazo-para-inscricao-da-3-edicao/5d160bf8bcbea333e0637f0110acb1bc",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Exame-de-Suficiencia-Prazo-para-inscricao-da-3-edicao/5d160bf8bcbea333e0637f0110acb1bc\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "ibs-e-cbs-metodologia-de-calculo-da-carga-tributaria-fixacao-das-aliqu-05-10-2026",
+        "area": "Tributário",
+        "date": "05/10/2026",
+        "title": "IBS e CBS - Metodologia de cálculo da carga tributária - Fixação das alíquotas incidentes sobre os combustíveis",
+        "summary": "A RFB e o CGIBS divulgaram a metodologia de cálculo da carga tributária para fixação das alíquotas do IBC e da CCBS para os combustíveis sujeitos ao regime específico.",
+        "image": "https://images.unsplash.com/photo-1586473219010-2ffc57b0d282?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/IBS-e-CBS-Metodologia-de-calculo-da-carga-tributaria-Fixacao-das-aliquotas-incidentes-sobre-os-combustiveis/5d160bf8bcbca333e0637f0110acb1bc",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/IBS-e-CBS-Metodologia-de-calculo-da-carga-tributaria-Fixacao-das-aliquotas-incidentes-sobre-os-combustiveis/5d160bf8bcbca333e0637f0110acb1bc\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "contribuicao-previdenciaria-beneficios-que-nao-integram-a-base-de-calc-02-10-2026",
+        "area": "Previdenciário",
+        "date": "02/10/2026",
+        "title": "Contribuição Previdenciária - Benefícios que não integram a base de cálculo",
+        "summary": "A RFB se manifesta quanto à não integração na base de cálculo para fins de incidência das contribuições sociais previdenciárias de benefícios fornecidos pelo empregador.",
+        "image": "https://images.unsplash.com/photo-1605905524455-3a8aa5527314?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Contribuicao-Previdenciaria-Beneficios-que-nao-integram-a-base-de-calculo/5cd9a68c6ffa347ae0637f0110ac04c4",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/Contribuicao-Previdenciaria-Beneficios-que-nao-integram-a-base-de-calculo/5cd9a68c6ffa347ae0637f0110ac04c4\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
+    },
+    {
+        "id": "df-e-divulgacao-de-materiais-tecnicos-para-adequacao-a-reforma-tributa-02-10-2026",
+        "area": "Tributário",
+        "date": "02/10/2026",
+        "title": "DF-e - Divulgação de materiais técnicos para adequação à Reforma Tributária de Consumo",
+        "summary": "Divulgadas novas diretrizes para os documentos fiscais eletrônicos.",
+        "image": "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+        "link": "#",
+        "fonte": "Editorial Cenofisco",
+        "original": "https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/DF-e-Divulgacao-de-materiais-tecnicos-para-adequacao-a-Reforma-Tributaria-de-Consumo/5cd9a68c6fe2347ae0637f0110ac04c4",
+        "content": "<p>O texto completo desta notícia está disponível para assinantes do portal Cenofisco.</p><p><a href=\"https://www.cenofisco.com.br/Documento/Home/Fique-por-Dentro/Destaque-site/Titulo/DF-e-Divulgacao-de-materiais-tecnicos-para-adequacao-a-Reforma-Tributaria-de-Consumo/5cd9a68c6fe2347ae0637f0110ac04c4\" target=\"_blank\" rel=\"noopener\" class=\"inline-flex items-center gap-2 rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-semibold text-white no-underline hover:bg-blue-800\">Ler a notícia completa no Cenofisco <i class=\"fa-solid fa-arrow-up-right-from-square text-xs\" aria-hidden=\"true\"></i><span class=\"sr-only\">(abre em nova aba)</span></a></p><p class=\"text-sm text-slate-500\">Fonte: Editorial Cenofisco.</p>"
     }
 ]

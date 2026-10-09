@@ -481,3 +481,21 @@ html .sr-only {
   white-space: revert-layer;
   border-width: revert-layer;
 }
+
+/* ==========================================================================
+   Texto longo (procedimentos e notícias na íntegra): títulos numerados com âncora,
+   listas, citações de legislação e notas de redação.
+   ========================================================================== */
+@layer components {
+  .cf-prose { @apply space-y-4 leading-relaxed text-slate-700; overflow-wrap: anywhere; }
+  .cf-prose h2 { @apply scroll-mt-32 border-t border-slate-200 pt-6 text-xl font-bold tracking-tight text-slate-900; }
+  .cf-prose h2:first-child { @apply border-t-0 pt-0; }
+  .cf-prose h3 { @apply scroll-mt-32 pt-2 text-lg font-semibold text-slate-900; }
+  .cf-prose ol, .cf-prose ul { @apply space-y-2 pl-6; }
+  .cf-prose ul { @apply list-disc; }
+  .cf-prose ol:not([class*="list-"]) { @apply list-decimal; }
+  .cf-prose li > ol { @apply mt-2; }
+  .cf-prose blockquote { @apply space-y-3 rounded-r-xl border-l-4 border-blue-200 bg-slate-50 px-5 py-4 text-[0.95rem] text-slate-700; }
+  .cf-prose blockquote .nota { @apply text-xs text-slate-500 italic; }
+  .cf-prose a { @apply font-semibold text-blue-700 underline underline-offset-2 hover:text-blue-900; }
+}
