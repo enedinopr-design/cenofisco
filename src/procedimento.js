@@ -97,7 +97,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         crumbArea.innerHTML = `
             <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
-            <a href="procedimentos.html?area=${encodeURIComponent(p.area)}" class="transition hover:text-white">${escapeHTML(p.area)}</a>`;
+            <a href="procedimentos.html?area=${encodeURIComponent(p.area)}" class="transition hover:text-white">${escapeHTML(p.area)}</a>
+            ${p.uf ? `<i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+            <a href="procedimentos.html?area=${encodeURIComponent(p.area)}&uf=${encodeURIComponent(p.uf)}" class="transition hover:text-white">${escapeHTML(p.assunto || p.uf)}</a>` : ''}`;
 
         badgesEl.innerHTML = `<span class="inline-flex items-center gap-1.5 rounded-md bg-white/10 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-white uppercase ring-1 ring-white/15"><i class="fa-solid ${s.icon} text-[10px] text-amber-400" aria-hidden="true"></i>${escapeHTML(p.area)}</span>`
             + (p.assunto ? `<span class="inline-flex rounded-md bg-white/10 px-2 py-0.5 text-[11px] font-semibold tracking-wide text-blue-100 uppercase ring-1 ring-white/15">${escapeHTML(p.assunto)}</span>` : '');

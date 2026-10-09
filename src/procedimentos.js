@@ -1,5 +1,6 @@
 // Página de Procedimentos
-// Dados em procedimentos.json — campos: id, area, title, summary, assunto, date (DD/MM/AAAA), numero, link.
+// Dados em procedimentos.json — campos: id, area, title, summary, assunto, date (DD/MM/AAAA), numero, link,
+// uf (sigla do estado; usado na área "ICMS e Outros", que é dividida por estados) e content (texto completo).
 // Filtros: área (lateral), busca e ordenação. O estado fica no endereço
 // (ex.: procedimentos.html?area=IR&q=declaracao&pagina=2).
 // "Salvar" funciona como em Regulamentos: ícone em cada item e lista "Procedimentos Salvos".
@@ -25,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!listEl) return;
 
     const PER_PAGE = 10;
+    // "ICMS e Outros" é dividida por estados (campo uf de cada procedimento)
+    const AREA_UF = 'ICMS e Outros';
+    const ESTADOS = { AC: 'Acre', AL: 'Alagoas', AP: 'Amapá', AM: 'Amazonas', BA: 'Bahia', CE: 'Ceará', DF: 'Distrito Federal', ES: 'Espírito Santo', GO: 'Goiás', MA: 'Maranhão', MT: 'Mato Grosso', MS: 'Mato Grosso do Sul', MG: 'Minas Gerais', PA: 'Pará', PB: 'Paraíba', PR: 'Paraná', PE: 'Pernambuco', PI: 'Piauí', RJ: 'Rio de Janeiro', RN: 'Rio Grande do Norte', RS: 'Rio Grande do Sul', RO: 'Rondônia', RR: 'Roraima', SC: 'Santa Catarina', SP: 'São Paulo', SE: 'Sergipe', TO: 'Tocantins' };
     const AREA_STYLE = {
         'Contabilidade': { badge: 'bg-sky-50 text-sky-700', icon: 'fa-calculator' },
         'ICMS e Outros': { badge: 'bg-emerald-50 text-emerald-700', icon: 'fa-truck-fast' },
@@ -42,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const dateKey = d => (d ? d.split('/').reverse().join('') : '');
 
     let all = [];
-    const state = { area: '', q: '', ordem: 'recentes', pagina: 1 };
+    const state = { area: '', uf: '', q: '', ordem: 'recentes', pagina: 1 };
 
     fetch('./procedimentos.json')
         .then(r => r.json())
@@ -64,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function readParams() {
         const p = new URLSearchParams(location.search);
         state.area = p.get('area') || '';
+        state.uf = state.area === AREA_UF && ESTADOS[p.get('uf')] ? p.get('uf') : '';
         state.q = p.get('q') || '';
         state.ordem = p.get('ordem') === 'az' ? 'az' : 'recentes';
         state.pagina = Math.max(1, parseInt(p.get('pagina'), 10) || 1);
@@ -73,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function writeParams() {
         const p = new URLSearchParams();
         if (state.area) p.set('area', state.area);
+        if (state.uf) p.set('uf', state.uf);
         if (state.q) p.set('q', state.q);
         if (state.ordem !== 'recentes') p.set('ordem', state.ordem);
         if (state.pagina > 1) p.set('pagina', state.pagina);
@@ -83,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function filter(ignoreArea) {
         const terms = normalize(state.q.trim()).split(/\s+/).filter(Boolean);
         return all.filter(p =>
-            (ignoreArea || !state.area || p.area === state.area) &&
+            (ignoreArea || ((!state.area || p.area === state.area) && (!state.uf || p.uf === state.uf))) &&
             terms.every(t => p._search.includes(t))
         );
     }
@@ -99,16 +105,17 @@ document.addEventListener('DOMContentLoaded', function () {
         state.pagina = Math.min(state.pagina, pages);
 
         clearBtn.classList.toggle('hidden', !(state.area || state.q));
+        const rotuloFiltro = state.uf ? `${state.area} · ${ESTADOS[state.uf]}` : state.area;
         resultCount.textContent = items.length
-            ? `${items.length} ${items.length === 1 ? 'procedimento' : 'procedimentos'}${state.area ? ` · ${state.area}` : ''}`
+            ? `${items.length} ${items.length === 1 ? 'procedimento' : 'procedimentos'}${rotuloFiltro ? ` · ${rotuloFiltro}` : ''}`
             : '';
 
         if (!items.length) {
             listEl.innerHTML = `
                 <div class="rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center">
                     <i class="fa-regular fa-folder-open mb-3 text-3xl text-slate-300" aria-hidden="true"></i>
-                    <p class="font-medium text-slate-700">Nenhum procedimento encontrado.</p>
-                    <p class="mt-1 text-sm text-slate-500">Tente outro termo ou limpe os filtros.</p>
+                    <p class="font-medium text-slate-700">${state.uf && !state.q ? `Ainda não há procedimentos de ${escapeHTML(state.area)} para ${ESTADOS[state.uf]}.` : 'Nenhum procedimento encontrado.'}</p>
+                    <p class="mt-1 text-sm text-slate-500">${state.uf && !state.q ? 'Escolha outro estado ou veja todos os estados.' : 'Tente outro termo ou limpe os filtros.'}</p>
                 </div>`;
             pagination.innerHTML = '';
             writeParams();
@@ -153,7 +160,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 <span class="text-xs ${on ? 'text-blue-700' : 'text-slate-400'}">${n}</span>
             </button></li>`;
         };
-        areaList.innerHTML = row('', 'Todas', base.length) + areas.map(a => row(a, a, base.filter(p => p.area === a).length)).join('');
+        // Estados da área "ICMS e Outros": aparecem quando a área está selecionada
+        const estados = () => {
+            const daArea = base.filter(p => p.area === AREA_UF);
+            const item = (uf, nome, n) => {
+                const on = state.uf === uf;
+                return `<li><button type="button" data-area="${escapeHTML(AREA_UF)}" data-uf="${uf}" class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-lg px-3 py-1.5 text-left transition ${on ? 'bg-blue-50 font-semibold text-blue-800' : 'text-slate-600 hover:bg-slate-50'} ${n === 0 && !on ? 'opacity-50' : ''}" aria-pressed="${on}">
+                    <span class="flex min-w-0 items-center gap-2"><span class="w-6 shrink-0 text-[11px] font-bold ${on ? 'text-blue-700' : 'text-slate-400'}">${uf}</span><span class="truncate">${escapeHTML(nome)}</span></span>
+                    <span class="text-xs ${on ? 'text-blue-700' : 'text-slate-400'}">${n}</span>
+                </button></li>`;
+            };
+            return `<li><ul class="mt-1 mb-2 ml-5 max-h-80 space-y-0.5 overflow-y-auto overscroll-contain border-l border-slate-200 pl-2 text-[13px]" aria-label="Estados de ${escapeHTML(AREA_UF)}">
+                ${item('', 'Todos os estados', daArea.length)}
+                ${Object.entries(ESTADOS).sort((a, b) => a[1].localeCompare(b[1], 'pt-BR')).map(([uf, nome]) => item(uf, nome, daArea.filter(p => p.uf === uf).length)).join('')}
+            </ul></li>`;
+        };
+        areaList.innerHTML = row('', 'Todas', base.length) + areas.map(a => row(a, a, base.filter(p => p.area === a).length) + (a === AREA_UF && state.area === AREA_UF ? estados() : '')).join('');
+        // Estado escolhido visível dentro da lista rolável
+        const escolhido = state.uf && areaList.querySelector(`[data-uf="${state.uf}"]`);
+        if (escolhido) {
+            const caixa = escolhido.closest('ul');
+            caixa.scrollTop = escolhido.offsetTop - caixa.offsetTop - caixa.clientHeight / 2 + escolhido.offsetHeight / 2;
+        }
     }
 
     function renderPagination(pages) {
@@ -222,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     areaList.addEventListener('click', e => {
         const b = e.target.closest('[data-area]');
-        if (b) setState({ area: b.dataset.area });
+        if (b) setState({ area: b.dataset.area, uf: b.dataset.uf || '' });
     });
     let searchTimer = null;
     searchInput.addEventListener('input', () => {
@@ -232,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function () {
     orderSelect.addEventListener('change', () => setState({ ordem: orderSelect.value }));
     clearBtn.addEventListener('click', () => {
         searchInput.value = '';
-        setState({ area: '', q: '' });
+        setState({ area: '', uf: '', q: '' });
     });
     pagination.addEventListener('click', e => {
         const b = e.target.closest('[data-page]');
