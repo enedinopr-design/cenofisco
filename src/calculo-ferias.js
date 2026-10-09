@@ -1,48 +1,49 @@
+// Cálculo de Férias (calculo-ferias.html).
+// Cálculos salvos: chave meusCalculos (a mesma da página de Ferramentas). Cada item guarda os dados
+// informados e um link (calculo-ferias.html?bruto=…) que reabre a página já calculada.
 document.addEventListener('DOMContentLoaded', function() {
-    // --- Global Header/Footer JS ---
+    // --- Menu mobile ---
     const menuToggle = document.getElementById('menu-toggle');
     const mainMenu = document.getElementById('main-menu');
 
     if (menuToggle && mainMenu) {
         menuToggle.addEventListener('click', function() {
-            mainMenu.classList.toggle('hidden');
+            const hidden = mainMenu.classList.toggle('hidden');
+            menuToggle.setAttribute('aria-expanded', String(!hidden));
         });
     }
 
-    // --- Saved Calculations Sidebar Logic ---
+    // --- Cálculos salvos (lateral) ---
     const savedCalculationsList = document.getElementById('saved-calculations-list');
-
-    function saveCalculation(item) {
-        let saved = JSON.parse(localStorage.getItem('savedCalculations')) || [];
-        saved = saved.filter(i => i.title !== item.title);
-        saved.unshift(item);
-        if (saved.length > 5) {
-            saved.pop();
-        }
-        localStorage.setItem('savedCalculations', JSON.stringify(saved));
-    }
+    const TIPO = 'Cálculo de Férias';
+    const escapeHTML = t => String(t ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const lerCalculos = () => { try { const l = JSON.parse(localStorage.getItem('meusCalculos')); return Array.isArray(l) ? l : []; } catch (e) { return []; } };
+    const gravarCalculos = l => { try { localStorage.setItem('meusCalculos', JSON.stringify(l)); } catch (e) { /* sem armazenamento */ } };
+    const linkCalculo = i => 'calculo-ferias.html?' + new URLSearchParams({ bruto: i.salarioBruto || '', extra: i.horasExtras || '', dias: i.diasFerias || '', dependentes: i.dependentes || '', abono: i.temAbono || 'Sim', decimo: i.adianta13 || 'Sim' }).toString();
 
     function renderSavedCalculations() {
-        const saved = JSON.parse(localStorage.getItem('savedCalculations')) || [];
-        savedCalculationsList.innerHTML = '';
-
-        if (saved.length === 0) {
-            savedCalculationsList.innerHTML = '<li class="text-gray-500 italic text-xs p-2">Nenhum cálculo salvo recentemente.</li>';
+        if (!savedCalculationsList) return;
+        const saved = lerCalculos().filter(c => c.tipo === TIPO);
+        if (!saved.length) {
+            savedCalculationsList.innerHTML = '<li class="px-1 text-xs text-slate-500">Nenhum cálculo salvo. Use <strong>Salvar cálculo</strong> no resultado.</li>';
             return;
         }
-
-        saved.forEach(item => {
-            const li = document.createElement('li');
-            li.className = 'border-b border-gray-100 last:border-b-0';
-            li.innerHTML = `
-                <a href="${item.link}" class="block p-2 rounded-md hover:bg-blue-50 group">
-                    <p class="font-medium text-gray-700 group-hover:text-blue-700 truncate" title="${item.title}">${item.title}</p>
+        savedCalculationsList.innerHTML = saved.slice(0, 8).map(c => `
+            <li class="group flex items-start gap-1 rounded-lg hover:bg-blue-50">
+                <a href="${escapeHTML(c.link || linkCalculo(c.inputs || {}))}" class="min-w-0 flex-1 px-2 py-1.5">
+                    <span class="block truncate text-slate-700 group-hover:text-blue-800">Salário R$ ${escapeHTML(c.inputs?.salarioBruto || '—')} · ${escapeHTML(c.inputs?.diasFerias || '—')} dias</span>
+                    <span class="block text-[11px] text-slate-400">${escapeHTML([c.dataSalvo, c.resultados?.totalLiquido ? `Líquido ${c.resultados.totalLiquido}` : ''].filter(Boolean).join(' · '))}</span>
                 </a>
-            `;
-            savedCalculationsList.appendChild(li);
-        });
+                <button type="button" class="remove-calc mt-1 inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-slate-400 transition hover:bg-red-50 hover:text-red-600" data-id="${escapeHTML(c.id)}" aria-label="Remover cálculo de ${escapeHTML(c.dataSalvo || '')}" title="Remover"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </li>`).join('');
     }
-    renderSavedCalculations(); // Initial render
+    savedCalculationsList?.addEventListener('click', e => {
+        const b = e.target.closest('.remove-calc');
+        if (!b) return;
+        gravarCalculos(lerCalculos().filter(c => c.id !== b.dataset.id));
+        renderSavedCalculations();
+    });
+    renderSavedCalculations();
 
     // --- Férias Calculation Form Logic ---
     const calculoFeriasForm = document.getElementById('calculo-ferias-form');
@@ -54,8 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function showError(inputId, message) {
         const input = document.getElementById(inputId);
         const errorSpan = document.getElementById(`${inputId}-error`);
-        input.classList.add('border-red-500');
-        input.classList.remove('border-gray-300');
+        input.classList.add('border-red-500', 'ring-2', 'ring-red-100');
+        input.setAttribute('aria-invalid', 'true');
         errorSpan.textContent = message;
         errorSpan.classList.remove('hidden');
     }
@@ -63,8 +64,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function clearError(inputId) {
         const input = document.getElementById(inputId);
         const errorSpan = document.getElementById(`${inputId}-error`);
-        input.classList.remove('border-red-500');
-        input.classList.add('border-gray-300');
+        input.classList.remove('border-red-500', 'ring-2', 'ring-red-100');
+        input.removeAttribute('aria-invalid');
         errorSpan.textContent = '';
         errorSpan.classList.add('hidden');
     }
@@ -128,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (resultadosGeral) resultadosGeral.classList.add('hidden');
                 if (imprimirBtn) imprimirBtn.classList.add('hidden');
                 if (salvarBtn) salvarBtn.classList.add('hidden');
+                calculoFeriasForm.querySelector('[aria-invalid="true"]')?.focus();
                 return;
             }
 
@@ -241,6 +243,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (resultadosGeral) resultadosGeral.classList.remove('hidden');
             if (salvarBtn) salvarBtn.classList.remove('hidden');
             if (imprimirBtn) imprimirBtn.classList.remove('hidden');
+            // Leva o usuário ao resultado (sem rolar quando a página abre já calculada)
+            if (!abrindoSalvo && resultadosGeral) {
+                resultadosGeral.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                resultadosGeral.focus({ preventScroll: true });
+            }
         });
     }
 
@@ -282,13 +289,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             };
 
-            let calculosSalvos = JSON.parse(localStorage.getItem('meusCalculos')) || [];
-            calculosSalvos.unshift(calculo);
-            localStorage.setItem('meusCalculos', JSON.stringify(calculosSalvos));
+            calculo.link = linkCalculo(calculo.inputs);
+            gravarCalculos([calculo, ...lerCalculos()]);
+            renderSavedCalculations();
 
             const toast = document.getElementById('save-toast');
             toast.classList.remove('hidden');
-            setTimeout(() => toast.classList.add('hidden'), 3000);
+            setTimeout(() => toast.classList.add('hidden'), 4000);
         });
+    }
+
+    // --- Cálculo salvo: calculo-ferias.html?bruto=…&dias=… abre já calculado ---
+    var abrindoSalvo = false;
+    const params = new URLSearchParams(location.search);
+    if (params.get('bruto') && calculoFeriasForm) {
+        ['bruto', 'extra', 'dias', 'dependentes'].forEach(id => { document.getElementById(id).value = params.get(id) || ''; });
+        ['abono', 'decimo'].forEach(id => { if (['Sim', 'Não'].includes(params.get(id))) document.getElementById(id).value = params.get(id); });
+        abrindoSalvo = true;
+        calculoFeriasForm.requestSubmit();
+        abrindoSalvo = false;
     }
 });
