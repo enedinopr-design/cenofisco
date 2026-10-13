@@ -42,7 +42,7 @@
       </a>
 
       <!-- Busca global -->
-      <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
+      <form role="search" action="busca.html" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
         <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
         <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
         <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-32 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
@@ -89,7 +89,7 @@
         <div class="grid items-start gap-8 lg:grid-cols-[17rem_1fr]">
 
             <!-- ============ LATERAL (no celular, vem depois do gráfico) ============ -->
-            <aside class="order-last space-y-6 lg:sticky lg:top-30 lg:order-0">
+            <aside data-filtros-mobile="Escolher indicador" class="order-last space-y-6 lg:sticky lg:top-30 lg:order-0">
                 <!-- Indicadores -->
                 <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-lista">
                     <h2 id="titulo-lista" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">

@@ -369,19 +369,7 @@ document.addEventListener('DOMContentLoaded', function () {
         montar();
     }
 
-    /* ------------------------------------------------------------------
-     * Busca global (placeholder até existir página de resultados)
-     * ------------------------------------------------------------------ */
-    const globalSearchForm = document.getElementById('globalSearchForm');
-    if (globalSearchForm) {
-        globalSearchForm.addEventListener('submit', e => {
-            const input = document.getElementById('globalSearch');
-            if (!input || !input.value.trim()) {
-                e.preventDefault();
-                input && input.focus();
-            }
-        });
-    }
+    // Busca global do topo: vai para busca.html (campo vazio é barrado em rodape.js)
 
     /* ------------------------------------------------------------------
      * Selects de UF (Busca Fiscal › ICMS)
@@ -408,7 +396,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const filtroInput = document.getElementById('tabelas-praticas-filtro');
     const lista = document.getElementById('tabelas-praticas-lista');
     if (filtroInput && lista) {
-        const itens = Array.from(lista.getElementsByTagName('li'));
+        const itens = () => [...lista.children].filter(el => el.tagName === 'LI');
         const vazio = document.getElementById('tabelas-praticas-vazio');
         const toggle = document.getElementById('tabelas-praticas-toggle');
         const LIMITE_INICIAL = Number(lista.dataset.limite) || 5;   // index-dinamica mostra mais linhas
@@ -420,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const termo = normalizar(filtroInput.value.trim());
             let visiveis = 0;
 
-            itens.forEach((item, index) => {
+            itens().forEach((item, index) => {
                 const mostrar = termo
                     ? normalizar(item.textContent).includes(termo)
                     : (expandido || index < LIMITE_INICIAL);
@@ -431,9 +419,23 @@ document.addEventListener('DOMContentLoaded', function () {
             if (vazio) vazio.classList.toggle('hidden', visiveis > 0);
             if (toggle) {
                 toggle.classList.toggle('hidden', Boolean(termo));
-                toggle.textContent = expandido ? 'Mostrar menos' : `Ver todas as tabelas (${itens.length})`;
+                toggle.textContent = expandido ? 'Mostrar menos' : `Ver todas as tabelas (${itens().length})`;
             }
         }
+
+        // Demais tabelas a partir de tabelas.json: primeiro as que já têm página, depois as "Em breve" (sem link)
+        const FIXAS = ['salario-minimo', 'aliquotas-internas-icms-fcp'];
+        fetch('tabelas.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(j => {
+                const outras = j.tabelas.filter(t => !FIXAS.includes(t.id))
+                    .sort((a, b) => (!a.link - !b.link) || a.titulo.localeCompare(b.titulo, 'pt-BR'));
+                lista.insertAdjacentHTML('beforeend', outras.map(t => t.link
+                    ? `<li class="cf-row"><span>${escapeHtml(t.titulo)}</span><a href="${escapeHtml(t.link)}" class="cf-row-link">Ver tabela</a></li>`
+                    : `<li class="cf-row"><span class="text-slate-500">${escapeHtml(t.titulo)}</span><span class="shrink-0 rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500">Em breve</span></li>`).join(''));
+                atualizarVisibilidade();
+            })
+            .catch(() => { /* fica só com as tabelas fixas */ });
 
         filtroInput.addEventListener('input', atualizarVisibilidade);
         if (toggle) {
