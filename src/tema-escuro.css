@@ -45,7 +45,9 @@ html[data-tema="escuro"] img[src$="img/logo.jpg"] { content: url("img/logobranco
 html[data-tema="escuro"] .supports-\[backdrop-filter\]\:bg-white\/85 { background-color: color-mix(in oklab, var(--cf-superficie) 88%, transparent); }
 
 /* Componentes do portal (definidos com @apply em input.css) */
-html[data-tema="escuro"] :is(.cf-card, .cf-input, .cf-choice, .cf-pill, .cf-btn-secondary) { background-color: var(--cf-superficie); }
+html[data-tema="escuro"] :is(.cf-card, .cf-input, .cf-choice, .cf-pill, .cf-btn-secondary, .cf-atalho) { background-color: var(--cf-superficie); }
+html[data-tema="escuro"] .cf-atalho { border-color: var(--color-slate-200); }
+html[data-tema="escuro"] .cf-atalho:hover { border-color: color-mix(in oklab, var(--color-blue-400) 50%, transparent); color: var(--color-blue-300); }
 html[data-tema="escuro"] .cf-btn-secondary:hover { background-color: var(--cf-superficie-2); }
 /* Opção marcada (tipo de busca) e item ativo do menu: precisam se destacar no fundo escuro */
 html[data-tema="escuro"] .peer:checked ~ .cf-choice { background-color: var(--color-blue-600); border-color: var(--color-blue-500); color: #fff; }

@@ -27,7 +27,7 @@
         <a href="mailto:contato@cenofisco.com.br" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-envelope text-[11px] text-amber-400" aria-hidden="true"></i>contato@cenofisco.com.br</a>
       </div>
       <!-- Usuário logado (simulação) -->
-      <div class="ml-auto flex items-center gap-3 sm:gap-4">
+      <div class="ml-auto flex items-center gap-2 min-[360px]:gap-3 sm:gap-4">
         <span class="hidden whitespace-nowrap sm:inline">Olá, <strong class="font-semibold text-white">Enedino</strong></span>
         <span class="hidden h-4 w-px bg-blue-800 sm:block" aria-hidden="true"></span>
         <a href="meu-perfil.html" class="flex items-center gap-1.5 py-1 font-medium whitespace-nowrap transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
@@ -99,13 +99,30 @@
       </div>
     </section>
 
+    <!-- Acesso rápido: atalhos para os recursos mais usados (2 fileiras de 5 no celular, 1 fileira no desktop) -->
+    <nav class="mb-6 sm:mb-8" aria-label="Acesso rápido">
+      <!-- Celular: fileira que desliza para o lado; a partir do tablet: grade (5 e depois 10 colunas) -->
+      <ul class="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-5 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-10 [&::-webkit-scrollbar]:hidden" data-scroll-hint>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="#titulo-busca-fiscal" class="cf-atalho"><span class="cf-atalho-icone bg-blue-50 text-blue-700"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>Busca Fiscal</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="agenda-obrigacoes.html" class="cf-atalho"><span class="cf-atalho-icone bg-amber-50 text-amber-600"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i></span>Agenda</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="legislacao.html" class="cf-atalho"><span class="cf-atalho-icone bg-violet-50 text-violet-700"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></span>Legislação</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="procedimentos.html" class="cf-atalho"><span class="cf-atalho-icone bg-emerald-50 text-emerald-700"><i class="fa-regular fa-file-lines" aria-hidden="true"></i></span>Procedimentos</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="#consultoria-cenofisco" class="cf-atalho"><span class="cf-atalho-icone bg-sky-50 text-sky-700"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>Consultoria</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="tabelas.html" class="cf-atalho"><span class="cf-atalho-icone bg-teal-50 text-teal-700"><i class="fa-solid fa-table" aria-hidden="true"></i></span>Tabelas Práticas</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="indicadores.html" class="cf-atalho"><span class="cf-atalho-icone bg-green-50 text-green-700"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>Indicadores</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="cst-cclasstrib.html" class="cf-atalho"><span class="cf-atalho-icone bg-orange-50 text-orange-700"><i class="fa-solid fa-tags" aria-hidden="true"></i></span>CST/cClassTrib</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="aplicativos.html" class="cf-atalho"><span class="cf-atalho-icone bg-blue-50 text-blue-700"><i class="fa-solid fa-calculator" aria-hidden="true"></i></span>Cálculos</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="podcasts.html" class="cf-atalho"><span class="cf-atalho-icone bg-red-50 text-red-700"><i class="fa-solid fa-microphone" aria-hidden="true"></i></span>Podcast</a></li>
+      </ul>
+    </nav>
+
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
 
       <!-- ===================== COLUNA PRINCIPAL ===================== -->
-      <div class="min-w-0 space-y-6 lg:col-span-2">
+      <div class="min-w-0 max-lg:contents lg:col-span-2 lg:space-y-6">
 
         <!-- Notícias com abas -->
-        <section class="cf-card" aria-labelledby="titulo-noticias">
+        <section class="max-lg:order-[1] cf-card" aria-labelledby="titulo-noticias">
           <h2 id="titulo-noticias" class="sr-only">Notícias e destaques</h2>
           <div class="mb-6 border-b border-slate-200">
             <nav class="cf-tabs" role="tablist" aria-label="Notícias">
@@ -189,12 +206,12 @@
           </div>
 
           <div class="mt-6 flex justify-end border-t border-slate-100 pt-4">
-            <a href="noticias.html" class="cf-link-more">Ver todos os detaques <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="noticias.html" class="cf-link-more">Ver todos os destaques <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
         </section>
 
         <!-- Busca Fiscal -->
-        <section class="cf-card" aria-labelledby="titulo-busca-fiscal">
+        <section class="max-lg:order-[2] cf-card" aria-labelledby="titulo-busca-fiscal">
           <div class="cf-section-head">
             <h2 id="titulo-busca-fiscal" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>Busca Fiscal</h2>
           </div>
@@ -286,7 +303,7 @@
         </section>
 
         <!-- Últimos Procedimentos -->
-        <section class="cf-card" aria-labelledby="titulo-procedimentos">
+        <section class="max-lg:order-[5] cf-card" aria-labelledby="titulo-procedimentos">
           <div class="cf-section-head">
             <h2 id="titulo-procedimentos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></span>Últimos Procedimentos</h2>
             <a href="procedimentos.html" class="cf-link-more">Ver todos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
@@ -314,7 +331,7 @@
         </section>
 
         <!-- Consultoria -->
-        <section id="consultoria-cenofisco" class="cf-card scroll-mt-40" aria-labelledby="titulo-consultoria">
+        <section id="consultoria-cenofisco" class="max-lg:order-[6] cf-card scroll-mt-40" aria-labelledby="titulo-consultoria">
           <div class="cf-section-head">
             <h2 id="titulo-consultoria" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span>Consultoria Cenofisco</h2>
             <a href="consultoria.html" class="cf-btn cf-btn-accent shrink-0 whitespace-nowrap"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Comprar créditos</a>
@@ -332,12 +349,12 @@
               <div class="grid grid-cols-1 gap-6 xl:grid-cols-4">
                 <aside class="min-w-0 xl:col-span-1 xl:border-r xl:border-slate-200 xl:pr-4" aria-label="Áreas da consultoria">
                   <ul class="flex gap-1 overflow-x-auto text-sm xl:flex-col xl:space-y-0.5" data-scroll-hint>
-                    <li><a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-coins w-4 text-center text-slate-400" aria-hidden="true"></i>Imposto de Renda</a></li>
-                    <li><a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-hourglass-half w-4 text-center text-slate-400" aria-hidden="true"></i>Trabalhista</a></li>
-                    <li><a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-calculator w-4 text-center text-slate-400" aria-hidden="true"></i>Contabilidade</a></li>
-                    <li><a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-earth-americas w-4 text-center text-slate-400" aria-hidden="true"></i>Comércio Exterior</a></li>
-                    <li><a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-flag w-4 text-center text-slate-400" aria-hidden="true"></i>Federal</a></li>
-                    <li><a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-truck w-4 text-center text-slate-400" aria-hidden="true"></i>Estadual</a></li>
+                    <li><button type="button" data-area="Imposto de Renda" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-coins w-4 text-center text-slate-400" aria-hidden="true"></i>Imposto de Renda</button></li>
+                    <li><button type="button" data-area="Trabalhista" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-hourglass-half w-4 text-center text-slate-400" aria-hidden="true"></i>Trabalhista</button></li>
+                    <li><button type="button" data-area="Contabilidade" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-calculator w-4 text-center text-slate-400" aria-hidden="true"></i>Contabilidade</button></li>
+                    <li><button type="button" data-area="Comércio Exterior" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-earth-americas w-4 text-center text-slate-400" aria-hidden="true"></i>Comércio Exterior</button></li>
+                    <li><button type="button" data-area="Federal" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-flag w-4 text-center text-slate-400" aria-hidden="true"></i>Federal</button></li>
+                    <li><button type="button" data-area="Estadual" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-truck w-4 text-center text-slate-400" aria-hidden="true"></i>Estadual</button></li>
                   </ul>
                 </aside>
                 <div id="home-consultas" class="divide-y divide-slate-100 xl:col-span-3">
@@ -416,7 +433,7 @@
           </div>
         </section>
 
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <div class="max-lg:order-[11] grid grid-cols-1 gap-6 sm:grid-cols-2">
           <!-- Podcast: toca o episódio mais recente aqui mesmo (player do SoundCloud por trás dos controles, ver index.js) -->
           <section class="cf-card flex flex-col" aria-labelledby="titulo-podcast">
             <div class="cf-section-head">
@@ -492,7 +509,7 @@
         </div>
 
         <!-- Legislação -->
-        <section class="cf-card" aria-labelledby="titulo-legislacao">
+        <section class="max-lg:order-[7] cf-card" aria-labelledby="titulo-legislacao">
           <div class="cf-section-head">
             <h2 id="titulo-legislacao" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-gavel" aria-hidden="true"></i></span>Legislação</h2>
             <a href="legislacao.html" class="cf-link-more">Ver todas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
@@ -554,13 +571,13 @@
             </div>
           </div>
 
-          <div class="mt-5 space-y-4" id="legislacao-articles" aria-live="polite">
+          <div class="mt-5 space-y-4 max-sm:[&>*:nth-child(n+4)]:hidden" id="legislacao-articles" aria-live="polite">
             <!-- Carregado dinamicamente a partir de legislacao.json -->
           </div>
         </section>
 
         <!-- Cursos em destaque -->
-        <section class="cf-card" aria-labelledby="titulo-cursos">
+        <section class="max-lg:order-[15] cf-card" aria-labelledby="titulo-cursos">
           <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 id="titulo-cursos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>Cursos em Destaque</h2>
@@ -569,7 +586,7 @@
             <a href="/cursos" class="cf-link-more">Ver todos os cursos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
 
-          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 max-sm:[&>*:nth-child(n+3)]:hidden">
             <a href="/curso/30b7089f-588d-46e1-ab63-582fa07aa3a6" class="course-card group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-900/5">
               <div class="mb-3 flex min-h-6 flex-wrap gap-2">
                 <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-600/20">Confirmado</span>
@@ -631,12 +648,12 @@
       </div>
 
       <!-- ===================== BARRA LATERAL ===================== -->
-      <aside class="min-w-0 space-y-6" aria-label="Ferramentas e atalhos">
+      <aside class="min-w-0 max-lg:contents lg:space-y-6" aria-label="Ferramentas e atalhos">
 
         <!-- Agenda de Obrigações -->
         <!-- Atenção: não adicione "relative" aos elementos que envolvem o calendário;
              o popup de eventos é posicionado em relação à página. -->
-        <section class="cf-on-dark rounded-2xl bg-gradient-to-br from-blue-800 to-blue-950 p-5 text-white shadow-lg shadow-blue-900/10 sm:p-6" aria-labelledby="titulo-agenda">
+        <section class="max-lg:order-[3] cf-on-dark rounded-2xl bg-gradient-to-br from-blue-800 to-blue-950 p-5 text-white shadow-lg shadow-blue-900/10 sm:p-6" aria-labelledby="titulo-agenda">
           <h2 id="titulo-agenda" class="mb-4 flex items-center gap-3 text-lg font-semibold tracking-tight">
             <span class="inline-flex size-9 items-center justify-center rounded-lg bg-white/10 text-amber-400"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span>Agenda de Obrigações
           </h2>
@@ -709,7 +726,7 @@
         </div>-->      
 
         <!-- Aplicativos -->
-        <section class="cf-card" aria-labelledby="titulo-aplicativos">
+        <section class="max-lg:order-[8] cf-card" aria-labelledby="titulo-aplicativos">
           <div class="cf-section-head">
             <h2 id="titulo-aplicativos" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-window-restore" aria-hidden="true"></i></span>Aplicativos</h2>
           </div>
@@ -735,7 +752,7 @@
         </section>
 
         <!-- Reforma Tributária -->
-        <section class="relative overflow-hidden rounded-2xl cf-on-dark bg-gradient-to-br from-cyan-700 to-blue-800 p-6 text-white shadow-lg shadow-blue-900/10">
+        <section class="max-lg:order-[12] relative overflow-hidden rounded-2xl cf-on-dark bg-gradient-to-br from-cyan-700 to-blue-800 p-6 text-white shadow-lg shadow-blue-900/10">
           <div class="relative z-10">
             <span class="cf-eyebrow text-cyan-100">Hotsite especial</span>
             <h2 class="mt-1 mb-2 text-xl font-bold tracking-tight">Reforma Tributária</h2>
@@ -746,7 +763,7 @@
         </section>
 
         <!-- Códigos -->
-        <section class="cf-card" aria-labelledby="titulo-codigos">
+        <section class="max-lg:order-[9] cf-card" aria-labelledby="titulo-codigos">
           <div class="cf-section-head">
             <h2 id="titulo-codigos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-barcode" aria-hidden="true"></i></span>Códigos</h2>
           </div>
@@ -793,7 +810,7 @@
         </section>
 
         <!-- Regulamentos Estaduais -->
-        <section class="cf-card" aria-labelledby="titulo-regulamentos">
+        <section class="max-lg:order-[13] cf-card" aria-labelledby="titulo-regulamentos">
           <div class="cf-section-head">
             <h2 id="titulo-regulamentos" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-flag" aria-hidden="true"></i></span>Regulamentos Estaduais</h2>
           </div>
@@ -802,9 +819,10 @@
         </section>
 
         <!-- Tabelas Práticas -->
-        <section class="cf-card" aria-labelledby="titulo-tabelas">
+        <section class="max-lg:order-[10] cf-card" aria-labelledby="titulo-tabelas">
           <div class="cf-section-head">
             <h2 id="titulo-tabelas" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-table" aria-hidden="true"></i></span>Tabelas Práticas</h2>
+            <a href="tabelas.html" class="cf-link-more">Ver todas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
           </div>
           <div class="relative mb-3">
             <label for="tabelas-praticas-filtro" class="sr-only">Pesquisar em tabelas práticas</label>
@@ -888,11 +906,11 @@
             <li class="cf-row"><span>Verbas Rescisórias</span><a href="#" class="cf-row-link">Ver tabela</a></li>
           </ul>
           <p id="tabelas-praticas-vazio" class="hidden py-4 text-center text-sm text-slate-500">Nenhuma tabela encontrada.</p>
-          <button type="button" id="tabelas-praticas-toggle" class="cf-btn cf-btn-soft mt-4 w-full">Ver todas as tabelas</button>
+          <a href="tabelas.html" class="cf-btn cf-btn-soft mt-4 w-full">Ver todas as tabelas por área <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></a>
         </section>
 
         <!-- Indicadores e Taxas -->
-        <section class="cf-card" aria-labelledby="titulo-indicadores">
+        <section class="max-lg:order-[4] cf-card" aria-labelledby="titulo-indicadores">
           <div class="cf-section-head">
             <h2 id="titulo-indicadores" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>Indicadores e Taxas</h2>
           </div>
@@ -905,11 +923,11 @@
         </section>
 
         <!-- Principais Normas -->
-        <section class="cf-card" aria-labelledby="titulo-normas">
+        <section class="max-lg:order-[14] cf-card" aria-labelledby="titulo-normas">
           <div class="cf-section-head">
             <h2 id="titulo-normas" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>Principais Normas</h2>
           </div>
-          <ul id="principais-normas-lista" class="-mx-2 text-sm">
+          <ul id="principais-normas-lista" class="-mx-2 text-sm max-sm:[&>li:nth-child(n+7)]:hidden">
             <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Constituição Federal</span><span class="shrink-0 text-xs text-slate-500">CF/1988</span></a></li>
             <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Código Tributário Nacional</span><span class="shrink-0 text-xs text-slate-500">Lei nº 5.172/1966</span></a></li>
             <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Código Civil</span><span class="shrink-0 text-xs text-slate-500">Lei nº 10.406/2002</span></a></li>
@@ -923,15 +941,16 @@
             <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Normas Contábeis</span></a></li>
             <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Normas Regulamentadoras</span></a></li>
           </ul>
+          <button type="button" id="normas-mais" class="cf-btn cf-btn-soft mt-3 w-full sm:hidden" aria-controls="principais-normas-lista" aria-expanded="false"><i class="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>Mostrar todas as normas</button>
         </section>
 
         <!-- Banner -->
-        <a href="#" class="block overflow-hidden rounded-2xl border border-slate-200/80 shadow-sm transition hover:shadow-md">
+        <a href="#" class="max-lg:order-[16] block overflow-hidden rounded-2xl border border-slate-200/80 shadow-sm transition hover:shadow-md">
           <img src="img/banner_portal_site.jpg" alt="7 dias de acesso grátis ao Boletim Fiscal e Tributário Cenofisco. Depois, assinatura por R$ 262,00/mês" width="500" height="500" loading="lazy" decoding="async" class="h-auto w-full">
         </a>
 
         <!-- Canal do Usuário -->
-        <section class="cf-card" aria-labelledby="titulo-canal">
+        <section class="max-lg:order-[17] cf-card" aria-labelledby="titulo-canal">
           <div class="cf-section-head">
             <h2 id="titulo-canal" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-circle-user" aria-hidden="true"></i></span>Canal do Usuário</h2>
           </div>
@@ -974,7 +993,7 @@
         <ul class="space-y-1 text-sm">
           <li><a href="buscafiscal-resultados.html" class="cf-footer-link">Busca Fiscal</a></li>
           <li><a href="aplicativos.html" class="cf-footer-link">Aplicativos</a></li>
-          <li><a href="#titulo-tabelas" class="cf-footer-link">Tabelas Práticas</a></li>
+          <li><a href="tabelas.html" class="cf-footer-link">Tabelas Práticas</a></li>
           <li><a href="agenda-obrigacoes.html" class="cf-footer-link">Agenda de Obrigações</a></li>
         </ul>
       </nav>

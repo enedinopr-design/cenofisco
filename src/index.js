@@ -1276,19 +1276,58 @@ document.addEventListener('DOMContentLoaded', function () {
     if (homeConsultasEl) {
         const corConsulta = { 'Imposto de Renda': 'text-blue-700', 'Trabalhista': 'text-orange-700', 'Contabilidade': 'text-teal-700', 'Comércio Exterior': 'text-sky-700', 'Federal': 'text-violet-700', 'Estadual': 'text-emerald-700' };
         const chave = d => String(d || '').split('/').reverse().join('');
-        fetch('consultas.json')
-            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
-            .then(lista => {
-                if (!Array.isArray(lista) || !lista.length) return;
-                homeConsultasEl.innerHTML = lista.slice().sort((a, b) => chave(b.date).localeCompare(chave(a.date))).slice(0, 3).map(c => `
+        // Áreas da consultoria (lateral do bloco): filtram as últimas consultas; clicar de novo mostra todas
+        let consultas = [];
+        let areaConsulta = '';
+        const botoesArea = document.querySelectorAll('.cf-area-consulta');
+        const marcarArea = () => botoesArea.forEach(b => {
+            const on = b.dataset.area === areaConsulta;
+            b.setAttribute('aria-pressed', String(on));
+            b.classList.toggle('bg-blue-50', on);
+            b.classList.toggle('font-semibold', on);
+            b.classList.toggle('text-blue-800', on);
+        });
+        botoesArea.forEach(b => b.addEventListener('click', () => {
+            areaConsulta = areaConsulta === b.dataset.area ? '' : b.dataset.area;
+            marcarArea();
+            renderConsultas();
+        }));
+        function renderConsultas() {
+            if (!consultas.length) return;
+            const lista = consultas.filter(c => !areaConsulta || c.area === areaConsulta);
+            if (!lista.length) {
+                homeConsultasEl.innerHTML = `<p class="py-4 text-sm text-slate-500">Ainda não há consultas publicadas em <strong class="text-slate-700">${escapeHtml(areaConsulta)}</strong>. <button type="button" class="cf-consultas-todas cursor-pointer font-semibold text-blue-700 underline">Ver todas</button></p>`;
+                homeConsultasEl.querySelector('.cf-consultas-todas').addEventListener('click', () => { areaConsulta = ''; marcarArea(); renderConsultas(); });
+                return;
+            }
+            homeConsultasEl.innerHTML = lista.slice(0, 3).map(c => `
                     <article class="group py-4 first:pt-0 last:pb-0">
                         <span class="cf-eyebrow ${corConsulta[c.area] || 'text-blue-700'}">${escapeHtml(c.area)}</span>
                         <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="consulta.html?id=${encodeURIComponent(c.id)}" class="transition group-hover:text-blue-800">${escapeHtml(c.title)}</a></h3>
                         <p class="mt-1 line-clamp-2 text-sm text-slate-600">${escapeHtml(c.summary)}</p>
                         <p class="mt-2 text-xs text-slate-500">Respondido em ${escapeHtml(c.date)}</p>
                     </article>`).join('');
+        }
+        fetch('consultas.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(lista => {
+                if (!Array.isArray(lista) || !lista.length) return;
+                consultas = lista.slice().sort((a, b) => chave(b.date).localeCompare(chave(a.date)));
+                renderConsultas();
             })
             .catch(() => { /* mantém o conteúdo estático */ });
+    }
+
+    /* ------------------------------------------------------------------
+     * Principais Normas: no celular mostra 6; o botão revela as demais
+     * ------------------------------------------------------------------ */
+    const normasMais = document.getElementById('normas-mais');
+    if (normasMais) {
+        normasMais.addEventListener('click', () => {
+            document.getElementById('principais-normas-lista').classList.remove('max-sm:[&>li:nth-child(n+7)]:hidden');
+            normasMais.setAttribute('aria-expanded', 'true');
+            normasMais.hidden = true;
+        });
     }
 
     /* ------------------------------------------------------------------
