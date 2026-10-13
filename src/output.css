@@ -110,6 +110,7 @@
     --color-slate-700: oklch(37.2% 0.044 257.287);
     --color-slate-800: oklch(27.9% 0.041 260.031);
     --color-slate-900: oklch(20.8% 0.042 265.755);
+    --color-slate-950: oklch(12.9% 0.042 264.695);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-200: oklch(92.8% 0.006 264.531);
@@ -464,6 +465,9 @@
   }
   .-left-\[9999px\] {
     left: calc(9999px * -1);
+  }
+  .left-1 {
+    left: calc(var(--spacing) * 1);
   }
   .left-1\/2 {
     left: calc(1 / 2 * 100%);
@@ -865,6 +869,9 @@
   .max-h-\[60vh\] {
     max-height: 60vh;
   }
+  .max-h-\[min\(42rem\,calc\(100dvh-2rem\)\)\] {
+    max-height: min(42rem, calc(100dvh - 2rem));
+  }
   .max-h-\[min\(640px\,calc\(100dvh-7\.5rem\)\)\] {
     max-height: min(640px, calc(100dvh - 7.5rem));
   }
@@ -936,6 +943,9 @@
   }
   .w-\[calc\(100\%-2rem\)\] {
     width: calc(100% - 2rem);
+  }
+  .w-\[min\(30rem\,calc\(100\%-2rem\)\)\] {
+    width: min(30rem, calc(100% - 2rem));
   }
   .w-auto {
     width: auto;
@@ -1057,6 +1067,9 @@
   }
   .animate-pulse {
     animation: var(--animate-pulse);
+  }
+  .cursor-grab {
+    cursor: grab;
   }
   .cursor-not-allowed {
     cursor: not-allowed;
@@ -1998,9 +2011,6 @@
   .pb-6 {
     padding-bottom: calc(var(--spacing) * 6);
   }
-  .pb-12 {
-    padding-bottom: calc(var(--spacing) * 12);
-  }
   .pb-20 {
     padding-bottom: calc(var(--spacing) * 20);
   }
@@ -2015,6 +2025,9 @@
   }
   .pl-2 {
     padding-left: calc(var(--spacing) * 2);
+  }
+  .pl-2\.5 {
+    padding-left: calc(var(--spacing) * 2.5);
   }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
@@ -2405,6 +2418,9 @@
     --tw-numeric-spacing: tabular-nums;
     font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
   }
+  .line-through {
+    text-decoration-line: line-through;
+  }
   .no-underline {
     text-decoration-line: none;
   }
@@ -2453,6 +2469,10 @@
   }
   .shadow-2xl {
     --tw-shadow: 0 25px 50px -12px var(--tw-shadow-color, rgb(0 0 0 / 0.25));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-\[0_1px_2px_rgba\(15\,23\,42\,0\.05\)\] {
+    --tw-shadow: 0 1px 2px var(--tw-shadow-color, rgba(15,23,42,0.05));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-lg {
@@ -2801,6 +2821,12 @@
       opacity: 100%;
     }
   }
+  .peer-checked\:translate-x-4 {
+    &:is(:where(.peer):checked ~ *) {
+      --tw-translate-x: calc(var(--spacing) * 4);
+      translate: var(--tw-translate-x) var(--tw-translate-y);
+    }
+  }
   .peer-checked\:border-amber-300 {
     &:is(:where(.peer):checked ~ *) {
       border-color: var(--color-amber-300);
@@ -2842,6 +2868,11 @@
   .peer-checked\:bg-blue-100 {
     &:is(:where(.peer):checked ~ *) {
       background-color: var(--color-blue-100);
+    }
+  }
+  .peer-checked\:bg-blue-700 {
+    &:is(:where(.peer):checked ~ *) {
+      background-color: var(--color-blue-700);
     }
   }
   .peer-checked\:bg-blue-900 {
@@ -2914,6 +2945,11 @@
   .placeholder\:text-slate-500 {
     &::placeholder {
       color: var(--color-slate-500);
+    }
+  }
+  .backdrop\:bg-\[rgb\(2_6_23\/0\.55\)\] {
+    &::backdrop {
+      background-color: rgb(2 6 23/0.55);
     }
   }
   .backdrop\:bg-slate-900\/50 {
@@ -3500,14 +3536,29 @@
       outline-style: none;
     }
   }
+  .active\:cursor-grabbing {
+    &:active {
+      cursor: grabbing;
+    }
+  }
   .disabled\:pointer-events-none {
     &:disabled {
       pointer-events: none;
     }
   }
+  .disabled\:cursor-default {
+    &:disabled {
+      cursor: default;
+    }
+  }
   .disabled\:cursor-not-allowed {
     &:disabled {
       cursor: not-allowed;
+    }
+  }
+  .disabled\:opacity-30 {
+    &:disabled {
+      opacity: 30%;
     }
   }
   .disabled\:opacity-40 {
@@ -3518,6 +3569,15 @@
   .disabled\:opacity-50 {
     &:disabled {
       opacity: 50%;
+    }
+  }
+  .disabled\:hover\:bg-transparent {
+    &:disabled {
+      &:hover {
+        @media (hover: hover) {
+          background-color: transparent;
+        }
+      }
     }
   }
   .supports-\[backdrop-filter\]\:bg-white\/85 {
@@ -3957,11 +4017,6 @@
   .sm\:pb-6 {
     @media (width >= 40rem) {
       padding-bottom: calc(var(--spacing) * 6);
-    }
-  }
-  .sm\:pb-16 {
-    @media (width >= 40rem) {
-      padding-bottom: calc(var(--spacing) * 16);
     }
   }
   .sm\:pb-28 {

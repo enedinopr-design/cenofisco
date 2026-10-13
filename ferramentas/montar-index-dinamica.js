@@ -130,7 +130,7 @@ const FAIXAS = [
 ];
 const faixa = (f, corpo) => `
     <!-- ===================== FAIXA: ${f.titulo.toUpperCase()} ===================== -->
-    <section id="faixa-${f.id}" class="cf-faixa${f.fundo ? ' cf-faixa-destaque' : ''}" aria-labelledby="faixa-titulo-${f.id}" data-faixa>
+    <section id="faixa-${f.id}" class="cf-faixa${f.fundo ? ' cf-faixa-destaque' : ''}" aria-labelledby="faixa-titulo-${f.id}" data-faixa data-bloco="${f.id}" data-rotulo="${f.rotulo}" data-icone="${f.icone}">
       <div class="container mx-auto px-4">
         <header class="cf-faixa-cabecalho">
           <span class="cf-selo"><i class="fa-solid ${f.icone}" aria-hidden="true"></i>${f.rotulo}</span>
@@ -182,7 +182,7 @@ const NUMEROS = [
 ];
 const numeros = `
     <!-- ===================== NÚMEROS DO PORTAL ===================== -->
-    <section class="border-y border-slate-200/80 bg-white py-10 sm:py-12" aria-label="O portal em números">
+    <section class="border-y border-slate-200/80 bg-white py-10 sm:py-12" aria-label="O portal em números" data-bloco="numeros" data-rotulo="Números do portal" data-icone="fa-chart-simple">
       <div class="container mx-auto px-4">
         <dl class="grid grid-cols-2 gap-x-4 gap-y-8 text-center lg:grid-cols-4">
 ${NUMEROS.map(n => `          <div class="flex flex-col-reverse"><dt class="cf-numero-legenda">${n.texto}</dt><dd class="cf-numero" data-numero="${n.chave}">${n.valor}</dd></div>`).join('\n')}
@@ -192,7 +192,7 @@ ${NUMEROS.map(n => `          <div class="flex flex-col-reverse"><dt class="cf-n
 
 const cta = `
     <!-- ===================== CHAMADA: CONSULTORIA ===================== -->
-    <section class="container mx-auto px-4 pb-12 sm:pb-16" aria-labelledby="cta-titulo">
+    <section class="container mx-auto px-4 py-10 sm:py-12" aria-labelledby="cta-titulo" data-bloco="chamada" data-rotulo="Chamada da Consultoria" data-icone="fa-headset">
       <div class="cf-cta cf-on-dark">
         <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
           <div class="max-w-2xl">
@@ -215,6 +215,7 @@ const FAQ = [
     ['Como acompanho os prazos das obrigações?', 'Na <a href="agenda-obrigacoes.html">Agenda de Obrigações</a>. As obrigações que você salvar na agenda aparecem no aviso do topo desta página quando estiverem perto de vencer.'],
     ['Onde encontro as tabelas práticas?', 'Em <a href="tabelas.html">Tabelas Práticas</a>: as tabelas estão separadas por área, com busca e filtro para mostrar só as disponíveis.'],
     ['O assistente IA substitui a consultoria?', 'Não. O assistente faz uma pesquisa rápida na base do portal e indica onde está a informação. Para analisar um caso específico, <a href="#consultoria-cenofisco">fale com a Consultoria</a>.'],
+    ['Posso mudar a ordem das seções desta página?', 'Sim. Use o botão <i class="fa-solid fa-sliders" aria-hidden="true"></i> <strong>Personalizar</strong> no menu de seções: arraste ou use as setas para mudar a ordem e desligue as seções que não quer ver. A escolha fica salva neste navegador.'],
     ['Como uso o tema escuro?', 'Use o botão <i class="fa-solid fa-moon" aria-hidden="true"></i> na barra superior. A escolha fica salva neste navegador.']
 ];
 const faq = `        <div class="mx-auto max-w-3xl space-y-3">
@@ -237,6 +238,29 @@ ${b.agenda}
 </section>
 </div>`;
 
+// Janela "Personalizar a página": a lista é montada por index-dinamica.js a partir dos [data-bloco]
+const personalizar = `
+    <!-- ===================== PERSONALIZAR A PÁGINA ===================== -->
+    <dialog id="personalizar-dialog" class="m-auto w-[min(30rem,calc(100%-2rem))] rounded-2xl bg-white p-0 text-slate-800 shadow-2xl backdrop:bg-[rgb(2_6_23/0.55)]" aria-labelledby="personalizar-titulo">
+      <div class="flex max-h-[min(42rem,calc(100dvh-2rem))] flex-col">
+        <header class="flex items-start gap-3 border-b border-slate-200 px-5 py-4">
+          <span class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700"><i class="fa-solid fa-sliders" aria-hidden="true"></i></span>
+          <div class="min-w-0 flex-1">
+            <h2 id="personalizar-titulo" class="text-lg font-bold text-slate-900">Personalizar a página</h2>
+            <p class="mt-0.5 text-sm text-slate-600">Arraste ou use as setas para mudar a ordem. Desligue o que não quer ver.</p>
+          </div>
+          <button type="button" class="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-800" data-personalizar-fechar aria-label="Fechar"><i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i></button>
+        </header>
+        <ol id="personalizar-lista" class="flex-1 space-y-2 overflow-y-auto overscroll-contain px-5 py-4" aria-label="Seções da página, na ordem em que aparecem"></ol>
+        <p id="personalizar-aviso" class="sr-only" aria-live="polite"></p>
+        <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-3">
+          <button type="button" id="personalizar-restaurar" class="cf-btn cf-btn-secondary"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>Restaurar padrão</button>
+          <span class="text-xs text-slate-500">Salvo neste navegador</span>
+          <button type="button" class="cf-btn cf-btn-primary" data-personalizar-fechar>Concluir</button>
+        </footer>
+      </div>
+    </dialog>`;
+
 const corpoMain = `
   <main id="conteudo">
     <h1 class="sr-only">Cenofisco – Portal Tributário, Fiscal e Trabalhista</h1>
@@ -244,12 +268,15 @@ ${hero}
 
     <!-- Menu das faixas: fica preso abaixo do cabeçalho e marca a faixa visível -->
     <nav id="faixas-nav" class="cf-faixas-nav" aria-label="Seções da página">
-      <div class="container mx-auto px-4">
-        <ul class="flex gap-1 overflow-x-auto py-2 [scrollbar-width:none] lg:justify-center [&::-webkit-scrollbar]:hidden" data-scroll-hint>
+      <div class="container mx-auto flex items-center gap-2 px-4">
+        <ul id="faixas-lista" class="flex min-w-0 flex-1 gap-1 overflow-x-auto py-2 [scrollbar-width:none] lg:justify-center [&::-webkit-scrollbar]:hidden" data-scroll-hint>
 ${FAIXAS.map(f => `          <li><a href="#faixa-${f.id}" class="cf-faixas-link" data-alvo="faixa-${f.id}"><i class="fa-solid ${f.icone} text-xs" aria-hidden="true"></i>${f.rotulo}</a></li>`).join('\n')}
         </ul>
+        <button type="button" id="personalizar-abrir" class="cf-btn cf-btn-secondary shrink-0 px-3 py-1.5" aria-haspopup="dialog" aria-controls="personalizar-dialog"><i class="fa-solid fa-sliders" aria-hidden="true"></i><span class="max-sm:sr-only">Personalizar</span></button>
       </div>
     </nav>
+    <!-- Blocos que a pessoa pode reordenar/esconder (Personalizar; index-dinamica.js) -->
+    <div id="home-blocos">
 ${faixa(FAIXAS[0], grade('lg:grid-cols-3', [span2(b.noticias), colunaAgenda]))}
 ${faixa(FAIXAS[1], grade('lg:grid-cols-3', [span2(b.busca), b.codigos]) + '\n' + grade('mt-5 lg:mt-6 md:grid-cols-2 lg:grid-cols-3', [b.indicadores, b.tabelas, b.aplicativos]))}
 ${faixa(FAIXAS[2], grade('md:grid-cols-2 xl:grid-cols-3', [b.procedimentos, b.legislacao, `<div class="min-w-0 md:col-span-2 xl:col-span-1">\n${b.consultoria}\n</div>`]))}
@@ -261,6 +288,8 @@ ${b.canal}
 </div>`, b.normas, b.banner]))}
 ${cta}
 ${faixa(FAIXAS[5], faq)}
+    </div>
+${personalizar}
   </main>`;
 
 const mIni = original.indexOf('  <main id="conteudo"');

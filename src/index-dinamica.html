@@ -138,8 +138,8 @@
 
     <!-- Menu das faixas: fica preso abaixo do cabeçalho e marca a faixa visível -->
     <nav id="faixas-nav" class="cf-faixas-nav" aria-label="Seções da página">
-      <div class="container mx-auto px-4">
-        <ul class="flex gap-1 overflow-x-auto py-2 [scrollbar-width:none] lg:justify-center [&::-webkit-scrollbar]:hidden" data-scroll-hint>
+      <div class="container mx-auto flex items-center gap-2 px-4">
+        <ul id="faixas-lista" class="flex min-w-0 flex-1 gap-1 overflow-x-auto py-2 [scrollbar-width:none] lg:justify-center [&::-webkit-scrollbar]:hidden" data-scroll-hint>
           <li><a href="#faixa-destaques" class="cf-faixas-link" data-alvo="faixa-destaques"><i class="fa-solid fa-bolt text-xs" aria-hidden="true"></i>Destaques</a></li>
           <li><a href="#faixa-ferramentas" class="cf-faixas-link" data-alvo="faixa-ferramentas"><i class="fa-solid fa-screwdriver-wrench text-xs" aria-hidden="true"></i>Ferramentas</a></li>
           <li><a href="#faixa-conteudo" class="cf-faixas-link" data-alvo="faixa-conteudo"><i class="fa-solid fa-book-open text-xs" aria-hidden="true"></i>Conteúdo técnico</a></li>
@@ -147,11 +147,14 @@
           <li><a href="#faixa-referencias" class="cf-faixas-link" data-alvo="faixa-referencias"><i class="fa-solid fa-bookmark text-xs" aria-hidden="true"></i>Referências</a></li>
           <li><a href="#faixa-duvidas" class="cf-faixas-link" data-alvo="faixa-duvidas"><i class="fa-solid fa-circle-question text-xs" aria-hidden="true"></i>Dúvidas</a></li>
         </ul>
+        <button type="button" id="personalizar-abrir" class="cf-btn cf-btn-secondary shrink-0 px-3 py-1.5" aria-haspopup="dialog" aria-controls="personalizar-dialog"><i class="fa-solid fa-sliders" aria-hidden="true"></i><span class="max-sm:sr-only">Personalizar</span></button>
       </div>
     </nav>
+    <!-- Blocos que a pessoa pode reordenar/esconder (Personalizar; index-dinamica.js) -->
+    <div id="home-blocos">
 
     <!-- ===================== FAIXA: O QUE MUDOU E O QUE VENCE ===================== -->
-    <section id="faixa-destaques" class="cf-faixa" aria-labelledby="faixa-titulo-destaques" data-faixa>
+    <section id="faixa-destaques" class="cf-faixa" aria-labelledby="faixa-titulo-destaques" data-faixa data-bloco="destaques" data-rotulo="Destaques" data-icone="fa-bolt">
       <div class="container mx-auto px-4">
         <header class="cf-faixa-cabecalho">
           <span class="cf-selo"><i class="fa-solid fa-bolt" aria-hidden="true"></i>Destaques</span>
@@ -316,7 +319,7 @@
     </section>
 
     <!-- ===================== FAIXA: FERRAMENTAS PARA O DIA A DIA FISCAL ===================== -->
-    <section id="faixa-ferramentas" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-ferramentas" data-faixa>
+    <section id="faixa-ferramentas" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-ferramentas" data-faixa data-bloco="ferramentas" data-rotulo="Ferramentas" data-icone="fa-screwdriver-wrench">
       <div class="container mx-auto px-4">
         <header class="cf-faixa-cabecalho">
           <span class="cf-selo"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>Ferramentas</span>
@@ -607,7 +610,7 @@
     </section>
 
     <!-- ===================== FAIXA: PROCEDIMENTOS, LEGISLAÇÃO E CONSULTORIA ===================== -->
-    <section id="faixa-conteudo" class="cf-faixa" aria-labelledby="faixa-titulo-conteudo" data-faixa>
+    <section id="faixa-conteudo" class="cf-faixa" aria-labelledby="faixa-titulo-conteudo" data-faixa data-bloco="conteudo" data-rotulo="Conteúdo técnico" data-icone="fa-book-open">
       <div class="container mx-auto px-4">
         <header class="cf-faixa-cabecalho">
           <span class="cf-selo"><i class="fa-solid fa-book-open" aria-hidden="true"></i>Conteúdo técnico</span>
@@ -826,7 +829,7 @@
     </section>
 
     <!-- ===================== FAIXA: APRENDA E ACOMPANHE ===================== -->
-    <section id="faixa-midia" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-midia" data-faixa>
+    <section id="faixa-midia" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-midia" data-faixa data-bloco="midia" data-rotulo="Aprenda" data-icone="fa-graduation-cap">
       <div class="container mx-auto px-4">
         <header class="cf-faixa-cabecalho">
           <span class="cf-selo"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>Aprenda</span>
@@ -996,7 +999,7 @@
     </section>
 
     <!-- ===================== NÚMEROS DO PORTAL ===================== -->
-    <section class="border-y border-slate-200/80 bg-white py-10 sm:py-12" aria-label="O portal em números">
+    <section class="border-y border-slate-200/80 bg-white py-10 sm:py-12" aria-label="O portal em números" data-bloco="numeros" data-rotulo="Números do portal" data-icone="fa-chart-simple">
       <div class="container mx-auto px-4">
         <dl class="grid grid-cols-2 gap-x-4 gap-y-8 text-center lg:grid-cols-4">
           <div class="flex flex-col-reverse"><dt class="cf-numero-legenda">tabelas práticas organizadas por área</dt><dd class="cf-numero" data-numero="tabelas">73</dd></div>
@@ -1008,7 +1011,7 @@
     </section>
 
     <!-- ===================== FAIXA: REFERÊNCIAS PARA CONSULTA ===================== -->
-    <section id="faixa-referencias" class="cf-faixa" aria-labelledby="faixa-titulo-referencias" data-faixa>
+    <section id="faixa-referencias" class="cf-faixa" aria-labelledby="faixa-titulo-referencias" data-faixa data-bloco="referencias" data-rotulo="Referências" data-icone="fa-bookmark">
       <div class="container mx-auto px-4">
         <header class="cf-faixa-cabecalho">
           <span class="cf-selo"><i class="fa-solid fa-bookmark" aria-hidden="true"></i>Referências</span>
@@ -1064,7 +1067,7 @@
     </section>
 
     <!-- ===================== CHAMADA: CONSULTORIA ===================== -->
-    <section class="container mx-auto px-4 pb-12 sm:pb-16" aria-labelledby="cta-titulo">
+    <section class="container mx-auto px-4 py-10 sm:py-12" aria-labelledby="cta-titulo" data-bloco="chamada" data-rotulo="Chamada da Consultoria" data-icone="fa-headset">
       <div class="cf-cta cf-on-dark">
         <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
           <div class="max-w-2xl">
@@ -1082,7 +1085,7 @@
     </section>
 
     <!-- ===================== FAIXA: PERGUNTAS FREQUENTES SOBRE O PORTAL ===================== -->
-    <section id="faixa-duvidas" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-duvidas" data-faixa>
+    <section id="faixa-duvidas" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-duvidas" data-faixa data-bloco="duvidas" data-rotulo="Dúvidas" data-icone="fa-circle-question">
       <div class="container mx-auto px-4">
         <header class="cf-faixa-cabecalho">
           <span class="cf-selo"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>Dúvidas</span>
@@ -1095,10 +1098,33 @@
           <details class="cf-faq"><summary>Como acompanho os prazos das obrigações?</summary><p class="cf-faq-resposta">Na <a href="agenda-obrigacoes.html">Agenda de Obrigações</a>. As obrigações que você salvar na agenda aparecem no aviso do topo desta página quando estiverem perto de vencer.</p></details>
           <details class="cf-faq"><summary>Onde encontro as tabelas práticas?</summary><p class="cf-faq-resposta">Em <a href="tabelas.html">Tabelas Práticas</a>: as tabelas estão separadas por área, com busca e filtro para mostrar só as disponíveis.</p></details>
           <details class="cf-faq"><summary>O assistente IA substitui a consultoria?</summary><p class="cf-faq-resposta">Não. O assistente faz uma pesquisa rápida na base do portal e indica onde está a informação. Para analisar um caso específico, <a href="#consultoria-cenofisco">fale com a Consultoria</a>.</p></details>
+          <details class="cf-faq"><summary>Posso mudar a ordem das seções desta página?</summary><p class="cf-faq-resposta">Sim. Use o botão <i class="fa-solid fa-sliders" aria-hidden="true"></i> <strong>Personalizar</strong> no menu de seções: arraste ou use as setas para mudar a ordem e desligue as seções que não quer ver. A escolha fica salva neste navegador.</p></details>
           <details class="cf-faq"><summary>Como uso o tema escuro?</summary><p class="cf-faq-resposta">Use o botão <i class="fa-solid fa-moon" aria-hidden="true"></i> na barra superior. A escolha fica salva neste navegador.</p></details>
         </div>
       </div>
     </section>
+    </div>
+
+    <!-- ===================== PERSONALIZAR A PÁGINA ===================== -->
+    <dialog id="personalizar-dialog" class="m-auto w-[min(30rem,calc(100%-2rem))] rounded-2xl bg-white p-0 text-slate-800 shadow-2xl backdrop:bg-[rgb(2_6_23/0.55)]" aria-labelledby="personalizar-titulo">
+      <div class="flex max-h-[min(42rem,calc(100dvh-2rem))] flex-col">
+        <header class="flex items-start gap-3 border-b border-slate-200 px-5 py-4">
+          <span class="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700"><i class="fa-solid fa-sliders" aria-hidden="true"></i></span>
+          <div class="min-w-0 flex-1">
+            <h2 id="personalizar-titulo" class="text-lg font-bold text-slate-900">Personalizar a página</h2>
+            <p class="mt-0.5 text-sm text-slate-600">Arraste ou use as setas para mudar a ordem. Desligue o que não quer ver.</p>
+          </div>
+          <button type="button" class="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-slate-500 transition hover:bg-slate-100 hover:text-slate-800" data-personalizar-fechar aria-label="Fechar"><i class="fa-solid fa-xmark text-lg" aria-hidden="true"></i></button>
+        </header>
+        <ol id="personalizar-lista" class="flex-1 space-y-2 overflow-y-auto overscroll-contain px-5 py-4" aria-label="Seções da página, na ordem em que aparecem"></ol>
+        <p id="personalizar-aviso" class="sr-only" aria-live="polite"></p>
+        <footer class="flex flex-wrap items-center justify-between gap-3 border-t border-slate-200 px-5 py-3">
+          <button type="button" id="personalizar-restaurar" class="cf-btn cf-btn-secondary"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>Restaurar padrão</button>
+          <span class="text-xs text-slate-500">Salvo neste navegador</span>
+          <button type="button" class="cf-btn cf-btn-primary" data-personalizar-fechar>Concluir</button>
+        </footer>
+      </div>
+    </dialog>
   </main>
 
   <!-- ===================== RODAPÉ ===================== -->
