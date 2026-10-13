@@ -1,0 +1,35 @@
+[
+    {
+        "id": "venda-a-ordem-devolucao-retorno-ao-vendedor-original",
+        "area": "Estadual",
+        "date": "08/10/2026",
+        "title": "Na operação de venda à ordem, em caso de devolução, é possível o retorno diretamente ao estabelecimento do vendedor remetente (vendedor original)?",
+        "summary": "Sim. Em resposta à Consulta nº 50/2026, o Fisco admite o retorno da mercadoria diretamente ao estabelecimento vendedor originário, na recusa ou na devolução pelo destinatário final.",
+        "content": "<p>Sim. Em resposta à Consulta nº 50/2026, o Fisco dispõe que, da mesma forma que a mercadoria, quando da aquisição, não necessita transitar pelo estabelecimento adquirente originário, também poderá retornar diretamente ao estabelecimento vendedor originário, na hipótese de o destinatário final recusar seu recebimento ou proceder, em etapa posterior, sua devolução, haja vista não haver regra na legislação vedando esse procedimento.</p><p><strong>Base legal:</strong> citada no texto.</p>",
+        "nota": "As respostas estão em conformidade com a legislação vigente, da época de sua elaboração."
+    },
+    {
+        "id": "como-declarar-investimentos-no-exterior",
+        "area": "Imposto de Renda",
+        "date": "29/04/2026",
+        "title": "Como declarar investimentos no exterior?",
+        "summary": "Entenda as regras e os cuidados necessários para a declaração de ativos fora do país.",
+        "exemplo": true
+    },
+    {
+        "id": "adicional-noturno-jornada-mista",
+        "area": "Trabalhista",
+        "date": "28/04/2026",
+        "title": "Como calcular o adicional noturno de empregado em jornada mista?",
+        "summary": "Orientações sobre a apuração das horas noturnas e seus reflexos nas demais verbas.",
+        "exemplo": true
+    },
+    {
+        "id": "tratamento-contabil-bonificacoes-em-mercadorias",
+        "area": "Contabilidade",
+        "date": "27/04/2026",
+        "title": "Qual o tratamento contábil de bonificações recebidas em mercadorias?",
+        "summary": "Esclarecimentos sobre o registro contábil e os reflexos fiscais das bonificações.",
+        "exemplo": true
+    }
+]
