@@ -110,6 +110,8 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'savedLegislacao', label: 'Legislação', icon: 'fa-scale-balanced', pagina: 'legislacao.html', meta: d => d.date },
         { key: 'savedNoticias', label: 'Notícias', icon: 'fa-newspaper', pagina: 'noticias.html', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
         { key: 'savedProcedimentos', label: 'Procedimentos', icon: 'fa-list-check', pagina: 'procedimentos.html', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
+        { key: 'savedConsultas', label: 'Consultas', icon: 'fa-comments', pagina: 'index.html#consultoria-cenofisco', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
+        { key: 'savedPodcasts', label: 'Podcasts', icon: 'fa-microphone', pagina: 'podcasts.html', meta: d => [d.area, d.date, d.duracao].filter(Boolean).join(' · ') },
         { key: 'savedRegulations', label: 'Regulamentos', icon: 'fa-book', pagina: 'regulamentos.html', meta: d => d.sigla },
         { key: 'savedAplicativos', label: 'Ferramentas', icon: 'fa-screwdriver-wrench', pagina: 'aplicativos.html', meta: () => '' },
         { key: 'monitorNcm', label: 'NCMs monitoradas', icon: 'fa-bell', pagina: 'buscafiscal-resultados.html', meta: d => d.date ? `Monitorada desde ${d.date}` : '' },

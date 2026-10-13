@@ -14,7 +14,7 @@
     const dataBr = s => { const [d, m, a] = String(s).split('/').map(Number); return new Date(a, m - 1, d); };
     const MESES = ['janeiro', 'fevereiro', 'marco', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
     const PARADAS = new Set('a o as os de da do das dos e em no na nos nas um uma para por com sem qual quais que como sobre ser sao e eh me meu minha the tem ter quero saber aliquota aliquotas imposto impostos tributo tributacao ncm ipi ii pis cofins icms st substituicao tributaria importacao interestadual qual-e mais ate entre noticia noticias legislacao procedimento procedimentos'.split(' '));
-    const SUGESTOES = ['IPI da cerveja', 'ICMS-ST cerveja PR → SP', 'Obrigações de novembro', 'Notícias sobre Simples Nacional'];
+    const SUGESTOES = ['IPI da cerveja', 'Alíquota de cerveja no Acre', 'Salário mínimo 2026', 'cClassTrib 200003', 'Venda à ordem com devolução', 'Obrigações de novembro'];
 
     // ---------- Interface ----------
     const fab = document.createElement('button');
@@ -96,7 +96,7 @@
     const chips = lista => `<div class="flex flex-wrap gap-1.5 pt-1">${lista.map(s => `<button type="button" data-sugestao="${esc(s)}" class="rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-800 hover:bg-blue-100">${esc(s)}</button>`).join('')}</div>`;
 
     function boasVindas() {
-        bolha(`<p>Olá! Sou o assistente do Cenofisco. Posso pesquisar <strong>NCMs e alíquotas</strong>, <strong>ICMS-ST</strong>, <strong>prazos da agenda</strong>, <strong>legislação</strong> e <strong>notícias</strong>.</p>
+        bolha(`<p>Olá! Sou o assistente do Cenofisco. Posso pesquisar <strong>NCMs e alíquotas</strong>, <strong>ICMS-ST</strong>, <strong>CST e cClassTrib</strong>, <strong>tabelas práticas</strong> (alíquotas internas e salário mínimo), <strong>consultas</strong>, <strong>procedimentos</strong>, <strong>prazos da agenda</strong>, <strong>legislação</strong> e <strong>notícias</strong>.</p>
             <p class="text-xs text-slate-600">Versão de demonstração: as respostas vêm de uma busca na base do portal, ainda sem IA.</p>${chips(SUGESTOES)}`);
     }
 
@@ -122,13 +122,20 @@
     }
 
     // ---------- Base (JSONs do portal) ----------
+    // Para incluir uma fonte nova: acrescente o arquivo aqui e use-o em responder()/respostaConteudo().
     let basePromise;
     function carregarBase() {
         const get = url => fetch(url).then(r => (r.ok ? r.json() : null)).catch(() => null);
-        basePromise ||= Promise.all(['buscafiscal.json', 'agenda.json', 'legislacao.json', 'noticias.json', 'procedimentos.json'].map(get))
-            .then(([fiscal, agenda, legislacao, noticias, procedimentos]) => ({ fiscal, agenda: agenda || [], legislacao: legislacao || [], noticias: noticias || [], procedimentos: procedimentos || [] }));
+        const arquivos = ['buscafiscal.json', 'agenda.json', 'legislacao.json', 'noticias.json', 'procedimentos.json',
+            'consultas.json', 'cclasstrib.json', 'tabelas/salario-minimo.json', 'tabelas/aliquotas-internas-icms-fcp.json'];
+        basePromise ||= Promise.all(arquivos.map(get))
+            .then(([fiscal, agenda, legislacao, noticias, procedimentos, consultas, cclasstrib, salario, aliquotas]) => ({
+                fiscal, agenda: agenda || [], legislacao: legislacao || [], noticias: noticias || [], procedimentos: procedimentos || [],
+                consultas: consultas || [], cclasstrib, salario, aliquotas
+            }));
         return basePromise;
     }
+    const semHtml = h => String(h || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
 
     const termos = q => norm(q).replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(t => t.length >= 3 && !PARADAS.has(t) && !/^\d+$/.test(t));
     const pontuar = (texto, ts) => { const n = norm(texto); return ts.reduce((s, t) => s + (n.includes(t) ? 1 : 0), 0); };
@@ -138,6 +145,10 @@
         const base = await carregarBase();
         const q = norm(pergunta);
         if (/^(oi|ola|bom dia|boa tarde|boa noite)\b/.test(q) && q.length < 20) return `<p>Olá! Em que posso ajudar?</p>${chips(SUGESTOES)}`;
+        if (/salario minimo/.test(q) && base.salario) return respostaSalario(base, q);
+        if ((/cclasstrib|classificacao tributaria|\bcst\b/.test(q) || /^\s*\d{6}\s*$/.test(q)) && base.cclasstrib) return respostaClassTrib(base, pergunta, q);
+        const aliquota = /aliquota/.test(q) && base.aliquotas ? respostaAliquotaInterna(base, pergunta, q) : null;
+        if (aliquota) return aliquota;
         if (/agenda|obrigac|vencimento|vence|prazo/.test(q)) return respostaAgenda(base, q);
         const fiscal = respostaFiscal(base, pergunta, q);
         if (fiscal) return fiscal;
@@ -216,16 +227,73 @@
         return partes.join('');
     }
 
+    // Salário mínimo: valor vigente ou de um ano citado (tabelas/salario-minimo.json)
+    function respostaSalario(base, q) {
+        const linhas = base.salario.linhas || [];
+        const ano = (q.match(/\b(19[4-9]\d|20\d\d)\b/) || [])[1];
+        const doAno = ano ? linhas.filter(l => l.vigencia.endsWith(ano)) : [linhas[0]];
+        const link = '<p><a href="tabela.html?id=salario-minimo">Ver a série histórica completa</a></p>';
+        if (!doAno.length || !doAno[0]) return `<p>Não encontrei valor do salário mínimo para ${esc(ano)}.</p>${link}`;
+        const mais = doAno.length > 6 ? `<p class="text-xs text-slate-600">E mais ${doAno.length - 6} valores neste ano (período de inflação alta).</p>` : '';
+        const itens = doAno.slice(0, 6).map(l => `<li><strong>${esc(l.mensal)}</strong> a partir de ${esc(l.vigencia)}${l.ato ? ` (${esc(l.ato)})` : ''}${l.real ? `<br><span class="text-slate-700">Reajuste ${esc(l.reajuste)} · INPC ${esc(l.inpc)} · ganho real <strong>${esc(l.real)}</strong></span>` : ''}</li>`).join('');
+        return `<p>Salário mínimo nacional${ano ? ` em ${esc(ano)}` : ' vigente'}:</p><ul class="list-disc space-y-1 pl-5">${itens}</ul>${mais}${link}`;
+    }
+
+    // CST e cClassTrib do IBS/CBS (cclasstrib.json)
+    function respostaClassTrib(base, pergunta, q) {
+        const num = (pergunta.match(/\d{3,6}/) || [''])[0];
+        const ts = termos(pergunta).filter(t => !['cclasstrib', 'classificacao', 'cst', 'ibs', 'cbs'].includes(t));
+        const achados = [];
+        base.cclasstrib.cst.forEach(c => c.classificacoes.forEach(t => {
+            const ok = num
+                ? (num.length === 3 ? c.cst === num : t.codigo.startsWith(num))
+                : ts.length && ts.every(w => norm(`${c.nome} ${t.nome} ${t.descricao} ${t.anexo || ''}`).includes(w));
+            if (ok) achados.push({ c, t });
+        }));
+        const verTodos = `cst-cclasstrib.html?q=${encodeURIComponent(num || ts.join(' '))}`;
+        if (!achados.length) return `<p>Não encontrei CST ou cClassTrib para essa pesquisa.</p><p><a href="cst-cclasstrib.html">Abrir a tabela de CST e cClassTrib</a></p>`;
+        const red = t => (t.redIbs || t.redCbs ? ` · redução IBS ${t.redIbs}% / CBS ${t.redCbs}%` : '');
+        const itens = achados.slice(0, 4).map(({ c, t }) => `<li><a href="cst-cclasstrib.html?q=${t.codigo}">${t.codigo}</a> — ${esc(t.nome || t.descricao)}<br><span class="text-slate-700">CST ${c.cst} (${esc(c.nome)})${red(t)}</span></li>`).join('');
+        return `<p>${achados.length === 1 ? 'Encontrei esta classificação' : `Encontrei ${achados.length} classificações`} do IBS e da CBS:</p><ul class="list-disc space-y-1 pl-5">${itens}</ul>
+            <p><a href="${verTodos}">${achados.length > 4 ? `Ver todas as ${achados.length}` : 'Ver detalhes'}</a></p>
+            <p class="text-xs text-slate-600">Fonte: tabela oficial do Portal da Conformidade Fácil.</p>`;
+    }
+
+    // Alíquotas internas do ICMS por estado (tabelas/aliquotas-internas-icms-fcp.json)
+    function respostaAliquotaInterna(base, pergunta, q) {
+        const estados = base.aliquotas.estados || {};
+        const siglas = (pergunta.match(/\b[A-Z]{2}\b/g) || []).filter(s => estados[s]);
+        // Nome do estado como palavra inteira, dos nomes mais longos para os mais curtos ("Paraná" antes de "Pará")
+        const porNome = Object.keys(estados).sort((a, b) => estados[b].nome.length - estados[a].nome.length)
+            .find(s => new RegExp(`(^|[^a-z])${norm(estados[s].nome)}([^a-z]|$)`).test(q));
+        const uf = siglas[0] || porNome;
+        if (!uf) return null; // sem estado: segue para a Busca Fiscal
+        const e = estados[uf];
+        const link = `<p><a href="tabela.html?id=aliquotas-internas-icms-fcp&uf=${uf}">Ver a tabela de ${esc(e.nome)}</a></p>`;
+        const ts = termos(pergunta).filter(t => t !== norm(e.nome) && !norm(e.nome).split(' ').includes(t) && !['interna', 'internas', 'estado'].includes(t));
+        // Mais termos encontrados primeiro; no empate, o termo que aparece mais cedo no texto (assunto principal da linha)
+        const posicao = l => { const n = norm(semHtml(l.operacao)); return ts.reduce((s, t) => s + (n.includes(t) ? n.indexOf(t) : 1000), 0); };
+        const acertos = l => ts.filter(t => norm(semHtml(l.operacao)).includes(t)).length;
+        let linhas = ts.length ? e.linhas.filter(l => acertos(l) > 0).sort((a, b) => acertos(b) - acertos(a) || posicao(a) - posicao(b)) : [];
+        if (!linhas.length) linhas = e.linhas.filter(l => /ressalvadas as hipoteses|alíquota geral|aliquota geral/i.test(norm(semHtml(l.operacao)))).slice(0, 1);
+        if (!linhas.length) linhas = e.linhas.slice(0, 1);
+        const aviso = e.exemplo ? '<p class="text-xs font-semibold text-amber-700">Atenção: a tabela deste estado ainda está em montagem (valores de demonstração).</p>' : '';
+        const itens = linhas.slice(0, 4).map(l => `<li>${esc(semHtml(l.operacao).slice(0, 160))}${semHtml(l.operacao).length > 160 ? '…' : ''}<br><span class="text-slate-700">Alíquota <strong>${esc(l.aliquota)}</strong>${l.fcp && l.fcp !== '-' ? ` · FCP ${esc(l.fcp)}` : ''}${l.baseLegal ? ` · ${esc(l.baseLegal)}` : ''}</span></li>`).join('');
+        return `<p>Alíquota interna do ICMS em <strong>${esc(e.nome)}</strong>:</p><ul class="list-disc space-y-1.5 pl-5">${itens}</ul>${aviso}${link}`;
+    }
+
     function respostaConteudo(base, pergunta) {
         const ts = termos(pergunta);
         if (!ts.length) return `<p>Pode detalhar um pouco mais a pergunta? Por exemplo, um produto, uma NCM, um tributo ou um mês.</p>${chips(SUGESTOES)}`;
+        // texto = conteúdo completo (quando houver), pesa menos que título e resumo
         const fontes = [
             ...base.legislacao.map(x => ({ tipo: 'Legislação', titulo: x.title, resumo: x.summary, data: x.date, url: x.link || `legislacao.html?q=${encodeURIComponent(x.title)}` })),
-            ...base.noticias.map(x => ({ tipo: 'Notícia', titulo: x.title, resumo: x.summary, data: x.date, url: x.link && x.link !== '#' ? x.link : `noticia.html?id=${encodeURIComponent(x.id)}` })),
-            ...base.procedimentos.map(x => ({ tipo: 'Procedimento', titulo: x.title, resumo: x.summary, data: x.date, url: `procedimentos.html?q=${encodeURIComponent(x.title)}` }))
+            ...base.noticias.map(x => ({ tipo: 'Notícia', titulo: x.title, resumo: x.summary, texto: semHtml(x.content), data: x.date, url: x.link && x.link !== '#' ? x.link : `noticia.html?id=${encodeURIComponent(x.id)}` })),
+            ...base.procedimentos.map(x => ({ tipo: 'Procedimento', titulo: x.title, resumo: x.summary, texto: semHtml(x.content), data: x.date, url: x.link && x.link !== '#' ? x.link : `procedimento.html?id=${encodeURIComponent(x.id)}` })),
+            ...base.consultas.map(x => ({ tipo: 'Consulta', titulo: x.title, resumo: x.summary, texto: semHtml(x.content), data: x.date, url: `consulta.html?id=${encodeURIComponent(x.id)}` }))
         ];
         const achados = fontes
-            .map(x => ({ ...x, p: pontuar(x.titulo, ts) * 2 + pontuar(x.resumo, ts) }))
+            .map(x => ({ ...x, p: pontuar(x.titulo, ts) * 2 + pontuar(x.resumo, ts) + (x.texto ? pontuar(x.texto, ts) * 0.5 : 0) }))
             .filter(x => x.p >= Math.min(ts.length, 2))
             .sort((a, b) => b.p - a.p || dataBr(b.data) - dataBr(a.data))
             .slice(0, 4);

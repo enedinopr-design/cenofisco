@@ -446,78 +446,139 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ------------------------------------------------------------------
-     * Player do podcast
+     * Podcast (cartão Cenofisco Orienta): toca o episódio mais recente de podcasts.json aqui mesmo.
+     * O áudio vem do player do SoundCloud (Widget API), escondido atrás dos controles do cartão
+     * e carregado só no primeiro clique em ▶. Se o player não responder, ele aparece visível no cartão.
      * ------------------------------------------------------------------ */
-    const audio = document.getElementById('podcast-audio');
+    const podTitulo = document.getElementById('podcast-titulo');
     const playIcon = document.getElementById('play-icon');
     const pauseIcon = document.getElementById('pause-icon');
-    const progressBar = document.getElementById('progress-bar');
-    const progressContainer = document.getElementById('progress-container');
-    const currentTimeEl = document.getElementById('current-time');
-    const durationEl = document.getElementById('duration');
+    if (podTitulo && playIcon && pauseIcon) {
+        const progressBar = document.getElementById('progress-bar');
+        const progressContainer = document.getElementById('progress-container');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+        const statusEl = document.getElementById('podcast-status');
+        const widgetBox = document.getElementById('podcast-widget');
+        let episodio = null;
+        let widget = null;
+        let duracaoMs = 0;
+        let carregando = null;
 
-    function formatTime(seconds) {
-        if (!Number.isFinite(seconds)) return '0:00';
-        const minutes = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${minutes}:${String(secs).padStart(2, '0')}`;
-    }
-
-    if (audio && playIcon && pauseIcon) {
+        const formatTime = ms => {
+            const s = Math.floor((ms || 0) / 1000);
+            return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+        };
         const setPlaying = playing => {
             playIcon.classList.toggle('hidden', playing);
             playIcon.classList.toggle('inline-flex', !playing);
             pauseIcon.classList.toggle('hidden', !playing);
             pauseIcon.classList.toggle('inline-flex', playing);
         };
+        const mostrarProgresso = (posMs) => {
+            const pct = duracaoMs ? (posMs / duracaoMs) * 100 : 0;
+            progressBar.style.width = `${pct}%`;
+            progressContainer.setAttribute('aria-valuenow', String(Math.round(pct)));
+            progressContainer.setAttribute('aria-valuetext', `${formatTime(posMs)} de ${formatTime(duracaoMs)}`);
+            currentTimeEl.textContent = formatTime(posMs);
+        };
 
-        playIcon.addEventListener('click', () => {
-            audio.play().then(() => {
-                setPlaying(true);
-                pauseIcon.focus();
-            }).catch(err => console.error('Não foi possível reproduzir o áudio:', err));
+        // Episódio mais recente
+        fetch('podcasts.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(d => {
+                const chave = s => String(s || '').split('/').reverse().join('');
+                episodio = (d.episodios || []).slice().sort((a, b) => chave(b.data).localeCompare(chave(a.data)))[0] || null;
+                if (!episodio) return;
+                podTitulo.textContent = episodio.titulo;
+                document.getElementById('podcast-meta').textContent = [episodio.categoria, episodio.data].filter(Boolean).join(' · ');
+                durationEl.textContent = episodio.duracao || '0:00';
+                playIcon.setAttribute('aria-label', `Ouvir: ${episodio.titulo}`);
+            })
+            .catch(() => { /* sem lista: o ▶ leva à página do podcast */ });
+
+        // Carrega a API do SoundCloud e cria o player do episódio (uma vez)
+        function prepararPlayer() {
+            if (carregando) return carregando;
+            carregando = new Promise((resolve, reject) => {
+                const criar = () => {
+                    widgetBox.innerHTML = `<iframe title="Player do episódio: ${escapeHtml(episodio.titulo)}" allow="autoplay" width="100%" height="120" scrolling="no" frameborder="no"
+                        src="https://w.soundcloud.com/player/?url=${encodeURIComponent(episodio.url)}&color=%23fbbf24&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"></iframe>`;
+                    widget = window.SC.Widget(widgetBox.querySelector('iframe'));
+                    const E = window.SC.Widget.Events;
+                    widget.bind(E.READY, () => {
+                        widget.getDuration(ms => { duracaoMs = ms; durationEl.textContent = formatTime(ms); });
+                        resolve(widget);
+                    });
+                    widget.bind(E.PLAY, () => { setPlaying(true); statusEl.textContent = 'Reproduzindo.'; });
+                    widget.bind(E.PAUSE, () => { setPlaying(false); statusEl.textContent = 'Pausado.'; });
+                    widget.bind(E.FINISH, () => { setPlaying(false); mostrarProgresso(duracaoMs); statusEl.textContent = 'Episódio concluído.'; });
+                    widget.bind(E.PLAY_PROGRESS, e => mostrarProgresso(e.currentPosition));
+                };
+                if (window.SC && window.SC.Widget) return criar();
+                const s = document.createElement('script');
+                s.src = 'https://w.soundcloud.com/player/api.js';
+                s.onload = criar;
+                s.onerror = () => reject(new Error('API do SoundCloud indisponível'));
+                document.head.appendChild(s);
+            });
+            return carregando;
+        }
+
+        // Plano B: se o navegador não deixar o player escondido tocar, mostra o player do SoundCloud no cartão
+        function mostrarPlayerVisivel() {
+            document.getElementById('podcast-controles').classList.add('hidden');
+            widgetBox.className = 'mt-4 overflow-hidden rounded-lg';
+            widgetBox.removeAttribute('aria-hidden');
+        }
+
+        playIcon.addEventListener('click', async () => {
+            if (!episodio) { location.href = 'podcasts.html'; return; }
+            statusEl.textContent = 'Carregando o episódio…';
+            playIcon.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>';
+            try {
+                const w = await prepararPlayer();
+                w.play();
+                // Sem resposta em 5 s (bloqueio de reprodução automática): mostra o player visível
+                setTimeout(() => w.isPaused(pausado => { if (pausado && pauseIcon.classList.contains('hidden')) mostrarPlayerVisivel(); }), 5000);
+            } catch (e) {
+                location.href = `podcasts.html?ep=${encodeURIComponent(episodio.id)}`;
+            } finally {
+                playIcon.innerHTML = '<i class="fa-solid fa-play ml-0.5" aria-hidden="true"></i>';
+            }
         });
         pauseIcon.addEventListener('click', () => {
-            audio.pause();
+            if (widget) widget.pause();
             setPlaying(false);
             playIcon.focus();
         });
-        audio.addEventListener('ended', () => setPlaying(false));
 
-        audio.addEventListener('timeupdate', () => {
-            const pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
-            if (progressBar) progressBar.style.width = `${pct}%`;
-            if (progressContainer) progressContainer.setAttribute('aria-valuenow', String(Math.round(pct)));
-            if (currentTimeEl) currentTimeEl.textContent = formatTime(audio.currentTime);
+        // Barra de progresso: clique para ir a um ponto; setas ←/→ voltam/avançam 10 segundos
+        const irPara = ms => {
+            if (!widget || !duracaoMs) return;
+            const alvo = Math.max(0, Math.min(duracaoMs, ms));
+            widget.seekTo(alvo);
+            mostrarProgresso(alvo);
+        };
+        progressContainer.addEventListener('click', e => {
+            const rect = progressContainer.getBoundingClientRect();
+            irPara(((e.clientX - rect.left) / rect.width) * duracaoMs);
         });
-        audio.addEventListener('loadedmetadata', () => {
-            if (durationEl) durationEl.textContent = formatTime(audio.duration);
+        progressContainer.addEventListener('keydown', e => {
+            if (!widget) return;
+            if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+            e.preventDefault();
+            widget.getPosition(pos => irPara(pos + (e.key === 'ArrowRight' ? 10000 : -10000)));
         });
 
-        if (progressContainer) {
-            progressContainer.addEventListener('click', e => {
-                if (!audio.duration) return;
-                const rect = progressContainer.getBoundingClientRect();
-                audio.currentTime = ((e.clientX - rect.left) / rect.width) * audio.duration;
-            });
-            // Teclado: ←/→ avançam ou voltam 10 segundos
-            progressContainer.addEventListener('keydown', e => {
-                if (!audio.duration) return;
-                if (e.key === 'ArrowRight') audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
-                if (e.key === 'ArrowLeft') audio.currentTime = Math.max(0, audio.currentTime - 10);
-            });
-        }
-
-        const shareBtn = document.getElementById('podcast-share');
-        if (shareBtn) {
-            shareBtn.addEventListener('click', async () => {
-                const data = { title: 'Cenofisco Orienta', url: window.location.href };
-                try {
-                    if (navigator.share) await navigator.share(data);
-                    else if (navigator.clipboard) await navigator.clipboard.writeText(data.url);
-                } catch (_) { /* compartilhamento cancelado pelo usuário */ }
-            });
-        }
+        const podShare = document.getElementById('podcast-share');
+        podShare?.addEventListener('click', async () => {
+            const url = new URL(episodio ? `podcasts.html?ep=${encodeURIComponent(episodio.id)}` : 'podcasts.html', location.href).href;
+            try {
+                if (navigator.share) await navigator.share({ title: episodio ? episodio.titulo : 'Cenofisco Orienta', url });
+                else if (navigator.clipboard) { await navigator.clipboard.writeText(url); statusEl.textContent = 'Link do episódio copiado.'; }
+            } catch (_) { /* compartilhamento cancelado pelo usuário */ }
+        });
     }
 
     /* ------------------------------------------------------------------
@@ -1205,6 +1266,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('sm-ano').textContent = atual.vigencia.slice(-4);
             })
             .catch(() => { /* mantém o valor do HTML */ });
+    }
+
+    /* ------------------------------------------------------------------
+     * Consultoria › Últimas Consultas (3 mais recentes de consultas.json).
+     * Se o arquivo não carregar, fica o conteúdo estático do HTML.
+     * ------------------------------------------------------------------ */
+    const homeConsultasEl = document.getElementById('home-consultas');
+    if (homeConsultasEl) {
+        const corConsulta = { 'Imposto de Renda': 'text-blue-700', 'Trabalhista': 'text-orange-700', 'Contabilidade': 'text-teal-700', 'Comércio Exterior': 'text-sky-700', 'Federal': 'text-violet-700', 'Estadual': 'text-emerald-700' };
+        const chave = d => String(d || '').split('/').reverse().join('');
+        fetch('consultas.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(lista => {
+                if (!Array.isArray(lista) || !lista.length) return;
+                homeConsultasEl.innerHTML = lista.slice().sort((a, b) => chave(b.date).localeCompare(chave(a.date))).slice(0, 3).map(c => `
+                    <article class="group py-4 first:pt-0 last:pb-0">
+                        <span class="cf-eyebrow ${corConsulta[c.area] || 'text-blue-700'}">${escapeHtml(c.area)}</span>
+                        <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="consulta.html?id=${encodeURIComponent(c.id)}" class="transition group-hover:text-blue-800">${escapeHtml(c.title)}</a></h3>
+                        <p class="mt-1 line-clamp-2 text-sm text-slate-600">${escapeHtml(c.summary)}</p>
+                        <p class="mt-2 text-xs text-slate-500">Respondido em ${escapeHtml(c.date)}</p>
+                    </article>`).join('');
+            })
+            .catch(() => { /* mantém o conteúdo estático */ });
     }
 
     /* ------------------------------------------------------------------

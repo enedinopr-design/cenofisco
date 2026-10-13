@@ -339,7 +339,7 @@
                     <li><a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-truck w-4 text-center text-slate-400" aria-hidden="true"></i>Estadual</a></li>
                   </ul>
                 </aside>
-                <div class="divide-y divide-slate-100 xl:col-span-3">
+                <div id="home-consultas" class="divide-y divide-slate-100 xl:col-span-3">
                   <article class="group py-4 first:pt-0">
                     <span class="cf-eyebrow text-blue-700">Imposto de Renda</span>
                     <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="#" class="transition group-hover:text-blue-800">Como declarar investimentos no exterior?</a></h3>
@@ -416,23 +416,23 @@
         </section>
 
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <!-- Podcast -->
+          <!-- Podcast: toca o episódio mais recente aqui mesmo (player do SoundCloud por trás dos controles, ver index.js) -->
           <section class="cf-card flex flex-col" aria-labelledby="titulo-podcast">
             <div class="cf-section-head">
               <h2 id="titulo-podcast" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-microphone" aria-hidden="true"></i></span>Cenofisco Orienta</h2>
+              <a href="podcasts.html" class="cf-link-more">Ver todos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
             <div class="cf-on-dark flex flex-1 flex-col justify-between rounded-xl bg-gradient-to-br from-blue-800 to-blue-950 p-5 text-white">
               <div class="flex items-center gap-4">
                 <img src="img/cenorienta.jpg" alt="Capa do podcast Cenofisco Orienta" width="80" height="80" loading="lazy" class="size-20 shrink-0 rounded-lg shadow-md">
                 <div class="min-w-0">
                   <p class="cf-eyebrow text-amber-300">Episódio mais recente</p>
-                  <p class="mt-1 text-sm leading-snug font-medium text-blue-50">Reforma Tributária e Faturamento Antecipado (2026)</p>
+                  <p id="podcast-titulo" class="mt-1 line-clamp-3 text-sm leading-snug font-medium text-blue-50">Ouça os episódios do Cenofisco Orienta e do AduanaCast</p>
+                  <p id="podcast-meta" class="mt-1 text-xs text-blue-200"></p>
                 </div>
               </div>
 
-              <audio id="podcast-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="metadata"></audio>
-
-              <div class="mt-5">
+              <div id="podcast-controles" class="mt-5">
                 <!-- O padding vertical (com background-clip) amplia a área de toque para 24px sem mudar a barra de 6px -->
                 <div id="progress-container" class="group box-content h-1.5 w-full cursor-pointer rounded-full bg-white/20 bg-clip-content py-[9px]" role="slider" aria-label="Progresso do episódio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
                   <div id="progress-bar" class="relative h-1.5 w-0 rounded-full bg-amber-400">
@@ -443,14 +443,16 @@
                   <span id="current-time">0:00</span>
                   <span id="duration">0:00</span>
                 </div>
+                <div class="mt-3 flex items-center justify-center gap-4">
+                  <button type="button" id="podcast-share" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Compartilhar episódio"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i></button>
+                  <button type="button" id="play-icon" class="inline-flex size-12 cursor-pointer items-center justify-center rounded-full bg-amber-400 text-blue-950 shadow transition hover:bg-amber-300" aria-label="Ouvir o episódio mais recente"><i class="fa-solid fa-play ml-0.5" aria-hidden="true"></i></button>
+                  <button type="button" id="pause-icon" class="hidden size-12 cursor-pointer items-center justify-center rounded-full bg-amber-400 text-blue-950 shadow transition hover:bg-amber-300" aria-label="Pausar"><i class="fa-solid fa-pause" aria-hidden="true"></i></button>
+                  <a href="podcasts.html" class="inline-flex size-9 items-center justify-center rounded-full text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Ver todos os episódios" title="Ver todos os episódios"><i class="fa-solid fa-list-ul" aria-hidden="true"></i></a>
+                </div>
+                <p id="podcast-status" class="sr-only" role="status" aria-live="polite"></p>
               </div>
-
-              <div class="mt-3 flex items-center justify-center gap-4">
-                <button type="button" id="podcast-share" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Compartilhar episódio"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i></button>
-                <button type="button" id="play-icon" class="inline-flex size-12 cursor-pointer items-center justify-center rounded-full bg-amber-400 text-blue-950 shadow transition hover:bg-amber-300" aria-label="Reproduzir"><i class="fa-solid fa-play ml-0.5" aria-hidden="true"></i></button>
-                <button type="button" id="pause-icon" class="hidden size-12 cursor-pointer items-center justify-center rounded-full bg-amber-400 text-blue-950 shadow transition hover:bg-amber-300" aria-label="Pausar"><i class="fa-solid fa-pause" aria-hidden="true"></i></button>
-                <a href="#" class="inline-flex size-9 items-center justify-center rounded-full text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Mais episódios"><i class="fa-solid fa-list-ul" aria-hidden="true"></i></a>
-              </div>
+              <!-- Player do SoundCloud: fica escondido; só aparece se o navegador bloquear os controles acima -->
+              <div id="podcast-widget" class="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true"></div>
             </div>
           </section>
 
