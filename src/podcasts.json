@@ -1,0 +1,101 @@
+{
+    "_fonte": "Episódios publicados no SoundCloud do Cenofisco (soundcloud.com/user-695309597), consultado em 09/10/2026. A categoria de cada episódio foi definida pelo assunto.",
+    "programa": "Cenofisco Orienta e AduanaCast",
+    "descricao": "O AduanaCast e o Cenofisco Orienta são elaborados por nossos especialistas, com base na legislação vigente, para que você possa se informar, curtir e compartilhar.",
+    "perfil": "https://soundcloud.com/user-695309597",
+    "categorias": [
+        "Comércio Exterior",
+        "Contabilidade",
+        "Exportação",
+        "Federal",
+        "ICMS e Outros",
+        "Importação",
+        "Imposto de Renda",
+        "IPI/IOF e Outros",
+        "ISS e Outros",
+        "Reforma Tributária",
+        "Trabalhista e Previdência"
+    ],
+    "episodios": [
+        {
+            "id": "administracao-das-quotas",
+            "titulo": "Administração das Quotas Tarifárias no Acordo",
+            "categoria": "Comércio Exterior",
+            "data": "09/10/2026",
+            "duracao": "3:49",
+            "url": "https://soundcloud.com/user-695309597/administracao-das-quotas"
+        },
+        {
+            "id": "emprestimo-consignado-correcao",
+            "titulo": "Empréstimo Consignado - Correção/Retificação no eSocial",
+            "categoria": "Trabalhista e Previdência",
+            "data": "09/10/2026",
+            "duracao": "3:32",
+            "url": "https://soundcloud.com/user-695309597/emprestimo-consignado-correcao"
+        },
+        {
+            "id": "simples-nacional-regime-de",
+            "titulo": "Simples Nacional - Regime de reconhecimento de receita pelo faturamento",
+            "categoria": "Federal",
+            "data": "08/10/2026",
+            "duracao": "5:55",
+            "url": "https://soundcloud.com/user-695309597/simples-nacional-regime-de"
+        },
+        {
+            "id": "cotas-de-importacao-no-acordo",
+            "titulo": "Cotas de importação no Acordo de Livre Comércio entre o Mercosul e os Estados da EFTA",
+            "categoria": "Importação",
+            "data": "08/10/2026",
+            "duracao": "4:18",
+            "url": "https://soundcloud.com/user-695309597/cotas-de-importacao-no-acordo"
+        },
+        {
+            "id": "reforma-tributaria-novo",
+            "titulo": "Reforma Tributária - Novo leiaute do DANFE para representação do IBS, da CBS e do IS",
+            "categoria": "Reforma Tributária",
+            "data": "07/10/2026",
+            "duracao": "3:49",
+            "url": "https://soundcloud.com/user-695309597/reforma-tributaria-novo"
+        },
+        {
+            "id": "consulta-das-preferencias",
+            "titulo": "Consulta das Preferências Tarifárias de Exportação no Acordo União Europeia - Passo a Passo",
+            "categoria": "Exportação",
+            "data": "07/10/2026",
+            "duracao": "5:08",
+            "url": "https://soundcloud.com/user-695309597/consulta-das-preferencias"
+        },
+        {
+            "id": "icms-st-revogacao-de",
+            "titulo": "ICMS-ST - Revogação de Protocolos - Operações interestaduais",
+            "categoria": "ICMS e Outros",
+            "data": "06/10/2026",
+            "duracao": "3:45",
+            "url": "https://soundcloud.com/user-695309597/icms-st-revogacao-de"
+        },
+        {
+            "id": "importa-o-altera-o-de-ncm",
+            "titulo": "Importação - Alteração de NCM - Resolução Gecex nº 926/2026 - Inmetro",
+            "categoria": "Importação",
+            "data": "06/10/2026",
+            "duracao": "3:10",
+            "url": "https://soundcloud.com/user-695309597/importa-o-altera-o-de-ncm"
+        },
+        {
+            "id": "atencao-limite-de-consultas",
+            "titulo": "Atenção - Limite de consultas automatizadas à Duimp",
+            "categoria": "Comércio Exterior",
+            "data": "05/10/2026",
+            "duracao": "3:26",
+            "url": "https://soundcloud.com/user-695309597/atencao-limite-de-consultas"
+        },
+        {
+            "id": "nf-e-validacao-de-devolucao-e",
+            "titulo": "NF-e - Validação de Devolução e Reforma Tributária - Prorrogação de Prazo",
+            "categoria": "Reforma Tributária",
+            "data": "05/10/2026",
+            "duracao": "3:26",
+            "url": "https://soundcloud.com/user-695309597/nf-e-validacao-de-devolucao-e"
+        }
+    ]
+}
