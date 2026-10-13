@@ -1,0 +1,1172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cenofisco – Portal Tributário, Fiscal e Trabalhista (versão dinâmica)</title>
+  <meta name="description" content="Portal Cenofisco: legislação, notícias, procedimentos, agenda de obrigações, busca fiscal (NCM, CNAE, ST, TIPI) e consultoria tributária, fiscal e trabalhista.">
+  <meta name="theme-color" content="#1c398e">
+  <link rel="icon" href="img/logo.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./output.css">
+  <script src="./tema.js"></script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-900 focus:shadow-lg">Pular para o conteúdo</a>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <div class="cf-on-dark bg-blue-950 text-blue-100">
+    <div class="container mx-auto flex items-center justify-between gap-4 px-4 py-1.5 text-xs sm:text-sm">
+      <div class="hidden items-center gap-5 lg:flex">
+        <a href="tel:08009403055" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-phone text-[11px] text-amber-400" aria-hidden="true"></i>0800 940 3055</a>
+        <a href="mailto:contato@cenofisco.com.br" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-envelope text-[11px] text-amber-400" aria-hidden="true"></i>contato@cenofisco.com.br</a>
+      </div>
+      <!-- Usuário logado (simulação) -->
+      <div class="ml-auto flex items-center gap-2 min-[360px]:gap-3 sm:gap-4">
+        <span class="hidden whitespace-nowrap sm:inline">Olá, <strong class="font-semibold text-white">Enedino</strong></span>
+        <span class="hidden h-4 w-px bg-blue-800 sm:block" aria-hidden="true"></span>
+        <a href="meu-perfil.html" class="flex items-center gap-1.5 py-1 font-medium whitespace-nowrap transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
+        <a href="meu-perfil.html#documentos" class="flex items-center gap-1.5 py-1 font-medium whitespace-nowrap transition hover:text-white"><i class="fa-regular fa-folder-open" aria-hidden="true"></i>Meus Documentos</a>
+        <button type="button" class="min-h-6 cursor-pointer rounded-md bg-amber-400 px-3 py-1 text-xs font-bold text-blue-950 transition hover:bg-amber-300">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <div class="container mx-auto flex flex-wrap items-center gap-x-8 gap-y-3 px-4 py-3">
+      <a href="index.html" class="shrink-0" aria-label="Cenofisco — página inicial">
+        <img src="img/logo.jpg" alt="Cenofisco" width="200" height="62" class="h-10 w-auto sm:h-12">
+      </a>
+
+      <!-- Busca global --> 
+      <form role="search" action="#" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
+        <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
+        <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
+        <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-14 pl-11 text-base transition placeholder:text-slate-500 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none sm:pr-32 sm:text-sm">
+        <!-- No celular o botão mostra só o ícone (o texto continua para leitores de tela) para sobrar espaço no campo -->
+        <button type="submit" class="absolute top-1/2 right-1.5 inline-flex min-h-8 min-w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-blue-900 px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 sm:px-4"><span class="sm:hidden" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span><span class="sr-only sm:not-sr-only">Pesquisar</span></button>
+      </form>
+
+      <div class="ml-auto flex items-center gap-3">
+        <a href="#consultoria-cenofisco" class="cf-btn cf-btn-primary hidden whitespace-nowrap sm:inline-flex"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+        <button id="menu-toggle" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-blue-900 md:hidden" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu de navegação -->
+    <div id="main-menu" class="hidden border-t border-slate-100 md:block">
+      <nav class="container mx-auto flex flex-col px-4 md:flex-row md:flex-wrap md:items-center md:gap-x-4 xl:gap-x-7" aria-label="Navegação principal">
+        <a href="index.html" class="cf-nav-link" aria-current="page">Início</a>
+        <a href="procedimentos.html" class="cf-nav-link">Procedimentos</a>
+        <a href="especiais.html" class="cf-nav-link">Especiais</a>
+        <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-nav-link">Reforma Tributária<i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400" aria-hidden="true"></i><span class="sr-only">(abre em nova aba)</span></a>
+        <a href="aplicativos.html" class="cf-nav-link">Ferramentas</a>
+        <a href="agenda-obrigacoes.html" class="cf-nav-link">Agendas</a>
+        <a href="legislacao.html" class="cf-nav-link">Legislação</a>
+        <a href="#consultoria-cenofisco" class="cf-btn cf-btn-primary my-3 sm:hidden"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <h1 class="sr-only">Cenofisco – Portal Tributário, Fiscal e Trabalhista</h1>
+
+    <!-- ===================== TOPO: BUSCA COM O ASSISTENTE ===================== -->
+    <section class="cf-hero cf-on-dark" aria-labelledby="hero-titulo">
+      <div class="container mx-auto px-4 pt-5 pb-24 sm:pt-6 sm:pb-28">
+<section id="novidades" class="cf-on-dark flex items-center gap-2 rounded-xl bg-white/10 ring-1 ring-white/15 backdrop-blur py-1.5 pr-2 pl-4 text-white sm:gap-3" aria-label="Novidades e avisos">
+      <a href="legislacao.html" id="novidades-link" class="group flex min-w-0 flex-1 items-center gap-3 py-1.5 transition-opacity duration-200 sm:gap-4">
+        <span id="novidades-badge" class="shrink-0 rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-bold tracking-wider whitespace-nowrap text-blue-950 uppercase">Fique por dentro</span>
+        <p id="novidades-texto" class="line-clamp-2 min-w-0 flex-1 text-sm leading-snug font-medium group-hover:underline group-hover:underline-offset-2 lg:line-clamp-1">Foi publicado o DECRETO Nº 12.955, DE 29 DE ABRIL DE 2026 – DOU de 30/04/2026, que regulamenta a Contribuição Social sobre Bens e Serviços – CBS e dá outras providências.</p>
+        <span id="novidades-cta" class="hidden shrink-0 items-center gap-1.5 text-sm font-semibold text-amber-300 sm:inline-flex">Leia mais <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span>
+      </a>
+      <!-- Controles: só aparecem quando há mais de uma mensagem -->
+      <div id="novidades-controles" class="hidden shrink-0 items-center gap-0.5 border-l border-white/15 pl-1.5 sm:pl-2">
+        <button type="button" id="novidades-anterior" class="hidden size-8 cursor-pointer items-center justify-center rounded-md text-blue-100 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Mensagem anterior"><i class="fa-solid fa-chevron-left text-xs" aria-hidden="true"></i></button>
+        <span id="novidades-contador" class="hidden min-w-8 text-center text-xs text-blue-100 tabular-nums sm:inline" aria-hidden="true"></span>
+        <button type="button" id="novidades-proxima" class="hidden size-8 cursor-pointer items-center justify-center rounded-md text-blue-100 transition hover:bg-white/10 hover:text-white sm:inline-flex" aria-label="Próxima mensagem"><i class="fa-solid fa-chevron-right text-xs" aria-hidden="true"></i></button>
+        <button type="button" id="novidades-pausa" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-md text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Pausar troca automática" aria-pressed="false"><i class="fa-solid fa-pause text-xs" aria-hidden="true"></i></button>
+      </div>
+    </section>
+        <div class="mx-auto max-w-3xl pt-10 text-center sm:pt-14">
+          <span class="cf-selo cf-selo-escuro"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>Tributário · Fiscal · Trabalhista</span>
+          <p id="hero-titulo" class="cf-hero-titulo">O que você precisa consultar hoje?</p>
+          <p class="mx-auto mt-3 max-w-xl text-base text-pretty text-blue-100 sm:text-lg">Pergunte ao assistente: ele pesquisa NCM, CST/cClassTrib, tabelas práticas, agenda, legislação e procedimentos do portal.</p>
+          <form id="hero-ia-form" class="cf-hero-busca" role="search" action="#">
+            <span class="cf-hero-ia" aria-hidden="true">IA</span>
+            <label for="hero-ia-input" class="sr-only">Pergunta para o assistente Cenofisco</label>
+            <input type="search" id="hero-ia-input" name="q" autocomplete="off" maxlength="500" placeholder="Ex.: alíquota de ICMS da cerveja no Acre" class="min-w-0 flex-1 bg-transparent px-2 py-2.5 text-base text-slate-900 placeholder:text-slate-500 focus:outline-none">
+            <button type="submit" class="cf-btn cf-btn-accent shrink-0 px-4 py-2.5 sm:px-5"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span class="max-sm:sr-only">Perguntar</span></button>
+          </form>
+          <div class="mt-5 flex flex-wrap items-center justify-center gap-2">
+            <span class="text-xs font-medium text-blue-200">Mais buscados:</span>
+            <button type="button" class="cf-hero-chip" data-pergunta="IPI da cerveja">IPI da cerveja</button>
+            <button type="button" class="cf-hero-chip" data-pergunta="Salário mínimo 2026">Salário mínimo 2026</button>
+            <button type="button" class="cf-hero-chip" data-pergunta="cClassTrib 200003">cClassTrib 200003</button>
+            <button type="button" class="cf-hero-chip" data-pergunta="Alíquota de cerveja no Acre">Alíquota de cerveja no Acre</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Acesso rápido: painel que sobe sobre o fim do topo -->
+    <div class="container mx-auto px-4">
+<nav class="cf-hero-atalhos" aria-label="Acesso rápido">
+      <!-- Celular: fileira que desliza para o lado; a partir do tablet: grade (5 e depois 10 colunas) -->
+      <ul class="-mx-4 flex snap-x gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-5 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-10 [&::-webkit-scrollbar]:hidden" data-scroll-hint>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="#titulo-busca-fiscal" class="cf-atalho"><span class="cf-atalho-icone bg-blue-50 text-blue-700"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>Busca Fiscal</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="agenda-obrigacoes.html" class="cf-atalho"><span class="cf-atalho-icone bg-amber-50 text-amber-600"><i class="fa-regular fa-calendar-check" aria-hidden="true"></i></span>Agenda</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="legislacao.html" class="cf-atalho"><span class="cf-atalho-icone bg-violet-50 text-violet-700"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></span>Legislação</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="procedimentos.html" class="cf-atalho"><span class="cf-atalho-icone bg-emerald-50 text-emerald-700"><i class="fa-regular fa-file-lines" aria-hidden="true"></i></span>Procedimentos</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="#consultoria-cenofisco" class="cf-atalho"><span class="cf-atalho-icone bg-sky-50 text-sky-700"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>Consultoria</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="tabelas.html" class="cf-atalho"><span class="cf-atalho-icone bg-teal-50 text-teal-700"><i class="fa-solid fa-table" aria-hidden="true"></i></span>Tabelas Práticas</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="indicadores.html" class="cf-atalho"><span class="cf-atalho-icone bg-green-50 text-green-700"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>Indicadores</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="cst-cclasstrib.html" class="cf-atalho"><span class="cf-atalho-icone bg-orange-50 text-orange-700"><i class="fa-solid fa-tags" aria-hidden="true"></i></span>CST/cClassTrib</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="aplicativos.html" class="cf-atalho"><span class="cf-atalho-icone bg-blue-50 text-blue-700"><i class="fa-solid fa-calculator" aria-hidden="true"></i></span>Cálculos</a></li>
+        <li class="w-[5.75rem] shrink-0 snap-start sm:w-auto"><a href="podcasts.html" class="cf-atalho"><span class="cf-atalho-icone bg-red-50 text-red-700"><i class="fa-solid fa-microphone" aria-hidden="true"></i></span>Podcast</a></li>
+      </ul>
+    </nav>
+    </div>
+
+    <!-- Menu das faixas: fica preso abaixo do cabeçalho e marca a faixa visível -->
+    <nav id="faixas-nav" class="cf-faixas-nav" aria-label="Seções da página">
+      <div class="container mx-auto px-4">
+        <ul class="flex gap-1 overflow-x-auto py-2 [scrollbar-width:none] lg:justify-center [&::-webkit-scrollbar]:hidden" data-scroll-hint>
+          <li><a href="#faixa-destaques" class="cf-faixas-link" data-alvo="faixa-destaques"><i class="fa-solid fa-bolt text-xs" aria-hidden="true"></i>Destaques</a></li>
+          <li><a href="#faixa-ferramentas" class="cf-faixas-link" data-alvo="faixa-ferramentas"><i class="fa-solid fa-screwdriver-wrench text-xs" aria-hidden="true"></i>Ferramentas</a></li>
+          <li><a href="#faixa-conteudo" class="cf-faixas-link" data-alvo="faixa-conteudo"><i class="fa-solid fa-book-open text-xs" aria-hidden="true"></i>Conteúdo técnico</a></li>
+          <li><a href="#faixa-midia" class="cf-faixas-link" data-alvo="faixa-midia"><i class="fa-solid fa-graduation-cap text-xs" aria-hidden="true"></i>Aprenda</a></li>
+          <li><a href="#faixa-referencias" class="cf-faixas-link" data-alvo="faixa-referencias"><i class="fa-solid fa-bookmark text-xs" aria-hidden="true"></i>Referências</a></li>
+          <li><a href="#faixa-duvidas" class="cf-faixas-link" data-alvo="faixa-duvidas"><i class="fa-solid fa-circle-question text-xs" aria-hidden="true"></i>Dúvidas</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ===================== FAIXA: O QUE MUDOU E O QUE VENCE ===================== -->
+    <section id="faixa-destaques" class="cf-faixa" aria-labelledby="faixa-titulo-destaques" data-faixa>
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-bolt" aria-hidden="true"></i>Destaques</span>
+          <h2 id="faixa-titulo-destaques" class="cf-faixa-titulo">O que mudou e o que vence</h2>
+          <p class="cf-faixa-texto">As notícias mais recentes e os prazos da agenda de obrigações, lado a lado.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-5 lg:gap-6 lg:grid-cols-3">
+<div class="min-w-0 lg:col-span-2">
+<section class="cf-card" aria-labelledby="titulo-noticias">
+          <h3 id="titulo-noticias" class="sr-only">Notícias e destaques</h3>
+          <div class="mb-6 border-b border-slate-200">
+            <nav class="cf-tabs" role="tablist" aria-label="Notícias">
+              <button type="button" id="tab-destaque" aria-controls="destaque" role="tab" class="tab-button active" onclick="openTab(event, 'destaque')">Destaque site</button>
+              <button type="button" id="tab-noticias" aria-controls="noticias" role="tab" class="tab-button" onclick="openTab(event, 'noticias')">Notícias</button>
+              <button type="button" id="tab-resenhas" aria-controls="resenhas" role="tab" class="tab-button" onclick="openTab(event, 'resenhas')">Resenhas</button>
+              <button type="button" id="tab-procedimentos" aria-controls="procedimentos" role="tab" class="tab-button" onclick="openTab(event, 'procedimentos')">Procedimentos Edições</button>
+            </nav>
+          </div>
+
+          <div>
+            <div id="destaque" class="tab-content" role="tabpanel" aria-labelledby="tab-destaque">
+              <!-- Notícia principal -->
+              <a href="noticias.html" class="group grid grid-cols-1 items-center gap-6 md:grid-cols-5">
+                <div class="aspect-video overflow-hidden rounded-xl bg-slate-200 md:col-span-2 md:aspect-[4/3]">
+                  <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80"
+                       srcset="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=480&q=75 480w,
+                               https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=80 800w"
+                       sizes="(min-width: 768px) 320px, 100vw"
+                       alt="Calculadora e documentos fiscais sobre a mesa" width="800" height="600" fetchpriority="high" decoding="async" class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+                </div>
+                <div class="md:col-span-3">
+                  <span class="cf-eyebrow text-emerald-700">Tributário <span class="text-slate-400">·</span> <time datetime="2026-04-28" class="text-slate-500">28/04/2026</time></span>
+                  <h3 class="mt-2 mb-3 text-2xl leading-tight font-bold tracking-tight text-slate-900 transition group-hover:text-blue-800 lg:text-[1.75rem]">Agenda Tributária – Obrigações Principais e Acessórias – Maio de 2026</h3>
+                  <p class="text-slate-600">Alertamos para os prazos de pagamentos dos tributos e entregas das obrigações acessórias do mês de maio de 2026.</p>
+                </div>
+              </a>
+
+              <!-- Outras notícias -->
+              <div class="mt-8 grid grid-cols-1 gap-6 border-t border-slate-200 pt-6 sm:grid-cols-3">
+                <a href="noticias.html" class="group block">
+                  <span class="cf-eyebrow text-orange-700">Trabalhista <span class="text-slate-400">·</span> <time datetime="2026-04-28" class="text-slate-500">28/04/2026</time></span>
+                  <h3 class="mt-1.5 leading-snug font-semibold text-slate-900 transition group-hover:text-blue-800">Fique atento à nova redação da NR-1 – Gerenciamento de Riscos Ocupacionais (GRO)</h3>
+                  <p class="mt-2 line-clamp-3 text-sm text-slate-500">A alteração da NR-1 que entrará em vigor a partir de 26/05/2026 traz uma exigência importante...</p>
+                </a>
+                <a href="noticias.html" class="group block">
+                  <span class="cf-eyebrow text-emerald-700">Tributário <span class="text-slate-400">·</span> <time datetime="2026-04-28" class="text-slate-500">28/04/2026</time></span>
+                  <h3 class="mt-1.5 leading-snug font-semibold text-slate-900 transition group-hover:text-blue-800">Simples Nacional – Utilização da Nota Fiscal de Serviços eletrônica de padrão nacional</h3>
+                  <p class="mt-2 line-clamp-3 text-sm text-slate-500">A Resolução CGSN nº 189/2026 estabelece novas regras para a utilização da NFS-e em padrão nacional...</p>
+                </a>
+                <a href="noticias.html" class="group block">
+                  <span class="cf-eyebrow text-emerald-700">Tributário <span class="text-slate-400">·</span> <time datetime="2026-04-28" class="text-slate-500">28/04/2026</time></span>
+                  <h3 class="mt-1.5 leading-snug font-semibold text-slate-900 transition group-hover:text-blue-800">Tributos Municipais/Cuiabá-MT – Mutirão Fiscal – Prorrogação</h3>
+                  <p class="mt-2 line-clamp-3 text-sm text-slate-500">Prorrogado o prazo para a adesão ao Mutirão Fiscal.</p>
+                </a>
+              </div>
+            </div>
+
+            <div id="noticias" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-noticias">
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <a href="noticias.html" class="group block rounded-xl border border-slate-200 p-5 transition hover:border-blue-200 hover:bg-blue-50/40">
+                  <span class="cf-eyebrow text-red-600">Federal</span>
+                  <h3 class="mt-1.5 leading-snug font-semibold text-slate-900 transition group-hover:text-blue-800">Receita Federal prorroga prazo para adesão ao PERT</h3>
+                  <p class="mt-2 text-sm text-slate-500">Contribuintes ganham mais tempo para regularizar débitos com condições especiais...</p>
+                </a>
+                <a href="noticias.html" class="group block rounded-xl border border-slate-200 p-5 transition hover:border-blue-200 hover:bg-blue-50/40">
+                  <span class="cf-eyebrow text-purple-600">Previdenciário</span>
+                  <h3 class="mt-1.5 leading-snug font-semibold text-slate-900 transition group-hover:text-blue-800">INSS altera regras para comprovação de vida</h3>
+                  <p class="mt-2 text-sm text-slate-500">Novos procedimentos visam facilitar a vida dos aposentados e pensionistas...</p>
+                </a>
+              </div>
+            </div>
+
+            <div id="resenhas" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-resenhas">
+              <div class="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 px-6 py-12 text-center">
+                <span class="cf-icon mb-3 size-11 text-lg"><i class="fa-regular fa-newspaper" aria-hidden="true"></i></span>
+                <p class="font-semibold text-slate-800">Nenhuma resenha publicada hoje</p>
+                <p class="mt-1 text-sm text-slate-500">Consulte o arquivo para ver as resenhas anteriores.</p>
+                <a href="noticias.html" class="cf-link-more mt-4">Ver arquivo de resenhas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+
+            <div id="procedimentos" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-procedimentos">
+              <div class="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 px-6 py-12 text-center">
+                <span class="cf-icon mb-3 size-11 text-lg"><i class="fa-regular fa-file-lines" aria-hidden="true"></i></span>
+                <p class="font-semibold text-slate-800">Edições de procedimentos</p>
+                <p class="mt-1 text-sm text-slate-500">Acesse as edições mais recentes dos procedimentos.</p>
+                <a href="procedimentos.html" class="cf-link-more mt-4">Ver edições <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-end border-t border-slate-100 pt-4">
+            <a href="noticias.html" class="cf-link-more">Ver todos os destaques <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+        </section>
+</div>
+<div class="flex min-w-0 flex-col gap-5 lg:gap-6">
+<section class="cf-on-dark rounded-2xl bg-gradient-to-br from-blue-800 to-blue-950 p-5 text-white shadow-lg shadow-blue-900/10 sm:p-6" aria-labelledby="titulo-agenda">
+          <h3 id="titulo-agenda" class="mb-3 flex flex-wrap items-center gap-3 text-lg font-semibold tracking-tight">
+            <span class="inline-flex size-9 items-center justify-center rounded-lg bg-white/10 text-amber-400"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i></span>Agenda de Obrigações
+            <a href="agenda-obrigacoes.html" class="ml-auto inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-amber-300 hover:text-amber-200 hover:underline">Ver agenda <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></a>
+          </h3>
+          <div class="mb-3 space-y-3">
+            <div>
+              <label for="agenda-tipo" class="sr-only">Tipo de agenda</label>
+              <select id="agenda-tipo" class="cf-input">
+                <option value="federal">Federal</option>
+                <option value="estadual">Estadual</option>
+                <option value="municipal">Municipal</option>
+              </select>
+            </div>
+
+            <div id="agenda-estado-container" class="hidden">
+              <label for="agenda-estado" class="cf-label text-blue-100">Estado</label>
+              <select id="agenda-estado" class="cf-input">
+                <option value="">Todos os estados</option>
+              </select>
+            </div>
+
+            <div id="agenda-capital-container" class="hidden">
+              <label for="agenda-capital" class="cf-label text-blue-100">Capital</label>
+              <select id="agenda-capital" class="cf-input">
+                <option value="">Todas as capitais</option>
+              </select>
+            </div>
+          </div>
+          <div class="calendar-container cf-mini-calendar rounded-xl bg-white p-3 text-slate-900 shadow-sm">
+            <div class="mb-4 flex items-center justify-between">
+              <button type="button" id="prevMonth" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg bg-slate-100 text-sm text-slate-600 transition hover:bg-slate-200" aria-label="Mês anterior"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+              <span id="currentMonthYear" class="font-semibold text-slate-800" aria-live="polite"></span>
+              <button type="button" id="nextMonth" class="inline-flex size-8 cursor-pointer items-center justify-center rounded-lg bg-slate-100 text-sm text-slate-600 transition hover:bg-slate-200" aria-label="Próximo mês"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+            <div class="mb-2 grid grid-cols-7 text-center text-[11px] font-semibold tracking-wide text-slate-500 uppercase" aria-hidden="true">
+              <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+            </div>
+            <div id="calendarDays" class="grid grid-cols-7 gap-1 text-sm">
+              <!-- Dias gerados via JavaScript -->
+            </div>
+
+            <!-- Popup de eventos -->
+            <div id="eventDetailsPopup" class="absolute z-40 mt-2 hidden w-full max-w-xs rounded-xl border border-slate-200 bg-white p-4 text-sm shadow-xl" role="dialog" aria-labelledby="eventDetailsTitle">
+              <div class="mb-2 flex items-start justify-between gap-3">
+                <h3 id="eventDetailsTitle" class="font-semibold text-slate-900">Eventos em <span id="eventDate"></span></h3>
+                <button type="button" id="closeEventDetails" class="-mt-1 -mr-1 inline-flex size-7 cursor-pointer items-center justify-center rounded-md text-slate-400 transition hover:bg-slate-100 hover:text-slate-700" aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+              </div>
+              <ul id="eventList" class="list-inside list-disc space-y-2 text-slate-700"></ul>
+            </div>
+          </div>
+        </section>
+<section id="agenda-salvas" class="cf-card flex flex-col lg:h-0 lg:min-h-52 lg:grow lg:p-5" aria-labelledby="titulo-agenda-salvas">
+  <div class="mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+    <h3 id="titulo-agenda-salvas" class="flex items-center gap-2.5 font-semibold whitespace-nowrap text-slate-900"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-amber-50 text-sm text-amber-500"><i class="fa-solid fa-bookmark" aria-hidden="true"></i></span>Obrigações salvas <span id="agenda-salvas-total" class="text-xs font-normal text-slate-500"></span></h3>
+    <a href="agenda-obrigacoes.html#titulo-salvas" class="cf-link-more">Ver todas salvas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+  <ul id="agenda-salvas-lista" class="-mx-2 min-h-0 flex-1 overflow-hidden">
+    <li class="px-2 py-1.5 text-sm text-slate-500">Nenhuma obrigação salva ainda. Na <a href="agenda-obrigacoes.html" class="font-semibold text-blue-700 hover:underline">Agenda de Obrigações</a>, use <strong>Salvar</strong> ao lado de cada obrigação.</li>
+  </ul>
+</section>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAIXA: FERRAMENTAS PARA O DIA A DIA FISCAL ===================== -->
+    <section id="faixa-ferramentas" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-ferramentas" data-faixa>
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>Ferramentas</span>
+          <h2 id="faixa-titulo-ferramentas" class="cf-faixa-titulo">Ferramentas para o dia a dia fiscal</h2>
+          <p class="cf-faixa-texto">Busca por NCM, códigos, tabelas práticas, cálculos e indicadores atualizados.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-5 lg:gap-6 lg:grid-cols-3">
+<div class="min-w-0 lg:col-span-2">
+<section class="cf-card" aria-labelledby="titulo-busca-fiscal">
+          <div class="cf-section-head">
+            <h3 id="titulo-busca-fiscal" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>Busca Fiscal</h3>
+          </div>
+
+          <form action="buscafiscal-resultados.html" method="get">
+            <fieldset class="rounded-xl bg-slate-50 p-3 sm:p-4">
+              <legend class="sr-only">Tipo de busca</legend>
+              <div class="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4" id="busca-fiscal-options">
+                <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="ncm" class="peer sr-only" checked><span class="cf-choice"><span>NCM – Alíquotas</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="cnae" class="peer sr-only"><span class="cf-choice"><span>CNAE</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="tipi" class="peer sr-only"><span class="cf-choice"><span>TIPI/TEC</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                <label class="cursor-pointer"><input type="radio" name="busca_fiscal_tipo" value="classtrib" class="peer sr-only"><span class="cf-choice"><span>Classificação Tributária</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+              </div>
+
+              <div id="classtrib-tipo-container" class="mt-4 hidden space-y-4 border-t border-slate-200 pt-4 text-center">
+
+                <p id="classtrib-tipo-titulo" class="text-sm font-medium text-slate-600">Opções:</p>
+
+                <div class="flex flex-wrap justify-center gap-3" role="radiogroup" aria-labelledby="classtrib-tipo-titulo">
+
+                  <label class="cursor-pointer"><input type="radio" name="classtrib_tipo" value="mercadoria" class="peer sr-only" checked><span class="cf-pill min-w-28 sm:min-w-[140px] peer-checked:border-amber-300 peer-checked:bg-amber-100 peer-checked:text-amber-900"><span>Mercadoria</span><i class="fa-solid fa-check opacity-100 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+
+                  <label class="cursor-pointer"><input type="radio" name="classtrib_tipo" value="servico" class="peer sr-only"><span class="cf-pill min-w-28 sm:min-w-[140px] peer-checked:border-amber-300 peer-checked:bg-amber-100 peer-checked:text-amber-900"><span>Serviço</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+
+                </div>
+
+              </div>
+
+
+              <div id="ncm-tipo-busca-container" class="mt-4 space-y-4 border-t border-slate-200 pt-4 text-center">
+                <p class="text-sm font-medium text-slate-600">Selecione os tipos de busca (múltipla seleção):</p>
+                <div class="flex flex-wrap justify-center gap-3" id="ncm-tipo-busca-options">
+                  <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="ipi" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-blue-300 peer-checked:bg-blue-100 peer-checked:text-blue-800"><span>IPI</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                  <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="ii" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-blue-300 peer-checked:bg-blue-100 peer-checked:text-blue-800"><span>II</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                  <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="piscofins" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>PIS/COFINS</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                  <label class="cursor-pointer"><input type="checkbox" name="ncm_tipo_busca" value="icms" class="peer sr-only"><span class="cf-pill min-w-24 sm:min-w-[120px] peer-checked:border-green-300 peer-checked:bg-green-100 peer-checked:text-green-800"><span>ICMS</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                </div>
+
+                <div id="pis-cofins-tipo-venda-container" class="hidden space-y-4 rounded-xl border border-violet-200 bg-violet-50 p-4 text-left">
+                  <p class="text-sm font-semibold text-violet-700">PIS/COFINS – Tipo de operação</p>
+                  <div class="grid grid-cols-2 gap-3" id="pis-cofins-options">
+                    <label class="cursor-pointer"><input type="radio" name="pis_cofins_tipo_venda" value="importacao" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Na importação</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                    <label class="cursor-pointer"><input type="radio" name="pis_cofins_tipo_venda" value="venda_interna" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Venda interna</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                  </div>
+
+                  <div id="venda-interna-regime-container" class="hidden space-y-4 border-t border-violet-200 pt-4">
+                    <p class="text-sm font-semibold text-violet-700">Regime</p>
+                    <div class="grid grid-cols-2 gap-3 md:grid-cols-3" id="venda-interna-options">
+                      <label class="cursor-pointer"><input type="radio" name="venda_interna_regime" value="cumulativo" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Cumulativo</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                      <label class="cursor-pointer"><input type="radio" name="venda_interna_regime" value="nao_cumulativo" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Não cumulativo</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                      <label class="cursor-pointer"><input type="radio" name="venda_interna_regime" value="monofasico" class="peer sr-only"><span class="cf-pill text-violet-700 peer-checked:border-violet-300 peer-checked:bg-violet-100 peer-checked:text-violet-800"><span>Monofásico</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="icms-tipo-operacao-container" class="hidden space-y-4 rounded-xl border border-green-200 bg-green-50 p-4 text-left">
+                  <p class="text-sm font-semibold text-green-700">ICMS – Tipo de operação</p>
+                  <div class="grid grid-cols-2 gap-3" id="icms-tipo-operacao-options">
+                    <label class="cursor-pointer"><input type="radio" name="icms_tipo_operacao" value="interestadual" class="peer sr-only"><span class="cf-pill peer-checked:border-green-300 peer-checked:bg-green-100 peer-checked:text-green-800"><span>Operação interestadual</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                    <label class="cursor-pointer"><input type="radio" name="icms_tipo_operacao" value="interna" class="peer sr-only"><span class="cf-pill peer-checked:border-green-300 peer-checked:bg-green-100 peer-checked:text-green-800"><span>Operação interna</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+                  </div>
+
+                  <div id="icms-estados-container" class="hidden border-t border-green-200 pt-4">
+                    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                      <div id="estado-origem-container" class="hidden">
+                        <label for="icms-uf-origem" class="cf-label text-green-700">Estado de origem</label>
+                        <select id="icms-uf-origem" name="uf_origem" class="cf-input js-uf-select">
+                          <option value="">Selecione...</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label for="icms-uf-destino" class="cf-label text-green-700">Estado de destino</label>
+                        <select id="icms-uf-destino" name="uf_destino" class="cf-input js-uf-select">
+                          <option value="">Selecione...</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="relative mt-4">
+              <label for="busca-fiscal-input" class="sr-only">Código NCM ou descrição</label>
+              <input type="search" id="busca-fiscal-input" name="q" placeholder="Digite o código NCM ou a descrição..." class="w-full rounded-xl border border-slate-300 py-3 pr-24 pl-4 text-base transition placeholder:text-slate-500 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none sm:pr-32">
+              <button type="submit" class="absolute top-1/2 right-1.5 -translate-y-1/2 cursor-pointer rounded-lg bg-blue-900 px-4 py-2 font-semibold text-white transition-colors hover:bg-blue-800 sm:px-6">Buscar</button>
+            </div>
+          </form>
+        </section>
+</div>
+<section class="cf-card" aria-labelledby="titulo-codigos">
+          <div class="cf-section-head">
+            <h3 id="titulo-codigos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-barcode" aria-hidden="true"></i></span>Códigos</h3>
+          </div>
+          <div class="mb-5 border-b border-slate-200">
+            <nav class="cf-tabs gap-5" role="tablist" aria-label="Tabelas de códigos">
+              <button type="button" id="tab-cbo" aria-controls="cbo" role="tab" class="codigos-tab-button tab-button active" onclick="openCodigosTab(event, 'cbo')">CBO</button>
+              <button type="button" id="tab-cfop" aria-controls="cfop" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cfop')">CFOP</button>
+              <button type="button" id="tab-cst" aria-controls="cst" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cst')">CST</button>
+              <button type="button" id="tab-cclasstrib" aria-controls="cclasstrib" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cclasstrib')">CST/cClassTrib</button>
+              <button type="button" id="tab-cest" aria-controls="cest" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'cest')">CEST</button>
+              <button type="button" id="tab-efd-reinf" aria-controls="efd-reinf" role="tab" class="codigos-tab-button tab-button" onclick="openCodigosTab(event, 'efd-reinf')">EFD-Reinf</button>
+            </nav>
+          </div>
+
+          <form action="codigos.html" method="get" id="codigos-form">
+            <div id="cbo" class="codigos-tab-content" role="tabpanel" aria-labelledby="tab-cbo">
+              <p class="mb-2 text-sm text-slate-600">Busque por código ou descrição da Classificação Brasileira de Ocupações.</p>
+              <input type="search" name="cbo" aria-label="Pesquisar em CBO" placeholder="Pesquisar em CBO..." class="cf-input">
+            </div>
+            <div id="cfop" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-cfop">
+              <p class="mb-2 text-sm text-slate-600">Busque pelo Código Fiscal de Operações e Prestações.</p>
+              <input type="search" name="cfop" aria-label="Pesquisar em CFOP" placeholder="Pesquisar em CFOP..." class="cf-input">
+            </div>
+            <div id="cst" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-cst">
+              <p class="mb-2 text-sm text-slate-600">Busque pelo Código de Situação Tributária.</p>
+              <input type="search" name="cst" aria-label="Pesquisar em CST" placeholder="Pesquisar em CST..." class="cf-input">
+            </div>
+            <div id="cclasstrib" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-cclasstrib">
+              <p class="mb-2 text-sm text-slate-600">Busque o CST e o cClassTrib do IBS e da CBS (Reforma Tributária) por código, NCM/NBS ou descrição.</p>
+              <input type="search" name="q" aria-label="Pesquisar CST ou cClassTrib" placeholder="Ex.: 200, 200003 ou cesta básica" class="cf-input">
+            </div>
+            <div id="cest" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-cest">
+              <p class="mb-2 text-sm text-slate-600">Busque pelo Código Especificador da Substituição Tributária.</p>
+              <input type="search" name="cest" aria-label="Pesquisar em CEST" placeholder="Pesquisar em CEST..." class="cf-input">
+            </div>
+            <div id="efd-reinf" class="codigos-tab-content hidden" role="tabpanel" aria-labelledby="tab-efd-reinf">
+              <p class="mb-2 text-sm text-slate-600">Busque pela tabela de EFD-Reinf x Serviços.</p>
+              <input type="search" name="efd_reinf" aria-label="Pesquisar em EFD-Reinf" placeholder="Pesquisar em EFD-Reinf..." class="cf-input">
+            </div>
+            <button type="submit" class="cf-btn cf-btn-primary mt-3 w-full"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>Buscar</button>
+          </form>
+          <!-- Resultados da aba CST/cClassTrib (tabela oficial do Portal da Conformidade Fácil, em cclasstrib.json) -->
+          <div id="cct-home-resultados" class="mt-4 hidden" aria-live="polite"></div>
+        </section>
+        </div>
+        <div class="grid grid-cols-1 gap-5 lg:gap-6 mt-5 lg:mt-6 md:grid-cols-2 lg:grid-cols-3">
+<section class="cf-card flex flex-col" aria-labelledby="titulo-indicadores">
+          <div class="cf-section-head">
+            <h3 id="titulo-indicadores" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></span>Indicadores e Taxas</h3>
+          </div>
+          <!-- Preenchido por index.js com os dados do Banco Central (lista em indicadores-series.js); cada linha abre o indicador em indicadores.html -->
+          <dl id="home-indicadores" aria-live="polite">
+            <div class="cf-row"><dt class="text-slate-500">Carregando indicadores...</dt></div>
+          </dl>
+          <p class="mt-3 text-xs text-slate-500">Índices: variação no último mês divulgado · Câmbio: PTAX de venda do dia · Fonte: Banco Central</p>
+          <a href="indicadores.html" class="cf-btn cf-btn-soft mt-auto w-full">Ver todos os indicadores</a>
+        </section>
+<section class="cf-card flex flex-col" aria-labelledby="titulo-tabelas">
+          <div class="cf-section-head">
+            <h3 id="titulo-tabelas" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-table" aria-hidden="true"></i></span>Tabelas Práticas</h3>
+            <a href="tabelas.html" class="cf-link-more">Ver todas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div class="relative mb-3">
+            <label for="tabelas-praticas-filtro" class="sr-only">Pesquisar em tabelas práticas</label>
+            <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 text-xs text-slate-400" aria-hidden="true"></i>
+            <input type="search" id="tabelas-praticas-filtro" placeholder="Pesquisar em tabelas..." class="cf-input pl-8">
+          </div>
+          <ul id="tabelas-praticas-lista" class="mb-4" data-limite="11">
+            <li class="cf-row"><span>Salário Mínimo <span id="sm-ano">2026</span></span><a href="tabela.html?id=salario-minimo" id="sm-valor" class="font-semibold text-slate-900 tabular-nums hover:text-blue-800 hover:underline" title="Ver a tabela do salário mínimo">R$ 1.621,00</a></li>
+            <li class="cf-row"><span>Alíquotas Internas – ICMS-FCP</span><a href="tabela.html?id=aliquotas-internas-icms-fcp" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Alíquotas Interestaduais – ICMS</span><a href="#" class="cf-row-link">Consultar</a></li>
+            <li class="cf-row"><span>Alíquotas de ISS</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Alíquotas – Evolução – CP</span><a href="#" class="cf-row-link">Consultar</a></li>
+            <li class="cf-row"><span>Benefícios Previdenciários Extintos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>CEST – Convênio</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>CNAE – RAT</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>CNAE – SESMT</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Códigos de Arrecadação das Custas</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>CFOP</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Combustível – PMPF</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Contratação de Serviços</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Construção Civil</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>CSOSN-CRT-CST</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>DARF – Códigos e Instruções</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Depósitos Recursais</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Documentação de Afixação Obrigatória</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>EFD – Prazos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>eSocial – Obrigações Substituídas</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>FPAS – Alíquotas por Códigos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>FPAS – Códigos de Terceiros</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>FPAS – Enquadramento</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>DARE-SP – Como Pagar</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>GPS – Relação de Códigos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Guarda de Documentos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Incentivos Fiscais</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Índice de Poupança</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>IPVA</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>IRPJ-CSLL – Quotas</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>ISS – Cadastros de Prestadores de Outros Municípios</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Lista de Doenças Relacionadas ao Trabalho</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Moedas Brasileiras</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Multas Administrativas</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>NF-e – Cancelamento</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Piso Salarial</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Produtor Rural</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Recolhimento em Atraso</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Remuneração Extra</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Resíduos Sólidos – Munic-SP</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Retenção – IRRF/CSRF</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Retenção – Órgãos Públicos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Salário-Base – Empresários e Autônomos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Salário-de-Contribuição</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Salário-Família</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Salários-Mínimos</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Seguro-Desemprego</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>SIMPLES Nacional</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela – Cód. Benef. x CST</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela CNAE x Código de Serviço</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela de Correlação – EFD-Reinf</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela de Incidência</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela de Incidência Monofásica</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela de Rubricas – eSocial</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela Prática de Férias</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela Progressiva – PLR</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela Progressiva Mensal – IR</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela TIPI</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela NCM – Correlação</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabela NCM – Sem Similar Nacional</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tabelas de Conversão</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Taxa Legal</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Taxa Selic Acumulada</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Taxa Selic Mensal</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Taxas de Câmbio</span><a href="indicadores.html?indicador=dolar" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>TJLP – Mensal</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>TJLP – Trimestral</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>TJLP – Acumulada</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Transferências de Mercadorias</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>TR – Taxa Referencial</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Tributação – IR/CSLL/PIS/Cofins</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>UFIR</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Venda Porta a Porta</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+            <li class="cf-row"><span>Verbas Rescisórias</span><a href="#" class="cf-row-link">Ver tabela</a></li>
+          </ul>
+          <p id="tabelas-praticas-vazio" class="hidden py-4 text-center text-sm text-slate-500">Nenhuma tabela encontrada.</p>
+          <a href="tabelas.html" class="cf-btn cf-btn-soft mt-auto w-full">Ver todas as tabelas por área <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i></a>
+        </section>
+<section class="cf-card flex flex-col" aria-labelledby="titulo-aplicativos">
+          <div class="cf-section-head">
+            <h3 id="titulo-aplicativos" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-window-restore" aria-hidden="true"></i></span>Aplicativos</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <a href="calculo-ferias.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-sky-50 text-sky-600"><i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Cálculo de Férias</span>
+            </a>
+            <a href="aplicativos.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-emerald-50 text-emerald-600"><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Simulador IRPF</span>
+            </a>
+            <a href="aplicativos.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-violet-50 text-violet-600"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">MVA Ajustado</span>
+            </a>
+            <a href="aplicativos.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-orange-50 text-orange-600"><i class="fa-solid fa-user-clock" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Seguro-Desemprego</span>
+            </a>
+            <a href="aplicativos.html?q=13" class="cf-app-btn">
+              <span class="cf-app-icone bg-amber-50 text-amber-600"><i class="fa-solid fa-gift" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Cálculo do 13º Salário</span>
+            </a>
+            <a href="aplicativos.html?q=Rescis%C3%A3o" class="cf-app-btn">
+              <span class="cf-app-icone bg-rose-50 text-rose-600"><i class="fa-solid fa-handshake-slash" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Cálculo de Rescisão</span>
+            </a>
+          </div>
+          <h4 class="mt-5 mb-1 text-xs font-semibold tracking-wider text-slate-500 uppercase">Por área · 34 cálculos</h4>
+          <ul class="mb-4">
+            <li><a href="aplicativos.html?categoria=Trabalhista%2FPrevidenci%C3%A1rio" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-orange-50 text-orange-600"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>Trabalhista e Previdenciário</span><span class="text-xs text-slate-500 group-hover:text-blue-800">9</span></a></li>
+            <li><a href="aplicativos.html?categoria=Federal" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-blue-50 text-blue-700"><i class="fa-solid fa-landmark" aria-hidden="true"></i></span>Federal</span><span class="text-xs text-slate-500 group-hover:text-blue-800">20</span></a></li>
+            <li><a href="aplicativos.html?categoria=Estadual" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-emerald-50 text-emerald-700"><i class="fa-solid fa-map" aria-hidden="true"></i></span>Estadual</span><span class="text-xs text-slate-500 group-hover:text-blue-800">4</span></a></li>
+            <li><a href="aplicativos.html?categoria=Municipal" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-amber-50 text-amber-700"><i class="fa-solid fa-city" aria-hidden="true"></i></span>Municipal</span><span class="text-xs text-slate-500 group-hover:text-blue-800">1</span></a></li>
+          </ul>
+          <a href="aplicativos.html" class="cf-btn cf-btn-soft mt-auto w-full">Ver todos os aplicativos</a>
+        </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAIXA: PROCEDIMENTOS, LEGISLAÇÃO E CONSULTORIA ===================== -->
+    <section id="faixa-conteudo" class="cf-faixa" aria-labelledby="faixa-titulo-conteudo" data-faixa>
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-book-open" aria-hidden="true"></i>Conteúdo técnico</span>
+          <h2 id="faixa-titulo-conteudo" class="cf-faixa-titulo">Procedimentos, legislação e consultoria</h2>
+          <p class="cf-faixa-texto">Orientações passo a passo, normas publicadas e as respostas da Consultoria Cenofisco.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-5 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
+<section class="cf-card flex flex-col" aria-labelledby="titulo-procedimentos">
+          <div class="cf-section-head">
+            <h3 id="titulo-procedimentos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-newspaper" aria-hidden="true"></i></span>Últimos Procedimentos</h3>
+            <a href="procedimentos.html" class="cf-link-more">Ver todos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+          <div id="home-procedimentos" class="mb-5 divide-y divide-slate-100">
+            <article class="py-4 first:pt-0 last:pb-0">
+              <span class="cf-eyebrow text-blue-700">Contabilidade</span>
+              <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="procedimentos.html" class="transition hover:text-blue-800">Índice de Preços ao Consumidor (IPC) (FIPE)</a></h3>
+              <p class="mt-1 text-sm text-slate-600">Abr. – Mensal = 0,40%</p>
+              <p class="mt-2 text-xs text-slate-500">Indicadores e Taxas · 07/05/2026</p>
+            </article>
+            <article class="py-4 first:pt-0 last:pb-0">
+              <span class="cf-eyebrow text-emerald-700">Tributário</span>
+              <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="procedimentos.html" class="transition hover:text-blue-800">Cesta Básica (Alimentos e Construção Civil) – Tratamento Fiscal</a></h3>
+              <p class="mt-1 text-sm text-slate-600">Trabalho com esclarecimentos sobre o tratamento fiscal dispensado às operações com produtos da cesta básica de alimentos e da construção civil.</p>
+              <p class="mt-2 text-xs text-slate-500">Paraná · 05/05/2026 · Número: 19/2026</p>
+            </article>
+            <article class="py-4 first:pt-0 last:pb-0">
+              <span class="cf-eyebrow text-orange-700">Trabalhista</span>
+              <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="procedimentos.html" class="transition hover:text-blue-800">Contribuição Adicional – SENAI</a></h3>
+              <p class="mt-1 text-sm text-slate-600">Procedimentos sobre a contribuição adicional para o Serviço Nacional de Aprendizagem Industrial (SENAI).</p>
+              <p class="mt-2 text-xs text-slate-500">Previdência Social · 05/05/2026 · Número: 19/2026</p>
+            </article>
+          </div>
+          <nav class="mt-auto border-t border-slate-100 pt-5" aria-labelledby="titulo-proc-areas">
+            <h4 id="titulo-proc-areas" class="mb-3 text-xs font-semibold tracking-wider text-slate-500 uppercase">Navegue por área</h4>
+            <ul class="grid grid-cols-1 gap-2 min-[440px]:grid-cols-2">
+              <li><a href="procedimentos.html?area=ICMS%20e%20Outros" class="group flex h-full items-center gap-2.5 rounded-xl border border-slate-200 px-2.5 py-2 transition hover:border-blue-200 hover:bg-blue-50"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs bg-emerald-50 text-emerald-700"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i></span><span class="min-w-0 flex-1 text-[13px] leading-tight font-medium text-slate-700 group-hover:text-blue-800">ICMS e Outros</span><span class="text-xs text-slate-400 tabular-nums" data-proc-area="ICMS e Outros">3</span></a></li>
+              <li><a href="procedimentos.html?area=Federal" class="group flex h-full items-center gap-2.5 rounded-xl border border-slate-200 px-2.5 py-2 transition hover:border-blue-200 hover:bg-blue-50"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs bg-violet-50 text-violet-700"><i class="fa-solid fa-landmark" aria-hidden="true"></i></span><span class="min-w-0 flex-1 text-[13px] leading-tight font-medium text-slate-700 group-hover:text-blue-800">Federal</span><span class="text-xs text-slate-400 tabular-nums" data-proc-area="Federal">1</span></a></li>
+              <li><a href="procedimentos.html?area=Prev%2FTrab" class="group flex h-full items-center gap-2.5 rounded-xl border border-slate-200 px-2.5 py-2 transition hover:border-blue-200 hover:bg-blue-50"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs bg-orange-50 text-orange-700"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span><span class="min-w-0 flex-1 text-[13px] leading-tight font-medium text-slate-700 group-hover:text-blue-800">Trabalhista e Previdência</span><span class="text-xs text-slate-400 tabular-nums" data-proc-area="Prev/Trab">1</span></a></li>
+              <li><a href="procedimentos.html?area=IR" class="group flex h-full items-center gap-2.5 rounded-xl border border-slate-200 px-2.5 py-2 transition hover:border-blue-200 hover:bg-blue-50"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs bg-red-50 text-red-700"><i class="fa-solid fa-coins" aria-hidden="true"></i></span><span class="min-w-0 flex-1 text-[13px] leading-tight font-medium text-slate-700 group-hover:text-blue-800">Imposto de Renda</span><span class="text-xs text-slate-400 tabular-nums" data-proc-area="IR">1</span></a></li>
+              <li><a href="procedimentos.html?area=ISS%20e%20Outros" class="group flex h-full items-center gap-2.5 rounded-xl border border-slate-200 px-2.5 py-2 transition hover:border-blue-200 hover:bg-blue-50"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs bg-amber-50 text-amber-700"><i class="fa-solid fa-city" aria-hidden="true"></i></span><span class="min-w-0 flex-1 text-[13px] leading-tight font-medium text-slate-700 group-hover:text-blue-800">ISS e Outros</span><span class="text-xs text-slate-400 tabular-nums" data-proc-area="ISS e Outros">1</span></a></li>
+              <li><a href="procedimentos.html?area=Contabilidade" class="group flex h-full items-center gap-2.5 rounded-xl border border-slate-200 px-2.5 py-2 transition hover:border-blue-200 hover:bg-blue-50"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-xs bg-sky-50 text-sky-700"><i class="fa-solid fa-calculator" aria-hidden="true"></i></span><span class="min-w-0 flex-1 text-[13px] leading-tight font-medium text-slate-700 group-hover:text-blue-800">Contabilidade</span><span class="text-xs text-slate-400 tabular-nums" data-proc-area="Contabilidade">2</span></a></li>
+            </ul>
+          </nav>
+        </section>
+<section class="cf-card" aria-labelledby="titulo-legislacao">
+          <div class="cf-section-head">
+            <h3 id="titulo-legislacao" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-gavel" aria-hidden="true"></i></span>Legislação</h3>
+            <a href="legislacao.html" class="cf-link-more">Ver todas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 md:grid-cols-4 xl:grid-cols-3" id="legislacao-filtros">
+            <label class="cursor-pointer"><input type="checkbox" name="legislacao_tipo" value="federal" class="peer sr-only"><span class="cf-choice"><span>Federal</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+            <label class="cursor-pointer"><input type="checkbox" name="legislacao_tipo" value="estadual" class="peer sr-only"><span class="cf-choice"><span>Estadual</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+            <label class="cursor-pointer"><input type="checkbox" name="legislacao_tipo" value="municipal" class="peer sr-only"><span class="cf-choice"><span>Municipal</span><i class="fa-solid fa-check opacity-0 transition-opacity peer-checked:opacity-100" aria-hidden="true"></i></span></label>
+            <button type="button" id="busca-avancada-btn" class="cf-btn cf-btn-secondary col-span-3 md:col-span-1 xl:col-span-3" aria-controls="legislacao-busca-avancada" aria-expanded="false"><i class="fa-solid fa-sliders" aria-hidden="true"></i>Busca avançada</button>
+          </div>
+
+          <div id="legislacao-busca-avancada" class="mt-4 hidden rounded-xl border border-blue-100 bg-blue-50/60 p-4">
+            <h3 class="mb-3 text-sm font-semibold text-slate-800">Busca avançada</h3>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
+              <div>
+                <label for="adv-numero-decreto" class="cf-label">Número</label>
+                <input type="text" id="adv-numero-decreto" class="cf-input" placeholder="Ex.: 123/2024">
+              </div>
+              <div>
+                <label for="adv-area" class="cf-label">Espécie</label>
+                <select id="adv-area" class="cf-input">
+                  <option value="">Todas</option>
+                  <option value="tributaria">Tributária</option>
+                  <option value="trabalhista">Trabalhista</option>
+                  <option value="ambiental">Ambiental</option>
+                </select>
+              </div>
+              <div>
+                <label for="adv-tipo-publicacao" class="cf-label">Publicações</label>
+                <select id="adv-tipo-publicacao" class="cf-input">
+                  <option value="">Todas</option>
+                </select>
+              </div>
+              <div>
+                <label for="adv-estado" class="cf-label">Estado</label>
+                <select id="adv-estado" class="cf-input">
+                  <option value="">Todos</option>
+                </select>
+              </div>
+              <div id="adv-municipio-container" class="hidden">
+                <label for="adv-municipio" class="cf-label">Município</label>
+                <select id="adv-municipio" class="cf-input">
+                  <option value="">Todos</option>
+                </select>
+              </div>
+              <div>
+                <label for="adv-data-de" class="cf-label">Data de</label>
+                <input type="date" id="adv-data-de" class="cf-input">
+              </div>
+              <div>
+                <label for="adv-data-ate" class="cf-label">Data até</label>
+                <input type="date" id="adv-data-ate" class="cf-input">
+              </div>
+            </div>
+            <div class="mt-4 flex justify-end gap-2">
+              <button type="button" id="adv-limpar" class="cf-btn cf-btn-secondary py-1.5">Limpar</button>
+              <button type="button" id="adv-aplicar" class="cf-btn cf-btn-primary py-1.5">Aplicar filtro</button>
+            </div>
+          </div>
+
+          <div class="mt-5 space-y-4 max-sm:[&>*:nth-child(n+4)]:hidden [&>*:nth-child(n+5)]:hidden" id="legislacao-articles" aria-live="polite">
+            <!-- Carregado dinamicamente a partir de legislacao.json -->
+          </div>
+        </section>
+<div class="min-w-0 md:col-span-2 xl:col-span-1">
+<section id="consultoria-cenofisco" class="cf-card scroll-mt-40" aria-labelledby="titulo-consultoria">
+          <div class="cf-section-head">
+            <h3 id="titulo-consultoria" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span>Consultoria Cenofisco</h3>
+            <a href="consultoria.html" class="cf-btn cf-btn-accent shrink-0 whitespace-nowrap"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Comprar créditos</a>
+          </div>
+          <div class="mb-6 border-b border-slate-200">
+            <nav class="cf-tabs" role="tablist" aria-label="Consultoria">
+              <button type="button" id="tab-ultimas-consultas" aria-controls="ultimas-consultas" role="tab" class="consultoria-tab-button tab-button active" onclick="openConsultoriaTab(event, 'ultimas-consultas')">Últimas Consultas</button>
+              <button type="button" id="tab-consultoria" aria-controls="consultoria" role="tab" class="consultoria-tab-button tab-button" onclick="openConsultoriaTab(event, 'consultoria')">Faça sua consulta</button>
+              <button type="button" id="tab-depoimentos" aria-controls="depoimentos" role="tab" class="consultoria-tab-button tab-button" onclick="openConsultoriaTab(event, 'depoimentos')">Depoimentos</button>
+            </nav>
+          </div>
+
+          <div>
+            <div id="ultimas-consultas" class="consultoria-tab-content" role="tabpanel" aria-labelledby="tab-ultimas-consultas">
+              <div class="grid grid-cols-1 gap-6">
+                <aside class="min-w-0" aria-label="Áreas da consultoria">
+                  <ul class="flex gap-1 overflow-x-auto text-sm" data-scroll-hint>
+                    <li><button type="button" data-area="Imposto de Renda" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-coins w-4 text-center text-slate-400" aria-hidden="true"></i>Imposto de Renda</button></li>
+                    <li><button type="button" data-area="Trabalhista" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-hourglass-half w-4 text-center text-slate-400" aria-hidden="true"></i>Trabalhista</button></li>
+                    <li><button type="button" data-area="Contabilidade" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-calculator w-4 text-center text-slate-400" aria-hidden="true"></i>Contabilidade</button></li>
+                    <li><button type="button" data-area="Comércio Exterior" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-earth-americas w-4 text-center text-slate-400" aria-hidden="true"></i>Comércio Exterior</button></li>
+                    <li><button type="button" data-area="Federal" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-flag w-4 text-center text-slate-400" aria-hidden="true"></i>Federal</button></li>
+                    <li><button type="button" data-area="Estadual" aria-pressed="false" class="cf-area-consulta flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-3 py-2 text-left whitespace-nowrap text-slate-600 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-truck w-4 text-center text-slate-400" aria-hidden="true"></i>Estadual</button></li>
+                  </ul>
+                </aside>
+                <div id="home-consultas" class="divide-y divide-slate-100">
+                  <article class="group py-4 first:pt-0">
+                    <span class="cf-eyebrow text-blue-700">Imposto de Renda</span>
+                    <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="#" class="transition group-hover:text-blue-800">Como declarar investimentos no exterior?</a></h3>
+                    <p class="mt-1 text-sm text-slate-600">Entenda as regras e os cuidados necessários para a declaração de ativos fora do país.</p>
+                    <p class="mt-2 text-xs text-slate-500">Respondido em 29/04/2026</p>
+                  </article>
+                  <article class="group py-4">
+                    <span class="cf-eyebrow text-orange-700">Trabalhista</span>
+                    <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="#" class="transition group-hover:text-blue-800">Como calcular o adicional noturno de empregado em jornada mista?</a></h3>
+                    <p class="mt-1 text-sm text-slate-600">Orientações sobre a apuração das horas noturnas e seus reflexos nas demais verbas.</p>
+                    <p class="mt-2 text-xs text-slate-500">Respondido em 28/04/2026</p>
+                  </article>
+                  <article class="group py-4 last:pb-0">
+                    <span class="cf-eyebrow text-teal-700">Contabilidade</span>
+                    <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="#" class="transition group-hover:text-blue-800">Qual o tratamento contábil de bonificações recebidas em mercadorias?</a></h3>
+                    <p class="mt-1 text-sm text-slate-600">Esclarecimentos sobre o registro contábil e os reflexos fiscais das bonificações.</p>
+                    <p class="mt-2 text-xs text-slate-500">Respondido em 27/04/2026</p>
+                  </article>
+                </div>
+              </div>
+            </div>
+
+            <div id="consultoria" class="consultoria-tab-content hidden" role="tabpanel" aria-labelledby="tab-consultoria">
+              <h3 class="text-xl font-semibold tracking-tight">Faça sua consulta</h3>
+              <p class="mt-2 text-sm text-slate-600">Agora ficou muito mais fácil ter a melhor consultoria do mercado à sua disposição: basta escolher uma forma de fazer sua consulta e pronto!</p>
+              <div class="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4">
+                <a href="tel:08009403055" class="group flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-5 text-center transition hover:border-blue-200 hover:bg-blue-50 hover:shadow-sm">
+                  <span class="cf-icon mb-3 size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+                  <span class="text-sm font-semibold text-slate-700">Telefone</span>
+                </a>
+                <a href="#" class="group flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-5 text-center transition hover:border-blue-200 hover:bg-blue-50 hover:shadow-sm">
+                  <span class="cf-icon mb-3 size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white"><i class="fa-regular fa-envelope" aria-hidden="true"></i></span>
+                  <span class="text-sm font-semibold text-slate-700">Online</span>
+                </a>
+                <a href="#" class="group flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-5 text-center transition hover:border-blue-200 hover:bg-blue-50 hover:shadow-sm">
+                  <span class="cf-icon mb-3 size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white"><i class="fa-solid fa-video" aria-hidden="true"></i></span>
+                  <span class="text-sm font-semibold text-slate-700">Vídeo Consultoria</span>
+                </a>
+                <a href="#" class="group flex flex-col items-center justify-center rounded-xl border border-slate-200 bg-slate-50 p-5 text-center transition hover:border-blue-200 hover:bg-blue-50 hover:shadow-sm">
+                  <span class="cf-icon mb-3 size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+                  <span class="text-sm font-semibold text-slate-700">Presencial</span>
+                </a>
+              </div>
+            </div>
+
+            <div id="depoimentos" class="consultoria-tab-content hidden" role="tabpanel" aria-labelledby="tab-depoimentos">
+              <p class="text-sm text-slate-600">Nossos profissionais estão preparados para sanar suas dúvidas nas áreas tributária, fiscal, trabalhista, previdenciária e de comércio exterior.</p>
+              <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+                <figure class="flex flex-col rounded-xl border border-slate-200 bg-slate-50 p-6">
+                  <i class="fa-solid fa-quote-left mb-4 text-2xl text-blue-200" aria-hidden="true"></i>
+                  <blockquote class="flex-grow text-slate-700">“A consultoria da Cenofisco foi um divisor de águas para nossa empresa. As orientações sobre a reforma tributária nos deram clareza e segurança para planejar o futuro.”</blockquote>
+                  <figcaption class="mt-5 flex items-center gap-3 border-t border-slate-200 pt-4">
+                    <span class="inline-flex size-10 items-center justify-center rounded-full bg-blue-900 text-sm font-semibold text-white" aria-hidden="true">JS</span>
+                    <span>
+                      <span class="block text-sm font-semibold">João Silva</span>
+                      <span class="block text-xs text-slate-500">CFO, Indústria Têxtil ABC</span>
+                    </span>
+                  </figcaption>
+                </figure>
+                <figure class="flex flex-col rounded-xl border border-slate-200 bg-slate-50 p-6">
+                  <i class="fa-solid fa-quote-left mb-4 text-2xl text-blue-200" aria-hidden="true"></i>
+                  <blockquote class="flex-grow text-slate-700">“O suporte na área trabalhista é excepcional. Respostas rápidas, precisas e sempre atualizadas com a legislação mais recente. Recomendo fortemente!”</blockquote>
+                  <figcaption class="mt-5 flex items-center gap-3 border-t border-slate-200 pt-4">
+                    <span class="inline-flex size-10 items-center justify-center rounded-full bg-amber-400 text-sm font-semibold text-blue-950" aria-hidden="true">MO</span>
+                    <span>
+                      <span class="block text-sm font-semibold">Maria Oliveira</span>
+                      <span class="block text-xs text-slate-500">Gerente de RH, Comércio Varejista XYZ</span>
+                    </span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAIXA: APRENDA E ACOMPANHE ===================== -->
+    <section id="faixa-midia" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-midia" data-faixa>
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>Aprenda</span>
+          <h2 id="faixa-titulo-midia" class="cf-faixa-titulo">Aprenda e acompanhe</h2>
+          <p class="cf-faixa-texto">Podcast, especiais, Reforma Tributária e cursos com especialistas.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-3">
+<section class="cf-card flex flex-col" aria-labelledby="titulo-podcast">
+            <div class="cf-section-head">
+              <h3 id="titulo-podcast" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-microphone" aria-hidden="true"></i></span>Cenofisco Orienta</h3>
+              <a href="podcasts.html" class="cf-link-more">Ver todos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <div class="cf-on-dark flex flex-1 flex-col justify-between rounded-xl bg-gradient-to-br from-blue-800 to-blue-950 p-5 text-white">
+              <div class="flex items-center gap-4">
+                <img src="img/cenorienta.jpg" alt="Capa do podcast Cenofisco Orienta" width="80" height="80" loading="lazy" class="size-20 shrink-0 rounded-lg shadow-md">
+                <div class="min-w-0">
+                  <p class="cf-eyebrow text-amber-300">Episódio mais recente</p>
+                  <p id="podcast-titulo" class="mt-1 line-clamp-3 text-sm leading-snug font-medium text-blue-50">Ouça os episódios do Cenofisco Orienta e do AduanaCast</p>
+                  <p id="podcast-meta" class="mt-1 text-xs text-blue-200"></p>
+                </div>
+              </div>
+
+              <div id="podcast-controles" class="mt-5">
+                <!-- O padding vertical (com background-clip) amplia a área de toque para 24px sem mudar a barra de 6px -->
+                <div id="progress-container" class="group box-content h-1.5 w-full cursor-pointer rounded-full bg-white/20 bg-clip-content py-[9px]" role="slider" aria-label="Progresso do episódio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" tabindex="0">
+                  <div id="progress-bar" class="relative h-1.5 w-0 rounded-full bg-amber-400">
+                    <span class="absolute top-1/2 right-0 size-3 -translate-y-1/2 translate-x-1/2 rounded-full bg-white opacity-0 shadow transition-opacity group-hover:opacity-100"></span>
+                  </div>
+                </div>
+                <div class="mt-0.5 flex justify-between text-xs text-blue-200 tabular-nums">
+                  <span id="current-time">0:00</span>
+                  <span id="duration">0:00</span>
+                </div>
+                <div class="mt-3 flex items-center justify-center gap-4">
+                  <button type="button" id="podcast-share" class="inline-flex size-9 cursor-pointer items-center justify-center rounded-full text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Compartilhar episódio"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i></button>
+                  <button type="button" id="play-icon" class="inline-flex size-12 cursor-pointer items-center justify-center rounded-full bg-amber-400 text-blue-950 shadow transition hover:bg-amber-300" aria-label="Ouvir o episódio mais recente"><i class="fa-solid fa-play ml-0.5" aria-hidden="true"></i></button>
+                  <button type="button" id="pause-icon" class="hidden size-12 cursor-pointer items-center justify-center rounded-full bg-amber-400 text-blue-950 shadow transition hover:bg-amber-300" aria-label="Pausar"><i class="fa-solid fa-pause" aria-hidden="true"></i></button>
+                  <a href="podcasts.html" class="inline-flex size-9 items-center justify-center rounded-full text-blue-100 transition hover:bg-white/10 hover:text-white" aria-label="Ver todos os episódios" title="Ver todos os episódios"><i class="fa-solid fa-list-ul" aria-hidden="true"></i></a>
+                </div>
+                <p id="podcast-status" class="sr-only" role="status" aria-live="polite"></p>
+              </div>
+              <!-- Player do SoundCloud: fica escondido; só aparece se o navegador bloquear os controles acima -->
+              <div id="podcast-widget" class="pointer-events-none absolute -left-[9999px] h-px w-px overflow-hidden" aria-hidden="true"></div>
+            </div>
+          </section>
+<section class="cf-card flex flex-col" aria-labelledby="titulo-especiais">
+            <div class="cf-section-head">
+              <h3 id="titulo-especiais" class="cf-section-title"><span class="cf-icon bg-amber-50 text-amber-500"><i class="fa-solid fa-star" aria-hidden="true"></i></span>Especiais</h3>
+              <a href="especiais.html" class="cf-link-more">Ver todos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <!-- flex-1 + justify-center: o conteúdo fica centralizado quando o cartão é mais alto (acompanha o Podcast ao lado) -->
+            <div class="flex flex-1 flex-col justify-center">
+            <div id="image-slider" class="relative w-full overflow-hidden rounded-xl bg-slate-100 select-none" aria-roledescription="carrossel" aria-label="Especiais">
+              <div class="slider-images flex flex-nowrap transition-transform duration-500 ease-in-out">
+                <!-- A largura de cada imagem é definida via JavaScript -->
+                <a href="especiais.html?q=COAF" draggable="false" class="block w-full flex-shrink-0"><img src="img/especiais/COAF.jpg" alt="Especial COAF" width="550" height="250" loading="lazy" decoding="async" draggable="false" class="h-auto w-full object-cover"></a>
+                <a href="especiais.html?q=DIRPF" draggable="false" class="block w-full flex-shrink-0"><img src="img/especiais/DIRPF.jpg" alt="Especial DIRPF" width="550" height="250" loading="lazy" decoding="async" draggable="false" class="h-auto w-full object-cover"></a>
+                <a href="especiais.html?q=Consignado" draggable="false" class="block w-full flex-shrink-0"><img src="img/especiais/Emprestimo-Consignado-em-Folha-de-Pagamento.jpg" alt="Especial Empréstimo Consignado em Folha de Pagamento" width="550" height="250" loading="lazy" decoding="async" draggable="false" class="h-auto w-full object-cover"></a>
+                <a href="especiais.html?q=eSocial" draggable="false" class="block w-full flex-shrink-0"><img src="img/especiais/eSocial.jpg" alt="Especial eSocial" width="550" height="250" loading="lazy" decoding="async" draggable="false" class="h-auto w-full object-cover"></a>
+                <a href="especiais.html?q=FEC" draggable="false" class="block w-full flex-shrink-0"><img src="img/especiais/FEC.jpg" alt="Especial FEC" width="550" height="250" loading="lazy" decoding="async" draggable="false" class="h-auto w-full object-cover"></a>
+              </div>
+
+              <button type="button" id="prev-slide" class="absolute top-1/2 left-3 inline-flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-blue-900 shadow-md transition hover:bg-white" aria-label="Slide anterior"><i class="fa-solid fa-chevron-left text-sm" aria-hidden="true"></i></button>
+              <button type="button" id="next-slide" class="absolute top-1/2 right-3 inline-flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white/90 text-blue-900 shadow-md transition hover:bg-white" aria-label="Próximo slide"><i class="fa-solid fa-chevron-right text-sm" aria-hidden="true"></i></button>
+            </div>
+
+            <!-- Indicadores (abaixo do slide) -->
+            <div id="slider-dots" class="mt-3 flex justify-center">
+              <button type="button" class="dot box-content h-2 w-2 cursor-pointer rounded-full bg-slate-300 bg-clip-content p-2 transition-all hover:bg-slate-400" data-slide="0" aria-label="Ir para o slide 1"></button>
+              <button type="button" class="dot box-content h-2 w-2 cursor-pointer rounded-full bg-slate-300 bg-clip-content p-2 transition-all hover:bg-slate-400" data-slide="1" aria-label="Ir para o slide 2"></button>
+              <button type="button" class="dot box-content h-2 w-2 cursor-pointer rounded-full bg-slate-300 bg-clip-content p-2 transition-all hover:bg-slate-400" data-slide="2" aria-label="Ir para o slide 3"></button>
+              <button type="button" class="dot box-content h-2 w-2 cursor-pointer rounded-full bg-slate-300 bg-clip-content p-2 transition-all hover:bg-slate-400" data-slide="3" aria-label="Ir para o slide 4"></button>
+              <button type="button" class="dot box-content h-2 w-2 cursor-pointer rounded-full bg-slate-300 bg-clip-content p-2 transition-all hover:bg-slate-400" data-slide="4" aria-label="Ir para o slide 5"></button>
+            </div>
+            </div>
+          </section>
+<section class="cf-card flex flex-col" aria-labelledby="titulo-reforma">
+          <div class="cf-section-head">
+            <h3 id="titulo-reforma" class="cf-section-title"><span class="cf-icon bg-cyan-50 text-cyan-700"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></span>Reforma Tributária</h3>
+            <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-link-more">Hotsite <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only">(abre em nova aba)</span></a>
+          </div>
+          <div class="flex flex-1 flex-col gap-4">
+            <!-- Destaque mais recente -->
+            <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="group cf-on-dark relative flex flex-1 flex-col justify-between overflow-hidden rounded-xl bg-gradient-to-br from-cyan-700 to-blue-800 p-5 text-white">
+              <div class="relative z-10">
+                <p class="flex flex-wrap items-center gap-2"><span class="rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-bold tracking-wider text-blue-950 uppercase">Novo no hotsite</span><span class="text-xs text-cyan-100">CBS · 13/10/2026</span></p>
+                <p class="mt-3 text-lg leading-snug font-bold group-hover:underline group-hover:underline-offset-2">CBS – Combustíveis – Alíquotas</p>
+                <p class="mt-1 text-sm text-blue-50/90">Alíquotas da CBS nas operações com combustíveis e a delegação de competência para fixá-las.</p>
+              </div>
+              <span class="relative z-10 mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-300">Ler no hotsite <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span>
+              <i class="fa-solid fa-scale-balanced absolute -right-5 -bottom-6 rotate-[-15deg] text-8xl text-white/10" aria-hidden="true"></i>
+            </a>
+          </div>
+        </section>
+        </div>
+        <div class="mt-5 lg:mt-6">
+<section class="cf-card" aria-labelledby="titulo-cursos">
+          <div class="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h3 id="titulo-cursos" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span>Cursos em Destaque</h3>
+              <p class="mt-2 text-sm text-slate-500">Os cursos mais procurados para impulsionar sua carreira.</p>
+            </div>
+            <a href="/cursos" class="cf-link-more">Ver todos os cursos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </div>
+
+          <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4 max-sm:[&>*:nth-child(n+3)]:hidden">
+            <a href="/curso/30b7089f-588d-46e1-ab63-582fa07aa3a6" class="course-card group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-900/5">
+              <div class="mb-3 flex min-h-6 flex-wrap gap-2">
+                <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-600/20">Confirmado</span>
+                <span class="inline-flex items-center gap-1 rounded-md bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800 ring-1 ring-amber-600/20"><i class="fa-solid fa-award text-[10px]" aria-hidden="true"></i>16 pts</span>
+              </div>
+              <h3 class="mb-2 line-clamp-2 leading-snug font-semibold text-slate-900 transition-colors group-hover:text-blue-800">Reforma Tributária – IBS/CBS – Aplicação Prática com a Análise das Notas Técnicas</h3>
+              <p class="mb-4 line-clamp-2 text-sm text-slate-500">Domine a Reforma Tributária com análise prática do IBS/CBS e notas técnicas.</p>
+              <ul class="mb-4 space-y-1.5 text-sm text-slate-500">
+                <li class="flex items-center gap-2"><i class="fa-regular fa-calendar w-4 text-center text-slate-400" aria-hidden="true"></i>05/02/2026</li>
+                <li class="flex items-center gap-2"><i class="fa-regular fa-clock w-4 text-center text-slate-400" aria-hidden="true"></i>16h</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-video w-4 text-center text-slate-400" aria-hidden="true"></i>Videoconferência (Nacional)</li>
+              </ul>
+              <span class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition group-hover:bg-blue-800">Detalhes do curso</span>
+            </a>
+
+            <a href="/curso/bbb677bb-f902-4884-9ab6-79732e8bde51" class="course-card group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-900/5">
+              <div class="mb-3 flex min-h-6 flex-wrap gap-2">
+                <span class="inline-flex items-center rounded-md bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 ring-1 ring-emerald-600/20">Confirmado</span>
+              </div>
+              <h3 class="mb-2 line-clamp-2 leading-snug font-semibold text-slate-900 transition-colors group-hover:text-blue-800">Formação de Analista de Departamento Pessoal</h3>
+              <p class="mb-4 line-clamp-2 text-sm text-slate-500">Formação completa em DP com ênfase em eSocial e legislação atual.</p>
+              <ul class="mb-4 space-y-1.5 text-sm text-slate-500">
+                <li class="flex items-center gap-2"><i class="fa-regular fa-calendar w-4 text-center text-slate-400" aria-hidden="true"></i>16/03/2026</li>
+                <li class="flex items-center gap-2"><i class="fa-regular fa-clock w-4 text-center text-slate-400" aria-hidden="true"></i>24h</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-video w-4 text-center text-slate-400" aria-hidden="true"></i>Videoconferência (Nacional)</li>
+              </ul>
+              <span class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition group-hover:bg-blue-800">Detalhes do curso</span>
+            </a>
+
+            <a href="/curso/7b2b1c84-bf87-4d02-a457-536de2f8d0fd" class="course-card group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-900/5">
+              <div class="mb-3 flex min-h-6 flex-wrap gap-2">
+                <span class="inline-flex items-center gap-1 rounded-md bg-amber-50 px-2 py-0.5 text-xs font-semibold text-amber-800 ring-1 ring-amber-600/20"><i class="fa-solid fa-award text-[10px]" aria-hidden="true"></i>8 pts</span>
+              </div>
+              <h3 class="mb-2 line-clamp-2 leading-snug font-semibold text-slate-900 transition-colors group-hover:text-blue-800">Lucro Real – Procedimentos Práticos para Apuração e Escrituração</h3>
+              <p class="mb-4 line-clamp-2 text-sm text-slate-500">Aprenda a apurar IRPJ/CSLL pelo Lucro Real com foco prático.</p>
+              <ul class="mb-4 space-y-1.5 text-sm text-slate-500">
+                <li class="flex items-center gap-2"><i class="fa-regular fa-calendar w-4 text-center text-slate-400" aria-hidden="true"></i>13/03/2026</li>
+                <li class="flex items-center gap-2"><i class="fa-regular fa-clock w-4 text-center text-slate-400" aria-hidden="true"></i>8h</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-video w-4 text-center text-slate-400" aria-hidden="true"></i>Videoconferência (Nacional)</li>
+              </ul>
+              <span class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition group-hover:bg-blue-800">Detalhes do curso</span>
+            </a>
+
+            <a href="/curso/cb869a89-d5d0-45e5-a8ec-cbb5394b70ec" class="course-card group flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-5 transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-900/5">
+              <div class="mb-3 flex min-h-6 flex-wrap gap-2">
+                <span class="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 text-xs font-semibold text-slate-600 ring-1 ring-slate-500/15">Inscrições abertas</span>
+              </div>
+              <h3 class="mb-2 line-clamp-2 leading-snug font-semibold text-slate-900 transition-colors group-hover:text-blue-800">Gestão Estratégica do Contas a Pagar nas Empresas</h3>
+              <p class="mb-4 line-clamp-2 text-sm text-slate-500">Otimize sua gestão de contas a pagar com técnicas estratégicas.</p>
+              <ul class="mb-4 space-y-1.5 text-sm text-slate-500">
+                <li class="flex items-center gap-2"><i class="fa-regular fa-calendar w-4 text-center text-slate-400" aria-hidden="true"></i>09/02/2026</li>
+                <li class="flex items-center gap-2"><i class="fa-regular fa-clock w-4 text-center text-slate-400" aria-hidden="true"></i>8h</li>
+                <li class="flex items-center gap-2"><i class="fa-solid fa-video w-4 text-center text-slate-400" aria-hidden="true"></i>Videoconferência (Nacional)</li>
+              </ul>
+              <span class="mt-auto inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-900 px-4 py-2 text-sm font-semibold text-white transition group-hover:bg-blue-800">Detalhes do curso</span>
+            </a>
+          </div>
+        </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NÚMEROS DO PORTAL ===================== -->
+    <section class="border-y border-slate-200/80 bg-white py-10 sm:py-12" aria-label="O portal em números">
+      <div class="container mx-auto px-4">
+        <dl class="grid grid-cols-2 gap-x-4 gap-y-8 text-center lg:grid-cols-4">
+          <div class="flex flex-col-reverse"><dt class="cf-numero-legenda">tabelas práticas organizadas por área</dt><dd class="cf-numero" data-numero="tabelas">73</dd></div>
+          <div class="flex flex-col-reverse"><dt class="cf-numero-legenda">códigos cClassTrib da tabela oficial</dt><dd class="cf-numero" data-numero="cclasstrib">173</dd></div>
+          <div class="flex flex-col-reverse"><dt class="cf-numero-legenda">regulamentos estaduais de ICMS</dt><dd class="cf-numero" data-numero="uf">27</dd></div>
+          <div class="flex flex-col-reverse"><dt class="cf-numero-legenda">áreas temáticas no podcast</dt><dd class="cf-numero" data-numero="podcast">11</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===================== FAIXA: REFERÊNCIAS PARA CONSULTA ===================== -->
+    <section id="faixa-referencias" class="cf-faixa" aria-labelledby="faixa-titulo-referencias" data-faixa>
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-bookmark" aria-hidden="true"></i>Referências</span>
+          <h2 id="faixa-titulo-referencias" class="cf-faixa-titulo">Referências para consulta</h2>
+          <p class="cf-faixa-texto">Regulamentos estaduais, principais normas e canais de atendimento.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-5 lg:gap-6 md:grid-cols-2 xl:grid-cols-3">
+<div class="flex min-w-0 flex-col gap-5 lg:gap-6">
+<section class="cf-card" aria-labelledby="titulo-regulamentos">
+          <div class="cf-section-head">
+            <h3 id="titulo-regulamentos" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-flag" aria-hidden="true"></i></span>Regulamentos Estaduais</h3>
+          </div>
+          <!-- Gerado via JavaScript a partir da lista de UFs (index.js) -->
+          <div id="regulamentos-estados" class="grid grid-cols-7 justify-items-center gap-2"></div>
+        </section>
+<section class="cf-card" aria-labelledby="titulo-canal">
+          <div class="cf-section-head">
+            <h3 id="titulo-canal" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-circle-user" aria-hidden="true"></i></span>Canal do Usuário</h3>
+          </div>
+          <ul class="grid grid-cols-2 gap-2 text-sm">
+            <li><a href="/cursos" class="flex items-start gap-2.5 rounded-lg px-2 py-2 leading-snug text-slate-700 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-graduation-cap mt-0.5 w-4 shrink-0 text-center text-slate-400" aria-hidden="true"></i>Cursos</a></li>
+            <li><a href="mailto:contato@cenofisco.com.br" class="flex items-start gap-2.5 rounded-lg px-2 py-2 leading-snug text-slate-700 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-comments mt-0.5 w-4 shrink-0 text-center text-slate-400" aria-hidden="true"></i>Fale Conosco</a></li>
+            <li><a href="#" class="flex items-start gap-2.5 rounded-lg px-2 py-2 leading-snug text-slate-700 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-lightbulb mt-0.5 w-4 shrink-0 text-center text-slate-400" aria-hidden="true"></i>Enviar Sugestões</a></li>
+            <li><a href="#" class="flex items-start gap-2.5 rounded-lg px-2 py-2 leading-snug text-slate-700 transition hover:bg-blue-50 hover:text-blue-800"><i class="fa-solid fa-phone mt-0.5 w-4 shrink-0 text-center text-slate-400" aria-hidden="true"></i>Telefones e Endereços</a></li>
+          </ul>
+        </section>
+</div>
+<section class="cf-card" aria-labelledby="titulo-normas">
+          <div class="cf-section-head">
+            <h3 id="titulo-normas" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-book" aria-hidden="true"></i></span>Principais Normas</h3>
+          </div>
+          <ul id="principais-normas-lista" class="-mx-2 text-sm [&>li:nth-child(n+7)]:hidden">
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Constituição Federal</span><span class="shrink-0 text-xs text-slate-500">CF/1988</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Código Tributário Nacional</span><span class="shrink-0 text-xs text-slate-500">Lei nº 5.172/1966</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Código Civil</span><span class="shrink-0 text-xs text-slate-500">Lei nº 10.406/2002</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Código de Processo Civil</span><span class="shrink-0 text-xs text-slate-500">Lei nº 13.105/2015</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Código Penal</span><span class="shrink-0 text-xs text-slate-500">Decreto-Lei nº 2.848/1940</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Código de Processo Penal</span><span class="shrink-0 text-xs text-slate-500">Decreto-Lei nº 3.689/1941</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>CLT</span><span class="shrink-0 text-xs text-slate-500">Decreto-Lei nº 5.452/1943</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Estatuto da ME e EPP (Simples)</span><span class="shrink-0 text-xs text-slate-500">LC nº 123/2006</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Lei das S/A</span><span class="shrink-0 text-xs text-slate-500">Lei nº 6.404/1976</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>SIMPLES Nacional</span><span class="shrink-0 text-xs text-slate-500">Resolução nº 140/2018</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Normas Contábeis</span></a></li>
+            <li><a href="#" class="group flex items-center justify-between gap-3 rounded-lg px-2 py-2.5 transition hover:bg-blue-50"><span class="flex items-center gap-2.5 font-medium text-slate-700 group-hover:text-blue-800"><i class="fa-regular fa-file-lines text-slate-400 group-hover:text-blue-700" aria-hidden="true"></i>Normas Regulamentadoras</span></a></li>
+          </ul>
+          <button type="button" id="normas-mais" class="cf-btn cf-btn-soft mt-3 w-full" aria-controls="principais-normas-lista" aria-expanded="false"><i class="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>Mostrar todas as normas</button>
+        </section>
+<a href="#" class="block self-start overflow-hidden rounded-2xl border border-slate-200/80 shadow-sm transition hover:shadow-md">
+          <img src="img/banner_portal_site.jpg" alt="7 dias de acesso grátis ao Boletim Fiscal e Tributário Cenofisco. Depois, assinatura por R$ 262,00/mês" width="500" height="500" loading="lazy" decoding="async" class="h-auto w-full">
+        </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CHAMADA: CONSULTORIA ===================== -->
+    <section class="container mx-auto px-4 pb-12 sm:pb-16" aria-labelledby="cta-titulo">
+      <div class="cf-cta cf-on-dark">
+        <div class="grid items-center gap-8 md:grid-cols-[1fr_auto]">
+          <div class="max-w-2xl">
+            <span class="cf-selo cf-selo-escuro"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria Cenofisco</span>
+            <h2 id="cta-titulo" class="mt-3 text-2xl font-bold tracking-tight text-balance sm:text-3xl">Precisa de uma análise para o seu caso?</h2>
+            <p class="mt-3 text-pretty text-blue-100">Envie sua dúvida tributária, fiscal ou trabalhista para a Consultoria Cenofisco. Para uma pesquisa rápida na base do portal, use o assistente IA.</p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#consultoria-cenofisco" class="cf-btn cf-btn-accent px-5 py-2.5"><i class="fa-solid fa-headset" aria-hidden="true"></i>Falar com a Consultoria</a>
+              <button type="button" class="cf-btn px-5 py-2.5 text-white ring-1 ring-white/30 hover:bg-white/10" data-abrir-ia><span class="inline-flex size-6 items-center justify-center rounded-full bg-amber-400 text-[10px] font-extrabold text-blue-950" aria-hidden="true">IA</span>Pergunte à IA</button>
+            </div>
+          </div>
+          <span class="hidden size-36 items-center justify-center rounded-full bg-white/10 text-6xl text-amber-300 ring-8 ring-white/5 md:inline-flex" aria-hidden="true"><i class="fa-solid fa-comments"></i></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAIXA: PERGUNTAS FREQUENTES SOBRE O PORTAL ===================== -->
+    <section id="faixa-duvidas" class="cf-faixa cf-faixa-destaque" aria-labelledby="faixa-titulo-duvidas" data-faixa>
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>Dúvidas</span>
+          <h2 id="faixa-titulo-duvidas" class="cf-faixa-titulo">Perguntas frequentes sobre o portal</h2>
+          <p class="cf-faixa-texto">Como salvar conteúdos, consultar códigos e acompanhar prazos.</p>
+        </header>
+        <div class="mx-auto max-w-3xl space-y-3">
+          <details class="cf-faq"><summary>Como salvo tabelas, podcasts, consultas e procedimentos?</summary><p class="cf-faq-resposta">Use o ícone <i class="fa-regular fa-bookmark" aria-hidden="true"></i> (salvar) em cada item. Os itens salvos ficam reunidos em <a href="meu-perfil.html">Meu Perfil</a>, neste navegador.</p></details>
+          <details class="cf-faq"><summary>O que é o cClassTrib e onde consulto?</summary><p class="cf-faq-resposta">É o código de Classificação Tributária do IBS e da CBS, informado junto com o CST nos documentos fiscais da Reforma Tributária. Pesquise em <a href="cst-cclasstrib.html">CST/cClassTrib</a> ou no bloco Códigos, com dados da tabela oficial do Portal DF-e.</p></details>
+          <details class="cf-faq"><summary>Como acompanho os prazos das obrigações?</summary><p class="cf-faq-resposta">Na <a href="agenda-obrigacoes.html">Agenda de Obrigações</a>. As obrigações que você salvar na agenda aparecem no aviso do topo desta página quando estiverem perto de vencer.</p></details>
+          <details class="cf-faq"><summary>Onde encontro as tabelas práticas?</summary><p class="cf-faq-resposta">Em <a href="tabelas.html">Tabelas Práticas</a>: as tabelas estão separadas por área, com busca e filtro para mostrar só as disponíveis.</p></details>
+          <details class="cf-faq"><summary>O assistente IA substitui a consultoria?</summary><p class="cf-faq-resposta">Não. O assistente faz uma pesquisa rápida na base do portal e indica onde está a informação. Para analisar um caso específico, <a href="#consultoria-cenofisco">fale com a Consultoria</a>.</p></details>
+          <details class="cf-faq"><summary>Como uso o tema escuro?</summary><p class="cf-faq-resposta">Use o botão <i class="fa-solid fa-moon" aria-hidden="true"></i> na barra superior. A escolha fica salva neste navegador.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <!-- Grade de 12 colunas no desktop: marca (4) · Legislação (2) · Ferramentas (3) · Newsletter (3).
+       No celular, Legislação e Ferramentas ficam lado a lado (listas curtas) e marca/newsletter ocupam a largura toda. -->
+  <footer class="cf-on-dark mt-12 bg-blue-950 text-slate-400">
+    <div class="container mx-auto grid grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:py-14 md:grid-cols-6 lg:grid-cols-12 lg:gap-x-8">
+      <div class="col-span-2 md:col-span-6 lg:col-span-4 lg:pr-8">
+        <!-- -ml-3: o arquivo do logo tem ~12px de margem transparente à esquerda (na altura de 40px); assim ele alinha com o texto -->
+        <img src="img/logobranco-cenofisco.png" alt="Cenofisco" width="201" height="49" loading="lazy" decoding="async" class="mb-4 -ml-3 h-10 w-auto">
+        <p class="max-w-sm text-sm leading-relaxed">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
+        <ul class="mt-5 space-y-1 text-sm">
+          <li><a href="tel:08009403055" class="inline-flex items-center gap-2.5 py-1 transition hover:text-white"><i class="fa-solid fa-phone w-4 text-center text-amber-400" aria-hidden="true"></i>0800 940 3055</a></li>
+          <li><a href="mailto:contato@cenofisco.com.br" class="inline-flex items-center gap-2.5 py-1 break-all transition hover:text-white"><i class="fa-solid fa-envelope w-4 text-center text-amber-400" aria-hidden="true"></i>contato@cenofisco.com.br</a></li>
+        </ul>
+      </div>
+      <nav class="md:col-span-2 lg:col-span-2" aria-label="Legislação">
+        <h2 class="cf-footer-title">Legislação</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="legislacao.html" class="cf-footer-link">Federal</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Estadual</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Municipal</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Trabalhista</a></li>
+        </ul>
+      </nav>
+      <nav class="md:col-span-2 lg:col-span-3" aria-label="Ferramentas">
+        <h2 class="cf-footer-title">Ferramentas</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="buscafiscal-resultados.html" class="cf-footer-link">Busca Fiscal</a></li>
+          <li><a href="aplicativos.html" class="cf-footer-link">Aplicativos</a></li>
+          <li><a href="tabelas.html" class="cf-footer-link">Tabelas Práticas</a></li>
+          <li><a href="agenda-obrigacoes.html" class="cf-footer-link">Agenda de Obrigações</a></li>
+        </ul>
+      </nav>
+      <div class="col-span-2 md:col-span-2 lg:col-span-3">
+        <h2 class="cf-footer-title">Newsletter</h2>
+        <p class="mb-4 text-sm leading-relaxed">Receba as principais notícias fiscais no seu <span class="whitespace-nowrap">e-mail</span>.</p>
+        <form id="newsletter-form" class="flex max-w-md overflow-hidden rounded-lg ring-1 ring-white/10 focus-within:ring-2 focus-within:ring-amber-400">
+          <label for="newsletter-email" class="sr-only">Seu e-mail</label>
+          <!-- appearance-none/rounded-none: tira a sombra interna e os cantos que o Safari do iOS aplica em campos de texto -->
+          <input type="email" id="newsletter-email" required autocomplete="email" inputmode="email" placeholder="Seu e-mail" class="w-full min-w-0 appearance-none rounded-none border-0 bg-white px-3 py-2.5 text-base text-slate-900 placeholder:text-slate-500 focus:outline-none sm:text-sm">
+          <button type="submit" class="inline-flex min-w-11 shrink-0 cursor-pointer items-center justify-center bg-amber-400 px-4 text-blue-950 transition hover:bg-amber-300" aria-label="Assinar newsletter"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+        </form>
+        <p id="newsletter-feedback" class="mt-2 hidden text-xs text-emerald-400" role="status"></p>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <!-- pb-20 no celular: o botão "voltar ao topo" (fixo no canto) não cobre os links desta faixa -->
+      <div class="container mx-auto flex flex-col items-center justify-between gap-2 px-4 pt-6 pb-20 text-center text-xs sm:flex-row sm:gap-6 sm:pb-6 sm:text-left">
+        <p class="leading-relaxed">© <span id="ano-atual">2026</span> Cenofisco Editora de Publicações Tributárias Ltda <span class="hidden sm:inline" aria-hidden="true">·</span><br class="sm:hidden"> <span class="whitespace-nowrap">CNPJ: 82.429.556/0001-62</span></p>
+        <ul class="flex shrink-0 gap-5">
+          <li><a href="#" class="cf-footer-link">Política de Privacidade</a></li>
+          <li><a href="#" class="cf-footer-link">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Voltar ao topo -->
+  <button type="button" id="back-to-top" class="pointer-events-none fixed right-5 bottom-5 z-40 inline-flex size-11 translate-y-3 cursor-pointer items-center justify-center rounded-full bg-blue-900 text-white opacity-0 shadow-lg transition hover:bg-blue-800" aria-label="Voltar ao topo">
+    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+  </button>
+
+  <script src="./indicadores-series.js" defer></script>
+  <script src="./index.js" defer></script>
+  <script src="./index-dinamica.js" defer></script>
+  <script src="./rodape.js" defer></script>
+  <script src="./buscafiscal.js" defer></script>
+  <script src="./assistente-ia.js" defer></script>
+</body>
+</html>

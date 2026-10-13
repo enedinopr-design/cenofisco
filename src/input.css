@@ -438,12 +438,84 @@ border:1px solid #ccc;
   }
 
   /* Navegação principal */
+  /* Página inicial dinâmica (index-dinamica.html): faixas temáticas e menu de seções */
+  .cf-faixa { @apply py-10 sm:py-14; }
+  .cf-faixa-destaque { @apply bg-slate-50; }
+  /* Cabeçalho centralizado: etiqueta (selo) + título + texto */
+  .cf-faixa-cabecalho { @apply mx-auto mb-7 max-w-2xl text-center sm:mb-9; }
+  .cf-selo { @apply inline-flex items-center gap-2 rounded-full bg-blue-50 px-3 py-1 text-[11px] font-semibold tracking-[0.12em] text-blue-800 uppercase ring-1 ring-blue-100; }
+  .cf-selo-escuro { @apply bg-white/10 text-amber-300 ring-white/15; }
+  .cf-faixa-titulo { @apply mt-3 text-2xl font-bold tracking-tight text-balance text-slate-900 sm:text-3xl; }
+  .cf-faixa-texto { @apply mt-2 text-sm text-pretty text-slate-600 sm:text-base; }
+  .cf-faixas-nav { @apply sticky z-40 mt-8 border-y border-slate-200/80 bg-white/90 backdrop-blur; top: var(--cf-topo, 0px); }
+  .cf-faixas-link { @apply inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-sm font-semibold whitespace-nowrap text-slate-600 transition-colors hover:bg-slate-100 hover:text-blue-800; }
+  .cf-faixas-link[aria-current="true"] { @apply bg-blue-900 text-white hover:bg-blue-900 hover:text-white; }
+
+  /* Topo (hero): fundo azul com brilho e círculos decorativos, busca grande ligada ao assistente */
+  .cf-hero {
+    @apply relative isolate overflow-hidden text-white;
+    background:
+      radial-gradient(60rem 30rem at 85% -10%, rgba(251, 191, 36, 0.16), transparent 60%),
+      radial-gradient(50rem 30rem at 0% 110%, rgba(56, 189, 248, 0.18), transparent 60%),
+      linear-gradient(135deg, #0b1d4a 0%, #142f6e 55%, #1e3a8a 100%);
+  }
+  .cf-hero::before, .cf-hero::after {
+    content: ""; position: absolute; z-index: -1; border-radius: 9999px; pointer-events: none;
+    border: 2px solid rgba(255, 255, 255, 0.07);
+  }
+  .cf-hero::before { width: 34rem; height: 34rem; right: -12rem; top: -14rem; box-shadow: 0 0 0 4rem rgba(255, 255, 255, 0.025); }
+  .cf-hero::after { width: 22rem; height: 22rem; left: -9rem; bottom: -12rem; }
+  .cf-hero-titulo { @apply mt-4 text-3xl leading-tight font-bold tracking-tight text-balance sm:text-4xl lg:text-5xl; }
+  .cf-hero-busca {
+    @apply mt-7 flex items-center gap-2 rounded-2xl bg-white p-2 text-left shadow-2xl ring-4 ring-white/15 sm:p-2.5;
+  }
+  .cf-hero-ia { @apply hidden size-10 shrink-0 items-center justify-center rounded-xl bg-amber-400 text-sm font-extrabold text-blue-950 min-[400px]:inline-flex; }
+  .cf-hero-chip { @apply cursor-pointer rounded-full bg-white/10 px-3 py-1.5 text-xs font-semibold text-white ring-1 ring-white/20 transition hover:bg-white/20; }
+  /* Painel de atalhos que "sobe" sobre o fim do hero */
+  .cf-hero-atalhos { @apply relative z-10 -mt-14 rounded-2xl border border-slate-200/80 bg-white p-3 shadow-xl sm:-mt-16 sm:p-5; }
+
+  /* Faixa de números */
+  .cf-numero { @apply text-3xl font-extrabold tracking-tight text-blue-900 tabular-nums sm:text-4xl; }
+  .cf-numero-legenda { @apply mt-1 text-sm text-slate-600; }
+
+  /* Banner de chamada (consultoria) */
+  .cf-cta {
+    @apply relative isolate overflow-hidden rounded-3xl px-6 py-9 text-white shadow-xl sm:px-12 sm:py-12;
+    background: radial-gradient(40rem 20rem at 100% 0%, rgba(251, 191, 36, 0.18), transparent 60%), linear-gradient(120deg, #0b1d4a, #1e3a8a);
+  }
+
+  /* Perguntas frequentes (acordeão com <details>) */
+  .cf-faq { @apply rounded-xl border border-slate-200/80 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04)]; }
+  .cf-faq > summary { @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-slate-800 transition-colors hover:text-blue-800 sm:px-6; }
+  .cf-faq > summary::-webkit-details-marker { display: none; }
+  .cf-faq > summary::after { content: "+"; @apply shrink-0 text-2xl leading-none font-light text-slate-400 transition-transform; }
+  .cf-faq[open] > summary::after { transform: rotate(45deg); }
+  .cf-faq-resposta { @apply px-5 pb-5 text-sm leading-relaxed text-slate-600 sm:px-6 [&_a]:font-semibold [&_a]:text-blue-800 [&_a]:underline; }
+  /* Entrada suave das faixas (só com JavaScript e sem preferência por menos movimento) */
+  .cf-revelar { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .cf-revelar.cf-visivel { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .cf-revelar { opacity: 1; transform: none; transition: none; } }
+
   /* Acesso rápido da página inicial */
   .cf-atalho {
     @apply flex h-full flex-col items-center gap-1.5 rounded-xl border border-slate-200/80 bg-white px-1 py-2.5 text-center text-[11px] leading-tight font-semibold text-slate-700 shadow-[0_1px_2px_rgba(15,23,42,0.04)] transition hover:-translate-y-0.5 hover:border-blue-200 hover:text-blue-800 hover:shadow-md sm:gap-2 sm:py-3 sm:text-xs;
   }
   .cf-atalho-icone {
     @apply inline-flex size-9 items-center justify-center rounded-lg text-[0.95rem] sm:size-10 sm:text-base;
+  }
+  /* Botões de aplicativos (cálculos): cartão branco, ícone em selo colorido, elevação no hover */
+  .cf-app-btn {
+    @apply flex h-full flex-col items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-3 py-4 text-center shadow-[0_1px_2px_rgba(15,23,42,0.06)] transition duration-200 hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-[0_8px_20px_-6px_rgba(30,58,138,0.25)] focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 focus-visible:outline-none active:translate-y-0 active:shadow-sm;
+  }
+  .cf-app-icone {
+    @apply inline-flex size-11 items-center justify-center rounded-xl text-lg ring-1 ring-black/5 transition-transform duration-200;
+  }
+  .cf-app-btn:hover .cf-app-icone { @apply scale-105;
+  }
+  .cf-app-nome {
+    @apply text-xs leading-snug font-semibold text-slate-700 transition-colors;
+  }
+  .cf-app-btn:hover .cf-app-nome { @apply text-blue-800;
   }
   .cf-nav-link {
     @apply relative flex items-center gap-2 px-1 py-3 text-sm font-medium text-slate-600 transition-colors hover:text-blue-800;

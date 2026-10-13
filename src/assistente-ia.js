@@ -82,6 +82,8 @@
     input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
     form.addEventListener('submit', e => { e.preventDefault(); perguntar(input.value); });
     log.addEventListener('click', e => { const b = e.target.closest('[data-sugestao]'); if (b) perguntar(b.dataset.sugestao); });
+    // Outras partes da página (ex.: busca do topo da index-dinamica) abrem o chat já com uma pergunta
+    window.cfAssistenteIA = { abrir, perguntar: texto => { if (painel.hidden) abrir(); perguntar(texto); } };
 
     function bolha(html, quem) {
         const el = document.createElement('div');

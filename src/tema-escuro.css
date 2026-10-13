@@ -44,9 +44,24 @@ html[data-tema="escuro"] img[src$="img/logo.jpg"] { content: url("img/logobranco
 /* Cabeçalho translúcido */
 html[data-tema="escuro"] .supports-\[backdrop-filter\]\:bg-white\/85 { background-color: color-mix(in oklab, var(--cf-superficie) 88%, transparent); }
 
+/* Página inicial dinâmica: faixas e menu de seções */
+html[data-tema="escuro"] .cf-faixa-destaque { background-color: #0f1f42; border-color: var(--color-slate-200); }
+html[data-tema="escuro"] .cf-faixas-nav { background-color: color-mix(in oklab, var(--cf-superficie) 92%, transparent); border-color: var(--color-slate-200); }
+html[data-tema="escuro"] .cf-faixas-link[aria-current="true"] { background-color: var(--color-blue-600); color: #fff; }
+html[data-tema="escuro"] .cf-faixa-icone { background-color: var(--color-blue-700); }
+/* Página inicial dinâmica: selos, painel de atalhos, busca do topo, números e perguntas frequentes */
+html[data-tema="escuro"] .cf-selo:not(.cf-selo-escuro) { background-color: color-mix(in oklab, var(--color-blue-500) 18%, transparent); color: var(--color-blue-300); --tw-ring-color: color-mix(in oklab, var(--color-blue-400) 25%, transparent); }
+html[data-tema="escuro"] :is(.cf-hero-atalhos, .cf-faq) { background-color: var(--cf-superficie); border-color: var(--color-slate-200); }
+html[data-tema="escuro"] .cf-hero-busca { background-color: var(--cf-superficie); }
+html[data-tema="escuro"] .cf-numero { color: var(--color-blue-300); }
+html[data-tema="escuro"] .cf-hero { box-shadow: inset 0 -1px 0 var(--color-slate-200); }
+
 /* Componentes do portal (definidos com @apply em input.css) */
 html[data-tema="escuro"] :is(.cf-card, .cf-input, .cf-choice, .cf-pill, .cf-btn-secondary, .cf-atalho) { background-color: var(--cf-superficie); }
 html[data-tema="escuro"] .cf-atalho { border-color: var(--color-slate-200); }
+html[data-tema="escuro"] .cf-app-btn { background-color: var(--cf-superficie-2); border-color: var(--color-slate-200); box-shadow: none; }
+html[data-tema="escuro"] .cf-app-btn:hover { border-color: color-mix(in oklab, var(--color-blue-400) 60%, transparent); box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.5); }
+html[data-tema="escuro"] .cf-app-btn:hover .cf-app-nome { color: var(--color-blue-300); }
 html[data-tema="escuro"] .cf-atalho:hover { border-color: color-mix(in oklab, var(--color-blue-400) 50%, transparent); color: var(--color-blue-300); }
 html[data-tema="escuro"] .cf-btn-secondary:hover { background-color: var(--cf-superficie-2); }
 /* Opção marcada (tipo de busca) e item ativo do menu: precisam se destacar no fundo escuro */

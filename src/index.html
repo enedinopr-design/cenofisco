@@ -731,35 +731,46 @@
             <h2 id="titulo-aplicativos" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-window-restore" aria-hidden="true"></i></span>Aplicativos</h2>
           </div>
           <div class="grid grid-cols-2 gap-3">
-            <a href="calculo-ferias.html" class="group flex flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-2 py-5 text-center transition hover:border-blue-200 hover:bg-blue-50">
-              <i class="fa-solid fa-umbrella-beach text-2xl text-blue-700 transition group-hover:scale-110" aria-hidden="true"></i>
-              <span class="text-xs font-semibold text-slate-700">Cálculo de Férias</span>
+            <a href="calculo-ferias.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-sky-50 text-sky-600"><i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Cálculo de Férias</span>
             </a>
-            <a href="aplicativos.html" class="group flex flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-2 py-5 text-center transition hover:border-blue-200 hover:bg-blue-50">
-              <i class="fa-solid fa-circle-dollar-to-slot text-2xl text-blue-700 transition group-hover:scale-110" aria-hidden="true"></i>
-              <span class="text-xs font-semibold text-slate-700">Simulador IRPF</span>
+            <a href="aplicativos.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-emerald-50 text-emerald-600"><i class="fa-solid fa-circle-dollar-to-slot" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Simulador IRPF</span>
             </a>
-            <a href="aplicativos.html" class="group flex flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-2 py-5 text-center transition hover:border-blue-200 hover:bg-blue-50">
-              <i class="fa-solid fa-file-invoice-dollar text-2xl text-blue-700 transition group-hover:scale-110" aria-hidden="true"></i>
-              <span class="text-xs font-semibold text-slate-700">MVA Ajustado</span>
+            <a href="aplicativos.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-violet-50 text-violet-600"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">MVA Ajustado</span>
             </a>
-            <a href="aplicativos.html" class="group flex flex-col items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-2 py-5 text-center transition hover:border-blue-200 hover:bg-blue-50">
-              <i class="fa-solid fa-user-clock text-2xl text-blue-700 transition group-hover:scale-110" aria-hidden="true"></i>
-              <span class="text-xs font-semibold text-slate-700">Seguro-Desemprego</span>
+            <a href="aplicativos.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-orange-50 text-orange-600"><i class="fa-solid fa-user-clock" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Seguro-Desemprego</span>
             </a>
           </div>
           <a href="aplicativos.html" class="cf-btn cf-btn-soft mt-5 w-full">Ver todos os aplicativos</a>
         </section>
 
         <!-- Reforma Tributária -->
-        <section class="max-lg:order-[12] relative overflow-hidden rounded-2xl cf-on-dark bg-gradient-to-br from-cyan-700 to-blue-800 p-6 text-white shadow-lg shadow-blue-900/10">
-          <div class="relative z-10">
-            <span class="cf-eyebrow text-cyan-100">Hotsite especial</span>
-            <h2 class="mt-1 mb-2 text-xl font-bold tracking-tight">Reforma Tributária</h2>
-            <p class="mb-5 text-sm text-blue-50/90">Fique por dentro de todas as mudanças e prepare-se para o novo cenário fiscal do Brasil.</p>
-            <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-btn cf-btn-accent">Acessar hotsite <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i></a>
+        <!-- Mesmo padrão do Podcast e dos Especiais: cabeçalho + destaque em degradê.
+             Conteúdo: últimas publicações do hotsite (reformatributaria.cenofisco.com.br) — atualizar à mão por enquanto. -->
+        <section class="max-lg:order-[12] cf-card flex flex-col" aria-labelledby="titulo-reforma">
+          <div class="cf-section-head">
+            <h2 id="titulo-reforma" class="cf-section-title"><span class="cf-icon bg-cyan-50 text-cyan-700"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i></span>Reforma Tributária</h2>
+            <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-link-more">Hotsite <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only">(abre em nova aba)</span></a>
           </div>
-          <i class="fa-solid fa-scale-balanced absolute -right-6 -bottom-8 rotate-[-15deg] text-9xl text-white/10" aria-hidden="true"></i>
+          <div class="flex flex-1 flex-col gap-4">
+            <!-- Destaque mais recente -->
+            <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="group cf-on-dark relative flex flex-1 flex-col justify-between overflow-hidden rounded-xl bg-gradient-to-br from-cyan-700 to-blue-800 p-5 text-white">
+              <div class="relative z-10">
+                <p class="flex flex-wrap items-center gap-2"><span class="rounded-md bg-amber-400 px-2 py-0.5 text-[10px] font-bold tracking-wider text-blue-950 uppercase">Novo no hotsite</span><span class="text-xs text-cyan-100">CBS · 13/10/2026</span></p>
+                <p class="mt-3 text-lg leading-snug font-bold group-hover:underline group-hover:underline-offset-2">CBS – Combustíveis – Alíquotas</p>
+                <p class="mt-1 text-sm text-blue-50/90">Alíquotas da CBS nas operações com combustíveis e a delegação de competência para fixá-las.</p>
+              </div>
+              <span class="relative z-10 mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-amber-300">Ler no hotsite <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span>
+              <i class="fa-solid fa-scale-balanced absolute -right-5 -bottom-6 rotate-[-15deg] text-8xl text-white/10" aria-hidden="true"></i>
+            </a>
+          </div>
         </section>
 
         <!-- Códigos -->

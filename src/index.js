@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const itens = Array.from(lista.getElementsByTagName('li'));
         const vazio = document.getElementById('tabelas-praticas-vazio');
         const toggle = document.getElementById('tabelas-praticas-toggle');
-        const LIMITE_INICIAL = 5;
+        const LIMITE_INICIAL = Number(lista.dataset.limite) || 5;   // index-dinamica mostra mais linhas
         let expandido = false;
 
         const normalizar = txt => txt.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
@@ -1324,7 +1324,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const normasMais = document.getElementById('normas-mais');
     if (normasMais) {
         normasMais.addEventListener('click', () => {
-            document.getElementById('principais-normas-lista').classList.remove('max-sm:[&>li:nth-child(n+7)]:hidden');
+            const ul = document.getElementById('principais-normas-lista');
+            [...ul.classList].filter(c => c.includes('nth-child(n+7)')).forEach(c => ul.classList.remove(c));
             normasMais.setAttribute('aria-expanded', 'true');
             normasMais.hidden = true;
         });
