@@ -1,0 +1,451 @@
+{
+    "areas": [
+        "Trabalhista e Previdência",
+        "Imposto de Renda",
+        "Federal",
+        "ICMS e Outros",
+        "ISS e Outros",
+        "IPI e Comércio Exterior",
+        "Índices e Taxas"
+    ],
+    "tabelas": [
+        {
+            "id": "aliquotas-internas-icms-fcp",
+            "titulo": "Alíquotas Internas – ICMS-FCP",
+            "area": "ICMS e Outros",
+            "link": "tabela.html?id=aliquotas-internas-icms-fcp"
+        },
+        {
+            "id": "aliquotas-interestaduais-icms",
+            "titulo": "Alíquotas Interestaduais – ICMS",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "aliquotas-de-iss",
+            "titulo": "Alíquotas de ISS",
+            "area": "ISS e Outros",
+            "link": null
+        },
+        {
+            "id": "aliquotas-evolucao-cp",
+            "titulo": "Alíquotas – Evolução – CP",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "beneficios-previdenciarios-extintos",
+            "titulo": "Benefícios Previdenciários Extintos",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "cest-convenio",
+            "titulo": "CEST – Convênio",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "cnae-rat",
+            "titulo": "CNAE – RAT",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "cnae-sesmt",
+            "titulo": "CNAE – SESMT",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "codigos-de-arrecadacao-das-custas",
+            "titulo": "Códigos de Arrecadação das Custas",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "cfop",
+            "titulo": "CFOP",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "combustivel-pmpf",
+            "titulo": "Combustível – PMPF",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "contratacao-de-servicos",
+            "titulo": "Contratação de Serviços",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "construcao-civil",
+            "titulo": "Construção Civil",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "csosn-crt-cst",
+            "titulo": "CSOSN-CRT-CST",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "darf-codigos-e-instrucoes",
+            "titulo": "DARF – Códigos e Instruções",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "depositos-recursais",
+            "titulo": "Depósitos Recursais",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "documentacao-de-afixacao-obrigatoria",
+            "titulo": "Documentação de Afixação Obrigatória",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "efd-prazos",
+            "titulo": "EFD – Prazos",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "esocial-obrigacoes-substituidas",
+            "titulo": "eSocial – Obrigações Substituídas",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "fpas-aliquotas-por-codigos",
+            "titulo": "FPAS – Alíquotas por Códigos",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "fpas-codigos-de-terceiros",
+            "titulo": "FPAS – Códigos de Terceiros",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "fpas-enquadramento",
+            "titulo": "FPAS – Enquadramento",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "dare-sp-como-pagar",
+            "titulo": "DARE-SP – Como Pagar",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "gps-relacao-de-codigos",
+            "titulo": "GPS – Relação de Códigos",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "guarda-de-documentos",
+            "titulo": "Guarda de Documentos",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "incentivos-fiscais",
+            "titulo": "Incentivos Fiscais",
+            "area": "Imposto de Renda",
+            "link": null
+        },
+        {
+            "id": "indice-de-poupanca",
+            "titulo": "Índice de Poupança",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "ipva",
+            "titulo": "IPVA",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "irpj-csll-quotas",
+            "titulo": "IRPJ-CSLL – Quotas",
+            "area": "Imposto de Renda",
+            "link": null
+        },
+        {
+            "id": "iss-cadastros-de-prestadores-de-outros-municipios",
+            "titulo": "ISS – Cadastros de Prestadores de Outros Municípios",
+            "area": "ISS e Outros",
+            "link": null
+        },
+        {
+            "id": "lista-de-doencas-relacionadas-ao-trabalho",
+            "titulo": "Lista de Doenças Relacionadas ao Trabalho",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "moedas-brasileiras",
+            "titulo": "Moedas Brasileiras",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "multas-administrativas",
+            "titulo": "Multas Administrativas",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "nf-e-cancelamento",
+            "titulo": "NF-e – Cancelamento",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "piso-salarial",
+            "titulo": "Piso Salarial",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "produtor-rural",
+            "titulo": "Produtor Rural",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "recolhimento-em-atraso",
+            "titulo": "Recolhimento em Atraso",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "remuneracao-extra",
+            "titulo": "Remuneração Extra",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "residuos-solidos-munic-sp",
+            "titulo": "Resíduos Sólidos – Munic-SP",
+            "area": "ISS e Outros",
+            "link": null
+        },
+        {
+            "id": "retencao-irrf-csrf",
+            "titulo": "Retenção – IRRF/CSRF",
+            "area": "Imposto de Renda",
+            "link": null
+        },
+        {
+            "id": "retencao-orgaos-publicos",
+            "titulo": "Retenção – Órgãos Públicos",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "salario-base-empresarios-e-autonomos",
+            "titulo": "Salário-Base – Empresários e Autônomos",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "salario-de-contribuicao",
+            "titulo": "Salário-de-Contribuição",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "salario-familia",
+            "titulo": "Salário-Família",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "salario-minimo",
+            "titulo": "Salário Mínimo",
+            "area": "Trabalhista e Previdência",
+            "link": "tabela.html?id=salario-minimo"
+        },
+        {
+            "id": "seguro-desemprego",
+            "titulo": "Seguro-Desemprego",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "simples-nacional",
+            "titulo": "SIMPLES Nacional",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "tabela-cod-benef-x-cst",
+            "titulo": "Tabela – Cód. Benef. x CST",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "tabela-cnae-x-codigo-de-servico",
+            "titulo": "Tabela CNAE x Código de Serviço",
+            "area": "ISS e Outros",
+            "link": null
+        },
+        {
+            "id": "tabela-de-correlacao-efd-reinf",
+            "titulo": "Tabela de Correlação – EFD-Reinf",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "tabela-de-incidencia",
+            "titulo": "Tabela de Incidência",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "tabela-de-incidencia-monofasica",
+            "titulo": "Tabela de Incidência Monofásica",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "tabela-de-rubricas-esocial",
+            "titulo": "Tabela de Rubricas – eSocial",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "tabela-pratica-de-ferias",
+            "titulo": "Tabela Prática de Férias",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        },
+        {
+            "id": "tabela-progressiva-plr",
+            "titulo": "Tabela Progressiva – PLR",
+            "area": "Imposto de Renda",
+            "link": null
+        },
+        {
+            "id": "tabela-progressiva-mensal-ir",
+            "titulo": "Tabela Progressiva Mensal – IR",
+            "area": "Imposto de Renda",
+            "link": null
+        },
+        {
+            "id": "tabela-tipi",
+            "titulo": "Tabela TIPI",
+            "area": "IPI e Comércio Exterior",
+            "link": null
+        },
+        {
+            "id": "tabela-ncm-correlacao",
+            "titulo": "Tabela NCM – Correlação",
+            "area": "IPI e Comércio Exterior",
+            "link": null
+        },
+        {
+            "id": "tabela-ncm-sem-similar-nacional",
+            "titulo": "Tabela NCM – Sem Similar Nacional",
+            "area": "IPI e Comércio Exterior",
+            "link": null
+        },
+        {
+            "id": "tabelas-de-conversao",
+            "titulo": "Tabelas de Conversão",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "taxa-legal",
+            "titulo": "Taxa Legal",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "taxa-selic-acumulada",
+            "titulo": "Taxa Selic Acumulada",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "taxa-selic-mensal",
+            "titulo": "Taxa Selic Mensal",
+            "area": "Índices e Taxas",
+            "link": "indicadores.html?indicador=selic"
+        },
+        {
+            "id": "taxas-de-cambio",
+            "titulo": "Taxas de Câmbio",
+            "area": "Índices e Taxas",
+            "link": "indicadores.html?indicador=dolar"
+        },
+        {
+            "id": "tjlp-mensal",
+            "titulo": "TJLP – Mensal",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "tjlp-trimestral",
+            "titulo": "TJLP – Trimestral",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "tjlp-acumulada",
+            "titulo": "TJLP – Acumulada",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "transferencias-de-mercadorias",
+            "titulo": "Transferências de Mercadorias",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "tr-taxa-referencial",
+            "titulo": "TR – Taxa Referencial",
+            "area": "Índices e Taxas",
+            "link": "indicadores.html?indicador=tr"
+        },
+        {
+            "id": "tributacao-ir-csll-pis-cofins",
+            "titulo": "Tributação – IR/CSLL/PIS/Cofins",
+            "area": "Federal",
+            "link": null
+        },
+        {
+            "id": "ufir",
+            "titulo": "UFIR",
+            "area": "Índices e Taxas",
+            "link": null
+        },
+        {
+            "id": "venda-porta-a-porta",
+            "titulo": "Venda Porta a Porta",
+            "area": "ICMS e Outros",
+            "link": null
+        },
+        {
+            "id": "verbas-rescisorias",
+            "titulo": "Verbas Rescisórias",
+            "area": "Trabalhista e Previdência",
+            "link": null
+        }
+    ]
+}

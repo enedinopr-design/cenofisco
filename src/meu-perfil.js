@@ -112,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'savedProcedimentos', label: 'Procedimentos', icon: 'fa-list-check', pagina: 'procedimentos.html', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
         { key: 'savedConsultas', label: 'Consultas', icon: 'fa-comments', pagina: 'index.html#consultoria-cenofisco', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
         { key: 'savedPodcasts', label: 'Podcasts', icon: 'fa-microphone', pagina: 'podcasts.html', meta: d => [d.area, d.date, d.duracao].filter(Boolean).join(' · ') },
+        { key: 'savedTabelas', label: 'Tabelas', icon: 'fa-table', pagina: 'tabelas.html', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
         { key: 'savedRegulations', label: 'Regulamentos', icon: 'fa-book', pagina: 'regulamentos.html', meta: d => d.sigla },
         { key: 'savedAplicativos', label: 'Ferramentas', icon: 'fa-screwdriver-wrench', pagina: 'aplicativos.html', meta: () => '' },
         { key: 'monitorNcm', label: 'NCMs monitoradas', icon: 'fa-bell', pagina: 'buscafiscal-resultados.html', meta: d => d.date ? `Monitorada desde ${d.date}` : '' },

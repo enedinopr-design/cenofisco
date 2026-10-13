@@ -100,9 +100,40 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (dados.resumo?.length) $('tabela-form').insertAdjacentHTML('beforebegin', quadrosResumo(dados.resumo));
 
+        ligarSalvar();
         buscaEl.value = params.get('q') || '';
         render();
         renderSecoes();
+    }
+
+    // --- Salvar tabela (chave savedTabelas: a mesma da listagem tabelas.html e do Meu Perfil) ---
+    function ligarSalvar() {
+        const btn = $('tabela-salvar');
+        if (!btn) return;
+        const ler = () => { try { const l = JSON.parse(localStorage.getItem('savedTabelas')); return Array.isArray(l) ? l : []; } catch (e) { return []; } };
+        const gravar = l => { try { localStorage.setItem('savedTabelas', JSON.stringify(l)); } catch (e) { /* sem armazenamento */ } };
+        let area = dados.area || '';
+        // Área como na listagem (tabelas.json), quando disponível
+        fetch('tabelas.json').then(r => (r.ok ? r.json() : null)).then(j => {
+            const t = j && j.tabelas.find(x => x.id === id);
+            if (t) area = t.area;
+        }).catch(() => {});
+        const desenhar = () => {
+            const on = ler().some(s => s.id === id);
+            btn.setAttribute('aria-pressed', String(on));
+            btn.title = on ? 'Remover das tabelas salvas' : 'Salvar tabela';
+            btn.innerHTML = `<i class="${on ? 'fa-solid text-amber-500' : 'fa-regular'} fa-bookmark" aria-hidden="true"></i><span>${on ? 'Salva' : 'Salvar'}</span>`;
+        };
+        btn.addEventListener('click', () => {
+            let l = ler();
+            if (l.some(s => s.id === id)) l = l.filter(s => s.id !== id);
+            else l.unshift({ id, title: dados.tituloCurto || dados.titulo, link: `tabela.html?id=${id}`, area, date: new Date().toLocaleDateString('pt-BR') });
+            gravar(l);
+            desenhar();
+        });
+        btn.classList.remove('hidden');
+        btn.classList.add('inline-flex');
+        desenhar();
     }
 
     // --- Células e quadros (usados pela tabela principal e pelas complementares) ---
