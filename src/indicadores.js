@@ -34,9 +34,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
     const BAR = '#1d4ed8';        // blue-700 (cor da série)
     const BAR_HOVER = '#1e3a8a';  // blue-900
-    const GRID = '#e2e8f0';       // slate-200
-    const AXIS_TEXT = '#64748b';  // slate-500
-    const INK = '#0f172a';        // slate-900
+    // Cores do gráfico: fixas no tema claro; no tema escuro (tema.js) vêm das variáveis do tema
+    let GRID = '#e2e8f0';         // slate-200
+    let AXIS_TEXT = '#64748b';    // slate-500
+    let INK = '#0f172a';          // slate-900
+    let EIXO = '#94a3b8';         // slate-400 (linha do zero e guia)
+    let CONTORNO = '#fff';        // contorno dos pontos
+    function atualizarCores() {
+        const escuro = document.documentElement.getAttribute('data-tema') === 'escuro';
+        const v = (nome, claro) => (escuro ? getComputedStyle(document.documentElement).getPropertyValue(nome).trim() || claro : claro);
+        GRID = v('--color-slate-200', '#e2e8f0');
+        AXIS_TEXT = v('--color-slate-500', '#64748b');
+        INK = v('--color-slate-900', '#0f172a');
+        EIXO = v('--color-slate-400', '#94a3b8');
+        CONTORNO = v('--cf-superficie', '#fff');
+    }
 
     const fmt = (v, casas = 2) => v == null || isNaN(v) ? '—' : v.toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas });
     const pct = (v, casas) => (v == null || isNaN(v) ? '—' : `${fmt(v, casas)}%`);
@@ -140,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // --- Indicador selecionado ---
     function render() {
+        atualizarCores();
         const ind = INDICADORES.find(i => i.id === state.indicador);
         const pts = series[ind.id];
         const cambio = isCambio(ind);
@@ -235,16 +248,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         let svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" font-family="Inter, ui-sans-serif, system-ui, sans-serif">`;
         ticks.forEach(t => {
-            svg += `<line x1="${pad.left}" x2="${W - pad.right}" y1="${y(t)}" y2="${y(t)}" stroke="${!cambio && t === 0 ? '#94a3b8' : GRID}" stroke-width="1" shape-rendering="crispEdges"/>`;
+            svg += `<line x1="${pad.left}" x2="${W - pad.right}" y1="${y(t)}" y2="${y(t)}" stroke="${!cambio && t === 0 ? EIXO : GRID}" stroke-width="1" shape-rendering="crispEdges"/>`;
             svg += `<text x="${pad.left - 8}" y="${y(t)}" dy="0.32em" text-anchor="end" font-size="11" fill="${AXIS_TEXT}" style="font-variant-numeric: tabular-nums">${tickLabel(t)}</text>`;
         });
 
         if (cambio) {
             // Linha 2px; guia vertical e marcador aparecem no hover
             const d = pts.map((p, i) => `${i ? 'L' : 'M'}${cxOf(i)},${y(p.cot)}`).join(' ');
-            svg += `<line id="chart-guide" x1="0" x2="0" y1="${pad.top}" y2="${pad.top + ih}" stroke="#94a3b8" stroke-width="1" visibility="hidden"/>`;
+            svg += `<line id="chart-guide" x1="0" x2="0" y1="${pad.top}" y2="${pad.top + ih}" stroke="${EIXO}" stroke-width="1" visibility="hidden"/>`;
             svg += `<path d="${d}" fill="none" stroke="${BAR}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`;
-            svg += `<circle id="chart-dot" r="5" fill="${BAR}" stroke="#fff" stroke-width="2" visibility="hidden"/>`;
+            svg += `<circle id="chart-dot" r="5" fill="${BAR}" stroke="${CONTORNO}" stroke-width="2" visibility="hidden"/>`;
         } else {
             const bw = Math.max(2, Math.min(24, slot * 0.7, slot - 2));
             const r = Math.min(4, bw / 2);
@@ -274,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const lp = pts[pts.length - 1];
         const lx = cxOf(pts.length - 1);
         const lv = cambio ? lp.cot : lp.v;
-        if (cambio) svg += `<circle cx="${lx}" cy="${y(lv)}" r="4" fill="${BAR}" stroke="#fff" stroke-width="2"/>`;
+        if (cambio) svg += `<circle cx="${lx}" cy="${y(lv)}" r="4" fill="${BAR}" stroke="${CONTORNO}" stroke-width="2"/>`;
         // Na linha, o rótulo vai do lado oposto ao trecho que chega no último ponto (não cruza a linha)
         const prevV = cambio && pts.length > 1 ? pts[pts.length - 2].cot : null;
         const ly = cambio ? (prevV != null && prevV > lv ? y(lv) + 18 : y(lv) - 10) : lv >= 0 ? y(lv) - 6 : y(lv) + 14;
@@ -402,4 +415,5 @@ document.addEventListener('DOMContentLoaded', function () {
         a.click();
         URL.revokeObjectURL(a.href);
     });
+    document.addEventListener('cf-tema', () => { try { render(); } catch (e) { /* ainda sem dados */ } });
 });

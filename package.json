@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "atualizar:cclasstrib": "node ferramentas/atualizar-cclasstrib.js"
+    "atualizar:cclasstrib": "node ferramentas/atualizar-cclasstrib.js",
+    "css": "node ferramentas/gerar-tema-escuro.js && npx @tailwindcss/cli -i src/input.css -o src/output.css"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.2.4",

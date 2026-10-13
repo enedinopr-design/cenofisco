@@ -1,0 +1,91 @@
+@import "./tema-escuro-classes.css";
+/* ==========================================================================
+   Tema escuro (azul-marinho, sem preto). Ativado por data-tema="escuro" no <html> — ver tema.js.
+   Regras fora de @layer: vencem as utilitárias do Tailwind sem precisar de !important.
+   - Cinzas (slate/gray): invertidos por variável (fundo claro vira azul-marinho; texto escuro vira claro).
+   - Branco e tons claros coloridos: ajustados classe a classe em tema-escuro-classes.css (gerado).
+   ========================================================================== */
+html[data-tema="escuro"] {
+  color-scheme: dark;
+  --cf-fundo: #0b1733;       /* fundo da página */
+  --cf-superficie: #12234a;  /* cartões, cabeçalho, campos */
+  --cf-superficie-2: #1a2e5c;
+
+  --color-slate-50: var(--cf-fundo);
+  --color-slate-100: #172a54;
+  --color-slate-200: #22386a;
+  --color-slate-300: #32497c;
+  --color-slate-400: #7f92b9;
+  --color-slate-500: #9cadcc;
+  --color-slate-600: #b4c2dc;
+  --color-slate-700: #cad5e9;
+  --color-slate-800: #dde5f3;
+  --color-slate-900: #eef2fa;
+  --color-slate-950: #f7f9fd;
+  --color-gray-50: var(--cf-fundo);
+  --color-gray-100: #172a54;
+  --color-gray-200: #22386a;
+  --color-gray-300: #32497c;
+  --color-gray-400: #7f92b9;
+  --color-gray-500: #9cadcc;
+  --color-gray-600: #b4c2dc;
+  --color-gray-700: #cad5e9;
+  --color-gray-800: #dde5f3;
+  --color-gray-900: #eef2fa;
+}
+html[data-tema="escuro"] body { background-color: var(--cf-fundo); }
+
+/* Foco de teclado: azul claro para aparecer no fundo escuro */
+html[data-tema="escuro"] :where(a[href], button, summary, [role="tab"], [role="slider"], [tabindex]:not([tabindex="-1"])):focus-visible { outline-color: var(--color-blue-400); }
+
+/* Logotipo do cabeçalho (JPG com fundo branco) -> versão branca */
+html[data-tema="escuro"] img[src$="img/logo.jpg"] { content: url("img/logobranco-cenofisco.png"); }
+
+/* Cabeçalho translúcido */
+html[data-tema="escuro"] .supports-\[backdrop-filter\]\:bg-white\/85 { background-color: color-mix(in oklab, var(--cf-superficie) 88%, transparent); }
+
+/* Componentes do portal (definidos com @apply em input.css) */
+html[data-tema="escuro"] :is(.cf-card, .cf-input, .cf-choice, .cf-pill, .cf-btn-secondary) { background-color: var(--cf-superficie); }
+html[data-tema="escuro"] .cf-btn-secondary:hover { background-color: var(--cf-superficie-2); }
+/* Opção marcada (tipo de busca) e item ativo do menu: precisam se destacar no fundo escuro */
+html[data-tema="escuro"] .peer:checked ~ .cf-choice { background-color: var(--color-blue-600); border-color: var(--color-blue-500); color: #fff; }
+html[data-tema="escuro"] .cf-nav-link[aria-current="page"] { color: var(--color-blue-300); }
+html[data-tema="escuro"] .cf-nav-link[aria-current="page"]::after { background-color: var(--color-blue-400); }
+html[data-tema="escuro"] .cf-nav-link:hover { color: var(--color-blue-300); }
+html[data-tema="escuro"] .cf-card { border-color: var(--color-slate-200); box-shadow: none; }
+html[data-tema="escuro"] :is(.cf-icon, .cf-btn-soft) { background-color: color-mix(in oklab, var(--color-blue-500) 18%, transparent); color: var(--color-blue-300); }
+html[data-tema="escuro"] .cf-btn-soft:hover { background-color: color-mix(in oklab, var(--color-blue-500) 28%, transparent); }
+html[data-tema="escuro"] :is(.cf-link-more, .cf-row-link) { color: var(--color-blue-300); }
+html[data-tema="escuro"] :is(.cf-link-more, .cf-row-link):hover { color: var(--color-blue-200); }
+html[data-tema="escuro"] .cf-btn-primary { background-color: var(--color-blue-700); }
+html[data-tema="escuro"] .cf-btn-primary:hover { background-color: var(--color-blue-600); }
+html[data-tema="escuro"] .cf-tabs .tab-button.active { color: var(--color-blue-300); border-color: var(--color-blue-400); }
+html[data-tema="escuro"] .tab-button { color: var(--color-slate-500); }
+html[data-tema="escuro"] .tab-button:hover,
+html[data-tema="escuro"] .tab-button.active { color: var(--color-blue-300); border-bottom-color: var(--color-blue-400); }
+html[data-tema="escuro"] .cf-table tbody tr:hover { background-color: color-mix(in oklab, var(--color-blue-500) 8%, transparent); }
+html[data-tema="escuro"] .cf-table mark,
+html[data-tema="escuro"] mark { background-color: color-mix(in oklab, var(--color-amber-400) 35%, transparent); color: inherit; }
+html[data-tema="escuro"] .cf-prose blockquote { background-color: var(--cf-superficie-2); border-color: color-mix(in oklab, var(--color-blue-400) 45%, transparent); }
+
+/* Botões fortes: o azul escuro some no fundo; usa um azul um pouco mais claro */
+html[data-tema="escuro"] .bg-blue-900:not(.cf-on-dark):not(section):not(header):not(footer) { background-color: var(--color-blue-700); }
+html[data-tema="escuro"] .hover\:bg-blue-800:hover { background-color: var(--color-blue-600); }
+
+/* Notificações (toasts) e fundos neutros escuros, que a inversão dos cinzas clarearia */
+html[data-tema="escuro"] .bg-slate-800 { background-color: #1f3b78; }
+html[data-tema="escuro"] .bg-slate-900 { background-color: #142a5a; }
+html[data-tema="escuro"] ::backdrop { background-color: rgb(5 12 30 / 0.7); }
+
+/* Agenda (tabela com cores fixas em input.css) */
+html[data-tema="escuro"] .tabela-agenda tr:hover { background-color: var(--cf-superficie-2); }
+html[data-tema="escuro"] .tabela-agenda th { background-color: var(--color-slate-100); color: var(--color-slate-800); }
+html[data-tema="escuro"] .tabela-agenda tr { background-color: transparent; }
+html[data-tema="escuro"] .has-event { background-color: color-mix(in oklab, var(--color-amber-400) 30%, transparent); color: var(--color-amber-100) !important; }
+
+/* Resultados da TEC (cores fixas herdadas do site anterior) */
+html[data-tema="escuro"] :is(.item-salvo, .tec-result-permission-item) { color: var(--color-slate-700); }
+
+/* Barras de rolagem */
+html[data-tema="escuro"] { scrollbar-color: #32497c var(--cf-fundo); }
+
