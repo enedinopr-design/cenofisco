@@ -1,16 +1,17 @@
 // Tour guiado da página inicial: apresenta o novo portal passo a passo, destacando cada área da tela.
 // Abre sozinho na primeira visita (localStorage "cfTourVisto") e pode ser refeito por qualquer botão com [data-tour-iniciar].
 // Cada passo aponta para o primeiro seletor visível da lista "alvo" (assim funciona no celular e no computador);
-// sem alvo visível, o passo aparece centralizado. Teclado: ← → para navegar, Esc para fechar.
+// sem alvo visível, o passo aparece centralizado — ou é pulado, se for "opcional" (blocos que podem ser escondidos em Personalizar). Teclado: ← → para navegar, Esc para fechar.
 // Para incluir um passo novo: acrescente um item em PASSOS.
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
     const CHAVE = 'cfTourVisto';
 
     const PASSOS = [
+        // --- Topo ---
         {
             titulo: 'Boas-vindas ao novo Cenofisco!',
-            texto: 'O portal está de cara nova. Em menos de um minuto mostramos onde encontrar cada coisa. Você pode sair quando quiser e refazer o tour depois.',
+            texto: 'O portal está de cara nova. Vamos passar por cada área da página inicial, de cima para baixo. Você pode sair quando quiser (Esc ou o X) e refazer o tour depois.',
             icone: 'fa-hand-sparkles'
         },
         {
@@ -21,9 +22,21 @@ document.addEventListener('DOMContentLoaded', function () {
             icone: 'fa-bars'
         },
         {
+            alvo: ['header a[href="assine.html"]'],
+            titulo: 'Assine Agora!',
+            texto: 'Ainda não é assinante? Por aqui você conhece os planos e libera o acesso completo ao conteúdo do portal.',
+            icone: 'fa-star'
+        },
+        {
+            alvo: ['#novidades'],
+            titulo: 'Fique por dentro',
+            texto: 'Avisos e novidades importantes, como normas recém-publicadas. Clique na mensagem para ler; quando há mais de uma, elas se alternam sozinhas e podem ser pausadas.',
+            icone: 'fa-bullhorn'
+        },
+        {
             alvo: ['#hero-ia-form'],
             titulo: 'Pergunte ao assistente IA',
-            texto: 'Escreva sua dúvida do jeito que falaria, como "alíquota de ICMS da cerveja no Acre". O assistente pesquisa NCM, CST/cClassTrib, tabelas, agenda, legislação e procedimentos e indica onde está a resposta.',
+            texto: 'Escreva sua dúvida do jeito que falaria, como "alíquota de ICMS da cerveja no Acre". O assistente pesquisa NCM, CST/cClassTrib, tabelas, agenda, legislação e procedimentos e indica onde está a resposta. Os botões de "Mais buscados" fazem a pergunta com um clique.',
             icone: 'fa-robot'
         },
         {
@@ -45,18 +58,143 @@ document.addEventListener('DOMContentLoaded', function () {
             texto: 'Em Personalizar você muda a ordem das seções e esconde as que não usa. A escolha fica salva neste navegador.',
             icone: 'fa-sliders'
         },
+        // --- Destaques ---
         {
-            alvo: ['#titulo-busca-fiscal'],
-            secao: true,
+            alvo: ['#titulo-noticias'], secao: true, opcional: true,
+            titulo: 'Notícias e destaques',
+            texto: 'O que saiu de mais recente no portal. Use as abas para alternar entre Destaque, Notícias, Resenhas e as edições de Procedimentos.',
+            icone: 'fa-newspaper'
+        },
+        {
+            alvo: ['#titulo-agenda'], secao: true, opcional: true,
+            titulo: 'Agenda de Obrigações',
+            texto: 'Os prazos do mês no calendário. Escolha o tipo de agenda e clique em um dia para ver as obrigações que vencem nele.',
+            icone: 'fa-calendar-days'
+        },
+        {
+            alvo: ['#agenda-salvas'], opcional: true,
+            titulo: 'Obrigações salvas',
+            texto: 'As obrigações que você salvou na Agenda aparecem aqui, das mais próximas de vencer para as mais distantes, com o aviso de quantos dias faltam.',
+            icone: 'fa-bookmark'
+        },
+        // --- Ferramentas ---
+        {
+            alvo: ['#titulo-busca-fiscal'], secao: true, opcional: true,
             titulo: 'Busca Fiscal',
-            texto: 'Consulte NCM, CST/cClassTrib, PIS/COFINS e ICMS entre estados. Escolha o tipo de busca e digite o código ou a descrição do produto.',
+            texto: 'Consulte NCM, CNAE, TIPI/TEC e a Classificação Tributária do IBS e da CBS, com PIS/COFINS e ICMS entre estados. Escolha o tipo de busca e digite o código ou a descrição do produto.',
             icone: 'fa-file-invoice-dollar'
         },
         {
-            alvo: ['#consultoria-cenofisco'],
+            alvo: ['#titulo-codigos'], secao: true, opcional: true,
+            titulo: 'Códigos',
+            texto: 'Pesquise nas tabelas de CBO, CFOP, CST, CST/cClassTrib, CEST e EFD-Reinf. Escolha a aba e digite o código ou a descrição.',
+            icone: 'fa-barcode'
+        },
+        {
+            alvo: ['#titulo-indicadores'], secao: true, opcional: true,
+            titulo: 'Indicadores e Taxas',
+            texto: 'Índices de inflação, juros e câmbio atualizados com os dados do Banco Central. Clique em um indicador para ver o histórico completo.',
+            icone: 'fa-chart-line'
+        },
+        {
+            alvo: ['#titulo-tabelas'], secao: true, opcional: true,
+            titulo: 'Tabelas Práticas',
+            texto: 'Salário mínimo, alíquotas e outras tabelas de consulta frequente. Filtre pelo nome ou veja todas, separadas por área.',
+            icone: 'fa-table'
+        },
+        {
+            alvo: ['#titulo-aplicativos'], secao: true, opcional: true,
+            titulo: 'Aplicativos',
+            texto: 'Calculadoras e ferramentas práticas, como o Cálculo de Férias, para resolver contas do dia a dia sem planilha.',
+            icone: 'fa-calculator'
+        },
+        // --- Conteúdo técnico ---
+        {
+            alvo: ['#titulo-procedimentos'], secao: true, opcional: true,
+            titulo: 'Últimos Procedimentos',
+            texto: 'Orientações passo a passo publicadas pela equipe técnica. Veja os mais recentes ou navegue pelas áreas.',
+            icone: 'fa-list-check'
+        },
+        {
+            alvo: ['#titulo-legislacao'], secao: true, opcional: true,
+            titulo: 'Legislação',
+            texto: 'As normas publicadas mais recentes. Filtre por esfera (Federal, Estadual, Municipal) ou use a Busca avançada para procurar por número, tipo e data.',
+            icone: 'fa-scale-balanced'
+        },
+        {
+            alvo: ['#consultoria-cenofisco'], opcional: true,
             titulo: 'Consultoria Cenofisco',
-            texto: 'Veja as últimas consultas respondidas ou envie a sua para nossos consultores analisarem o seu caso.',
+            texto: 'Veja as últimas consultas respondidas, envie a sua para nossos consultores analisarem o seu caso e leia os depoimentos de quem já usou.',
             icone: 'fa-headset'
+        },
+        // --- Aprenda ---
+        {
+            alvo: ['#titulo-podcast'], secao: true, opcional: true,
+            titulo: 'Podcast Cenofisco Orienta',
+            texto: 'Episódios com especialistas explicando os temas do momento. Ouça aqui mesmo ou veja todos os episódios por área.',
+            icone: 'fa-podcast'
+        },
+        {
+            alvo: ['#titulo-especiais'], secao: true, opcional: true,
+            titulo: 'Especiais',
+            texto: 'Conteúdos aprofundados sobre um tema, reunidos em um só lugar.',
+            icone: 'fa-star'
+        },
+        {
+            alvo: ['#titulo-reforma'], secao: true, opcional: true,
+            titulo: 'Reforma Tributária',
+            texto: 'A novidade mais recente do hotsite da Reforma Tributária (IBS e CBS). O link abre o hotsite em outra aba.',
+            icone: 'fa-landmark'
+        },
+        {
+            alvo: ['#titulo-cursos'], secao: true, opcional: true,
+            titulo: 'Cursos em Destaque',
+            texto: 'Os cursos mais procurados, com especialistas, para se atualizar e aplicar no trabalho.',
+            icone: 'fa-graduation-cap'
+        },
+        {
+            alvo: ['section[data-bloco="numeros"]'], opcional: true,
+            titulo: 'O portal em números',
+            texto: 'Um resumo do que você encontra aqui: tabelas práticas, códigos cClassTrib, regulamentos estaduais e áreas do podcast.',
+            icone: 'fa-chart-simple'
+        },
+        // --- Referências ---
+        {
+            alvo: ['#titulo-regulamentos'], secao: true, opcional: true,
+            titulo: 'Regulamentos Estaduais',
+            texto: 'Escolha o estado para abrir o regulamento do ICMS.',
+            icone: 'fa-map-location-dot'
+        },
+        {
+            alvo: ['#titulo-canal'], secao: true, opcional: true,
+            titulo: 'Canal do Usuário',
+            texto: 'Fale com a Cenofisco: cursos, contato, sugestões, telefones e endereços.',
+            icone: 'fa-comments'
+        },
+        {
+            alvo: ['#titulo-normas'], secao: true, opcional: true,
+            titulo: 'Principais Normas',
+            texto: 'Atalhos para as normas mais consultadas: Constituição, CTN, CLT, Simples Nacional e outras. Use "Mostrar todas as normas" para ver a lista completa.',
+            icone: 'fa-book'
+        },
+        {
+            alvo: ['section[data-bloco="chamada"]'], opcional: true,
+            titulo: 'Precisa de uma análise?',
+            texto: 'Para um caso específico, fale com a Consultoria. Para uma pesquisa rápida na base do portal, abra o assistente IA.',
+            icone: 'fa-headset'
+        },
+        {
+            alvo: ['#faixa-duvidas'], opcional: true,
+            titulo: 'Perguntas frequentes',
+            texto: 'Respostas rápidas sobre o portal: como salvar conteúdos, consultar códigos e acompanhar prazos.',
+            icone: 'fa-circle-question'
+        },
+        // --- Rodapé e preferências ---
+        {
+            alvo: ['footer div:has(> #newsletter-form)', '#newsletter-form'], opcional: true,
+            titulo: 'Newsletter',
+            texto: 'Deixe seu e-mail para receber as principais notícias fiscais.',
+            icone: 'fa-envelope'
         },
         {
             alvo: ['.cf-tema-btn'],
@@ -92,9 +230,10 @@ document.addEventListener('DOMContentLoaded', function () {
     .cf-tour-fechar:hover{background:#f1f5f9;color:#0f172a}
     .cf-tour-texto{margin:0;color:#334155}
     .cf-tour-rodape{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:1rem}
-    .cf-tour-pontos{display:flex;flex-wrap:wrap;gap:4px}
-    .cf-tour-pontos span{width:6px;height:6px;border-radius:999px;background:#cbd5e1}
-    .cf-tour-pontos span.atual{width:16px;background:#1e3a8a}
+    .cf-tour-progresso{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1;max-width:7rem}
+    .cf-tour-contador{font-size:.75rem;font-weight:600;color:#64748b;font-variant-numeric:tabular-nums}
+    .cf-tour-barra{display:block;height:4px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+    .cf-tour-barra span{display:block;height:100%;border-radius:999px;background:#1e3a8a;transition:width .25s ease}
     .cf-tour-botoes{display:flex;gap:.5rem;flex-shrink:0}
     .cf-tour-btn{min-height:2.25rem;padding:.4rem .9rem;border-radius:10px;border:1px solid #cbd5e1;background:#fff;color:#1e293b;font-weight:600;font-size:.875rem;cursor:pointer}
     .cf-tour-btn:hover{background:#f8fafc}
@@ -106,8 +245,9 @@ document.addEventListener('DOMContentLoaded', function () {
     [data-tema="escuro"] .cf-tour-texto{color:#cbd5e1}
     [data-tema="escuro"] .cf-tour-fechar{color:#94a3b8}
     [data-tema="escuro"] .cf-tour-fechar:hover{background:#1e293b;color:#fff}
-    [data-tema="escuro"] .cf-tour-pontos span{background:#334155}
-    [data-tema="escuro"] .cf-tour-pontos span.atual{background:#fbbf24}
+    [data-tema="escuro"] .cf-tour-contador{color:#94a3b8}
+    [data-tema="escuro"] .cf-tour-barra{background:#334155}
+    [data-tema="escuro"] .cf-tour-barra span{background:#fbbf24}
     [data-tema="escuro"] .cf-tour-btn{background:transparent;border-color:#334155;color:#e2e8f0}
     [data-tema="escuro"] .cf-tour-btn:hover{background:#1e293b}
     [data-tema="escuro"] .cf-tour-btn.primario{background:#fbbf24;border-color:#fbbf24;color:#0f172a}
@@ -121,7 +261,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function alvoDo(passo) {
         for (const sel of passo.alvo || []) {
-            let el = [...document.querySelectorAll(sel)].find(visivel);
+            let el;
+            try { el = [...document.querySelectorAll(sel)].find(visivel); } catch (e) { continue; }   // seletor sem suporte (ex.: :has em navegador antigo)
             if (el && passo.secao) el = el.closest('section') || el;
             if (el) return el;
         }
@@ -169,6 +310,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function ir(n) {
+        // Passos "opcionais" sem alvo visível (bloco escondido em Personalizar) são pulados no sentido da navegação
+        const sentido = n < indice ? -1 : 1;
+        while (n > 0 && n < PASSOS.length && PASSOS[n].opcional && !alvoDo(PASSOS[n])) n += sentido;
         if (n < 0) return;
         if (n >= PASSOS.length) { fechar(); return; }
         indice = n;
@@ -186,7 +330,10 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
             <p id="cf-tour-texto" class="cf-tour-texto">${texto}</p>
             <div class="cf-tour-rodape">
-                <div class="cf-tour-pontos" role="img" aria-label="Passo ${n + 1} de ${total}">${PASSOS.map((_, i) => `<span class="${i === n ? 'atual' : ''}"></span>`).join('')}</div>
+                <div class="cf-tour-progresso" role="img" aria-label="Passo ${n + 1} de ${total}">
+                    <span class="cf-tour-contador" aria-hidden="true">${n + 1} de ${total}</span>
+                    <span class="cf-tour-barra" aria-hidden="true"><span style="width:${((n + 1) / total) * 100}%"></span></span>
+                </div>
                 <div class="cf-tour-botoes">
                     ${n === 0 ? '<button type="button" class="cf-tour-btn" data-acao="fechar">Agora não</button>'
                               : '<button type="button" class="cf-tour-btn" data-acao="anterior">Voltar</button>'}
