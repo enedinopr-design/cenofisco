@@ -44,17 +44,10 @@
         <img src="img/logo.jpg" alt="Cenofisco" width="200" height="62" class="h-10 w-auto sm:h-12">
       </a>
 
-      <!-- Busca global --> 
-      <form role="search" action="busca.html" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
-        <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
-        <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
-        <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-14 pl-11 text-base transition placeholder:text-slate-500 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none sm:pr-32 sm:text-sm">
-        <!-- No celular o botão mostra só o ícone (o texto continua para leitores de tela) para sobrar espaço no campo -->
-        <button type="submit" class="absolute top-1/2 right-1.5 inline-flex min-h-8 min-w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-blue-900 px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800 sm:px-4"><span class="sm:hidden" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span><span class="sr-only sm:not-sr-only">Pesquisar</span></button>
-      </form>
-
+      <!-- Na página inicial a busca fica só no topo da página (assistente IA); a busca do cabeçalho aparece nas páginas internas -->
       <div class="ml-auto flex items-center gap-3">
         <a href="#consultoria-cenofisco" class="cf-btn cf-btn-primary hidden whitespace-nowrap sm:inline-flex"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+        <a href="assine.html" class="cf-btn cf-btn-accent whitespace-nowrap"><i class="fa-solid fa-star" aria-hidden="true"></i>Assine Agora!</a>
         <button id="menu-toggle" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-blue-900 md:hidden" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menu">
           <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
         </button>
@@ -147,6 +140,7 @@
           <li><a href="#faixa-referencias" class="cf-faixas-link" data-alvo="faixa-referencias"><i class="fa-solid fa-bookmark text-xs" aria-hidden="true"></i>Referências</a></li>
           <li><a href="#faixa-duvidas" class="cf-faixas-link" data-alvo="faixa-duvidas"><i class="fa-solid fa-circle-question text-xs" aria-hidden="true"></i>Dúvidas</a></li>
         </ul>
+        <button type="button" class="cf-btn cf-btn-secondary shrink-0 px-3 py-1.5" data-tour-iniciar aria-label="Tour pelo portal" title="Conhecer o novo portal"><i class="fa-solid fa-route" aria-hidden="true"></i><span class="max-sm:sr-only" aria-hidden="true">Tour</span></button>
         <button type="button" id="personalizar-abrir" class="cf-btn cf-btn-secondary shrink-0 px-3 py-1.5" aria-haspopup="dialog" aria-controls="personalizar-dialog"><i class="fa-solid fa-sliders" aria-hidden="true"></i><span class="max-sm:sr-only">Personalizar</span></button>
       </div>
     </nav>
@@ -1022,6 +1016,7 @@
           <p class="cf-faixa-texto">Como salvar conteúdos, consultar códigos e acompanhar prazos.</p>
         </header>
         <div class="mx-auto max-w-3xl space-y-3">
+          <details class="cf-faq"><summary>Como conheço as áreas do novo portal?</summary><p class="cf-faq-resposta">Faça o <a href="#" data-tour-iniciar>tour guiado</a>: em poucos passos ele mostra a busca, o menu, o assistente IA, os atalhos, a Busca Fiscal e como personalizar esta página. Ele também pode ser aberto pelo botão <i class="fa-solid fa-route" aria-hidden="true"></i> <strong>Tour</strong>, ao lado de Personalizar.</p></details>
           <details class="cf-faq"><summary>Como salvo tabelas, podcasts, consultas e procedimentos?</summary><p class="cf-faq-resposta">Use o ícone <i class="fa-regular fa-bookmark" aria-hidden="true"></i> (salvar) em cada item. Os itens salvos ficam reunidos em <a href="meu-perfil.html">Meu Perfil</a>, neste navegador.</p></details>
           <details class="cf-faq"><summary>O que é o cClassTrib e onde consulto?</summary><p class="cf-faq-resposta">É o código de Classificação Tributária do IBS e da CBS, informado junto com o CST nos documentos fiscais da Reforma Tributária. Pesquise em <a href="cst-cclasstrib.html">CST/cClassTrib</a> ou no bloco Códigos, com dados da tabela oficial do Portal DF-e.</p></details>
           <details class="cf-faq"><summary>Como acompanho os prazos das obrigações?</summary><p class="cf-faq-resposta">Na <a href="agenda-obrigacoes.html">Agenda de Obrigações</a>. As obrigações que você salvar na agenda aparecem no aviso do topo desta página quando estiverem perto de vencer.</p></details>
@@ -1123,5 +1118,6 @@
   <script src="./rodape.js" defer></script>
   <script src="./buscafiscal.js" defer></script>
   <script src="./assistente-ia.js" defer></script>
+  <script src="./tour.js" defer></script>
 </body>
 </html>
