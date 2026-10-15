@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consultoria Cenofisco: tire suas dúvidas tributárias, fiscais, trabalhistas e previdenciárias por telefone, on-line, vídeo ou presencialmente. Respostas em 12, 24, 48 ou 72 horas.">
+  <link href="./output.css" rel="stylesheet">
+  <script src="./tema.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Consultoria Cenofisco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" href="img/logo.jpg">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-900 focus:shadow-lg">Pular para o conteúdo</a>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <div class="cf-on-dark bg-blue-950 text-blue-100">
+    <div class="container mx-auto flex items-center justify-between gap-4 px-4 py-1.5 text-xs sm:text-sm">
+      <div class="hidden items-center gap-5 lg:flex">
+        <a href="tel:1140001305" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-phone text-[11px] text-amber-400" aria-hidden="true"></i>4000 1305</a>
+        <a href="tel:08009403055" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-phone-volume text-[11px] text-amber-400" aria-hidden="true"></i>0800 940 3055</a>
+        <a href="mailto:sac@cenofisco.com.br" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-envelope text-[11px] text-amber-400" aria-hidden="true"></i>sac@cenofisco.com.br</a>
+      </div>
+      <!-- Usuário logado (simulação, como no portal) -->
+      <div class="ml-auto flex items-center gap-2 min-[360px]:gap-3 sm:gap-4">
+        <span class="hidden whitespace-nowrap sm:inline">Olá, <strong class="font-semibold text-white">Enedino</strong></span>
+        <span class="hidden h-4 w-px bg-blue-800 sm:block" aria-hidden="true"></span>
+        <a href="meu-perfil.html" class="flex items-center gap-1.5 py-1 font-medium whitespace-nowrap transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CABEÇALHO DO HOTSITE ===================== -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <div class="container mx-auto flex items-center gap-x-6 gap-y-3 px-4 py-3">
+      <a href="hotsite-consultoria.html" class="flex shrink-0 items-center gap-3" aria-label="Consultoria Cenofisco — início do hotsite">
+        <img src="img/logo.jpg" alt="Cenofisco" width="200" height="62" class="h-10 w-auto sm:h-12">
+        <span class="hidden border-l border-slate-200 pl-3 text-sm leading-tight font-semibold text-blue-900 sm:block">Consultoria<br><span class="font-normal text-slate-500">Tributária, Fiscal e Trabalhista</span></span>
+      </a>
+      <div class="ml-auto flex items-center gap-3">
+        <!-- Contador de créditos: o painel é montado por hotsite-consultoria.js. No celular (sem sm:relative) o painel se posiciona pelo cabeçalho fixo e ocupa a largura da tela -->
+        <div class="sm:relative" id="creditos-widget">
+          <button type="button" id="creditos-toggle" class="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50" aria-expanded="false" aria-controls="creditos-painel" aria-label="Seus créditos">
+            <i class="fa-solid fa-coins text-amber-500" aria-hidden="true"></i>
+            <span><span data-saldo class="text-blue-900 tabular-nums">150</span><span class="max-sm:hidden"> créditos</span></span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400" aria-hidden="true"></i>
+          </button>
+          <div id="creditos-painel" class="absolute top-full right-0 z-50 mt-2 hidden w-[min(21rem,calc(100vw-2rem))] max-sm:left-4 max-sm:right-4 max-sm:w-auto rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-xl" role="region" aria-label="Seus créditos"></div>
+        </div>
+        <a href="consultoria.html" class="cf-btn cf-btn-accent whitespace-nowrap max-sm:px-3" aria-label="Comprar créditos"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="max-sm:hidden" aria-hidden="true">Comprar créditos</span></a>
+        <button id="menu-toggle" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-blue-900 lg:hidden" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div id="main-menu" class="hidden border-t border-slate-100 lg:block">
+      <nav class="container mx-auto flex flex-col px-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-6" aria-label="Navegação do hotsite">
+        <a href="hotsite-consultoria.html" class="cf-nav-link" aria-current="page">Início</a>
+        <a href="consultoria-telefone.html" class="cf-nav-link">Telefone</a>
+        <a href="consultoria-online.html" class="cf-nav-link">On-line</a>
+        <a href="consultoria-video.html" class="cf-nav-link">Vídeo Consultoria</a>
+        <a href="consultoria-presencial.html" class="cf-nav-link">Presencial</a>
+        <a href="hotsite-consultoria.html#minhas-consultas" class="cf-nav-link">Minhas consultas</a>
+        <a href="hotsite-consultoria.html#ajuda" class="cf-nav-link">Ajuda</a>
+        <a href="hotsite-consultoria.html#fale-conosco" class="cf-nav-link">Fale Conosco</a>
+        <a href="index.html" class="cf-nav-link lg:ml-auto"><i class="fa-solid fa-arrow-left text-[10px] text-slate-400" aria-hidden="true"></i>Portal Cenofisco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <h1 class="sr-only">Consultoria Cenofisco</h1>
+
+    <!-- ===================== TOPO ===================== -->
+    <section class="cf-hero cf-on-dark" aria-labelledby="hero-titulo">
+      <div class="container mx-auto grid items-center gap-10 px-4 py-14 sm:py-16 lg:grid-cols-[1.15fr_1fr] lg:py-20">
+        <div>
+          <span class="cf-selo cf-selo-escuro"><i class="fa-solid fa-compass" aria-hidden="true"></i>Consultoria Cenofisco</span>
+          <p id="hero-titulo" class="cf-hero-titulo">Faça sua consulta!</p>
+          <p class="mt-4 max-w-xl text-base text-pretty text-blue-100 sm:text-lg">Agora ficou muito mais fácil ter a melhor consultoria do mercado à sua disposição: escolha como prefere falar com nossos consultores e tire suas dúvidas tributárias, fiscais, trabalhistas e previdenciárias.</p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a href="#canais" class="cf-btn cf-btn-accent px-5 py-3 text-base"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>Fazer uma consulta</a>
+            <a href="consultoria.html" class="cf-btn bg-white/10 px-5 py-3 text-base text-white ring-1 ring-white/25 hover:bg-white/20"><i class="fa-solid fa-coins" aria-hidden="true"></i>Adquirir créditos</a>
+            <a href="#minhas-consultas" class="cf-btn px-3 py-3 text-base text-blue-100 hover:text-white hover:underline">Minhas consultas</a>
+          </div>
+          <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-100">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-video text-amber-400" aria-hidden="true"></i>A primeira Consultoria por Vídeo</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-clock text-amber-400" aria-hidden="true"></i>Respostas em 12, 24, 48 ou 72 horas</li>
+          </ul>
+        </div>
+
+        <!-- Consulta por telefone em destaque -->
+        <div class="rounded-3xl bg-white p-6 text-slate-900 shadow-2xl ring-4 ring-white/15 sm:p-8">
+          <div class="flex items-center gap-4">
+            <span class="inline-flex size-14 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-2xl text-blue-950" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+            <div>
+              <p class="text-sm font-medium text-slate-500">Consulta por telefone</p>
+              <a href="tel:1140001305" class="text-3xl font-extrabold tracking-tight text-blue-900 tabular-nums hover:underline">4000 1305</a>
+            </div>
+          </div>
+          <p class="mt-4 text-sm text-slate-600">Para clientes: ligue com o seu <strong class="text-slate-800">código de cliente</strong> em mãos e fale direto com um consultor.</p>
+          <dl class="mt-6 grid grid-cols-3 gap-3 border-t border-slate-100 pt-6 text-center">
+            <div><dt class="text-xs text-slate-500">Telefone</dt><dd class="mt-1 text-lg font-bold text-slate-900">4 <span class="text-xs font-medium text-slate-500">créditos</span></dd></div>
+            <div><dt class="text-xs text-slate-500">On-line 72h</dt><dd class="mt-1 text-lg font-bold text-slate-900">4 <span class="text-xs font-medium text-slate-500">créditos</span></dd></div>
+            <div><dt class="text-xs text-slate-500">Vídeo</dt><dd class="mt-1 text-lg font-bold text-slate-900">48 <span class="text-xs font-medium text-slate-500">créditos</span></dd></div>
+          </dl>
+          <a href="#precos" class="cf-link-more mt-5">Ver todos os valores <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CANAIS ===================== -->
+    <section id="canais" class="cf-faixa scroll-mt-28" aria-labelledby="titulo-canais">
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-headset" aria-hidden="true"></i>Como consultar</span>
+          <h2 id="titulo-canais" class="cf-faixa-titulo">Escolha a forma de fazer sua consulta</h2>
+          <p class="cf-faixa-texto">Quatro canais com a mesma equipe de consultores especialistas.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="consultoria-telefone.html" class="cf-card group flex flex-col transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+            <span class="cf-icon size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Telefone</h3>
+            <p class="mt-2 flex-1 text-sm text-slate-600">Para clientes, basta ligar para 4000 1305 com o código de cliente em mãos.</p>
+            <span class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs"><span class="font-semibold text-slate-500">4 créditos</span><span class="font-semibold text-blue-700">Saiba mais <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+          </a>
+          <a href="consultoria-online.html" class="cf-card group flex flex-col transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+            <span class="cf-icon size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">On-line</h3>
+            <p class="mt-2 flex-1 text-sm text-slate-600">Envie sua dúvida por escrito e escolha receber a resposta em 12, 24, 48 ou 72 horas.</p>
+            <span class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs"><span class="font-semibold text-slate-500">de 4 a 24 créditos</span><span class="font-semibold text-blue-700">Saiba mais <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+          </a>
+          <a href="consultoria-video.html" class="cf-card group flex flex-col transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+            <span class="cf-icon size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white" aria-hidden="true"><i class="fa-solid fa-video"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Vídeo Consultoria</h3>
+            <p class="mt-2 flex-1 text-sm text-slate-600">A primeira Consultoria por Vídeo: fale com um consultor com apenas um clique.</p>
+            <span class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs"><span class="font-semibold text-slate-500">48 créditos</span><span class="font-semibold text-blue-700">Saiba mais <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+          </a>
+          <a href="consultoria-presencial.html" class="cf-card group flex flex-col transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+            <span class="cf-icon size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Presencial</h3>
+            <p class="mt-2 flex-1 text-sm text-slate-600">Converse pessoalmente com a nossa equipe em Curitiba ou São Paulo. Basta agendar!</p>
+            <span class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs"><span class="font-semibold text-slate-500">96 créditos</span><span class="font-semibold text-blue-700">Saiba mais <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PASSO A PASSO ===================== -->
+    <section id="como-funciona" class="cf-faixa cf-faixa-destaque scroll-mt-28" aria-labelledby="titulo-como">
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-list-ol" aria-hidden="true"></i>Passo a passo</span>
+          <h2 id="titulo-como" class="cf-faixa-titulo">Como fazer uma consulta</h2>
+          <p class="cf-faixa-texto">Uma consultoria eficiente e rápida faz diferença no dia a dia da empresa. Em três passos você fala com um especialista.</p>
+        </header>
+        <ol class="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <li class="cf-card relative">
+            <span class="absolute top-5 right-5 text-4xl font-extrabold text-slate-100" aria-hidden="true">1</span>
+            <span class="inline-flex size-12 items-center justify-center rounded-2xl bg-amber-400 text-xl text-blue-950" aria-hidden="true"><i class="fa-solid fa-coins"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Créditos</h3>
+            <p class="mt-2 text-sm text-slate-600">Compre seus créditos de forma simples e segura, no cartão ou no boleto. Pacotes maiores têm até 100% de bônus.</p>
+            <a href="consultoria.html" class="cf-link-more mt-4">Comprar créditos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </li>
+          <li class="cf-card relative">
+            <span class="absolute top-5 right-5 text-4xl font-extrabold text-slate-100" aria-hidden="true">2</span>
+            <span class="inline-flex size-12 items-center justify-center rounded-2xl bg-blue-900 text-xl text-white" aria-hidden="true"><i class="fa-solid fa-hand-pointer"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Consultar</h3>
+            <p class="mt-2 text-sm text-slate-600">Escolha o tipo de consulta: telefone, on-line, vídeo ou presencial.</p>
+            <a href="#canais" class="cf-link-more mt-4">Ver as opções <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </li>
+          <li class="cf-card relative">
+            <span class="absolute top-5 right-5 text-4xl font-extrabold text-slate-100" aria-hidden="true">3</span>
+            <span class="inline-flex size-12 items-center justify-center rounded-2xl bg-emerald-600 text-xl text-white" aria-hidden="true"><i class="fa-solid fa-paper-plane"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Enviar</h3>
+            <p class="mt-2 text-sm text-slate-600">Faça, envie ou agende a sua consulta e acompanhe a resposta em Minhas consultas.</p>
+            <a href="#canais" class="cf-link-more mt-4">Escolher o tipo de consulta <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== CRÉDITOS ===================== -->
+    <!-- Pacotes, valores e pagamento ficam só no checkout (consultoria.html) -->
+    <section id="precos" class="cf-faixa scroll-mt-28" aria-labelledby="titulo-precos">
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-coins" aria-hidden="true"></i>Créditos</span>
+          <h2 id="titulo-precos" class="cf-faixa-titulo">Pague só pelas consultas que fizer</h2>
+          <p class="cf-faixa-texto">Cada tipo de consulta usa uma quantidade de créditos. Combine os tipos como preferir; os créditos ficam no seu saldo.</p>
+        </header>
+        <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-2">
+          <section class="cf-card" aria-labelledby="titulo-custo">
+            <h3 id="titulo-custo" class="cf-section-title mb-4"><span class="cf-icon"><i class="fa-solid fa-receipt" aria-hidden="true"></i></span>Créditos por consulta</h3>
+            <ul id="custo-consultas">
+              <!-- Gerado via JavaScript (hotsite-consultoria.js) -->
+            </ul>
+            <p class="mt-4 text-xs text-slate-500">Consultas por telefone e por escrito incluem suporte técnico.</p>
+          </section>
+          <section class="cf-cta cf-on-dark flex flex-col justify-center" aria-labelledby="titulo-comprar">
+            <span class="inline-flex size-12 items-center justify-center rounded-2xl bg-amber-400 text-xl text-blue-950" aria-hidden="true"><i class="fa-solid fa-cart-shopping"></i></span>
+            <h3 id="titulo-comprar" class="mt-5 text-2xl font-bold tracking-tight">Precisa de mais créditos?</h3>
+            <p class="mt-2 text-blue-100">Escolha o pacote no checkout da consultoria. Pacotes maiores têm bônus de créditos e meses grátis do Boletim Fiscal e Tributário.</p>
+            <p class="mt-4 text-sm text-blue-100">Seu saldo: <strong class="text-white"><span data-saldo>150</span> créditos</strong></p>
+            <a href="consultoria.html" class="cf-btn cf-btn-accent mt-6 self-start px-6 py-3 text-base"><i class="fa-solid fa-coins" aria-hidden="true"></i>Comprar créditos</a>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MINHAS CONSULTAS ===================== -->
+    <section id="minhas-consultas" class="cf-faixa cf-faixa-destaque scroll-mt-28" aria-labelledby="titulo-minhas">
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-folder-open" aria-hidden="true"></i>Minhas consultas</span>
+          <h2 id="titulo-minhas" class="cf-faixa-titulo">Acompanhe as suas consultas</h2>
+          <p class="cf-faixa-texto">As consultas enviadas e os agendamentos aparecem aqui, com a situação de cada um.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[1.6fr_1fr]">
+          <section class="cf-card" aria-label="Lista de consultas">
+            <ul id="minhas-lista" class="divide-y divide-slate-100 text-sm" data-limite="10">
+              <li class="py-3 text-slate-500">Você ainda não enviou consultas por aqui. Escolha ao lado como prefere consultar.</li>
+            </ul>
+          </section>
+          <section class="cf-card" aria-labelledby="titulo-nova">
+            <h3 id="titulo-nova" class="cf-section-title mb-3"><span class="cf-icon"><i class="fa-solid fa-plus" aria-hidden="true"></i></span>Nova consulta</h3>
+            <ul class="-mx-2">
+                <li><a href="consultoria-telefone.html" class="flex items-center gap-3 rounded-xl px-2 py-2.5 transition hover:bg-blue-50"><span class="cf-icon size-9 text-sm" aria-hidden="true"><i class="fa-solid fa-phone"></i></span><span class="flex-1 font-medium text-slate-800">Telefone</span><span class="text-xs text-slate-500">4 créditos</span><i class="fa-solid fa-chevron-right text-xs text-slate-400" aria-hidden="true"></i></a></li>
+                <li><a href="consultoria-online.html" class="flex items-center gap-3 rounded-xl px-2 py-2.5 transition hover:bg-blue-50"><span class="cf-icon size-9 text-sm" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span><span class="flex-1 font-medium text-slate-800">On-line</span><span class="text-xs text-slate-500">de 4 a 24 créditos</span><i class="fa-solid fa-chevron-right text-xs text-slate-400" aria-hidden="true"></i></a></li>
+                <li><a href="consultoria-video.html" class="flex items-center gap-3 rounded-xl px-2 py-2.5 transition hover:bg-blue-50"><span class="cf-icon size-9 text-sm" aria-hidden="true"><i class="fa-solid fa-video"></i></span><span class="flex-1 font-medium text-slate-800">Vídeo Consultoria</span><span class="text-xs text-slate-500">48 créditos</span><i class="fa-solid fa-chevron-right text-xs text-slate-400" aria-hidden="true"></i></a></li>
+                <li><a href="consultoria-presencial.html" class="flex items-center gap-3 rounded-xl px-2 py-2.5 transition hover:bg-blue-50"><span class="cf-icon size-9 text-sm" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span><span class="flex-1 font-medium text-slate-800">Presencial</span><span class="text-xs text-slate-500">96 créditos</span><i class="fa-solid fa-chevron-right text-xs text-slate-400" aria-hidden="true"></i></a></li>
+            </ul>
+            <p class="mt-4 border-t border-slate-100 pt-4 text-sm text-slate-600">Seu saldo: <strong class="text-slate-900"><span data-saldo>150</span> créditos</strong> · <a href="consultoria.html" class="font-semibold text-blue-700 hover:underline">Comprar créditos</a></p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ÚLTIMAS CONSULTAS RESPONDIDAS ===================== -->
+    <section id="respondidas" class="cf-faixa scroll-mt-28" aria-labelledby="titulo-respondidas">
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-comments" aria-hidden="true"></i>Consultas respondidas</span>
+          <h2 id="titulo-respondidas" class="cf-faixa-titulo">Veja exemplos de respostas da equipe</h2>
+          <p class="cf-faixa-texto">Algumas das últimas consultas respondidas pelos consultores Cenofisco.</p>
+        </header>
+        <div id="respondidas-lista" class="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <!-- Gerado via JavaScript a partir de consultas.json -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DEPOIMENTOS ===================== -->
+    <section id="depoimentos" class="cf-faixa cf-faixa-destaque scroll-mt-28" aria-labelledby="titulo-depoimentos">
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-star" aria-hidden="true"></i>Depoimentos</span>
+          <h2 id="titulo-depoimentos" class="cf-faixa-titulo">Acompanhe as avaliações dos nossos consulentes</h2>
+          <p class="cf-faixa-texto">Avaliações enviadas depois do atendimento.</p>
+        </header>
+        <!-- Avaliações de exemplo (iniciais, canal e data como em cenofisco.com.br/avaliacoes); trocar pelo feed real de avaliações -->
+        <ul class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <li class="cf-card flex flex-col">
+            <span class="text-amber-400" aria-label="5 de 5 estrelas"><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+            <blockquote class="mt-3 flex-1 text-slate-700">“Atendimento atencioso, claro e profissional, com muita paciência e cordialidade.”</blockquote>
+            <p class="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4 text-sm"><span class="inline-flex size-9 items-center justify-center rounded-full bg-blue-900 text-xs font-semibold text-white" aria-hidden="true">MS</span><span><strong class="block font-semibold">M.D.S.S.M.</strong><span class="text-xs text-slate-500">Consultoria Telefone · 07/10/2026</span></span></p>
+          </li>
+          <li class="cf-card flex flex-col">
+            <span class="text-amber-400" aria-label="5 de 5 estrelas"><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+            <blockquote class="mt-3 flex-1 text-slate-700">“Resposta simples e direta. Sanou as minhas dúvidas.”</blockquote>
+            <p class="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4 text-sm"><span class="inline-flex size-9 items-center justify-center rounded-full bg-amber-400 text-xs font-semibold text-blue-950" aria-hidden="true">JG</span><span><strong class="block font-semibold">J.A.E.G.</strong><span class="text-xs text-slate-500">Consultoria Telefone · 06/10/2026</span></span></p>
+          </li>
+          <li class="cf-card flex flex-col">
+            <span class="text-amber-400" aria-label="5 de 5 estrelas"><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+            <blockquote class="mt-3 flex-1 text-slate-700">“A dúvida foi muito bem esclarecida.”</blockquote>
+            <p class="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4 text-sm"><span class="inline-flex size-9 items-center justify-center rounded-full bg-emerald-600 text-xs font-semibold text-white" aria-hidden="true">MT</span><span><strong class="block font-semibold">M.A.T.S.</strong><span class="text-xs text-slate-500">Consultoria Online · 08/10/2026</span></span></p>
+          </li>
+          <li class="cf-card flex flex-col">
+            <span class="text-amber-400" aria-label="5 de 5 estrelas"><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+            <blockquote class="mt-3 flex-1 text-slate-700">“Obrigado pela resposta. O atendimento é um diferencial.”</blockquote>
+            <p class="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4 text-sm"><span class="inline-flex size-9 items-center justify-center rounded-full bg-violet-600 text-xs font-semibold text-white" aria-hidden="true">MG</span><span><strong class="block font-semibold">M.R.G.</strong><span class="text-xs text-slate-500">Consultoria Telefone · 05/10/2026</span></span></p>
+          </li>
+          <li class="cf-card flex flex-col">
+            <span class="text-amber-400" aria-label="5 de 5 estrelas"><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+            <blockquote class="mt-3 flex-1 text-slate-700">“Perfeito. Obrigado!”</blockquote>
+            <p class="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4 text-sm"><span class="inline-flex size-9 items-center justify-center rounded-full bg-sky-600 text-xs font-semibold text-white" aria-hidden="true">ZF</span><span><strong class="block font-semibold">Z.T.F.</strong><span class="text-xs text-slate-500">Consultoria Online · 09/10/2026</span></span></p>
+          </li>
+          <li class="cf-card flex flex-col">
+            <span class="text-amber-400" aria-label="5 de 5 estrelas"><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i><i class="fa-solid fa-star" aria-hidden="true"></i></span>
+            <blockquote class="mt-3 flex-1 text-slate-700">“Agradeço pelo atendimento.”</blockquote>
+            <p class="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4 text-sm"><span class="inline-flex size-9 items-center justify-center rounded-full bg-orange-600 text-xs font-semibold text-white" aria-hidden="true">JA</span><span><strong class="block font-semibold">J.L.F.A.</strong><span class="text-xs text-slate-500">Consultoria Online · 24/09/2026</span></span></p>
+          </li>
+        </ul>
+        <p class="mt-8 text-center"><a href="https://www.cenofisco.com.br/avaliacoes" target="_blank" rel="noopener" class="cf-btn cf-btn-secondary">Ver todas as avaliações <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i><span class="sr-only">(abre em nova aba)</span></a></p>
+      </div>
+    </section>
+
+    <!-- ===================== CHAMADA: BOLETIM ===================== -->
+    <section class="container mx-auto px-4 py-10 sm:py-14" aria-labelledby="titulo-boletim">
+      <div class="cf-cta cf-on-dark flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <span class="cf-selo cf-selo-escuro"><i class="fa-solid fa-book-open" aria-hidden="true"></i>Boletim Fiscal e Tributário Cenofisco</span>
+          <h2 id="titulo-boletim" class="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">Conheça o nosso conteúdo</h2>
+          <p class="mt-2 max-w-xl text-blue-100">Legislação, procedimentos, tabelas práticas, agenda de obrigações e ferramentas, com atualização diária.</p>
+        </div>
+        <a href="index.html" class="cf-btn cf-btn-accent shrink-0 px-6 py-3 text-base"><i class="fa-solid fa-arrow-right-to-bracket" aria-hidden="true"></i>Entrar no portal</a>
+      </div>
+    </section>
+
+    <!-- ===================== AJUDA ===================== -->
+    <section id="ajuda" class="cf-faixa scroll-mt-28 pt-0 sm:pt-0" aria-labelledby="titulo-ajuda">
+      <div class="container mx-auto px-4">
+        <header class="cf-faixa-cabecalho">
+          <span class="cf-selo"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>Ajuda</span>
+          <h2 id="titulo-ajuda" class="cf-faixa-titulo">Precisa de ajuda?</h2>
+          <p class="cf-faixa-texto">Atendimento por telefone, e-mail e as dúvidas mais frequentes sobre a consultoria.</p>
+        </header>
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-[1.6fr_1fr]">
+          <div class="space-y-3">
+            <details class="cf-faq" open><summary>Como funcionam os créditos?</summary><p class="cf-faq-resposta">Você compra um pacote de créditos e usa conforme o tipo de consulta: 4 créditos por telefone ou por escrito em até 72h, 8 em até 48h, 12 em até 24h, 24 em até 12h, 48 por videoconferência e 96 na consulta presencial de 1 hora. Os créditos ficam no seu saldo para usar quando precisar.</p></details>
+            <details class="cf-faq"><summary>Quem pode fazer consulta por telefone?</summary><p class="cf-faq-resposta">Clientes Cenofisco com créditos disponíveis. Ligue para <a href="tel:1140001305">4000 1305</a> com o código de cliente em mãos.</p></details>
+            <details class="cf-faq"><summary>Em quanto tempo recebo a resposta on-line?</summary><p class="cf-faq-resposta">No prazo que você escolher na <a href="consultoria-online.html">consulta on-line</a>: 12, 24, 48 ou 72 horas. O prazo é contado em dias úteis, no horário comercial (8h30 às 17h30), e pode mudar se a área indicada não corresponder à dúvida. A resposta fica em <a href="#minhas-consultas">Minhas consultas</a>.</p></details>
+            <details class="cf-faq"><summary>Como agendo uma vídeo consultoria ou uma consulta presencial?</summary><p class="cf-faq-resposta">Nas páginas de <a href="consultoria-video.html">Vídeo Consultoria</a> e <a href="consultoria-presencial.html">Consulta Presencial</a>, indique a data e o período preferidos e o assunto. Na vídeo consultoria você recebe um link por e-mail; o atendimento presencial é em Curitiba ou São Paulo.</p></details>
+            <details class="cf-faq"><summary>Quais as formas de pagamento?</summary><p class="cf-faq-resposta">Cartão de crédito, com parcelamento, ou boleto bancário. No cartão os créditos entram no saldo na hora; no boleto, após a confirmação do pagamento. <a href="consultoria.html">Comprar créditos</a>.</p></details>
+            <details class="cf-faq"><summary>Quais assuntos a consultoria atende?</summary><p class="cf-faq-resposta">Dúvidas nas áreas tributária (federal, estadual e municipal), fiscal, trabalhista, previdenciária, contábil e de comércio exterior, incluindo a Reforma Tributária (IBS e CBS).</p></details>
+          </div>
+          <aside class="space-y-4" aria-label="Contatos">
+            <a href="tel:1140001305" class="cf-card flex items-center gap-4 transition hover:border-blue-200"><span class="cf-icon size-12 text-lg" aria-hidden="true"><i class="fa-solid fa-phone"></i></span><span><span class="block text-sm text-slate-500">Telefone</span><strong class="text-lg font-semibold">11 4000 1305</strong></span></a>
+            <a href="tel:08009403055" class="cf-card flex items-center gap-4 transition hover:border-blue-200"><span class="cf-icon size-12 text-lg" aria-hidden="true"><i class="fa-solid fa-phone-volume"></i></span><span><span class="block text-sm text-slate-500">Ligação gratuita</span><strong class="text-lg font-semibold">0800 940 3055</strong></span></a>
+            <a href="mailto:sac@cenofisco.com.br" class="cf-card flex items-center gap-4 transition hover:border-blue-200"><span class="cf-icon size-12 text-lg" aria-hidden="true"><i class="fa-solid fa-envelope"></i></span><span class="min-w-0"><span class="block text-sm text-slate-500">E-mail</span><strong class="text-lg font-semibold break-all">sac@cenofisco.com.br</strong></span></a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FALE CONOSCO ===================== -->
+    <section id="fale-conosco" class="cf-faixa cf-faixa-destaque scroll-mt-28" aria-labelledby="titulo-fale">
+      <div class="container mx-auto px-4">
+        <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-[1fr_1.4fr] lg:items-start">
+          <div>
+            <span class="cf-selo"><i class="fa-solid fa-envelope-open-text" aria-hidden="true"></i>Fale Conosco</span>
+            <h2 id="titulo-fale" class="cf-faixa-titulo">Ficou com alguma dúvida sobre a consultoria?</h2>
+            <p class="cf-faixa-texto">Envie sua mensagem sobre créditos, pagamentos ou agendamentos. Para dúvidas técnicas, faça uma <a href="consultoria-online.html" class="font-semibold text-blue-800 underline">consulta on-line</a>.</p>
+            <address class="mt-6 space-y-1 text-sm text-slate-600 not-italic">
+              <strong class="block text-slate-800">Cenofisco Editora de Publicações Tributárias Ltda.</strong>
+              Rua da Consolação, 77 – Centro<br>CEP 01301-000 – São Paulo-SP
+            </address>
+          </div>
+          <form id="form-contato" class="cf-card" novalidate>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <div>
+                <label for="contato-nome" class="cf-label">Nome *</label>
+                <input type="text" id="contato-nome" name="nome" required autocomplete="name" class="cf-input">
+              </div>
+              <div>
+                <label for="contato-email" class="cf-label">E-mail *</label>
+                <input type="email" id="contato-email" name="email" required autocomplete="email" inputmode="email" class="cf-input">
+              </div>
+              <div>
+                <label for="contato-telefone" class="cf-label">Telefone</label>
+                <input type="tel" id="contato-telefone" name="telefone" autocomplete="tel" inputmode="tel" class="cf-input">
+              </div>
+              <div>
+                <label for="contato-motivo" class="cf-label">Assunto</label>
+                <select id="contato-motivo" name="motivo" class="cf-input">
+                  <option>Créditos e pagamentos</option>
+                  <option>Agendamento</option>
+                  <option>Acesso e senha</option>
+                  <option>Sugestões</option>
+                  <option>Outros</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-4">
+              <label for="contato-mensagem" class="cf-label">Mensagem *</label>
+              <textarea id="contato-mensagem" name="mensagem" required rows="5" class="cf-input resize-y"></textarea>
+            </div>
+            <p id="contato-feedback" class="mt-4 hidden rounded-lg px-4 py-3 text-sm" role="status"></p>
+            <button type="submit" class="cf-btn cf-btn-primary mt-5 w-full sm:w-auto"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i>Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="cf-on-dark bg-blue-950 text-slate-400">
+    <div class="container mx-auto grid grid-cols-1 gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sm:col-span-2">
+        <img src="img/logobranco-cenofisco.png" alt="Cenofisco" width="201" height="49" loading="lazy" decoding="async" class="mb-4 -ml-3 h-10 w-auto">
+        <p class="max-w-sm text-sm leading-relaxed">Consultoria tributária, fiscal, trabalhista e previdenciária por telefone, on-line, vídeo e presencial.</p>
+        <address class="mt-4 text-sm leading-relaxed not-italic">Rua da Consolação, 77 – Centro – CEP 01301-000 – São Paulo-SP</address>
+      </div>
+      <nav aria-label="Consultoria">
+        <h2 class="cf-footer-title">Consultoria</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="consultoria-telefone.html" class="cf-footer-link">Consulta por Telefone</a></li>
+          <li><a href="consultoria-online.html" class="cf-footer-link">Consulta On-line</a></li>
+          <li><a href="consultoria-video.html" class="cf-footer-link">Vídeo Consultoria</a></li>
+          <li><a href="consultoria-presencial.html" class="cf-footer-link">Consulta Presencial</a></li>
+          <li><a href="hotsite-consultoria.html#minhas-consultas" class="cf-footer-link">Minhas consultas</a></li>
+          <li><a href="consultoria.html" class="cf-footer-link">Comprar créditos</a></li>
+          <li><a href="hotsite-consultoria.html#ajuda" class="cf-footer-link">Ajuda</a></li>
+          <li><a href="hotsite-consultoria.html#fale-conosco" class="cf-footer-link">Fale Conosco</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Outros serviços">
+        <h2 class="cf-footer-title">Outros serviços</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="index.html" class="cf-footer-link">Portal Cenofisco</a></li>
+          <li><a href="/cursos" class="cf-footer-link">Cursos Cenofisco</a></li>
+          <li><a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-footer-link">Reforma Tributária<span class="sr-only"> (abre em nova aba)</span></a></li>
+        </ul>
+        <ul class="mt-5 space-y-1 text-sm">
+          <li><a href="tel:1140001305" class="inline-flex items-center gap-2.5 py-1 transition hover:text-white"><i class="fa-solid fa-phone w-4 text-center text-amber-400" aria-hidden="true"></i>11 4000 1305</a></li>
+          <li><a href="mailto:sac@cenofisco.com.br" class="inline-flex items-center gap-2.5 py-1 break-all transition hover:text-white"><i class="fa-solid fa-envelope w-4 text-center text-amber-400" aria-hidden="true"></i>sac@cenofisco.com.br</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container mx-auto flex flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs sm:flex-row sm:text-left">
+        <p>© <span id="ano-atual">2026</span> Cenofisco Editora de Publicações Tributárias Ltda</p>
+        <ul class="flex shrink-0 gap-5">
+          <li><a href="#" class="cf-footer-link">Política de Privacidade</a></li>
+          <li><a href="#" class="cf-footer-link">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./creditos.js" defer></script>
+  <script src="./hotsite-consultoria.js" defer></script>
+</body>
+</html>

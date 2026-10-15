@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulta por telefone com a Consultoria Cenofisco: ligue para 4000 1305 com o seu código de cliente em mãos. 4 créditos por consulta.">
+  <link href="./output.css" rel="stylesheet">
+  <script src="./tema.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Consulta por Telefone - Consultoria Cenofisco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" href="img/logo.jpg">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-900 focus:shadow-lg">Pular para o conteúdo</a>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <div class="cf-on-dark bg-blue-950 text-blue-100">
+    <div class="container mx-auto flex items-center justify-between gap-4 px-4 py-1.5 text-xs sm:text-sm">
+      <div class="hidden items-center gap-5 lg:flex">
+        <a href="tel:1140001305" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-phone text-[11px] text-amber-400" aria-hidden="true"></i>4000 1305</a>
+        <a href="tel:08009403055" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-phone-volume text-[11px] text-amber-400" aria-hidden="true"></i>0800 940 3055</a>
+        <a href="mailto:sac@cenofisco.com.br" class="flex items-center gap-2 py-1 whitespace-nowrap transition hover:text-white"><i class="fa-solid fa-envelope text-[11px] text-amber-400" aria-hidden="true"></i>sac@cenofisco.com.br</a>
+      </div>
+      <!-- Usuário logado (simulação, como no portal) -->
+      <div class="ml-auto flex items-center gap-2 min-[360px]:gap-3 sm:gap-4">
+        <span class="hidden whitespace-nowrap sm:inline">Olá, <strong class="font-semibold text-white">Enedino</strong></span>
+        <span class="hidden h-4 w-px bg-blue-800 sm:block" aria-hidden="true"></span>
+        <a href="meu-perfil.html" class="flex items-center gap-1.5 py-1 font-medium whitespace-nowrap transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CABEÇALHO DO HOTSITE ===================== -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <div class="container mx-auto flex items-center gap-x-6 gap-y-3 px-4 py-3">
+      <a href="hotsite-consultoria.html" class="flex shrink-0 items-center gap-3" aria-label="Consultoria Cenofisco — início do hotsite">
+        <img src="img/logo.jpg" alt="Cenofisco" width="200" height="62" class="h-10 w-auto sm:h-12">
+        <span class="hidden border-l border-slate-200 pl-3 text-sm leading-tight font-semibold text-blue-900 sm:block">Consultoria<br><span class="font-normal text-slate-500">Tributária, Fiscal e Trabalhista</span></span>
+      </a>
+      <div class="ml-auto flex items-center gap-3">
+        <!-- Contador de créditos: o painel é montado por hotsite-consultoria.js. No celular (sem sm:relative) o painel se posiciona pelo cabeçalho fixo e ocupa a largura da tela -->
+        <div class="sm:relative" id="creditos-widget">
+          <button type="button" id="creditos-toggle" class="flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 transition hover:border-blue-200 hover:bg-blue-50" aria-expanded="false" aria-controls="creditos-painel" aria-label="Seus créditos">
+            <i class="fa-solid fa-coins text-amber-500" aria-hidden="true"></i>
+            <span><span data-saldo class="text-blue-900 tabular-nums">150</span><span class="max-sm:hidden"> créditos</span></span>
+            <i class="fa-solid fa-chevron-down text-[10px] text-slate-400" aria-hidden="true"></i>
+          </button>
+          <div id="creditos-painel" class="absolute top-full right-0 z-50 mt-2 hidden w-[min(21rem,calc(100vw-2rem))] max-sm:left-4 max-sm:right-4 max-sm:w-auto rounded-2xl border border-slate-200 bg-white p-4 text-left shadow-xl" role="region" aria-label="Seus créditos"></div>
+        </div>
+        <a href="consultoria.html" class="cf-btn cf-btn-accent whitespace-nowrap max-sm:px-3" aria-label="Comprar créditos"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span class="max-sm:hidden" aria-hidden="true">Comprar créditos</span></a>
+        <button id="menu-toggle" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-blue-900 lg:hidden" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+    <div id="main-menu" class="hidden border-t border-slate-100 lg:block">
+      <nav class="container mx-auto flex flex-col px-4 lg:flex-row lg:flex-wrap lg:items-center lg:gap-x-6" aria-label="Navegação do hotsite">
+        <a href="hotsite-consultoria.html" class="cf-nav-link">Início</a>
+        <a href="consultoria-telefone.html" class="cf-nav-link" aria-current="page">Telefone</a>
+        <a href="consultoria-online.html" class="cf-nav-link">On-line</a>
+        <a href="consultoria-video.html" class="cf-nav-link">Vídeo Consultoria</a>
+        <a href="consultoria-presencial.html" class="cf-nav-link">Presencial</a>
+        <a href="hotsite-consultoria.html#minhas-consultas" class="cf-nav-link">Minhas consultas</a>
+        <a href="hotsite-consultoria.html#ajuda" class="cf-nav-link">Ajuda</a>
+        <a href="hotsite-consultoria.html#fale-conosco" class="cf-nav-link">Fale Conosco</a>
+        <a href="index.html" class="cf-nav-link lg:ml-auto"><i class="fa-solid fa-arrow-left text-[10px] text-slate-400" aria-hidden="true"></i>Portal Cenofisco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ===================== TOPO ===================== -->
+    <section class="cf-hero cf-on-dark" aria-labelledby="pagina-titulo">
+      <div class="container mx-auto px-4 py-10 sm:py-14">
+        <nav aria-label="Você está em" class="text-sm text-blue-100">
+          <ol class="flex flex-wrap items-center gap-2">
+            <li><a href="hotsite-consultoria.html" class="hover:text-white hover:underline">Consultoria</a></li>
+            <li aria-hidden="true"><i class="fa-solid fa-chevron-right text-[10px] text-blue-300"></i></li>
+            <li aria-current="page" class="font-medium text-white">Consulta por Telefone</li>
+          </ol>
+        </nav>
+        <div class="mt-6 flex items-start gap-5">
+          <span class="hidden size-16 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-3xl text-blue-950 sm:inline-flex" aria-hidden="true"><i class="fa-solid fa-phone"></i></span>
+          <div class="max-w-3xl">
+            <h1 id="pagina-titulo" class="text-3xl leading-tight font-bold tracking-tight text-balance sm:text-4xl">Consulta por Telefone</h1>
+            <p class="mt-3 text-lg font-medium text-pretty text-amber-300">Poder conversar com alguém, muitas vezes, é tudo o que precisamos.</p>
+            <p class="mt-2 text-base text-pretty text-blue-100">Nossos consultores estão disponíveis para ouvir e responder às suas dúvidas. São mais de 1.500 ligações por dia.</p>
+            <ul class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-100">
+              <li class="flex items-center gap-2"><a href="https://www.cenofisco.com.br/avaliacoes" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-white">Veja o que falam os clientes sobre o nosso atendimento<span class="sr-only"> (abre em nova aba)</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONSULTAR + VALOR ===================== -->
+    <div class="container mx-auto grid grid-cols-1 gap-6 px-4 py-10 sm:py-12 lg:grid-cols-[1.6fr_1fr] lg:items-start">
+          <section class="cf-card" aria-labelledby="titulo-consultar">
+            <h2 id="titulo-consultar" class="cf-section-title mb-5"><span class="cf-icon"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>Consultar</h2>
+            <div class="flex flex-col items-start gap-5 rounded-2xl bg-blue-950 p-6 text-white sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <p class="text-sm text-blue-100">Ligue para a Consultoria</p>
+                <a href="tel:1140001305" class="text-4xl font-extrabold tracking-tight tabular-nums hover:underline">4000 1305</a>
+              </div>
+              <a href="tel:1140001305" class="cf-btn cf-btn-accent px-6 py-3 text-base"><i class="fa-solid fa-phone" aria-hidden="true"></i>Ligar agora</a>
+            </div>
+            <ol class="mt-6 space-y-4">
+              <li class="flex gap-4"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-amber-400 text-sm font-bold text-blue-950" aria-hidden="true">1</span><p class="text-sm text-slate-700"><strong class="block text-slate-900">Tenha o código de cliente em mãos</strong>Ele identifica a sua empresa e o seu saldo de créditos.</p></li>
+              <li class="flex gap-4"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-amber-400 text-sm font-bold text-blue-950" aria-hidden="true">2</span><p class="text-sm text-slate-700"><strong class="block text-slate-900">Ligue para 4000 1305</strong>Informe o código e a área da sua dúvida.</p></li>
+              <li class="flex gap-4"><span class="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-amber-400 text-sm font-bold text-blue-950" aria-hidden="true">3</span><p class="text-sm text-slate-700"><strong class="block text-slate-900">Converse com o consultor</strong>Cada ligação usa 4 créditos do seu saldo.</p></li>
+            </ol>
+            <p class="mt-6 border-t border-slate-100 pt-4 text-sm text-slate-600">Dúvidas sobre créditos, acesso ou pagamento? Fale com o SAC: <a href="tel:08009403055" class="font-semibold text-blue-800 hover:underline">0800 940 3055</a>.</p>
+          </section>
+
+      <aside class="space-y-6" aria-label="Valor e créditos">
+        <section class="cf-card" aria-labelledby="titulo-valor">
+          <h2 id="titulo-valor" class="cf-section-title mb-3"><span class="cf-icon"><i class="fa-solid fa-receipt" aria-hidden="true"></i></span>Valor por consulta</h2>
+          <ul>
+            <li class="cf-row"><span>Consulta por telefone</span><strong class="shrink-0 text-lg font-bold text-slate-900">4 <span class="text-xs font-normal text-slate-500">créditos</span></strong></li>
+          </ul>
+        </section>
+
+        <section class="cf-on-dark rounded-2xl bg-blue-950 p-6 text-white" aria-labelledby="titulo-creditos">
+          <h2 id="titulo-creditos" class="text-xl font-bold">Precisa de créditos?</h2>
+          <p class="mt-2 text-sm text-blue-100">Seu saldo: <strong class="text-white"><span data-saldo>150</span> créditos</strong></p>
+          <a href="consultoria.html" class="cf-btn cf-btn-accent mt-5 w-full"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Comprar</a>
+        </section>
+      </aside>
+    </div>
+
+    <!-- ===================== OUTRAS FORMAS DE CONSULTAR ===================== -->
+    <section class="cf-faixa cf-faixa-destaque" aria-labelledby="titulo-outras">
+      <div class="container mx-auto px-4">
+        <h2 id="titulo-outras" class="mb-6 text-center text-xl font-bold tracking-tight sm:text-2xl">Outras formas de consultar</h2>
+        <div class="grid grid-cols-1 gap-5 md:grid-cols-3">
+          <a href="consultoria-online.html" class="cf-card group flex flex-col transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+            <span class="cf-icon size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white" aria-hidden="true"><i class="fa-regular fa-envelope"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">On-line</h3>
+            <p class="mt-2 flex-1 text-sm text-slate-600">Envie sua dúvida por escrito e escolha receber a resposta em 12, 24, 48 ou 72 horas.</p>
+            <span class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs"><span class="font-semibold text-slate-500">de 4 a 24 créditos</span><span class="font-semibold text-blue-700">Saiba mais <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+          </a>
+          <a href="consultoria-video.html" class="cf-card group flex flex-col transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+            <span class="cf-icon size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white" aria-hidden="true"><i class="fa-solid fa-video"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Vídeo Consultoria</h3>
+            <p class="mt-2 flex-1 text-sm text-slate-600">A primeira Consultoria por Vídeo: fale com um consultor com apenas um clique.</p>
+            <span class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs"><span class="font-semibold text-slate-500">48 créditos</span><span class="font-semibold text-blue-700">Saiba mais <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+          </a>
+          <a href="consultoria-presencial.html" class="cf-card group flex flex-col transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md">
+            <span class="cf-icon size-12 text-xl transition group-hover:bg-blue-900 group-hover:text-white" aria-hidden="true"><i class="fa-solid fa-location-dot"></i></span>
+            <h3 class="mt-4 text-lg font-semibold">Presencial</h3>
+            <p class="mt-2 flex-1 text-sm text-slate-600">Converse pessoalmente com a nossa equipe em Curitiba ou São Paulo. Basta agendar!</p>
+            <span class="mt-4 flex items-center justify-between gap-2 border-t border-slate-100 pt-3 text-xs"><span class="font-semibold text-slate-500">96 créditos</span><span class="font-semibold text-blue-700">Saiba mais <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5" aria-hidden="true"></i></span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="cf-on-dark bg-blue-950 text-slate-400">
+    <div class="container mx-auto grid grid-cols-1 gap-10 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="sm:col-span-2">
+        <img src="img/logobranco-cenofisco.png" alt="Cenofisco" width="201" height="49" loading="lazy" decoding="async" class="mb-4 -ml-3 h-10 w-auto">
+        <p class="max-w-sm text-sm leading-relaxed">Consultoria tributária, fiscal, trabalhista e previdenciária por telefone, on-line, vídeo e presencial.</p>
+        <address class="mt-4 text-sm leading-relaxed not-italic">Rua da Consolação, 77 – Centro – CEP 01301-000 – São Paulo-SP</address>
+      </div>
+      <nav aria-label="Consultoria">
+        <h2 class="cf-footer-title">Consultoria</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="consultoria-telefone.html" class="cf-footer-link">Consulta por Telefone</a></li>
+          <li><a href="consultoria-online.html" class="cf-footer-link">Consulta On-line</a></li>
+          <li><a href="consultoria-video.html" class="cf-footer-link">Vídeo Consultoria</a></li>
+          <li><a href="consultoria-presencial.html" class="cf-footer-link">Consulta Presencial</a></li>
+          <li><a href="hotsite-consultoria.html#minhas-consultas" class="cf-footer-link">Minhas consultas</a></li>
+          <li><a href="consultoria.html" class="cf-footer-link">Comprar créditos</a></li>
+          <li><a href="hotsite-consultoria.html#ajuda" class="cf-footer-link">Ajuda</a></li>
+          <li><a href="hotsite-consultoria.html#fale-conosco" class="cf-footer-link">Fale Conosco</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Outros serviços">
+        <h2 class="cf-footer-title">Outros serviços</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="index.html" class="cf-footer-link">Portal Cenofisco</a></li>
+          <li><a href="/cursos" class="cf-footer-link">Cursos Cenofisco</a></li>
+          <li><a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-footer-link">Reforma Tributária<span class="sr-only"> (abre em nova aba)</span></a></li>
+        </ul>
+        <ul class="mt-5 space-y-1 text-sm">
+          <li><a href="tel:1140001305" class="inline-flex items-center gap-2.5 py-1 transition hover:text-white"><i class="fa-solid fa-phone w-4 text-center text-amber-400" aria-hidden="true"></i>11 4000 1305</a></li>
+          <li><a href="mailto:sac@cenofisco.com.br" class="inline-flex items-center gap-2.5 py-1 break-all transition hover:text-white"><i class="fa-solid fa-envelope w-4 text-center text-amber-400" aria-hidden="true"></i>sac@cenofisco.com.br</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container mx-auto flex flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs sm:flex-row sm:text-left">
+        <p>© <span id="ano-atual">2026</span> Cenofisco Editora de Publicações Tributárias Ltda</p>
+        <ul class="flex shrink-0 gap-5">
+          <li><a href="#" class="cf-footer-link">Política de Privacidade</a></li>
+          <li><a href="#" class="cf-footer-link">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./creditos.js" defer></script>
+  <script src="./hotsite-consultoria.js" defer></script>
+</body>
+</html>

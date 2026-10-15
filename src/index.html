@@ -46,7 +46,7 @@
 
       <!-- Na página inicial a busca fica só no topo da página (assistente IA); a busca do cabeçalho aparece nas páginas internas -->
       <div class="ml-auto flex items-center gap-3">
-        <a href="#consultoria-cenofisco" class="cf-btn cf-btn-primary hidden whitespace-nowrap sm:inline-flex"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+        <a href="hotsite-consultoria.html" class="cf-btn cf-btn-primary hidden whitespace-nowrap sm:inline-flex"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
         <a href="assine.html" class="cf-btn cf-btn-accent whitespace-nowrap"><i class="fa-solid fa-star" aria-hidden="true"></i>Assine Agora!</a>
         <button id="menu-toggle" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-blue-900 md:hidden" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menu">
           <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
@@ -644,8 +644,8 @@
             <!-- Carregado dinamicamente a partir de legislacao.json -->
           </div>
         </section>
-<div class="min-w-0 md:col-span-2 xl:col-span-1">
-<section id="consultoria-cenofisco" class="cf-card scroll-mt-40" aria-labelledby="titulo-consultoria">
+<div class="flex min-w-0 flex-col md:col-span-2 xl:col-span-1">
+<section id="consultoria-cenofisco" class="cf-card flex flex-1 scroll-mt-40 flex-col" aria-labelledby="titulo-consultoria">
           <div class="cf-section-head">
             <h3 id="titulo-consultoria" class="cf-section-title"><span class="cf-icon"><i class="fa-solid fa-compass" aria-hidden="true"></i></span>Consultoria Cenofisco</h3>
             <a href="consultoria.html" class="cf-btn cf-btn-accent shrink-0 whitespace-nowrap"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>Comprar créditos</a>
@@ -744,6 +744,10 @@
                 </figure>
               </div>
             </div>
+          </div>
+          <!-- mt-auto: o rodapé fica no fim do cartão, que estica até a altura dos vizinhos na mesma linha -->
+          <div class="mt-auto pt-6">
+            <a href="tel:08009403055" class="cf-btn cf-btn-soft w-full"><i class="fa-solid fa-phone" aria-hidden="true"></i>Fale com um consultor: 0800 940 3055</a>
           </div>
         </section>
 </div>

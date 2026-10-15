@@ -23,6 +23,7 @@ html[data-tema="escuro"] .border-blue-100 { border-color: color-mix(in oklab, va
 html[data-tema="escuro"] .border-blue-200 { border-color: color-mix(in oklab, var(--color-blue-500) 40%, transparent); }
 html[data-tema="escuro"] .border-green-100 { border-color: color-mix(in oklab, var(--color-green-500) 30%, transparent); }
 html[data-tema="escuro"] .border-green-200 { border-color: color-mix(in oklab, var(--color-green-500) 40%, transparent); }
+html[data-tema="escuro"] .border-red-300 { border-color: color-mix(in oklab, var(--color-red-500) 55%, transparent); }
 html[data-tema="escuro"] .border-violet-200 { border-color: color-mix(in oklab, var(--color-violet-500) 40%, transparent); }
 html[data-tema="escuro"] .focus\:bg-white:focus { background-color: color-mix(in oklab, var(--cf-superficie) 100%, transparent); }
 html[data-tema="escuro"] .focus\:text-blue-900:focus { color: var(--color-blue-200); }
@@ -73,6 +74,7 @@ html[data-tema="escuro"] .text-blue-950:not([class*="bg-amber-"]):not([class*="b
 html[data-tema="escuro"] .text-cyan-700 { color: var(--color-cyan-300); }
 html[data-tema="escuro"] .text-emerald-600 { color: var(--color-emerald-400); }
 html[data-tema="escuro"] .text-emerald-700 { color: var(--color-emerald-300); }
+html[data-tema="escuro"] .text-emerald-800 { color: var(--color-emerald-300); }
 html[data-tema="escuro"] .text-emerald-900 { color: var(--color-emerald-200); }
 html[data-tema="escuro"] .text-green-700 { color: var(--color-green-300); }
 html[data-tema="escuro"] .text-green-950:not([class*="bg-amber-"]):not([class*="bg-yellow-"]) { color: var(--color-green-200); }
