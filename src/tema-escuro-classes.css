@@ -1,6 +1,7 @@
 /* Gerado por ferramentas/gerar-tema-escuro.js — não edite à mão (rode "npm run css"). */
 html[data-tema="escuro"] .bg-amber-100 { background-color: color-mix(in oklab, var(--color-amber-500) 24%, transparent); }
 html[data-tema="escuro"] .bg-amber-50 { background-color: color-mix(in oklab, var(--color-amber-500) 16%, transparent); }
+html[data-tema="escuro"] .bg-blue-100 { background-color: color-mix(in oklab, var(--color-blue-500) 24%, transparent); }
 html[data-tema="escuro"] .bg-blue-50 { background-color: color-mix(in oklab, var(--color-blue-500) 16%, transparent); }
 html[data-tema="escuro"] .bg-blue-50\/40 { background-color: color-mix(in oklab, var(--color-blue-500) 6%, transparent); }
 html[data-tema="escuro"] .bg-blue-50\/60 { background-color: color-mix(in oklab, var(--color-blue-500) 10%, transparent); }

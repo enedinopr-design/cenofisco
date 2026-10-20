@@ -11,28 +11,28 @@
         "categoria": "Trabalhista/Previdenciário",
         "title": "Cálculo de Rescisão",
         "icon": "fa-handshake-slash",
-        "link": ""
+        "link": "calculo-rescisao.html"
     },
     {
         "id": "calculo-de-seguro-desemprego",
         "categoria": "Trabalhista/Previdenciário",
         "title": "Cálculo de Seguro-Desemprego",
         "icon": "fa-briefcase-medical",
-        "link": ""
+        "link": "calculo-seguro-desemprego.html"
     },
     {
         "id": "calculo-do-13-salario",
         "categoria": "Trabalhista/Previdenciário",
         "title": "Cálculo do 13º Salário",
         "icon": "fa-gift",
-        "link": ""
+        "link": "calculo-13-salario.html"
     },
     {
         "id": "custo-mensal-empregado-domestico",
         "categoria": "Trabalhista/Previdenciário",
         "title": "Custo Mensal - Empregado Doméstico",
         "icon": "fa-house-user",
-        "link": ""
+        "link": "calculo-custo-domestico.html"
     },
     {
         "id": "desoneracao-da-folha-de-pagamento",
@@ -81,7 +81,7 @@
         "categoria": "Federal",
         "title": "Cálculo de Pensão Alimentícia",
         "icon": "fa-child-reaching",
-        "link": ""
+        "link": "calculo-pensao-alimenticia.html"
     },
     {
         "id": "calculo-do-reintegra",
@@ -214,27 +214,27 @@
         "categoria": "Estadual",
         "title": "MVA-Ajustado",
         "icon": "fa-scale-unbalanced",
-        "link": ""
+        "link": "calculo-mva-ajustado.html"
     },
     {
         "id": "reducao-de-icms-na-operacao-propria",
         "categoria": "Estadual",
         "title": "Redução de ICMS na Operação Própria",
         "icon": "fa-arrow-trend-down",
-        "link": ""
+        "link": "calculo-reducao-icms.html"
     },
     {
         "id": "icms-importacao",
         "categoria": "Estadual",
         "title": "ICMS-Importação",
         "icon": "fa-ship",
-        "link": ""
+        "link": "calculo-icms-importacao.html"
     },
     {
         "id": "sup-sociedades-de-profissionais",
         "categoria": "Municipal",
         "title": "SUP - Sociedades de Profissionais",
         "icon": "fa-user-group",
-        "link": ""
+        "link": "calculo-sup.html"
     }
 ]

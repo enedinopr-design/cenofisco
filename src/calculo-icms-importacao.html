@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./output.css" rel="stylesheet">
+  <script src="./tema.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="description" content="ICMS Importação: calcula II, IPI, PIS e COFINS-Importação, a base de cálculo do ICMS por dentro, a base reduzida e o ICMS a recolher no desembaraço, por Unidade Federada.">
+  <title>ICMS Importação - Cenofisco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="icon" href="img/logo.png">
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 antialiased">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-blue-900 focus:shadow-lg">Pular para o conteúdo</a>
+
+  <!-- ===================== BARRA SUPERIOR ===================== -->
+  <div class="bg-blue-950 text-blue-100">
+    <div class="container mx-auto flex items-center justify-between gap-4 px-4 py-2 text-xs sm:text-sm">
+      <div class="hidden items-center gap-5 md:flex">
+        <a href="tel:08009403055" class="flex items-center gap-2 transition hover:text-white"><i class="fa-solid fa-phone text-[11px] text-amber-400" aria-hidden="true"></i>0800 940 3055</a>
+        <a href="mailto:contato@cenofisco.com.br" class="flex items-center gap-2 transition hover:text-white"><i class="fa-solid fa-envelope text-[11px] text-amber-400" aria-hidden="true"></i>contato@cenofisco.com.br</a>
+      </div>
+      <!-- Usuário logado (simulação) -->
+      <div class="ml-auto flex items-center gap-2 min-[360px]:gap-3 sm:gap-4">
+        <span class="hidden sm:inline">Olá, <strong class="font-semibold text-white">Enedino</strong></span>
+        <span class="hidden h-4 w-px bg-blue-800 sm:block" aria-hidden="true"></span>
+        <a href="meu-perfil.html" class="flex items-center gap-1.5 font-medium transition hover:text-white"><i class="fa-regular fa-user" aria-hidden="true"></i>Meu Perfil</a>
+        <a href="meu-perfil.html#documentos" class="flex items-center gap-1.5 font-medium transition hover:text-white"><i class="fa-regular fa-folder-open" aria-hidden="true"></i>Meus Documentos</a>
+        <button type="button" class="cursor-pointer rounded-md bg-amber-400 px-3 py-1 text-xs font-bold text-blue-950 transition hover:bg-amber-300">Sair</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+    <div class="container mx-auto flex flex-wrap items-center gap-x-8 gap-y-3 px-4 py-3">
+      <a href="index.html" class="shrink-0" aria-label="Cenofisco — página inicial">
+        <img src="img/logo.png" alt="Cenofisco" width="208" height="53" class="h-10 w-auto sm:h-12">
+      </a>
+
+      <!-- Busca global -->
+    <form role="search" action="busca.html" class="relative order-3 w-full md:order-none md:mx-auto md:max-w-xl md:flex-1" id="globalSearchForm">
+        <label for="globalSearch" class="sr-only">Pesquisar no portal</label>
+        <i class="fa-solid fa-magnifying-glass pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-sm text-slate-400" aria-hidden="true"></i>
+        <input type="search" id="globalSearch" name="q" autocomplete="off" placeholder="Pesquisar legislação, notícias, CNAE ou ferramentas..." class="w-full rounded-full border border-slate-300 bg-slate-50 py-2.5 pr-32 pl-11 text-sm transition placeholder:text-slate-400 focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-600/20 focus:outline-none">
+        <button type="submit" class="absolute top-1/2 right-1.5 -translate-y-1/2 cursor-pointer rounded-full bg-blue-900 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-blue-800">Pesquisar</button>
+      </form>
+
+      <div class="ml-auto flex items-center gap-3">
+        <a href="index.html#consultoria-cenofisco" class="cf-btn cf-btn-primary hidden whitespace-nowrap sm:inline-flex"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+        <a href="assine.html" class="cf-btn cf-btn-accent whitespace-nowrap"><i class="fa-solid fa-star" aria-hidden="true"></i>Assine Agora!</a>
+        <button id="menu-toggle" type="button" class="inline-flex size-10 cursor-pointer items-center justify-center rounded-lg text-slate-600 transition hover:bg-slate-100 hover:text-blue-900 md:hidden" aria-controls="main-menu" aria-expanded="false" aria-label="Abrir menu">
+          <i class="fa-solid fa-bars text-xl" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu de navegação -->
+    <div id="main-menu" class="hidden border-t border-slate-100 md:block">
+      <nav class="container mx-auto flex flex-col px-4 md:flex-row md:flex-wrap md:items-center md:gap-x-4 xl:gap-x-7" aria-label="Navegação principal">
+        <a href="index.html" class="cf-nav-link">Início</a>
+        <a href="procedimentos.html" class="cf-nav-link">Procedimentos</a>
+        <a href="especiais.html" class="cf-nav-link">Especiais</a>
+        <a href="https://reformatributaria.cenofisco.com.br/" target="_blank" rel="noopener" class="cf-nav-link">Reforma Tributária<i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-slate-400" aria-hidden="true"></i><span class="sr-only">(abre em nova aba)</span></a>
+        <a href="aplicativos.html" class="cf-nav-link" aria-current="page">Ferramentas</a>
+        <a href="agenda-obrigacoes.html" class="cf-nav-link">Agendas</a>
+        <a href="legislacao.html" class="cf-nav-link">Legislação</a>
+        <a href="index.html#consultoria-cenofisco" class="cf-btn cf-btn-primary my-3 sm:hidden"><i class="fa-solid fa-headset" aria-hidden="true"></i>Consultoria</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="bg-blue-950 text-white print:hidden">
+    <div class="container mx-auto px-4 py-8 md:py-10">
+      <nav aria-label="Trilha de navegação" class="flex flex-wrap items-center gap-2 text-xs font-medium text-blue-100">
+        <a href="index.html" class="transition hover:text-white">Início</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <a href="aplicativos.html" class="transition hover:text-white">Ferramentas</a>
+        <i class="fa-solid fa-chevron-right text-[9px] text-blue-300" aria-hidden="true"></i>
+        <span class="font-bold text-white" aria-current="page">ICMS Importação</span>
+      </nav>
+      <h1 class="mt-4 text-3xl leading-tight font-bold tracking-tight md:text-4xl">ICMS Importação<span id="hero-uf"></span></h1>
+      <p class="mt-3 max-w-2xl text-sm text-blue-100 md:text-base">Calcula o ICMS devido no desembaraço aduaneiro: Imposto de Importação, IPI, PIS e COFINS-Importação, taxas e despesas, base de cálculo com o ICMS por dentro e a redução pela carga tributária.</p>
+    </div>
+  </section>
+
+  <main id="conteudo" class="container mx-auto px-4 py-8">
+    <div class="grid items-start gap-8 lg:grid-cols-[17rem_1fr]">
+
+      <!-- ============ LATERAL (no celular, vem depois do cálculo) ============ -->
+      <aside class="order-last space-y-6 lg:sticky lg:top-30 lg:order-0 print:hidden">
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-salvos">
+          <h2 id="titulo-salvos" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+            <span class="inline-flex size-8 items-center justify-center rounded-lg bg-amber-50 text-amber-500"><i class="fa-solid fa-floppy-disk text-sm" aria-hidden="true"></i></span>
+            Cálculos salvos
+          </h2>
+          <ul id="saved-calculations-list" class="space-y-1 text-sm">
+            <!-- Gerado via JavaScript (chave meusCalculos) -->
+          </ul>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-regras">
+          <h2 id="titulo-regras" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+            <span class="inline-flex size-8 items-center justify-center rounded-lg bg-blue-50 text-blue-700"><i class="fa-solid fa-scale-balanced text-sm" aria-hidden="true"></i></span>
+            Como é calculado
+          </h2>
+          <ul class="space-y-2 text-xs leading-relaxed text-slate-600">
+            <li><strong class="text-slate-800">II, PIS e COFINS:</strong> sobre o valor aduaneiro (CIF).</li>
+            <li><strong class="text-slate-800">IPI:</strong> sobre o CIF mais o II.</li>
+            <li><strong class="text-slate-800">ICMS por dentro:</strong> a soma de tudo é dividida por (1 − alíquota interna).</li>
+            <li><strong class="text-slate-800">Carga tributária:</strong> quando houver redução, a base é proporcional à carga ÷ alíquota.</li>
+          </ul>
+        </section>
+
+        <section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="titulo-outros">
+          <h2 id="titulo-outros" class="mb-3 flex items-center gap-3 font-semibold text-slate-900">
+            <span class="inline-flex size-8 items-center justify-center rounded-lg bg-blue-50 text-blue-700"><i class="fa-solid fa-calculator text-sm" aria-hidden="true"></i></span>
+            Ferramentas
+          </h2>
+          <p class="text-sm text-slate-600">Outros cálculos trabalhistas e tributários.</p>
+          <a href="calculo-reducao-icms.html" class="cf-link-more mt-3">Redução de ICMS na Operação Própria <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="calculo-mva-ajustado.html" class="cf-link-more mt-2">Simulador MVA Ajustado <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="aplicativos.html" class="cf-link-more mt-2">Ver todas as ferramentas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </section>
+      </aside>
+
+      <!-- ============ CÁLCULO ============ -->
+      <div class="min-w-0 space-y-6">
+        <form id="importacao-form" class="cf-card print:hidden" novalidate>
+          <div class="mb-5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+            <a href="aplicativos.html" class="inline-flex items-center gap-2 text-sm font-medium text-blue-700 hover:text-blue-900 hover:underline"><i class="fa-solid fa-arrow-left text-xs" aria-hidden="true"></i>Voltar para Ferramentas</a>
+            <span class="text-xs text-slate-500">Campos com <span class="text-red-600" aria-hidden="true">*</span> são obrigatórios</span>
+          </div>
+
+          <!-- Mesmos campos do aplicativo original: UF, CIF, alíquotas de II, IPI, PIS, COFINS e ICMS, carga tributária e despesas -->
+          <fieldset>
+            <legend class="mb-4 flex items-center gap-3 text-lg font-semibold text-slate-900">
+              <span class="cf-icon"><i class="fa-solid fa-ship" aria-hidden="true"></i></span>Importação
+            </legend>
+
+            <div class="grid gap-4 sm:grid-cols-3">
+              <div>
+                <label for="uf" class="cf-label">Unidade Federada <span class="text-red-600" aria-hidden="true">*</span></label>
+                <select id="uf" name="uf" required class="cf-input" aria-describedby="uf-erro">
+                  <option value="">Selecione</option>
+                  <!-- Opções geradas por calculo-icms-importacao.js (lista UFS) -->
+                </select>
+                <span id="uf-erro" class="mt-1 hidden text-xs font-medium text-red-600" role="alert"></span>
+              </div>
+              <div class="sm:col-span-2">
+                <label for="cif" class="cf-label">Valor da mercadoria + frete e seguro internacional (CIF) <span class="text-red-600" aria-hidden="true">*</span></label>
+                <div class="relative">
+                  <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm text-slate-500" aria-hidden="true">R$</span>
+                  <input type="text" id="cif" name="cif" inputmode="decimal" autocomplete="off" required class="cf-input pl-10 text-right" placeholder="0,00" aria-describedby="cif-erro">
+                </div>
+                <span id="cif-erro" class="mt-1 hidden text-xs font-medium text-red-600" role="alert"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-6 border-t border-slate-100 pt-5">
+            <legend class="mb-4 flex items-center gap-3 text-lg font-semibold text-slate-900">
+              <span class="cf-icon"><i class="fa-solid fa-percent" aria-hidden="true"></i></span>Alíquotas
+            </legend>
+
+            <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+              <div>
+                <label for="aliq-ii" class="cf-label">Imposto de Importação (II)</label>
+                <div class="relative">
+                  <input type="text" id="aliq-ii" name="ii" inputmode="decimal" autocomplete="off" class="cf-input cf-pct pr-9 text-right" placeholder="0,00">
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-slate-500" aria-hidden="true">%</span>
+                </div>
+              </div>
+              <div>
+                <label for="aliq-ipi" class="cf-label">IPI</label>
+                <div class="relative">
+                  <input type="text" id="aliq-ipi" name="ipi" inputmode="decimal" autocomplete="off" class="cf-input cf-pct pr-9 text-right" placeholder="0,00" aria-describedby="aliq-ipi-ajuda">
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-slate-500" aria-hidden="true">%</span>
+                </div>
+                <span id="aliq-ipi-ajuda" class="mt-1 block text-xs text-slate-500">Base: CIF + Imposto de Importação.</span>
+              </div>
+              <div>
+                <label for="aliq-pis" class="cf-label">PIS-Importação</label>
+                <div class="relative">
+                  <input type="text" id="aliq-pis" name="pis" inputmode="decimal" autocomplete="off" class="cf-input cf-pct pr-9 text-right" placeholder="0,00">
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-slate-500" aria-hidden="true">%</span>
+                </div>
+              </div>
+              <div>
+                <label for="aliq-cofins" class="cf-label">COFINS-Importação</label>
+                <div class="relative">
+                  <input type="text" id="aliq-cofins" name="cofins" inputmode="decimal" autocomplete="off" class="cf-input cf-pct pr-9 text-right" placeholder="0,00">
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-slate-500" aria-hidden="true">%</span>
+                </div>
+              </div>
+              <div>
+                <label for="aliq-icms" class="cf-label">Alíquota interna do ICMS <span class="text-red-600" aria-hidden="true">*</span></label>
+                <div class="relative">
+                  <input type="text" id="aliq-icms" name="icms" inputmode="decimal" autocomplete="off" required class="cf-input cf-pct pr-9 text-right" placeholder="0,00" aria-describedby="aliq-icms-erro">
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-slate-500" aria-hidden="true">%</span>
+                </div>
+                <span id="aliq-icms-erro" class="mt-1 hidden text-xs font-medium text-red-600" role="alert"></span>
+              </div>
+              <div>
+                <label for="carga" class="cf-label">Carga tributária do ICMS</label>
+                <div class="relative">
+                  <input type="text" id="carga" name="carga" inputmode="decimal" autocomplete="off" class="cf-input cf-pct pr-9 text-right" placeholder="0,00" aria-describedby="carga-ajuda carga-erro">
+                  <span class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-sm text-slate-500" aria-hidden="true">%</span>
+                </div>
+                <span id="carga-ajuda" class="mt-1 block text-xs text-slate-500">Só se houver redução da base. Em branco, vale a alíquota interna.</span>
+                <span id="carga-erro" class="mt-1 hidden text-xs font-medium text-red-600" role="alert"></span>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="mt-6 border-t border-slate-100 pt-5">
+            <legend class="mb-4 flex items-center gap-3 text-lg font-semibold text-slate-900">
+              <span class="cf-icon"><i class="fa-solid fa-receipt" aria-hidden="true"></i></span>Taxas e despesas
+            </legend>
+
+            <div class="grid gap-4 sm:grid-cols-3">
+              <div>
+                <label for="siscomex" class="cf-label">Taxa Siscomex</label>
+                <div class="relative">
+                  <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm text-slate-500" aria-hidden="true">R$</span>
+                  <input type="text" id="siscomex" name="siscomex" inputmode="decimal" autocomplete="off" class="cf-input cf-moeda pl-10 text-right" placeholder="0,00">
+                </div>
+              </div>
+              <div>
+                <label for="afrmm" class="cf-label">AFRMM</label>
+                <div class="relative">
+                  <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm text-slate-500" aria-hidden="true">R$</span>
+                  <input type="text" id="afrmm" name="afrmm" inputmode="decimal" autocomplete="off" class="cf-input cf-moeda pl-10 text-right" placeholder="0,00" aria-describedby="afrmm-ajuda">
+                </div>
+                <span id="afrmm-ajuda" class="mt-1 block text-xs text-slate-500">Adicional ao Frete para Renovação da Marinha Mercante (transporte marítimo).</span>
+              </div>
+              <div>
+                <label for="despesas" class="cf-label">Despesas aduaneiras</label>
+                <div class="relative">
+                  <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-sm text-slate-500" aria-hidden="true">R$</span>
+                  <input type="text" id="despesas" name="despesas" inputmode="decimal" autocomplete="off" class="cf-input cf-moeda pl-10 text-right" placeholder="0,00" aria-describedby="despesas-ajuda">
+                </div>
+                <span id="despesas-ajuda" class="mt-1 block text-xs text-slate-500">Diferenças de peso, classificação fiscal e multas por infrações.</span>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="mt-6 flex flex-wrap justify-end gap-3 border-t border-slate-100 pt-5">
+            <button type="button" id="limpar-btn" class="cf-btn cf-btn-secondary"><i class="fa-solid fa-eraser" aria-hidden="true"></i>Limpar</button>
+            <button type="submit" class="cf-btn cf-btn-primary"><i class="fa-solid fa-calculator" aria-hidden="true"></i>Calcular</button>
+          </div>
+        </form>
+
+        <!-- ============ RESULTADO ============ -->
+        <section id="resultado" class="hidden space-y-6" aria-labelledby="titulo-resultado" tabindex="-1">
+          <div class="cf-card cf-on-dark border-0 bg-blue-900 text-white">
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <h2 id="titulo-resultado" class="text-lg font-semibold">ICMS Importação<span id="res-titulo-uf"></span></h2>
+                <p class="mt-1 text-sm text-blue-100">Valor do ICMS a recolher</p>
+                <p id="res-icms" class="mt-1 text-3xl font-bold tracking-tight tabular-nums md:text-4xl">R$</p>
+              </div>
+              <div class="flex flex-wrap gap-2 print:hidden">
+                <button type="button" id="salvar-calculo-btn" class="cf-btn cf-btn-accent"><i class="fa-regular fa-floppy-disk" aria-hidden="true"></i>Salvar cálculo</button>
+                <button type="button" id="imprimir-btn" class="cf-btn bg-white/10 text-white ring-1 ring-white/20 hover:bg-white/20"><i class="fa-solid fa-print" aria-hidden="true"></i>Imprimir</button>
+              </div>
+            </div>
+            <dl class="mt-5 grid gap-3 border-t border-white/15 pt-4 text-sm sm:grid-cols-3">
+              <div><dt class="text-blue-100">Valor da operação sem ICMS</dt><dd id="res-operacao" class="mt-0.5 text-lg font-semibold tabular-nums">R$</dd></div>
+              <div><dt class="text-blue-100">Base com ICMS por dentro</dt><dd id="res-base" class="mt-0.5 text-lg font-semibold tabular-nums">R$</dd></div>
+              <div><dt class="text-blue-100">Base de cálculo reduzida</dt><dd id="res-base-reduzida" class="mt-0.5 text-lg font-semibold text-amber-300 tabular-nums">R$</dd></div>
+            </dl>
+          </div>
+
+          <div class="grid gap-6 xl:grid-cols-2">
+            <section class="cf-card" aria-labelledby="titulo-tributos">
+              <h3 id="titulo-tributos" class="mb-2 flex items-center gap-3 font-semibold text-slate-900"><span class="cf-icon"><i class="fa-solid fa-file-invoice-dollar" aria-hidden="true"></i></span>Composição do valor da operação</h3>
+              <table class="w-full text-sm">
+                <caption class="sr-only">Tributos e despesas da importação</caption>
+                <thead class="sr-only"><tr><th scope="col">Item</th><th scope="col">Alíquota</th><th scope="col">Valor</th></tr></thead>
+                <tbody id="tab-tributos"></tbody>
+                <tfoot><tr class="border-t-2 border-slate-200 font-semibold text-slate-900"><td class="pt-3" colspan="2">Valor da operação sem a inclusão do ICMS</td><td id="tot-operacao" class="pt-3 text-right tabular-nums"></td></tr></tfoot>
+              </table>
+            </section>
+
+            <section class="cf-card" aria-labelledby="titulo-icms">
+              <h3 id="titulo-icms" class="mb-2 flex items-center gap-3 font-semibold text-slate-900"><span class="cf-icon bg-emerald-50 text-emerald-700"><i class="fa-solid fa-landmark" aria-hidden="true"></i></span>ICMS</h3>
+              <dl id="res-icms-detalhe" class="text-sm"></dl>
+            </section>
+          </div>
+
+          <p class="text-xs text-slate-500">Simulação informativa. Confira na legislação da UF do importador a alíquota interna do produto, eventual adicional de fundo de pobreza, benefícios de redução da base e as despesas que integram a base de cálculo.</p>
+        </section>
+
+      <div class="bg-blue-50 border border-blue-100 rounded-sm p-3 text-sm space-y-3 text-blue-950 mt-6">
+                        <p class="font-bold"><strong>Notas Cenofisco</strong></p>
+
+                        <!-- Recolhido: altura limitada com esmaecimento (mask, funciona nos dois temas); o botão "Ver mais" expande -->
+                        <div id="notas-conteudo" class="max-h-64 space-y-3 overflow-hidden mask-[linear-gradient(to_bottom,black_55%,transparent)]">
+<p><strong>1. Fundamento legal</strong></p>
+<p id="nota-uf">Cálculo elaborado em conformidade com o art. 155, II, § 2º, IX, “a”, e XII, “i”, da Constituição Federal de 1988 e com os arts. 11, I, “d”, e 13, V e § 1º, I, da Lei Complementar nº 87/1996.</p>
+<p><strong>2. Base de cálculo</strong></p>
+<p>Na entrada de mercadoria importada do exterior, a base de cálculo do ICMS é a soma do valor da mercadoria constante dos documentos de importação, do Imposto de Importação, do IPI, do IOF, de quaisquer outros impostos, taxas, contribuições e despesas aduaneiras, com o próprio ICMS integrando a base de cálculo (“por dentro”).</p>
+<p><strong>3. PIS e COFINS-Importação</strong></p>
+<p>Desde a Lei nº 12.865/2013, a base de cálculo do PIS e da COFINS-Importação é o valor aduaneiro (CIF), sem a inclusão do ICMS e das próprias contribuições.</p>
+<p><strong>4. Despesas aduaneiras</strong></p>
+<p>Consideram-se despesas aduaneiras aquelas efetivamente pagas à repartição alfandegária até o momento do desembaraço, como diferenças de peso, de classificação fiscal e multas por infrações, além da Taxa Siscomex e do AFRMM.</p>
+                        </div>
+
+                        <button type="button" id="notas-toggle" aria-controls="notas-conteudo" aria-expanded="false" class="inline-flex items-center gap-1.5 rounded-sm font-semibold text-blue-700 hover:text-blue-900 hover:underline">
+                          <span>Ver mais</span><i class="fa-solid fa-chevron-down text-xs transition-transform" aria-hidden="true"></i>
+                        </button>
+      </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="save-toast" class="fixed right-4 bottom-24 z-[60] hidden max-w-sm rounded-lg bg-slate-800 px-4 py-3 text-sm text-white shadow-lg" role="status">Cálculo salvo. Ele aparece em <strong>Cálculos salvos</strong> e na página de Ferramentas.</div>
+
+  <!-- Grade de 12 colunas no desktop: marca (4) · Legislação (2) · Ferramentas (3) · Newsletter (3).
+       No celular, Legislação e Ferramentas ficam lado a lado (listas curtas) e marca/newsletter ocupam a largura toda. -->
+  <footer class="cf-on-dark mt-12 bg-blue-950 text-slate-400">
+    <div class="container mx-auto grid grid-cols-2 gap-x-6 gap-y-10 px-4 py-12 sm:py-14 md:grid-cols-6 lg:grid-cols-12 lg:gap-x-8">
+      <div class="col-span-2 md:col-span-6 lg:col-span-4 lg:pr-8">
+        <!-- -ml-3: o arquivo do logo tem ~12px de margem transparente à esquerda (na altura de 40px); assim ele alinha com o texto -->
+        <img src="img/logobranco-cenofisco.png" alt="Cenofisco" width="201" height="49" loading="lazy" decoding="async" class="mb-4 -ml-3 h-10 w-auto">
+        <p class="max-w-sm text-sm leading-relaxed">A maior base de dados tributária, trabalhista e fiscal do Brasil. Atualização diária e ferramentas exclusivas.</p>
+        <ul class="mt-5 space-y-1 text-sm">
+          <li><a href="tel:08009403055" class="inline-flex items-center gap-2.5 py-1 transition hover:text-white"><i class="fa-solid fa-phone w-4 text-center text-amber-400" aria-hidden="true"></i>0800 940 3055</a></li>
+          <li><a href="mailto:contato@cenofisco.com.br" class="inline-flex items-center gap-2.5 py-1 break-all transition hover:text-white"><i class="fa-solid fa-envelope w-4 text-center text-amber-400" aria-hidden="true"></i>contato@cenofisco.com.br</a></li>
+        </ul>
+      </div>
+      <nav class="md:col-span-2 lg:col-span-2" aria-label="Legislação">
+        <h2 class="cf-footer-title">Legislação</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="legislacao.html" class="cf-footer-link">Federal</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Estadual</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Municipal</a></li>
+          <li><a href="legislacao.html" class="cf-footer-link">Trabalhista</a></li>
+        </ul>
+      </nav>
+      <nav class="md:col-span-2 lg:col-span-3" aria-label="Ferramentas">
+        <h2 class="cf-footer-title">Ferramentas</h2>
+        <ul class="space-y-1 text-sm">
+          <li><a href="buscafiscal-resultados.html" class="cf-footer-link">Busca Fiscal</a></li>
+          <li><a href="aplicativos.html" class="cf-footer-link">Aplicativos</a></li>
+          <li><a href="tabelas.html" class="cf-footer-link">Tabelas Práticas</a></li>
+          <li><a href="agenda-obrigacoes.html" class="cf-footer-link">Agenda de Obrigações</a></li>
+        </ul>
+      </nav>
+      <div class="col-span-2 md:col-span-2 lg:col-span-3">
+        <h2 class="cf-footer-title">Newsletter</h2>
+        <p class="mb-4 text-sm leading-relaxed">Receba as principais notícias fiscais no seu <span class="whitespace-nowrap">e-mail</span>.</p>
+        <form id="newsletter-form" class="flex max-w-md overflow-hidden rounded-lg ring-1 ring-white/10 focus-within:ring-2 focus-within:ring-amber-400">
+          <label for="newsletter-email" class="sr-only">Seu e-mail</label>
+          <!-- appearance-none/rounded-none: tira a sombra interna e os cantos que o Safari do iOS aplica em campos de texto -->
+          <input type="email" id="newsletter-email" required autocomplete="email" inputmode="email" placeholder="Seu e-mail" class="w-full min-w-0 appearance-none rounded-none border-0 bg-white px-3 py-2.5 text-base text-slate-900 placeholder:text-slate-500 focus:outline-none sm:text-sm">
+          <button type="submit" class="inline-flex min-w-11 shrink-0 cursor-pointer items-center justify-center bg-amber-400 px-4 text-blue-950 transition hover:bg-amber-300" aria-label="Assinar newsletter"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+        </form>
+        <p id="newsletter-feedback" class="mt-2 hidden text-xs text-emerald-400" role="status"></p>
+      </div>
+    </div>
+    <div class="border-t border-white/10">
+      <div class="container mx-auto flex flex-col items-center justify-between gap-2 px-4 py-6 text-center text-xs sm:flex-row sm:gap-6 sm:text-left">
+        <p class="leading-relaxed">© <span id="ano-atual">2026</span> Cenofisco Editora de Publicações Tributárias Ltda <span class="hidden sm:inline" aria-hidden="true">·</span><br class="sm:hidden"> <span class="whitespace-nowrap">CNPJ: 82.429.556/0001-62</span></p>
+        <ul class="flex shrink-0 gap-5">
+          <li><a href="#" class="cf-footer-link">Política de Privacidade</a></li>
+          <li><a href="#" class="cf-footer-link">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="./calculo-icms-importacao.js" defer></script>
+  <script src="./rodape.js" defer></script>
+</body>
+</html>

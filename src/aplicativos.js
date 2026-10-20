@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <li class="group flex items-start gap-1 rounded-lg hover:bg-blue-50">
                     <a href="${escapeHTML(c.link || app?.link || '#')}" class="min-w-0 flex-1 px-2 py-1.5">
                         <span class="block truncate text-slate-700 group-hover:text-blue-800">${escapeHTML(c.tipo || 'Cálculo')}</span>
-                        <span class="block text-[11px] text-slate-400">${escapeHTML([c.dataSalvo, total ? `Líquido ${total}` : ''].filter(Boolean).join(' · '))}</span>
+                        <span class="block text-[11px] text-slate-400">${escapeHTML([c.dataSalvo, total ? `Líquido ${total}` : c.resultados?.resumo].filter(Boolean).join(' · '))}</span>
                     </a>
                     <button type="button" class="remove-calc mt-1 inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-slate-400 transition hover:bg-red-50 hover:text-red-600" data-id="${escapeHTML(c.id)}" aria-label="Remover cálculo de ${escapeHTML(c.dataSalvo || '')}" title="Remover"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
                 </li>`;

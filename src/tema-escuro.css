@@ -39,7 +39,8 @@ html[data-tema="escuro"] body { background-color: var(--cf-fundo); }
 html[data-tema="escuro"] :where(a[href], button, summary, [role="tab"], [role="slider"], [tabindex]:not([tabindex="-1"])):focus-visible { outline-color: var(--color-blue-400); }
 
 /* Logotipo do cabeçalho (JPG com fundo branco) -> versão branca */
-html[data-tema="escuro"] img[src$="img/logo.jpg"] { content: url("img/logobranco-cenofisco.png"); }
+html[data-tema="escuro"] img[src$="img/logo.png"] { content: url("img/logobranco-cenofisco.png"); }
+html[data-tema="escuro"] img[src$="img/logo-consultoria.png"] { filter: brightness(0) invert(1); }   /* sem versão branca do logo da Consultoria: deixa o logo todo branco */
 
 /* Cabeçalho translúcido */
 html[data-tema="escuro"] .supports-\[backdrop-filter\]\:bg-white\/85 { background-color: color-mix(in oklab, var(--cf-superficie) 88%, transparent); }
