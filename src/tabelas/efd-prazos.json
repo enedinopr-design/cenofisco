@@ -1,0 +1,207 @@
+{
+    "id": "efd-prazos",
+    "titulo": "Escrituração Fiscal Digital (EFD) – Prazos de Entrega",
+    "tituloCurto": "EFD – Prazos",
+    "area": "Federal",
+    "publicado": "14/01/2025",
+    "atualizado": "",
+    "introducao": "<p>Relacionamos a seguir os prazos de entrega dos arquivos digitais da Escrituração Fiscal Digital (EFD ICMS/IPI) de cada unidade federada, com a respectiva fundamentação legal.</p><p>Na última coluna, as observações sobre a manutenção, a postergação ou a antecipação do prazo quando o dia do vencimento recair em sábado, domingo ou feriado.</p>",
+    "colunas": [
+        {
+            "campo": "uf",
+            "titulo": "UF",
+            "destaque": true
+        },
+        {
+            "campo": "prazo",
+            "titulo": "Prazo",
+            "nota": "nota",
+            "classe": "cf-table-full"
+        },
+        {
+            "campo": "fundamentacao",
+            "titulo": "Fundamentação",
+            "classe": "text-xs leading-relaxed text-slate-600"
+        },
+        {
+            "campo": "observacao",
+            "titulo": "Observação (sábados, domingos e feriados)",
+            "classe": "text-xs leading-relaxed text-slate-600"
+        }
+    ],
+    "filtro": {
+        "campo": "uf",
+        "rotulo": "UF"
+    },
+    "linhas": [
+        {
+            "uf": "AC",
+            "prazo": "Até o dia 15 do mês subsequente ao mês apurado.",
+            "fundamentacao": "Art. 121-L do RICMS-AC/1998",
+            "nota": "A partir de 01/09/2025, o prazo de entrega da EFD passa para até o dia 15 do mês subsequente ao mês apurado, conforme o Decreto nº 11.703/2025."
+        },
+        {
+            "uf": "AL",
+            "prazo": "Até o dia 12 do mês subsequente ao encerramento do mês de apuração, para distribuidor de energia elétrica e combustíveis (código 35.14-0/00 da CNAE) e para estabelecimento com atividades de extração de petróleo e gás natural, refino de petróleo e comércio atacadista de combustíveis, estabelecido neste Estado, que exerça cumulativamente ao menos 2 dessas atividades, mesmo que em estabelecimentos diversos.",
+            "fundamentacao": "Art. 12-A da Instrução Normativa SEF nº 19/2009"
+        },
+        {
+            "uf": "AL",
+            "prazo": "Até o 25º dia do mês subsequente – demais contribuintes.",
+            "fundamentacao": "Art. 12 da Instrução Normativa SEF nº 19/2009"
+        },
+        {
+            "uf": "AM",
+            "prazo": "Até o dia 12 do mês subsequente ao da apuração, para estabelecimento industrial, comercial, agropecuário e prestador de serviço.",
+            "fundamentacao": "Art. 19, I, do Decreto nº 28.841/2009"
+        },
+        {
+            "uf": "AM",
+            "prazo": "Até o último dia útil do mês subsequente ao período de apuração, para estabelecimento prestador de serviço de transporte aéreo, de serviço de telecomunicação, distribuidor de energia elétrica ou de água por rede de distribuição tubular.",
+            "fundamentacao": "Art. 19, II, do Decreto nº 28.841/2009"
+        },
+        {
+            "uf": "AP",
+            "prazo": "Até o 15º dia do mês subsequente.",
+            "fundamentacao": "Arts. 222-J, 222-M e 222-U do RICMS-AP/1998"
+        },
+        {
+            "uf": "BA",
+            "prazo": "Até o dia 25 do mês subsequente ao da apuração.",
+            "fundamentacao": "Art. 250, § 2º, do RICMS-BA/2012"
+        },
+        {
+            "uf": "CE",
+            "prazo": "Até o dia 20 do mês subsequente.",
+            "fundamentacao": "Inciso I do art. 2º da Instrução Normativa nº 45/2009 e inciso VI do art. 182 do Livro Segundo do RICMS-CE/2022",
+            "observacao": "Observar as regras de recolhimento para regime especial e produtor rural, conforme o inciso II do art. 2º da Instrução Normativa nº 45/2009 e a Instrução Normativa nº 54/2016."
+        },
+        {
+            "uf": "DF",
+            "prazo": "Até o 20º dia do mês subsequente ao do período de apuração.",
+            "fundamentacao": "Art. 6º da Portaria nº 192/2019"
+        },
+        {
+            "uf": "ES",
+            "prazo": "Até o dia 20 do mês subsequente ao de apuração.",
+            "fundamentacao": "Art. 758-J do RICMS-ES/2002"
+        },
+        {
+            "uf": "GO",
+            "prazo": "Até o dia 15 do mês subsequente.",
+            "fundamentacao": "Art. 356-N do RCTE-GO/1997"
+        },
+        {
+            "uf": "MA",
+            "prazo": "Até o dia 25 do mês subsequente.",
+            "fundamentacao": "Art. 321-M do RICMS-MA/2003 e Portaria SEF nº 150/2015"
+        },
+        {
+            "uf": "MG",
+            "prazo": "Até o dia 15 do mês subsequente ao período de apuração.",
+            "fundamentacao": "Art. 12 do Anexo V do RICMS-MG/2023"
+        },
+        {
+            "uf": "MS",
+            "prazo": "Até o dia 20 do mês seguinte ao de referência.",
+            "fundamentacao": "Art. 12 do Subanexo XIV do Anexo XV do RICMS-MS/1998"
+        },
+        {
+            "uf": "MT",
+            "prazo": "Até o 20º dia do mês subsequente.",
+            "fundamentacao": "Art. 12 da Portaria SEFAZ/MT nº 166/2008"
+        },
+        {
+            "uf": "PA",
+            "prazo": "Até o 15º dia do mês subsequente.",
+            "fundamentacao": "Art. 5º da Instrução Normativa SEFA nº 15/2023"
+        },
+        {
+            "uf": "PB",
+            "prazo": "Até o 15º dia do mês subsequente.",
+            "fundamentacao": "Arts. 4º e 12 do Decreto nº 30.478/2009 e Portaria SEFAZ nº 101/2012"
+        },
+        {
+            "uf": "PE",
+            "prazo": "Até o dia 15 do mês subsequente.",
+            "fundamentacao": "Art. 5º da Portaria SF nº 126/2018"
+        },
+        {
+            "uf": "PI",
+            "prazo": "Até o 15º dia do mês subsequente ao encerramento do mês da apuração.",
+            "fundamentacao": "Art. 414 do Anexo VI do RICMS-PI/2023",
+            "observacao": "Os prazos fixados no RICMS-PI e nas demais normas tributárias são contínuos, excluindo-se na sua contagem o dia do início e incluindo-se o dia do vencimento (art. 83, § 1º, do RICMS-PI/2023)."
+        },
+        {
+            "uf": "PR",
+            "prazo": "Até o dia 20 do mês subsequente ao de apuração.",
+            "fundamentacao": "Art. 382 do RICMS-PR/2017"
+        },
+        {
+            "uf": "RJ",
+            "prazo": "Até o dia 20 do mês, independentemente de se tratar de dia útil.",
+            "fundamentacao": "Art. 2º do Anexo VII da Parte II da Resolução SEFAZ nº 720/2014"
+        },
+        {
+            "uf": "RN",
+            "prazo": "Até o dia 15 do mês subsequente.",
+            "fundamentacao": "Ajuste SINIEF nº 2/2009 e inciso I do art. 154 do RICMS-RN/2022"
+        },
+        {
+            "uf": "RN",
+            "prazo": "Até o dia 20 do mês subsequente, para optantes pelo Simples Nacional.",
+            "fundamentacao": "Alínea \"a\" do inciso II do art. 154 do RICMS-RN/2022"
+        },
+        {
+            "uf": "RN",
+            "prazo": "Até o dia 20 do mês subsequente, para hipermercados, supermercados e minimercados.",
+            "fundamentacao": "Alínea \"b\" do inciso II do art. 154 do RICMS-RN/2022"
+        },
+        {
+            "uf": "RO",
+            "prazo": "No 14º dia do mês subsequente ao encerramento do período de apuração.",
+            "fundamentacao": "Art. 106, § 2º, do Anexo XIII do RICMS-RO/2018"
+        },
+        {
+            "uf": "RR",
+            "prazo": "Até o dia 20 do mês subsequente.",
+            "fundamentacao": "Art. 289-G do RICMS-RR/2001"
+        },
+        {
+            "uf": "RS",
+            "prazo": "Até o dia 15 do mês subsequente.",
+            "fundamentacao": "Item 3.4 da Seção 3.0 do Capítulo LI do Título I da Instrução Normativa DRP nº 45/1998",
+            "observacao": "O subitem 3.4.1 do Capítulo LI do Título I da Instrução Normativa DRP nº 45/1998 determina que o prazo para entrega do arquivo digital será prorrogado para o primeiro dia útil seguinte quando o prazo original recair em dia não útil."
+        },
+        {
+            "uf": "SC",
+            "prazo": "Até o 14º dia do mês subsequente ao da apuração do imposto, para comércio varejista de combustíveis.",
+            "fundamentacao": "Art. 33, § 2º, do Anexo 11 do RICMS-SC/2001"
+        },
+        {
+            "uf": "SC",
+            "prazo": "Até o 20º dia do mês subsequente ao da apuração do imposto, para os demais contribuintes.",
+            "fundamentacao": "Art. 33 do Anexo 11 do RICMS-SC/2001"
+        },
+        {
+            "uf": "SE",
+            "prazo": "Até o dia 15 do mês subsequente.",
+            "fundamentacao": "Art. 9º, II, da Portaria nº 73/2012"
+        },
+        {
+            "uf": "SP",
+            "prazo": "Até o dia 20 do mês subsequente ao período a que se refere.",
+            "fundamentacao": "Art. 250-A do RICMS-SP/2000 e art. 10 da Portaria CAT nº 147/2009"
+        },
+        {
+            "uf": "TO",
+            "prazo": "Até o dia 15 do mês subsequente, exceto para optantes pelo Simples Nacional.",
+            "fundamentacao": "Arts. 384-C e 384-E do RICMS-TO/2007"
+        }
+    ],
+    "notas": [
+        "O prazo refere-se à entrega do arquivo digital da EFD ICMS/IPI de cada período de apuração mensal.",
+        "Quando não há observação para a UF, consulte a legislação estadual sobre a manutenção, a postergação ou a antecipação do prazo que recair em dia não útil.",
+        "Fonte: Editorial Cenofisco."
+    ]
+}

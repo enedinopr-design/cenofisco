@@ -1,0 +1,353 @@
+{
+    "id": "depositos-recursais",
+    "titulo": "Depósitos Recursais – Limites",
+    "tituloCurto": "Depósitos Recursais",
+    "area": "Trabalhista e Previdência",
+    "publicado": "",
+    "atualizado": "20/10/2026",
+    "introducao": "<p>Limites do depósito recursal exigido na Justiça do Trabalho para a interposição de recursos (art. 899 da CLT), reajustados anualmente pelo Tribunal Superior do Trabalho (TST) com base na variação do INPC.</p><p>O valor do recurso de revista, dos embargos e do recurso extraordinário, assim como o do recurso em ação rescisória, corresponde ao dobro do limite do recurso ordinário. Os novos limites passam a ser de observância obrigatória a partir de 1º de agosto de cada ano.</p>",
+    "resumo": [
+        {
+            "rotulo": "Recurso ordinário",
+            "valor": "R$ 14.411,57"
+        },
+        {
+            "rotulo": "Recurso de revista, embargos e RE",
+            "valor": "R$ 28.823,14"
+        },
+        {
+            "rotulo": "Recurso em ação rescisória",
+            "valor": "R$ 28.823,14"
+        },
+        {
+            "rotulo": "Reajuste em 2026",
+            "valor": "+4,33%",
+            "variacao": 4.33
+        }
+    ],
+    "colunas": [
+        {
+            "campo": "publicacao",
+            "titulo": "Data da publicação",
+            "classe": "whitespace-nowrap tabular-nums"
+        },
+        {
+            "campo": "ato",
+            "titulo": "Legislação",
+            "sub": "vigencia",
+            "nota": "nota"
+        },
+        {
+            "campo": "ro",
+            "titulo": "Recurso ordinário",
+            "numero": true,
+            "destaque": true
+        },
+        {
+            "campo": "rr",
+            "titulo": "Recurso de revista, embargos infringentes e recurso extraordinário",
+            "numero": true
+        },
+        {
+            "campo": "ar",
+            "titulo": "Recurso em ação rescisória",
+            "numero": true
+        },
+        {
+            "campo": "reajuste",
+            "titulo": "Reajuste",
+            "numero": true,
+            "variacao": "reajusteValor"
+        }
+    ],
+    "linhas": [
+        {
+            "publicacao": "DEJT 17/07/2026",
+            "ato": "Ato SEGJUD.GP nº 381/2026",
+            "vigencia": "A partir de 01/08/2026",
+            "ro": "R$ 14.411,57",
+            "rr": "R$ 28.823,14",
+            "ar": "R$ 28.823,14",
+            "reajuste": "+4,33%",
+            "reajusteValor": 4.33
+        },
+        {
+            "publicacao": "DEJT 10/07/2025",
+            "ato": "Ato SEGJUD.GP nº 391/2025",
+            "vigencia": "A partir de 01/08/2025",
+            "ro": "R$ 13.813,83",
+            "rr": "R$ 27.627,66",
+            "ar": "R$ 27.627,66",
+            "reajuste": "+5,18%",
+            "reajusteValor": 5.18
+        },
+        {
+            "publicacao": "DEJT 15/07/2024",
+            "ato": "Ato SEGJUD.GP nº 366/2024",
+            "vigencia": "A partir de 01/08/2024",
+            "ro": "R$ 13.133,46",
+            "rr": "R$ 26.266,92",
+            "ar": "R$ 26.266,92",
+            "reajuste": "+3,70%",
+            "reajusteValor": 3.7
+        },
+        {
+            "publicacao": "DEJT 13/07/2023",
+            "ato": "Ato SEGJUD.GP nº 414/2023",
+            "vigencia": "A partir de 01/08/2023",
+            "ro": "R$ 12.665,14",
+            "rr": "R$ 25.330,28",
+            "ar": "R$ 25.330,28",
+            "reajuste": "+3,00%",
+            "reajusteValor": 3
+        },
+        {
+            "publicacao": "DEJT 12/07/2022",
+            "ato": "Ato SEGJUD.GP nº 430/2022",
+            "vigencia": "A partir de 01/08/2022",
+            "ro": "R$ 12.296,38",
+            "rr": "R$ 24.592,76",
+            "ar": "R$ 24.592,76",
+            "reajuste": "+11,92%",
+            "reajusteValor": 11.92
+        },
+        {
+            "publicacao": "DEJT 20/07/2021",
+            "ato": "Ato SEGJUD.GP nº 175/2021",
+            "vigencia": "A partir de 01/08/2021",
+            "ro": "R$ 10.986,80",
+            "rr": "R$ 21.973,60",
+            "ar": "R$ 21.973,60",
+            "reajuste": "+9,22%",
+            "reajusteValor": 9.22
+        },
+        {
+            "publicacao": "DEJT 16/07/2020",
+            "ato": "Ato SEGJUD.GP nº 287/2020",
+            "vigencia": null,
+            "ro": "R$ 10.059,15",
+            "rr": "R$ 20.118,30",
+            "ar": "R$ 20.118,30",
+            "reajuste": "+2,35%",
+            "reajusteValor": 2.35
+        },
+        {
+            "publicacao": "DEJT 12/07/2019",
+            "ato": "Ato TST/SEJUD/GP nº 247/2019",
+            "vigencia": null,
+            "ro": "R$ 9.828,51",
+            "rr": "R$ 19.657,02",
+            "ar": "R$ 19.657,02",
+            "reajuste": "+3,31%",
+            "reajusteValor": 3.31
+        },
+        {
+            "publicacao": "DJ 18/07/2018",
+            "ato": "Ato TST/SEJUD/GP nº 329/2018",
+            "vigencia": null,
+            "ro": "R$ 9.513,16",
+            "rr": "R$ 19.026,32",
+            "ar": "R$ 19.026,32",
+            "reajuste": "+3,53%",
+            "reajusteValor": 3.53
+        },
+        {
+            "publicacao": "DEJT 13/07/2017",
+            "ato": "Ato TST/SEJUD/GP nº 360/2017",
+            "vigencia": null,
+            "ro": "R$ 9.189,00",
+            "rr": "R$ 18.378,00",
+            "ar": "R$ 18.378,00",
+            "reajuste": "+2,56%",
+            "reajusteValor": 2.56
+        },
+        {
+            "publicacao": "DJ 15/08/2016",
+            "ato": "Ato TST nº 326/2016",
+            "vigencia": null,
+            "ro": "R$ 8.959,63",
+            "rr": "R$ 17.919,26",
+            "ar": "R$ 17.919,26",
+            "reajuste": null,
+            "reajusteValor": null,
+            "nota": "Nova publicação do Ato TST/SEJUD/GP nº 326/2016, com os mesmos valores."
+        },
+        {
+            "publicacao": "DJ 15/07/2016",
+            "ato": "Ato TST/SEJUD/GP nº 326/2016",
+            "vigencia": null,
+            "ro": "R$ 8.959,63",
+            "rr": "R$ 17.919,26",
+            "ar": "R$ 17.919,26",
+            "reajuste": "+9,49%",
+            "reajusteValor": 9.49
+        },
+        {
+            "publicacao": "DJ 13/07/2015",
+            "ato": "Ato TST/SEJUD/GP nº 397/2015",
+            "vigencia": null,
+            "ro": "R$ 8.183,06",
+            "rr": "R$ 16.366,10",
+            "ar": "R$ 16.366,10",
+            "reajuste": "+9,31%",
+            "reajusteValor": 9.31
+        },
+        {
+            "publicacao": "DJ 17/07/2014",
+            "ato": "Ato TST/SEJUD/GP nº 372/2014",
+            "vigencia": null,
+            "ro": "R$ 7.485,83",
+            "rr": "R$ 14.971,65",
+            "ar": "R$ 14.971,65",
+            "reajuste": "+6,06%",
+            "reajusteValor": 6.06
+        },
+        {
+            "publicacao": "DJ 16/07/2013",
+            "ato": "Ato SEJUD/GP nº 506/2013",
+            "vigencia": null,
+            "ro": "R$ 7.058,11",
+            "rr": "R$ 14.116,21",
+            "ar": "R$ 14.116,21",
+            "reajuste": "+6,97%",
+            "reajusteValor": 6.97
+        },
+        {
+            "publicacao": "DJ 18/07/2012",
+            "ato": "Ato SEJUD/GP nº 491/2012",
+            "vigencia": null,
+            "ro": "R$ 6.598,21",
+            "rr": "R$ 13.196,42",
+            "ar": "R$ 13.196,42",
+            "reajuste": "+4,90%",
+            "reajusteValor": 4.9
+        },
+        {
+            "publicacao": "DJ 26/07/2011",
+            "ato": "Ato SEJUD.GP nº 449/2011",
+            "vigencia": null,
+            "ro": "R$ 6.290,00",
+            "rr": "R$ 12.580,00",
+            "ar": "R$ 12.580,00",
+            "reajuste": "+6,80%",
+            "reajusteValor": 6.8
+        },
+        {
+            "publicacao": "DJ 21/07/2010",
+            "ato": "Ato SEJUD.GP nº 334/2010",
+            "vigencia": null,
+            "ro": "R$ 5.889,50",
+            "rr": "R$ 11.779,02",
+            "ar": "R$ 11.779,02",
+            "reajuste": "+4,76%",
+            "reajusteValor": 4.76
+        },
+        {
+            "publicacao": "DJ 15/07/2009",
+            "ato": "Ato SEJUD.GP nº 447/2009",
+            "vigencia": null,
+            "ro": "R$ 5.621,90",
+            "rr": "R$ 11.243,81",
+            "ar": "R$ 11.243,81",
+            "reajuste": "+4,94%",
+            "reajusteValor": 4.94
+        },
+        {
+            "publicacao": "DJ 21/07/2008",
+            "ato": "Ato SEJUD.GP nº 493/2008",
+            "vigencia": null,
+            "ro": "R$ 5.357,25",
+            "rr": "R$ 10.714,51",
+            "ar": "R$ 10.714,51",
+            "reajuste": "+7,28%",
+            "reajusteValor": 7.28
+        },
+        {
+            "publicacao": "DJ 19/07/2007",
+            "ato": "Ato GP nº 251/2007",
+            "vigencia": null,
+            "ro": "R$ 4.993,78",
+            "rr": "R$ 9.987,56",
+            "ar": "R$ 9.987,56",
+            "reajuste": "+3,85%",
+            "reajusteValor": 3.85
+        },
+        {
+            "publicacao": "DJ 17/07/2006",
+            "ato": "Ato GP nº 215/2006",
+            "vigencia": null,
+            "ro": "R$ 4.808,65",
+            "rr": "R$ 9.617,29",
+            "ar": "R$ 9.617,29",
+            "reajuste": "+2,79%",
+            "reajusteValor": 2.79
+        },
+        {
+            "publicacao": "DJ 29/07/2005",
+            "ato": "Ato GP nº 173/2005",
+            "vigencia": null,
+            "ro": "R$ 4.678,13",
+            "rr": "R$ 9.356,25",
+            "ar": "R$ 9.356,25",
+            "reajuste": "+6,28%",
+            "reajusteValor": 6.28
+        },
+        {
+            "publicacao": "DJ 05/08/2004",
+            "ato": "Ato GP nº 371/2004",
+            "vigencia": null,
+            "ro": "R$ 4.401,76",
+            "rr": "R$ 8.803,52",
+            "ar": "R$ 8.803,52",
+            "reajuste": "+5,57%",
+            "reajusteValor": 5.57
+        },
+        {
+            "publicacao": "DJ 25/07/2003",
+            "ato": "Ato GP nº 294/2003",
+            "vigencia": null,
+            "ro": "R$ 4.169,33",
+            "rr": "R$ 8.338,66",
+            "ar": "R$ 8.338,66",
+            "reajuste": "+19,64%",
+            "reajusteValor": 19.64
+        },
+        {
+            "publicacao": "DJ 25/07/2002",
+            "ato": "Ato GP nº 284/2002",
+            "vigencia": null,
+            "ro": "R$ 3.485,03",
+            "rr": "R$ 6.970,05",
+            "ar": "R$ 6.970,05",
+            "reajuste": "+9,04%",
+            "reajusteValor": 9.04
+        },
+        {
+            "publicacao": "DJ 26/07/2001",
+            "ato": "Ato GP nº 278/2001",
+            "vigencia": null,
+            "ro": "R$ 3.196,10",
+            "rr": "R$ 6.392,20",
+            "ar": "R$ 6.392,20",
+            "reajuste": "+8,06%",
+            "reajusteValor": 8.06,
+            "nota": "O DJ de 26/07/2001 circulou em 1º/08/2001."
+        },
+        {
+            "publicacao": "DJ 26/07/2000",
+            "ato": "Ato GP nº 333/2000",
+            "vigencia": null,
+            "ro": "R$ 2.957,81",
+            "rr": "R$ 5.915,62",
+            "ar": "R$ 5.915,62",
+            "reajuste": null,
+            "reajusteValor": null
+        }
+    ],
+    "notas": [
+        "Os novos valores referentes aos limites de depósito recursal são de observância obrigatória a partir de 1º de agosto do ano da publicação (Atos SEGJUD.GP nº 175/2021, 430/2022, 414/2023, 366/2024, 391/2025 e 381/2026).",
+        "Reajuste: variação do limite do recurso ordinário em relação ao ato anterior, calculada pela Cenofisco.",
+        "DEJT: Diário Eletrônico da Justiça do Trabalho. DJ: Diário da Justiça.",
+        "Fonte: Tribunal Superior do Trabalho (TST)."
+    ]
+}

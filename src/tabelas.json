@@ -73,7 +73,7 @@
             "id": "combustivel-pmpf",
             "titulo": "Combustível – PMPF",
             "area": "ICMS e Outros",
-            "link": null
+            "link": "tabela.html?id=combustivel-pmpf"
         },
         {
             "id": "contratacao-de-servicos",
@@ -103,7 +103,7 @@
             "id": "depositos-recursais",
             "titulo": "Depósitos Recursais",
             "area": "Trabalhista e Previdência",
-            "link": null
+            "link": "tabela.html?id=depositos-recursais"
         },
         {
             "id": "documentacao-de-afixacao-obrigatoria",
@@ -115,7 +115,7 @@
             "id": "efd-prazos",
             "titulo": "EFD – Prazos",
             "area": "Federal",
-            "link": null
+            "link": "tabela.html?id=efd-prazos"
         },
         {
             "id": "esocial-obrigacoes-substituidas",
@@ -157,7 +157,7 @@
             "id": "guarda-de-documentos",
             "titulo": "Guarda de Documentos",
             "area": "Federal",
-            "link": null
+            "link": "tabela.html?id=guarda-de-documentos"
         },
         {
             "id": "incentivos-fiscais",

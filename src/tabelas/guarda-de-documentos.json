@@ -1,0 +1,328 @@
+{
+    "id": "guarda-de-documentos",
+    "titulo": "Guarda de Documentos e Prazos",
+    "tituloCurto": "Guarda de Documentos",
+    "area": "Federal",
+    "publicado": "14/09/2018",
+    "atualizado": "03/09/2024",
+    "introducao": "<p>Existem, basicamente, três dispositivos legais relacionados ao prazo de guarda da documentação comercial e fiscal:</p><ul class=\"list-disc space-y-2 pl-5\"><li>o <strong>art. 195 do Código Tributário Nacional (CTN)</strong>, que determina que os livros obrigatórios de escrituração comercial e fiscal e os respectivos comprovantes dos lançamentos devem ser conservados até o termo final da prescrição dos créditos tributários das operações a que se refiram;</li><li>o <strong>art. 37 da Lei nº 9.430/1996</strong>, que determina que os comprovantes da escrituração da pessoa jurídica, relativos a fatos que repercutam em lançamentos contábeis de exercícios futuros, sejam conservados até que se opere a decadência do direito de a Fazenda Pública constituir os créditos tributários relativos a esses exercícios;</li><li>o <strong>art. 4º do Decreto-Lei nº 486/1969</strong>, que determina que o comerciante conserve em ordem os livros e documentos enquanto não prescritas eventuais ações que lhes sejam pertinentes. Por isso, muitos livros, por serem também de natureza mercantil, devem observar os prazos societários e da legislação comercial.</li></ul><p>Na área trabalhista, em face do prazo prescricional para o ingresso de ação trabalhista previsto no art. 7º, inciso XXIX, da Constituição Federal, os documentos trabalhistas e previdenciários devem ser conservados pelo prazo mínimo de 5 anos, contados da data do pagamento da verba, ou de 2 anos, contados da rescisão contratual. Por disposição legal ou por cautela, alguns documentos devem permanecer arquivados por prazo maior.</p><p>A seguir, um resumo prático do tempo mínimo de guarda de cada tipo de documento ou arquivo. Use o filtro para ver só um assunto.</p>",
+    "colunas": [
+        {
+            "campo": "documento",
+            "titulo": "Documentos ou arquivos",
+            "html": true,
+            "nota": "nota",
+            "classe": "cf-table-full"
+        },
+        {
+            "campo": "prazo",
+            "titulo": "Prazo mínimo de guarda",
+            "destaque": true
+        },
+        {
+            "campo": "base",
+            "titulo": "Base legal",
+            "classe": "text-xs leading-relaxed text-slate-600"
+        },
+        {
+            "campo": "assunto",
+            "titulo": "Assunto",
+            "classe": "text-xs text-slate-500"
+        }
+    ],
+    "filtro": {
+        "campo": "assunto",
+        "rotulo": "Assunto"
+    },
+    "linhas": [
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Arquivos digitais e SPED: ECD, EFD e NF-e",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969.",
+            "nota": "Os registros contábeis e a documentação de períodos com prejuízo fiscal compensável (IRPJ e CSLL) devem ser conservados até 5 anos após a compensação total dos prejuízos."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Comprovantes de rendimentos pagos e de retenção na fonte",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "DARF (PIS, COFINS, IRRF, IRPJ e CSLL)",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969.",
+            "nota": "Havendo compensação de tributo recolhido indevidamente ou a maior, o DARF ou a GPS correspondente deve ser arquivado por 5 anos a partir da data da compensação."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração Comprobatória de Percepção de Rendimentos (DECORE)",
+            "prazo": "5 anos",
+            "base": "Art. 3º da Resolução CFC nº 872/2000."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração do Imposto de Renda Retido na Fonte (DIRF)",
+            "prazo": "5 anos",
+            "base": "Art. 26 da Instrução Normativa RFB nº 1.033/2010, art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração do Imposto sobre Produtos Industrializados (DIPI)",
+            "prazo": "5 anos",
+            "base": "Art. 383 do Decreto nº 7.212/2010 (RIPI), art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração Especial de Informações (DIF)",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração de Informações Econômico-Fiscais da Pessoa Jurídica (DIPJ)",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração do Imposto sobre a Propriedade Territorial Rural (DITR)",
+            "prazo": "5 anos",
+            "base": "Art. 40 do Decreto nº 4.382/2002, art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração de Informações sobre Atividades Imobiliárias (DIMOB)",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Declaração Simplificada da Pessoa Jurídica (DSPJ) – Inativa e Simples",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Demonstrativo de Apuração de Contribuições Sociais (DACON)",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Demonstrativo de Notas Fiscais (DNF)",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Demonstrativo do Crédito Presumido (DCP)",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Documentos relativos à retenção de 11% de INSS sobre as notas fiscais de prestação de serviços",
+            "prazo": "10 anos",
+            "base": "§ 11 do art. 31 da Lei nº 8.212/1991."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Livro Diário",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969.",
+            "nota": "Os registros contábeis e a documentação de períodos com prejuízo fiscal compensável (IRPJ e CSLL) devem ser conservados até 5 anos após a compensação total dos prejuízos."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Livro Razão",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969.",
+            "nota": "Os registros contábeis e a documentação de períodos com prejuízo fiscal compensável (IRPJ e CSLL) devem ser conservados até 5 anos após a compensação total dos prejuízos."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Livro Registro de Inventário",
+            "prazo": "5 anos após o último lançamento",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969.",
+            "nota": "Os registros contábeis e a documentação de períodos com prejuízo fiscal compensável (IRPJ e CSLL) devem ser conservados até 5 anos após a compensação total dos prejuízos."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Livros de atas de assembleia",
+            "prazo": "Permanente",
+            "base": "Não há"
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Livros de Registro de Entradas e de Saídas",
+            "prazo": "5 anos após o último lançamento",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969.",
+            "nota": "Os registros contábeis e a documentação de períodos com prejuízo fiscal compensável (IRPJ e CSLL) devem ser conservados até 5 anos após a compensação total dos prejuízos."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Livros de apuração do ISS e do ICMS",
+            "prazo": "5 anos após o último lançamento",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Notas fiscais e cupons fiscais",
+            "prazo": "5 anos",
+            "base": "Art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969.",
+            "nota": "As notas fiscais e os comprovantes de aquisição de imobilizado e de intangíveis devem ser guardados até 5 anos após a baixa ou a depreciação/amortização total do ativo."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Orçamentos e contratos de obras",
+            "prazo": "Até o final da garantia",
+            "base": "Não há"
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Pedido Eletrônico de Restituição e Declaração de Compensação (PER/DCOMP)",
+            "prazo": "5 anos",
+            "base": "Art. 73 da Instrução Normativa RFB nº 1.717/2017, art. 195 do CTN, art. 37 da Lei nº 9.430/1996 e art. 4º do Decreto-Lei nº 486/1969."
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Processos trabalhistas",
+            "prazo": "Permanente",
+            "base": "Não há"
+        },
+        {
+            "assunto": "Fiscal e contábil",
+            "documento": "Prontuários de empregados",
+            "prazo": "Permanente",
+            "base": "Não há"
+        },
+        {
+            "assunto": "Previdência Social",
+            "documento": "<ul class=\"list-disc space-y-1 pl-4\"><li>GPS original (Guia da Previdência Social)</li><li>Folha de pagamento</li></ul>",
+            "prazo": "10 anos",
+            "base": "§ 11 do art. 32 da Lei nº 8.212/1991."
+        },
+        {
+            "assunto": "Previdência Social",
+            "documento": "<ul class=\"list-disc space-y-1 pl-4\"><li>Recibos de pagamento</li><li>Atestados médicos</li><li>Ficha de salário-família</li><li>Ficha de salário-maternidade</li></ul>",
+            "prazo": "5 anos",
+            "base": "Arts. 348 e 349 do Decreto nº 3.048/1999."
+        },
+        {
+            "assunto": "Previdência Social",
+            "documento": "<ul class=\"list-disc space-y-1 pl-4\"><li>CAT (Comunicação de Acidente do Trabalho)</li><li>Comprovantes de pagamento de benefícios reembolsados pelo INSS (salário-família e salário-maternidade)</li></ul>",
+            "prazo": "5 anos",
+            "base": "Art. 348 do Decreto nº 3.048/1999."
+        },
+        {
+            "assunto": "FGTS",
+            "documento": "<ul class=\"list-disc space-y-1 pl-4\"><li>Documentos relacionados ao FGTS</li><li>Depósitos do FGTS (GFIP)</li></ul>",
+            "prazo": "5 anos",
+            "base": "§ 5º do art. 23 da Lei nº 8.036/1990.",
+            "nota": "A partir de 01/03/2024, os depósitos do FGTS passaram a ser feitos por meio do FGTS Digital. Para os débitos gerados até 29/02/2024 (inclusive os débitos mensais de fevereiro/2024), o empregador continua efetuando os pagamentos pelos sistemas da Caixa (SEFIP, GRRF e Conectividade Social). Veja também a nota sobre a prescrição do FGTS."
+        },
+        {
+            "assunto": "Trabalhista",
+            "documento": "<ul class=\"list-disc space-y-1 pl-4\"><li>Acordo de prorrogação de horas</li><li>Adiantamento salarial</li><li>Autorização de descontos não previstos em lei</li><li>Controles de ponto</li><li>Contrato de trabalho e suas alterações</li><li>Recibos de abono pecuniário (férias)</li><li>Recibos de gozo de férias</li><li>Recibos de entrega de vale-transporte</li><li>Aviso prévio</li></ul>",
+            "prazo": "5 anos durante a vigência do contrato e 2 anos após a rescisão",
+            "base": "Art. 7º, inciso XXIX, da Constituição Federal.",
+            "nota": "Controles de ponto: o registrador eletrônico de ponto convencional (REP-C) deve dispor de impressor em bobina de papel que permita impressões com durabilidade mínima de 5 anos (Anexo VIII da Portaria MTP nº 671/2021)."
+        },
+        {
+            "assunto": "Trabalhista",
+            "documento": "<ul class=\"list-disc space-y-1 pl-4\"><li>TRCT (Termo de Rescisão do Contrato de Trabalho)</li><li>Pedido de demissão e quaisquer outros documentos rescisórios</li></ul>",
+            "prazo": "2 anos após a rescisão",
+            "base": "Art. 7º, inciso XXIX, da Constituição Federal."
+        },
+        {
+            "assunto": "Seguro-desemprego",
+            "documento": "<ul class=\"list-disc space-y-1 pl-4\"><li>SD (Requerimento de Seguro-Desemprego)</li><li>CD (Comunicado de Dispensa)</li></ul>",
+            "prazo": "5 anos",
+            "base": "Resolução CODEFAT nº 393/2004 (revogada pela Resolução CODEFAT nº 957/2022).",
+            "nota": "Orienta-se a guarda, por 5 anos, dos recibos emitidos até 22/09/2022."
+        },
+        {
+            "assunto": "PIS",
+            "documento": "Documentos comprobatórios dos pagamentos e da base de cálculo das contribuições",
+            "prazo": "10 anos",
+            "base": "Arts. 3º e 10 do Decreto-Lei nº 2.052/1983 e art. 94 do Decreto nº 4.524/2002."
+        },
+        {
+            "assunto": "CAGED",
+            "documento": "Recibo de entrega, cópia do arquivo e extrato da movimentação processada",
+            "prazo": "5 anos",
+            "base": "§ 2º do art. 157 da Portaria MTP nº 671/2021.",
+            "nota": "As empresas obrigadas ao eSocial estão dispensadas da transmissão do CAGED. A substituição ocorreu para as admissões e os desligamentos a partir de 01/01/2020 (Portaria SEPRT/ME nº 1.127/2019)."
+        },
+        {
+            "assunto": "RAIS",
+            "documento": "Formulário padronizado ou recibos de entrega do arquivo gerado em meio eletrônico",
+            "prazo": "5 anos",
+            "base": "Art. 152 da Portaria MTP nº 671/2021.",
+            "nota": "Está encerrado o período de declaração da RAIS dos anos-base de 1976 a 2022 pelo PGD Genérico. As declarações da RAIS a partir do ano-base 2023, para todos os grupos do eSocial (1, 2, 3 e 4), são feitas com as informações prestadas ao eSocial."
+        },
+        {
+            "assunto": "Contribuição sindical",
+            "documento": "GRCS (Guia de Recolhimento da Contribuição Sindical)",
+            "prazo": "5 anos",
+            "base": "Art. 174 do Código Tributário Nacional."
+        },
+        {
+            "assunto": "Salário-educação",
+            "documento": "Recibos de salário-educação e documentos de convênios",
+            "prazo": "10 anos",
+            "base": "§ 3º do art. 1º do Decreto-Lei nº 1.422/1975 e art. 1º do Decreto nº 3.142/1999."
+        },
+        {
+            "assunto": "Segurança e medicina do trabalho",
+            "documento": "PCMSO – prontuário",
+            "prazo": "20 anos após a rescisão",
+            "base": "NR-7, subitem 7.6.1.1, com redação da Portaria SEPRT nº 6.734/2020."
+        },
+        {
+            "assunto": "Segurança e medicina do trabalho",
+            "documento": "PGR – Programa de Gerenciamento de Riscos",
+            "prazo": "20 anos",
+            "base": "NR-1, subitem 1.5.7.3.3.1, com redação da Portaria SEPRT nº 6.730/2020."
+        },
+        {
+            "assunto": "Segurança e medicina do trabalho",
+            "documento": "Declaração de instalação de estabelecimentos novos (NR-2)",
+            "prazo": "Prazo indeterminado",
+            "base": "Portaria MTb nº 3.214/1978, NR-2, subitem 2.3.",
+            "nota": "A NR-2 (Inspeção Prévia) foi revogada, entre outras, pela Portaria SEPRT/ME nº 915/2019."
+        },
+        {
+            "assunto": "Segurança e medicina do trabalho",
+            "documento": "Registro de segurança de caldeiras e vasos de pressão (NR-13)",
+            "prazo": "Pelo período de manutenção do equipamento",
+            "base": "Portaria MTb nº 3.214/1978, NR-13, subitem 13.6.4."
+        },
+        {
+            "assunto": "Livros de apresentação obrigatória à fiscalização",
+            "documento": "Livro Diário",
+            "prazo": "10 anos",
+            "base": "§ 11 do art. 32 da Lei nº 8.212/1991."
+        },
+        {
+            "assunto": "Livros de apresentação obrigatória à fiscalização",
+            "documento": "Livros de Inspeção do Trabalho",
+            "prazo": "Prazo indeterminado",
+            "base": "Art. 628 da CLT."
+        },
+        {
+            "assunto": "Livros de apresentação obrigatória à fiscalização",
+            "documento": "Livros de Registro de Empregados",
+            "prazo": "Prazo indeterminado",
+            "base": "Art. 603 da CLT."
+        }
+    ],
+    "notas": [
+        "Empregados menores de 18 anos: contra eles não corre prazo prescricional (art. 440 da CLT). Assim, o prazo de guarda dos documentos que lhes digam respeito começa a contar quando completam 18 anos.",
+        "Prescrição do FGTS: o Plenário do STF declarou inconstitucionais as normas que previam prazo prescricional de 30 anos para ações relativas a valores não depositados no FGTS, que se sujeita à prescrição trabalhista de 5 anos (ARE 709212). Na modulação, para os casos cujo termo inicial (ausência de depósito) ocorra após o julgamento (13/11/2014), aplica-se o prazo de 5 anos; para aqueles em que o prazo já estava em curso, aplica-se o que ocorrer primeiro: 30 anos contados do termo inicial ou 5 anos a partir do julgamento.",
+        "Algumas declarações da tabela (DIRF, DIPJ, DACON, DIF, DNF, DCP e DSPJ) foram extintas ou substituídas pelo SPED, pela ECF e pelo eSocial, mas as já entregues continuam sujeitas ao prazo de guarda.",
+        "Fonte: Editorial Cenofisco."
+    ]
+}

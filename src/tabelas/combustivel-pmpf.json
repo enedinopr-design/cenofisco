@@ -1,0 +1,318 @@
+{
+    "id": "combustivel-pmpf",
+    "titulo": "Combustível – Preço Médio Ponderado ao Consumidor Final (PMPF)",
+    "tituloCurto": "Combustível – PMPF",
+    "area": "ICMS e Outros",
+    "publicado": "",
+    "atualizado": "20/10/2026",
+    "introducao": "<p>Relação dos Atos COTEPE/PMPF publicados em 2026, que divulgam o preço médio ponderado ao consumidor final (PMPF) de combustíveis adotado pelos Estados e pelo Distrito Federal como base de cálculo do ICMS devido por substituição tributária, nos termos do Convênio ICMS nº 110/2007.</p><p>Os atos são publicados quinzenalmente e passam a valer nos dias 1º e 16 de cada mês. Os valores, por unidade federada, abrangem querosene de aviação (QAV), etanol hidratado combustível (AEHC), gás natural veicular (GNV), gás natural industrial (GNI) e óleo combustível. Clique no número do ato para consultar a tabela de valores no site do CONFAZ.</p>",
+    "resumo": [
+        {
+            "rotulo": "Último ato com PMPF",
+            "valor": "Nº 28/2026"
+        },
+        {
+            "rotulo": "Vigente a partir de",
+            "valor": "16/10/2026"
+        },
+        {
+            "rotulo": "Atos publicados em 2026",
+            "valor": "28"
+        },
+        {
+            "rotulo": "Retificações",
+            "valor": "2"
+        }
+    ],
+    "colunas": [
+        {
+            "campo": "ato",
+            "titulo": "Ato",
+            "html": true,
+            "nota": "nota",
+            "classe": "whitespace-nowrap"
+        },
+        {
+            "campo": "data",
+            "titulo": "Data do ato",
+            "classe": "whitespace-nowrap tabular-nums"
+        },
+        {
+            "campo": "dou",
+            "titulo": "Publicação no DOU",
+            "classe": "whitespace-nowrap tabular-nums"
+        },
+        {
+            "campo": "vigencia",
+            "titulo": "Vigência",
+            "destaque": true,
+            "classe": "whitespace-nowrap tabular-nums"
+        },
+        {
+            "campo": "assunto",
+            "titulo": "Assunto",
+            "classe": "cf-table-full text-sm leading-relaxed text-slate-600"
+        }
+    ],
+    "filtro": {
+        "campo": "tipo",
+        "rotulo": "Tipo de ato"
+    },
+    "linhas": [
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/ato-cotepe-pmpf-28-26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 28/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "08/10/2026",
+            "dou": "09/10/2026",
+            "vigencia": "16/10/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/ato-cotepe-pmpf-27-26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 27/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "25/09/2026",
+            "dou": "29/09/2026",
+            "vigencia": "Vigência do ato alterado",
+            "assunto": "Altera o Ato COTEPE/PMPF 26/26 – AL: AEHC e GNV."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/ato-cotepe-pmpf-26-26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 26/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "24/09/2026",
+            "dou": "25/09/2026",
+            "vigencia": "01/10/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Item de AL alterado pelo Ato COTEPE/PMPF 27/26."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/ato-cotepe-pmpf-25-26-retificacao\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 25 – Retificação/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Retificação",
+            "dou": "15/09/2026",
+            "vigencia": "Vigência do ato alterado",
+            "assunto": "Retifica o título do Ato COTEPE/PMPF 25/26: onde se lê “9 de agosto de 2026”, leia-se “9 de setembro de 2026”."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/ato-cotepe-pmpf-25-26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 25/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "09/09/2026",
+            "dou": "10/09/2026",
+            "vigencia": "16/09/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Data do título retificada no DOU de 15/09/2026."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/ato-cotepe-pmpf-24-26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 24/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "25/08/2026",
+            "dou": "26/08/2026",
+            "vigencia": "Vigência do ato alterado",
+            "assunto": "Altera o Ato COTEPE/PMPF 23/26 – PB: QAV, AEHC, GNV e óleo combustível; SE: QAV, AEHC e GNV."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/ato-cotepe-pmpf-23-26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 23/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "24/08/2026",
+            "dou": "25/08/2026",
+            "vigencia": "01/09/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Itens da PB e de SE alterados pelo Ato COTEPE/PMPF 24/26."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf022_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 22/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "07/08/2026",
+            "dou": "10/08/2026",
+            "vigencia": "16/08/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf021_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 21/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "24/07/2026",
+            "dou": "27/07/2026",
+            "vigencia": "01/08/2026",
+            "assunto": "Altera o Ato COTEPE/PMPF 20/26 – SP: AEHC."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf020_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 20/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "23/07/2026",
+            "dou": "24/07/2026",
+            "vigencia": "01/08/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Item de SP alterado pelo Ato COTEPE/PMPF 21/26."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf019_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 19/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "09/07/2026",
+            "dou": "10/07/2026",
+            "vigencia": "16/07/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf018_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 18/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "24/06/2026",
+            "dou": "25/06/2026",
+            "vigencia": "01/07/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Publicado em edição extra do DOU."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf017_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 17/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "09/06/2026",
+            "dou": "10/06/2026",
+            "vigencia": "16/06/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf016_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 16/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "09/06/2026",
+            "dou": "10/06/2026",
+            "vigencia": "01/06/2026",
+            "assunto": "Altera o Ato COTEPE/PMPF 14/26 – AM: AEHC, GNV e GNI."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf015_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 15/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "26/05/2026",
+            "dou": "27/05/2026",
+            "vigencia": "01/06/2026",
+            "assunto": "Altera o Ato COTEPE/PMPF 14/26 – GO: AEHC."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf014_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 14/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "22/05/2026",
+            "dou": "25/05/2026",
+            "vigencia": "01/06/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Itens de GO e do AM alterados pelos Atos COTEPE/PMPF 15/26 e 16/26."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf013_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 13/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "07/05/2026",
+            "dou": "08/05/2026",
+            "vigencia": "16/05/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf012_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 12/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "23/04/2026",
+            "dou": "24/04/2026",
+            "vigencia": "01/05/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf011_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 11/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "13/04/2026",
+            "dou": "14/04/2026",
+            "vigencia": "16/04/2026",
+            "assunto": "Altera o Ato COTEPE/PMPF 09/26 – SE: QAV, AEHC e GNV."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf010_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 10/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "10/04/2026",
+            "dou": "13/04/2026",
+            "vigencia": "16/04/2026",
+            "assunto": "Altera o Ato COTEPE/PMPF 09/26 – RJ: AEHC e GNV."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf009_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 09/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "09/04/2026",
+            "dou": "10/04/2026",
+            "vigencia": "16/04/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Itens do RJ e de SE alterados pelos Atos COTEPE/PMPF 10/26 e 11/26."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf008_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 08/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "25/03/2026",
+            "dou": "26/03/2026",
+            "vigencia": "01/04/2026",
+            "assunto": "Altera o Ato COTEPE/PMPF 07/26 – SE: QAV, AEHC e GNV."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf007_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 07/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "24/03/2026",
+            "dou": "25/03/2026",
+            "vigencia": "01/04/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Item de SE alterado pelo Ato COTEPE/PMPF 08/26."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf006_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 06/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "09/03/2026",
+            "dou": "10/03/2026",
+            "vigencia": "16/03/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf005_26ret\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 05 – Retificação/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Retificação",
+            "dou": "05/03/2026",
+            "vigencia": "01/03/2026",
+            "assunto": "Retifica o Ato COTEPE/PMPF 05/26 – PE: AEHC (onde se lê 4,9200, leia-se 5,1800)."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf005_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 05/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "24/02/2026",
+            "dou": "25/02/2026",
+            "vigencia": "01/03/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Retificado no DOU de 05/03/2026."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf004_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 04/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "09/02/2026",
+            "dou": "10/02/2026",
+            "vigencia": "16/02/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf003_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 03/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Altera ato anterior",
+            "data": "23/01/2026",
+            "dou": "26/01/2026",
+            "vigencia": "01/02/2026",
+            "assunto": "Altera o Ato COTEPE/PMPF 02/26 – TO: AEHC."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf002_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 02/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "22/01/2026",
+            "dou": "23/01/2026",
+            "vigencia": "01/02/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada.",
+            "nota": "Item do TO alterado pelo Ato COTEPE/PMPF 03/26."
+        },
+        {
+            "ato": "<a href=\"https://www.confaz.fazenda.gov.br/legislacao/atos-pmpf/2026/pmpf001_26\" target=\"_blank\" rel=\"noopener\" class=\"font-semibold text-blue-700 hover:text-blue-900 hover:underline\">Ato COTEPE/PMPF nº 01/2026</a><span class=\"sr-only\"> (abre em nova aba)</span>",
+            "tipo": "Divulga o PMPF",
+            "data": "08/01/2026",
+            "dou": "09/01/2026",
+            "vigencia": "16/01/2026",
+            "assunto": "Divulga o preço médio ponderado ao consumidor final (PMPF) de combustíveis, por unidade federada."
+        }
+    ],
+    "notas": [
+        "PMPF: preço médio ponderado ao consumidor final, apurado pelas unidades federadas e divulgado pela Comissão Técnica Permanente do ICMS (COTEPE/ICMS) para fins de cálculo do ICMS devido por substituição tributária nas operações com combustíveis.",
+        "Nas tabelas dos atos, os valores com um asterisco (*) foram alterados em relação ao ato anterior e os com dois asteriscos (**) foram alterados com redução.",
+        "Os atos que alteram ou retificam um ato anterior produzem efeitos a partir da vigência do ato alterado.",
+        "Desde 2023, gasolina, diesel, biodiesel e GLP estão sujeitos à tributação monofásica do ICMS, com alíquotas ad rem (Lei Complementar nº 192/2022), e não constam das tabelas de PMPF.",
+        "Fonte: Conselho Nacional de Política Fazendária (CONFAZ)."
+    ]
+}
