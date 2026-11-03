@@ -222,11 +222,14 @@
             </div>
 
             <div id="resenhas" class="tab-content hidden" role="tabpanel" aria-labelledby="tab-resenhas">
+              <!-- Preenchido por index.js a partir de resenhas.json; sem o arquivo, fica o aviso abaixo -->
+              <div id="home-resenhas">
               <div class="flex flex-col items-center justify-center rounded-xl border border-dashed border-slate-300 px-6 py-12 text-center">
                 <span class="cf-icon mb-3 size-11 text-lg"><i class="fa-regular fa-newspaper" aria-hidden="true"></i></span>
                 <p class="font-semibold text-slate-800">Nenhuma resenha publicada hoje</p>
                 <p class="mt-1 text-sm text-slate-500">Consulte o arquivo para ver as resenhas anteriores.</p>
                 <a href="noticias.html" class="cf-link-more mt-4">Ver arquivo de resenhas <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              </div>
               </div>
             </div>
 
@@ -492,8 +495,10 @@
 <section class="cf-card flex flex-col" aria-labelledby="titulo-aplicativos">
           <div class="cf-section-head">
             <h3 id="titulo-aplicativos" class="cf-section-title"><span class="cf-icon"><i class="fa-regular fa-window-restore" aria-hidden="true"></i></span>Aplicativos</h3>
+            <a href="aplicativos.html" class="cf-link-more" title="Escolha até 8 aplicativos para esta área">Personalizar <i class="fa-solid fa-sliders" aria-hidden="true"></i></a>
           </div>
-          <div class="grid grid-cols-2 gap-3">
+          <!-- Preenchido por index.js: sempre 8 — os escolhidos em aplicativos.html e, nas vagas livres, os marcados com "home" em aplicativos.json -->
+          <div id="home-aplicativos" class="mb-5 grid grid-cols-2 gap-3">
             <a href="calculo-ferias.html" class="cf-app-btn">
               <span class="cf-app-icone bg-sky-50 text-sky-600"><i class="fa-solid fa-umbrella-beach" aria-hidden="true"></i></span>
               <span class="cf-app-nome">Cálculo de Férias</span>
@@ -518,14 +523,19 @@
               <span class="cf-app-icone bg-rose-50 text-rose-600"><i class="fa-solid fa-handshake-slash" aria-hidden="true"></i></span>
               <span class="cf-app-nome">Cálculo de Rescisão</span>
             </a>
+            <a href="calculo-pensao-alimenticia.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-teal-50 text-teal-600"><i class="fa-solid fa-child-reaching" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">Cálculo de Pensão Alimentícia</span>
+            </a>
+            <a href="calculo-icms-importacao.html" class="cf-app-btn">
+              <span class="cf-app-icone bg-indigo-50 text-indigo-600"><i class="fa-solid fa-ship" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">ICMS-Importação</span>
+            </a>
           </div>
-          <h4 class="mt-5 mb-1 text-xs font-semibold tracking-wider text-slate-500 uppercase">Por área · 34 cálculos</h4>
-          <ul class="mb-4">
-            <li><a href="aplicativos.html?categoria=Trabalhista%2FPrevidenci%C3%A1rio" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-orange-50 text-orange-600"><i class="fa-solid fa-people-group" aria-hidden="true"></i></span>Trabalhista e Previdenciário</span><span class="text-xs text-slate-500 group-hover:text-blue-800">9</span></a></li>
-            <li><a href="aplicativos.html?categoria=Federal" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-blue-50 text-blue-700"><i class="fa-solid fa-landmark" aria-hidden="true"></i></span>Federal</span><span class="text-xs text-slate-500 group-hover:text-blue-800">20</span></a></li>
-            <li><a href="aplicativos.html?categoria=Estadual" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-emerald-50 text-emerald-700"><i class="fa-solid fa-map" aria-hidden="true"></i></span>Estadual</span><span class="text-xs text-slate-500 group-hover:text-blue-800">4</span></a></li>
-            <li><a href="aplicativos.html?categoria=Municipal" class="cf-row group hover:text-blue-800"><span class="flex items-center gap-2.5"><span class="inline-flex size-7 items-center justify-center rounded-md text-xs bg-amber-50 text-amber-700"><i class="fa-solid fa-city" aria-hidden="true"></i></span>Municipal</span><span class="text-xs text-slate-500 group-hover:text-blue-800">1</span></a></li>
-          </ul>
+          <p class="-mt-2 mb-5 flex items-start gap-2 rounded-lg bg-blue-50/70 px-3 py-2.5 text-xs text-slate-600">
+            <i class="fa-solid fa-house mt-0.5 text-blue-700" aria-hidden="true"></i>
+            <span>Personalize esta área: em <a href="aplicativos.html" class="font-semibold text-blue-700 hover:underline">Aplicativos</a>, use o ícone de casa para escolher até 8. <button type="button" id="home-apps-restaurar" class="hidden cursor-pointer font-semibold text-blue-700 hover:underline">Restaurar padrão</button></span>
+          </p>
           <a href="aplicativos.html" class="cf-btn cf-btn-soft mt-auto w-full">Ver todos os aplicativos</a>
         </section>
         </div>

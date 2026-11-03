@@ -1334,6 +1334,68 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /* ------------------------------------------------------------------
+     * Aplicativos da página inicial (sempre 8): os escolhidos pelo usuário
+     * em aplicativos.html (localStorage "homeAplicativos", ids, máx. 8) e,
+     * nas vagas livres, os marcados com "home" (posição) em aplicativos.json.
+     * Se o arquivo não carregar, fica o conteúdo estático do HTML.
+     * ------------------------------------------------------------------ */
+    const homeAppsEl = document.getElementById('home-aplicativos');
+    if (homeAppsEl) {
+        const tonsApp = ['bg-sky-50 text-sky-600', 'bg-emerald-50 text-emerald-600', 'bg-violet-50 text-violet-600', 'bg-orange-50 text-orange-600', 'bg-amber-50 text-amber-600', 'bg-rose-50 text-rose-600', 'bg-teal-50 text-teal-600', 'bg-indigo-50 text-indigo-600'];
+        const restaurarApps = document.getElementById('home-apps-restaurar');
+        fetch('aplicativos.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(apps => {
+                if (!Array.isArray(apps) || !apps.length) return;
+                let escolhidos = [];
+                try { escolhidos = JSON.parse(localStorage.getItem('homeAplicativos')) || []; } catch (_) { /* localStorage indisponível */ }
+                // Os escolhidos guardam só o id; título, ícone e link vêm do JSON atual
+                const lista = (Array.isArray(escolhidos) ? escolhidos : []).map(id => apps.find(a => a.id === id)).filter(Boolean).slice(0, 8);
+                const personalizado = lista.length > 0;
+                apps.filter(a => a.home && !lista.includes(a)).sort((a, b) => a.home - b.home).forEach(a => { if (lista.length < 8) lista.push(a); });
+                if (!lista.length) return;
+                homeAppsEl.innerHTML = lista.map((a, i) => `
+            <a href="${a.link ? escapeHtml(a.link) : `aplicativos.html?q=${encodeURIComponent(a.title)}`}" class="cf-app-btn">
+              <span class="cf-app-icone ${tonsApp[i % tonsApp.length]}"><i class="fa-solid ${escapeHtml(a.icon)}" aria-hidden="true"></i></span>
+              <span class="cf-app-nome">${escapeHtml(a.title)}</span>
+            </a>`).join('');
+                restaurarApps?.classList.toggle('hidden', !personalizado);
+            })
+            .catch(() => { /* mantém o conteúdo estático */ });
+        restaurarApps?.addEventListener('click', () => {
+            try { localStorage.removeItem('homeAplicativos'); } catch (_) { /* localStorage indisponível */ }
+            location.reload();
+        });
+    }
+
+    /* ------------------------------------------------------------------
+     * Resenhas (aba da página inicial): edições de resenhas.json, a mais
+     * recente com os destaques. Cada edição abre a versão web do e-mail.
+     * Se o arquivo não carregar, fica o aviso estático do HTML.
+     * ------------------------------------------------------------------ */
+    const homeResenhasEl = document.getElementById('home-resenhas');
+    if (homeResenhasEl) {
+        const chaveData = d => String(d || '').split('/').reverse().join('');
+        fetch('resenhas.json')
+            .then(r => (r.ok ? r.json() : Promise.reject(r.status)))
+            .then(lista => {
+                if (!Array.isArray(lista) || !lista.length) return;
+                const edicoes = lista.slice().sort((a, b) => chaveData(b.data).localeCompare(chaveData(a.data)) || b.edicao - a.edicao).slice(0, 4);
+                homeResenhasEl.innerHTML = '<div class="divide-y divide-slate-100">' + edicoes.map((r, i) => `
+                    <article class="py-5 first:pt-0 last:pb-0">
+                        <span class="cf-eyebrow text-blue-700">Edição nº ${escapeHtml(r.edicao)} <span class="text-slate-400">·</span> <span class="text-slate-500">${escapeHtml(r.data)}</span></span>
+                        <h3 class="mt-1 text-[1.05rem] font-semibold"><a href="${escapeHtml(r.link)}" target="_blank" rel="noopener" class="transition hover:text-blue-800">${escapeHtml(r.titulo)}</a></h3>
+                        ${i === 0 && Array.isArray(r.destaques) && r.destaques.length ? `
+                        <ul class="mt-4 space-y-2.5 rounded-xl border border-slate-200 bg-slate-50 p-4" aria-label="Destaques da edição">
+                            ${r.destaques.map(d => `<li class="text-sm"><span class="cf-eyebrow text-slate-500">${escapeHtml(d.area)}</span><span class="block font-medium text-slate-800">${escapeHtml(d.titulo)}</span></li>`).join('')}
+                        </ul>` : ''}
+                        <a href="${escapeHtml(r.link)}" target="_blank" rel="noopener" class="cf-link-more mt-3">Ler a resenha completa <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    </article>`).join('') + '</div>';
+            })
+            .catch(() => { /* mantém o aviso estático */ });
+    }
+
+    /* ------------------------------------------------------------------
      * Últimos Procedimentos (3 mais recentes de procedimentos.json).
      * Se o arquivo não carregar, fica o conteúdo estático do HTML.
      * ------------------------------------------------------------------ */

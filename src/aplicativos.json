@@ -4,28 +4,32 @@
         "categoria": "Trabalhista/Previdenciário",
         "title": "Cálculo de Férias",
         "icon": "fa-umbrella-beach",
-        "link": "calculo-ferias.html"
+        "link": "calculo-ferias.html",
+        "home": 1
     },
     {
         "id": "calculo-de-rescisao",
         "categoria": "Trabalhista/Previdenciário",
         "title": "Cálculo de Rescisão",
         "icon": "fa-handshake-slash",
-        "link": "calculo-rescisao.html"
+        "link": "calculo-rescisao.html",
+        "home": 6
     },
     {
         "id": "calculo-de-seguro-desemprego",
         "categoria": "Trabalhista/Previdenciário",
         "title": "Cálculo de Seguro-Desemprego",
         "icon": "fa-briefcase-medical",
-        "link": "calculo-seguro-desemprego.html"
+        "link": "calculo-seguro-desemprego.html",
+        "home": 4
     },
     {
         "id": "calculo-do-13-salario",
         "categoria": "Trabalhista/Previdenciário",
         "title": "Cálculo do 13º Salário",
         "icon": "fa-gift",
-        "link": "calculo-13-salario.html"
+        "link": "calculo-13-salario.html",
+        "home": 5
     },
     {
         "id": "custo-mensal-empregado-domestico",
@@ -81,7 +85,8 @@
         "categoria": "Federal",
         "title": "Cálculo de Pensão Alimentícia",
         "icon": "fa-child-reaching",
-        "link": "calculo-pensao-alimenticia.html"
+        "link": "calculo-pensao-alimenticia.html",
+        "home": 7
     },
     {
         "id": "calculo-do-reintegra",
@@ -179,7 +184,8 @@
         "categoria": "Federal",
         "title": "Simulador IRPF",
         "icon": "fa-user-tie",
-        "link": ""
+        "link": "",
+        "home": 2
     },
     {
         "id": "simulador-plr",
@@ -214,7 +220,8 @@
         "categoria": "Estadual",
         "title": "MVA-Ajustado",
         "icon": "fa-scale-unbalanced",
-        "link": "calculo-mva-ajustado.html"
+        "link": "calculo-mva-ajustado.html",
+        "home": 3
     },
     {
         "id": "reducao-de-icms-na-operacao-propria",
@@ -228,7 +235,8 @@
         "categoria": "Estadual",
         "title": "ICMS-Importação",
         "icon": "fa-ship",
-        "link": "calculo-icms-importacao.html"
+        "link": "calculo-icms-importacao.html",
+        "home": 8
     },
     {
         "id": "sup-sociedades-de-profissionais",

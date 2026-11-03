@@ -60,7 +60,9 @@
     --color-emerald-900: oklch(37.8% 0.077 168.94);
     --color-teal-50: oklch(98.4% 0.014 180.72);
     --color-teal-300: oklch(85.5% 0.138 181.071);
+    --color-teal-400: oklch(77.7% 0.152 181.912);
     --color-teal-500: oklch(70.4% 0.14 182.503);
+    --color-teal-600: oklch(60% 0.118 184.704);
     --color-teal-700: oklch(51.1% 0.096 186.391);
     --color-cyan-50: oklch(98.4% 0.019 200.873);
     --color-cyan-100: oklch(95.6% 0.045 203.388);
@@ -86,6 +88,10 @@
     --color-blue-800: oklch(42.4% 0.199 265.638);
     --color-blue-900: oklch(37.9% 0.146 265.522);
     --color-blue-950: oklch(28.2% 0.091 267.935);
+    --color-indigo-50: oklch(96.2% 0.018 272.314);
+    --color-indigo-400: oklch(67.3% 0.182 276.935);
+    --color-indigo-500: oklch(58.5% 0.233 277.117);
+    --color-indigo-600: oklch(51.1% 0.262 276.966);
     --color-violet-50: oklch(96.9% 0.016 293.756);
     --color-violet-100: oklch(94.3% 0.029 294.588);
     --color-violet-200: oklch(89.4% 0.057 293.283);
@@ -1665,6 +1671,12 @@
       background-color: color-mix(in oklab, var(--color-blue-50) 60%, transparent);
     }
   }
+  .bg-blue-50\/70 {
+    background-color: color-mix(in srgb, oklch(97% 0.014 254.604) 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-blue-50) 70%, transparent);
+    }
+  }
   .bg-blue-100 {
     background-color: var(--color-blue-100);
   }
@@ -1718,6 +1730,9 @@
   }
   .bg-green-600 {
     background-color: var(--color-green-600);
+  }
+  .bg-indigo-50 {
+    background-color: var(--color-indigo-50);
   }
   .bg-orange-50 {
     background-color: var(--color-orange-50);
@@ -2441,6 +2456,9 @@
   .text-green-950 {
     color: var(--color-green-950);
   }
+  .text-indigo-600 {
+    color: var(--color-indigo-600);
+  }
   .text-inherit {
     color: inherit;
   }
@@ -2494,6 +2512,9 @@
   }
   .text-slate-900 {
     color: var(--color-slate-900);
+  }
+  .text-teal-600 {
+    color: var(--color-teal-600);
   }
   .text-teal-700 {
     color: var(--color-teal-700);
@@ -5249,6 +5270,12 @@ html[data-tema="escuro"] .bg-blue-50\/60 {
     background-color: color-mix(in oklab, var(--color-blue-500) 10%, transparent);
   }
 }
+html[data-tema="escuro"] .bg-blue-50\/70 {
+  background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 11%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-blue-500) 11%, transparent);
+  }
+}
 html[data-tema="escuro"] .bg-cyan-50 {
   background-color: color-mix(in srgb, oklch(71.5% 0.143 215.221) 16%, transparent);
   @supports (color: color-mix(in lab, red, red)) {
@@ -5265,6 +5292,12 @@ html[data-tema="escuro"] .bg-green-50 {
   background-color: color-mix(in srgb, oklch(72.3% 0.219 149.579) 16%, transparent);
   @supports (color: color-mix(in lab, red, red)) {
     background-color: color-mix(in oklab, var(--color-green-500) 16%, transparent);
+  }
+}
+html[data-tema="escuro"] .bg-indigo-50 {
+  background-color: color-mix(in srgb, oklch(58.5% 0.233 277.117) 16%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-indigo-500) 16%, transparent);
   }
 }
 html[data-tema="escuro"] .bg-orange-50 {
@@ -5603,6 +5636,9 @@ html[data-tema="escuro"] .text-green-700 {
 html[data-tema="escuro"] .text-green-950:not([class*="bg-amber-"]):not([class*="bg-yellow-"]) {
   color: var(--color-green-200);
 }
+html[data-tema="escuro"] .text-indigo-600 {
+  color: var(--color-indigo-400);
+}
 html[data-tema="escuro"] .text-orange-600 {
   color: var(--color-orange-400);
 }
@@ -5629,6 +5665,9 @@ html[data-tema="escuro"] .text-sky-600 {
 }
 html[data-tema="escuro"] .text-sky-700 {
   color: var(--color-sky-300);
+}
+html[data-tema="escuro"] .text-teal-600 {
+  color: var(--color-teal-400);
 }
 html[data-tema="escuro"] .text-teal-700 {
   color: var(--color-teal-300);

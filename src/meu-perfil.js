@@ -2,7 +2,7 @@
 // - Dados do perfil: chave perfilUsuario (editados pelo diálogo "Editar perfil").
 // - Usuários da conta: chave perfilUsuarios (começa com os exemplos abaixo).
 // - Meus documentos: lê as listas "Salvar" das demais páginas (savedLegislacao, savedNoticias,
-//   savedProcedimentos, savedRegulations, savedAplicativos, savedObligations) e permite remover itens.
+//   savedProcedimentos, savedRegulations, savedObligations) e permite remover itens.
 // O menu mobile e a busca global ficam em index.js.
 document.addEventListener('DOMContentLoaded', function () {
     const $ = id => document.getElementById(id);
@@ -114,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'savedPodcasts', label: 'Podcasts', icon: 'fa-microphone', pagina: 'podcasts.html', meta: d => [d.area, d.date, d.duracao].filter(Boolean).join(' · ') },
         { key: 'savedTabelas', label: 'Tabelas', icon: 'fa-table', pagina: 'tabelas.html', meta: d => [d.area, d.date].filter(Boolean).join(' · ') },
         { key: 'savedRegulations', label: 'Regulamentos', icon: 'fa-book', pagina: 'regulamentos.html', meta: d => d.sigla },
-        { key: 'savedAplicativos', label: 'Ferramentas', icon: 'fa-screwdriver-wrench', pagina: 'aplicativos.html', meta: () => '' },
         { key: 'monitorNcm', label: 'NCMs monitoradas', icon: 'fa-bell', pagina: 'buscafiscal-resultados.html', meta: d => d.date ? `Monitorada desde ${d.date}` : '' },
         {
             key: 'savedObligations', label: 'Obrigações', icon: 'fa-calendar-check', pagina: 'agenda-obrigacoes.html',

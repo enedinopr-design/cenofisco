@@ -1,8 +1,8 @@
 // Página de Ferramentas (aplicativos de cálculo)
 // Dados em aplicativos.json — campos: id, categoria, title, icon (Font Awesome), link (vazio = "Em breve").
 // Filtros: categoria (abas) e busca; o estado fica no endereço (ex.: aplicativos.html?categoria=Federal&q=irpf).
-// Lateral: "Aplicativos Salvos" (favoritos, como em Regulamentos/Procedimentos) e "Meus Cálculos"
-// (cálculos salvos nas páginas dos aplicativos, chave meusCalculos).
+// Ícone de casa nos cartões: até 8 aplicativos na página inicial (chave homeAplicativos; vagas livres = "home" no JSON).
+// Lateral: "Meus Cálculos" (cálculos salvos nas páginas dos aplicativos, chave meusCalculos).
 // "Usados recentemente" usa a chave savedCalculations, a mesma lida pelas páginas de Cálculo de Férias.
 document.addEventListener('DOMContentLoaded', function () {
     // --- Menu mobile ---
@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const statsEl = document.getElementById('categoria-stats');
     const resultCount = document.getElementById('result-count');
     const clearBtn = document.getElementById('clear-filters');
-    const savedList = document.getElementById('saved-apps-list');
     const calcList = document.getElementById('meus-calculos-list');
     const recentesBox = document.getElementById('recentes');
     const recentesList = document.getElementById('recentes-list');
@@ -58,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
             all = data.map(a => ({ ...a, _search: normalize(`${a.title} ${a.categoria}`) }));
             readParams();
             render();
-            renderSaved();
             renderCalculos();
         })
         .catch(error => {
@@ -130,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function card(a) {
         const c = catOf(a.categoria);
         const available = Boolean(a.link);
-        const saved = isSaved(a.id);
+        const naHome = homePicks().includes(a.id);
         return `
             <article class="group relative flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 transition ${available ? 'hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md' : ''}">
                 <span class="inline-flex size-12 shrink-0 items-center justify-center rounded-xl text-lg transition ${available ? 'bg-blue-950 text-amber-400' : c.tone}"><i class="fa-solid ${escapeHTML(a.icon)}" aria-hidden="true"></i></span>
@@ -146,8 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             : '<span class="inline-flex items-center gap-1.5 text-slate-400"><i class="fa-regular fa-clock" aria-hidden="true"></i>Em breve</span>'}
                     </p>
                 </div>
-                <button type="button" class="save-btn absolute top-2 right-2 z-10 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg transition ${saved ? 'text-amber-500 hover:bg-amber-50' : 'text-slate-300 hover:bg-slate-100 hover:text-slate-600'}" data-id="${escapeHTML(a.id)}" aria-pressed="${saved}" aria-label="${saved ? 'Remover dos salvos' : 'Salvar'}: ${escapeHTML(a.title)}" title="${saved ? 'Remover dos aplicativos salvos' : 'Salvar aplicativo'}">
-                    <i class="${saved ? 'fa-solid' : 'fa-regular'} fa-bookmark" aria-hidden="true"></i>
+                <button type="button" class="home-btn absolute top-2 right-2 z-10 inline-flex size-8 cursor-pointer items-center justify-center rounded-lg transition ${naHome ? 'text-blue-700 hover:bg-blue-50' : 'text-slate-300 hover:bg-slate-100 hover:text-slate-600'}" data-id="${escapeHTML(a.id)}" aria-pressed="${naHome}" aria-label="${naHome ? 'Tirar da página inicial' : 'Mostrar na página inicial'}: ${escapeHTML(a.title)}" title="${naHome ? 'Tirar da página inicial' : 'Mostrar na página inicial'}">
+                    <i class="fa-solid fa-house" aria-hidden="true"></i>
                 </button>
             </article>`;
     }
@@ -191,32 +189,39 @@ document.addEventListener('DOMContentLoaded', function () {
         }).join('');
     }
 
-    // --- Aplicativos salvos (favoritos) ---
-    const SAVED_KEY = 'savedAplicativos';
-    const isSaved = id => readList(SAVED_KEY).some(s => s.id === id);
-    function toggleSaved(id) {
-        const a = all.find(x => x.id === id);
-        if (!a) return;
-        let list = readList(SAVED_KEY);
-        if (list.some(s => s.id === id)) list = list.filter(s => s.id !== id);
-        else list.unshift({ id: a.id, title: a.title, link: a.link, icon: a.icon });
-        writeList(SAVED_KEY, list);
-        render();
-        renderSaved();
-    }
-    function renderSaved() {
-        const list = readList(SAVED_KEY);
-        if (!list.length) {
-            savedList.innerHTML = '<li class="px-1 text-xs text-slate-500">Nenhum aplicativo salvo. Use o ícone <i class="fa-regular fa-bookmark" aria-hidden="true"></i> nos cartões.</li>';
-            return;
+    // --- Página inicial: até 8 escolhidos (ids); as vagas livres ficam com os padrões ("home" no JSON) ---
+    const HOME_KEY = 'homeAplicativos';
+    const HOME_MAX = 8;
+    const homePicks = () => readList(HOME_KEY).filter(id => all.some(a => a.id === id)).slice(0, HOME_MAX);
+    let avisoTimer = null;
+    function aviso(texto) {
+        let el = document.getElementById('cf-aviso-apps');
+        if (!el) {
+            el = document.createElement('p');
+            el.id = 'cf-aviso-apps';
+            el.setAttribute('role', 'status');
+            el.className = 'fixed bottom-6 left-1/2 z-50 max-w-[calc(100%-2rem)] -translate-x-1/2 rounded-xl bg-blue-950 px-4 py-3 text-sm text-white shadow-lg';
+            document.body.appendChild(el);
         }
-        savedList.innerHTML = list.map(s => `
-            <li class="group flex items-center gap-1 rounded-lg hover:bg-blue-50">
-                ${s.link
-                    ? `<a href="${escapeHTML(s.link)}" data-app="${escapeHTML(s.id)}" class="app-link min-w-0 flex-1 truncate px-2 py-1.5 text-slate-700 group-hover:text-blue-800" title="${escapeHTML(s.title)}"><i class="fa-solid ${escapeHTML(s.icon || 'fa-calculator')} mr-2 w-4 text-center text-xs text-slate-400" aria-hidden="true"></i>${escapeHTML(s.title)}</a>`
-                    : `<span class="min-w-0 flex-1 truncate px-2 py-1.5 text-slate-500" title="${escapeHTML(s.title)} (em breve)"><i class="fa-regular fa-clock mr-2 w-4 text-center text-xs text-slate-300" aria-hidden="true"></i>${escapeHTML(s.title)}</span>`}
-                <button type="button" class="remove-saved inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-slate-400 transition hover:bg-red-50 hover:text-red-600" data-id="${escapeHTML(s.id)}" aria-label="Remover ${escapeHTML(s.title)}" title="Remover"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-            </li>`).join('');
+        el.textContent = texto;
+        el.hidden = false;
+        clearTimeout(avisoTimer);
+        avisoTimer = setTimeout(() => { el.hidden = true; }, 3500);
+    }
+    function toggleHome(id) {
+        let picks = homePicks();
+        const app = all.find(a => a.id === id);
+        if (picks.includes(id)) {
+            picks = picks.filter(x => x !== id);
+            aviso(`"${app.title}" saiu da página inicial.`);
+        } else if (picks.length >= HOME_MAX) {
+            return aviso('Limite de 8 aplicativos na página inicial. Tire um (ícone de casa) para adicionar outro.');
+        } else {
+            picks.push(id);
+            aviso(`"${app.title}" vai aparecer na página inicial (${picks.length}/${HOME_MAX}).`);
+        }
+        writeList(HOME_KEY, picks);
+        render();
     }
 
     // --- Meus cálculos (salvos nas páginas dos aplicativos) ---
@@ -270,18 +275,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     resultsEl.addEventListener('click', e => {
-        const b = e.target.closest('.save-btn');
-        if (b) {
+        const casa = e.target.closest('.home-btn');
+        if (casa) {
             e.preventDefault();
-            toggleSaved(b.dataset.id);
+            toggleHome(casa.dataset.id);
         }
-    });
-    savedList.addEventListener('click', e => {
-        const b = e.target.closest('.remove-saved');
-        if (!b) return;
-        writeList(SAVED_KEY, readList(SAVED_KEY).filter(s => s.id !== b.dataset.id));
-        render();
-        renderSaved();
     });
     calcList.addEventListener('click', e => {
         const b = e.target.closest('.remove-calc');
